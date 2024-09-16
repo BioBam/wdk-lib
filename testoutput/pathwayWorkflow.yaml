@@ -1,0 +1,80 @@
+class: Workflow
+cwlVersion: v1.2
+inputs:
+  input_file: File
+  input_expression: File?
+  output_project: string
+  output_report: string?
+  reactome_enable: boolean
+  gramene_enable: boolean
+  kegg_enable: boolean
+  reactome_annotation_linking: boolean
+  gramene_annotation_linking: boolean
+  kegg_annotation_linking: boolean
+  reactome_sequence_linking: boolean
+  gramene_sequence_linking: boolean
+  kegg_sequence_linking: boolean
+  reactome_blast_evalue: float
+  gramene_blast_evalue: float
+  reactome_most_specific: boolean
+  gramene_most_specific: boolean
+  reactome_prioritize_species: boolean
+  gramene_prioritize_species: boolean
+  reactome_priority_species: string
+  reactome_priority_species_taxid: int
+  gramene_priority_species: string
+  gramene_priority_species_taxid: int
+  reactome_categories: string[]
+  gramene_categories: string[]
+  kegg_categories: string[]
+outputs:
+  - id: pathways_project
+    type: File
+    outputSource: pathway-analysis-service/output_project
+  - id: output_project_file
+    type: File
+    outputSource: pathway-analysis-post/output_full_project
+requirements:
+  InlineJavascriptRequirement: {}
+  SubworkflowFeatureRequirement: {}
+steps:
+  pathway-analysis-pre:
+    in:
+      input_file: input_file
+    out:
+      - loaded_project
+    run: pathway-analysis-pre.cwl
+  pathway-analysis-service:
+    in:
+      input_sequence: pathway-analysis-pre/loaded_project
+      reactome_enable: reactome_enable
+      gramene_enable: gramene_enable
+      kegg_enable: kegg_enable
+      reactome_annotation_linking: reactome_annotation_linking
+      gramene_annotation_linking: gramene_annotation_linking
+      kegg_annotation_linking: kegg_annotation_linking
+      reactome_sequence_linking: reactome_sequence_linking
+      gramene_sequence_linking: gramene_sequence_linking
+      kegg_sequence_linking: kegg_sequence_linking
+      reactome_most_specific: reactome_most_specific
+      gramene_most_specific: gramene_most_specific
+      reactome_prioritize_species: reactome_prioritize_species
+      gramene_prioritize_species: gramene_prioritize_species
+      reactome_priority_species: reactome_priority_species
+      reactome_priority_taxa_id: reactome_priority_species_taxid
+      gramene_priority_species: gramene_priority_species
+      gramene_priority_taxa_id: gramene_priority_species_taxid
+      reactome_categories: reactome_categories
+      gramene_categories: gramene_categories
+      kegg_categories: kegg_categories
+    out:
+      - output_project
+    run: pathway-analysis-service.cwl
+  pathway-analysis-post:
+    in:
+      input_project: pathway-analysis-service/output_project
+      input_expression: input_expression
+      output_project_file_name: output_project
+    out:
+      - output_full_project
+    run: pathway-analysis-post.cwl

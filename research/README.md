@@ -8,7 +8,7 @@ The goal of this facility is two fold:
 2. Collect additional ideas thought of by the community.
 
 Any form of contribution is done by simply creating a pull request with your suggested content.
-We also welcome you to [open](https://github.com/robertbio/wdk-lib/issues/new?assignees=&labels=enhancement&template=feature-request---suggestion.md&title=%5BSuggestion%5D+new+suggestion)
+We also welcome you to [open](https://github.com/biobam/wdk-lib/issues/new?assignees=&labels=enhancement&template=feature-request---suggestion.md&title=%5BSuggestion%5D+new+suggestion)
 an issue beforehand if you'd like to have a discussion prior to creating the pull request (highly encoureged).
 
 We are currently actively researching the following topics:

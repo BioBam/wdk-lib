@@ -15,4 +15,4 @@ COPY wdk-test.jar /app/wdk-test.jar
 COPY deps /app/deps
 
 # The command to run the JAR file
-CMD ["java", "-cp", "/app/deps/*:/app/wdk-test.jar", "com.github.robertbio.wdk.lib.test.Main"]
+CMD ["java", "-cp", "/app/deps/*:/app/wdk-test.jar", "com.biobam.wdk-lib.test.Main"]

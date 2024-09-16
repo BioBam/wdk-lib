@@ -50,9 +50,9 @@ See the [Getting Started]() guide in
 Interacting with the community and the development team is a great way to
 contribute to the project. Please consider the following venues (in order):
 
-- Search [open issues](https://github.com/robertbio/wdk-lib/issues)
+- Search [open issues](https://github.com/biobam/wdk-lib/issues)
 - Stack Overflow: [wdk-lib](https://stackoverflow.com/questions/tagged/wdk-lib)
-- File a [new issue](https://github.com/robertbio/wdk-lib/issues/new/choose)
+- File a [new issue](https://github.com/biobam/wdk-lib/issues/new/choose)
 - Slack: #wdk channel in [wdk-lib.dev](https://wdk-lib.dev)
 
 
@@ -61,6 +61,7 @@ contribute to the project. Please consider the following venues (in order):
 
 See [wdk Documentation](./docs).
 
+See [API](./API.md)
 
 ## Examples
 
@@ -69,12 +70,12 @@ See our [Examples Directory](./examples).
 
 ## Roadmap
 
-See our [roadmap](https://github.com/robertbio/wdk-lib/projects/1) for details about our plans for the project.
+See our [roadmap](https://github.com/biobam/wdk-lib/projects/1) for details about our plans for the project.
 
 
 ## Community
 
-See [Awesome wdks](https://github.com/robertbio/awesome-wdks).
+See [Awesome wdks](https://github.com/biobam/awesome-wdks).
 
 If you're a wdk user please consider adding your name to the [ADOPTERS](./ADOPTERS.md) file.
 

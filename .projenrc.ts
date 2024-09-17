@@ -18,7 +18,7 @@ const project = new cdk.JsiiProject({
   publishToMaven: {
     mavenGroupId: 'com.biobam',
     mavenArtifactId: 'wdk-lib',
-    javaPackage: 'com.biobam.wdk-lib',
+    javaPackage: 'com.biobam.wdk.lib',
     mavenRepositoryUrl: 'https://maven.pkg.github.com/biobam/wdk-lib',
   },
 

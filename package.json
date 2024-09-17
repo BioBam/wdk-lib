@@ -122,7 +122,7 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "com.biobam.wdk-lib",
+        "package": "com.biobam.wdk.lib",
         "maven": {
           "groupId": "com.biobam",
           "artifactId": "wdk-lib"

@@ -23,7 +23,7 @@ export class WorkflowValues implements IMappable {
   // Method to add input with InputReference value
   public addInput(input: Input, value: InputReference | InputValue): this {
     if (value instanceof InputReference) {
-      this._inputs.set(input.id, value.toMap());
+      this._inputs.set(input.id, value);
     } else {
       this._inputs.set(input.id, value);
     }

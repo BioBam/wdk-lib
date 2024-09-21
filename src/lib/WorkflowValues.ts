@@ -97,7 +97,11 @@ export class WorkflowValues implements IMappable {
   toMap(): { [key: string]: any } {
     const obj: { [key: string]: any } = {};
     this._inputs.forEach((value, key) => {
-      obj[key] = value;
+      if (value instanceof InputReference) {
+        obj[key] = (value as InputReference).toMap();
+      } else {
+        obj[key] = value;
+      }
     });
     return obj;
   }

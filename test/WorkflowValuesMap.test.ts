@@ -65,7 +65,7 @@ describe('WorkflowValues', () => {
     workflow.addInput(input1, inputReference1);
 
     expect(workflow.toMap()).toEqual({
-      [input1.id]: inputReference1.toMap(),
+      [input1.id]: { class: 'File', path: 'file1' },
     });
   });
 
@@ -83,7 +83,7 @@ describe('WorkflowValues', () => {
     workflow.addInput(input3, numberValue);
 
     expect(workflow.toMap()).toEqual({
-      [input1.id]: inputReference1.toMap(),
+      [input1.id]: { class: 'File', path: 'file1' },
       [input2.id]: stringValue,
       [input3.id]: numberValue,
     });

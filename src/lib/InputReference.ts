@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { IMappable } from './IMappable';
 import { Type } from './Type';
 
@@ -36,6 +37,9 @@ export class InputReference implements IMappable {
     let yamlMap: { [key: string]: any } = {};
     yamlMap.class = this.type;
     yamlMap.path = this._path;
+    if (this._path) {
+      yamlMap.path = path.basename(this._path); // Extracting the filename
+    }
     return yamlMap;
   }
 }

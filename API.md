@@ -1756,7 +1756,8 @@ public toMap(): {[ key: string ]: any}
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.InputReference.file">file</a></code> | *No description.* |
+| <code><a href="#wdk-lib.InputReference.file">file</a></code> | Create a local file reference. |
+| <code><a href="#wdk-lib.InputReference.s3File">s3File</a></code> | Create a s3 file reference. |
 
 ---
 
@@ -1768,9 +1769,31 @@ import { InputReference } from 'wdk-lib'
 InputReference.file(relativePath: string)
 ```
 
+Create a local file reference.
+
 ###### `relativePath`<sup>Required</sup> <a name="relativePath" id="wdk-lib.InputReference.file.parameter.relativePath"></a>
 
 - *Type:* string
+
+path to a local file like `/Users/username/file.txt`.
+
+---
+
+##### `s3File` <a name="s3File" id="wdk-lib.InputReference.s3File"></a>
+
+```typescript
+import { InputReference } from 'wdk-lib'
+
+InputReference.s3File(s3FileReference: string)
+```
+
+Create a s3 file reference.
+
+###### `s3FileReference`<sup>Required</sup> <a name="s3FileReference" id="wdk-lib.InputReference.s3File.parameter.s3FileReference"></a>
+
+- *Type:* string
+
+Reference to an S3 file formatted like `s3://bucket-name/path/to/file`.
 
 ---
 
@@ -1778,7 +1801,18 @@ InputReference.file(relativePath: string)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.InputReference.property.location">location</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.InputReference.property.path">path</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="wdk-lib.InputReference.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
 
 ---
 

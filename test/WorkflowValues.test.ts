@@ -11,10 +11,13 @@ describe('WorkflowValues', () => {
 
   it('should include the file path from InputReferences', () => {
     const input1 = Input.file(Construct.createRoot('root'), 'input1');
+    const s3Input2 = Input.file(Construct.createRoot('root'), 'input2');
     const inputReference1 = InputReference.file('/path/to/file1');
+    const s3InputReference = InputReference.s3File('s3://my-bucket/path/to/input2');
 
     const workflow = WorkflowValues.create();
     workflow.addInput(input1, inputReference1);
+    workflow.addInput(s3Input2, s3InputReference);
 
     expect(workflow.filePaths).toEqual({
       [input1.id]: '/path/to/file1',

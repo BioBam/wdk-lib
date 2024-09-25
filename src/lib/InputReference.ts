@@ -4,7 +4,12 @@ import { Type } from './Type';
 
 export class InputReference implements IMappable {
 
-  // Static factory method mimicking the Java static method
+  /**
+   * Create a local file reference.
+   *
+   * @param relativePath path to a local file like `/Users/username/file.txt`
+   * @returns
+   */
   static file(relativePath: string): InputReference {
     const inputReference = new InputReference();
     inputReference.type = Type.FILE.toString();
@@ -12,11 +17,30 @@ export class InputReference implements IMappable {
     return inputReference;
   }
 
+
+  /**
+   * Create a s3 file reference.
+   *
+   * @param s3FileReference Reference to an S3 file formatted like `s3://bucket-name/path/to/file`
+   * @returns
+   */
+  static s3File(s3FileReference: string): InputReference {
+    const inputReference = new InputReference();
+    inputReference.type = Type.FILE.toString();
+    inputReference._location = s3FileReference;
+    return inputReference;
+  }
+
   private type: string | undefined;
   private _path: string | undefined;
+  private _location: string | undefined;
 
   get path(): string | undefined {
     return this._path;
+  }
+
+  get location(): string | undefined {
+    return this._location;
   }
 
 
@@ -39,6 +63,9 @@ export class InputReference implements IMappable {
     yamlMap.path = this._path;
     if (this._path) {
       yamlMap.path = path.basename(this._path); // Extracting the filename
+    }
+    if (this._location) {
+      yamlMap.location = this._location;
     }
     return yamlMap;
   }

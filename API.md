@@ -1,6 +1,128 @@
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 
+## Structs <a name="Structs" id="Structs"></a>
+
+### RequirementProps <a name="RequirementProps" id="wdk-lib.RequirementProps"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.RequirementProps.Initializer"></a>
+
+```typescript
+import { RequirementProps } from 'wdk-lib'
+
+const requirementProps: RequirementProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.RequirementProps.property.coresMax">coresMax</a></code> | <code>number</code> | Maximum reserved number of CPU cores. |
+| <code><a href="#wdk-lib.RequirementProps.property.coresMin">coresMin</a></code> | <code>number</code> | Minimum reserved number of CPU cores. |
+| <code><a href="#wdk-lib.RequirementProps.property.outdirMax">outdirMax</a></code> | <code>number</code> | Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.outdirMin">outdirMin</a></code> | <code>number</code> | Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.ramMax">ramMax</a></code> | <code>number</code> | Maximum reserved RAM in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.ramMin">ramMin</a></code> | <code>number</code> | Minimum reserved RAM in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMax">tmpdirMax</a></code> | <code>number</code> | Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMin">tmpdirMin</a></code> | <code>number</code> | Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
+
+---
+
+##### `coresMax`<sup>Optional</sup> <a name="coresMax" id="wdk-lib.RequirementProps.property.coresMax"></a>
+
+```typescript
+public readonly coresMax: number;
+```
+
+- *Type:* number
+
+Maximum reserved number of CPU cores.
+
+---
+
+##### `coresMin`<sup>Optional</sup> <a name="coresMin" id="wdk-lib.RequirementProps.property.coresMin"></a>
+
+```typescript
+public readonly coresMin: number;
+```
+
+- *Type:* number
+
+Minimum reserved number of CPU cores.
+
+---
+
+##### `outdirMax`<sup>Optional</sup> <a name="outdirMax" id="wdk-lib.RequirementProps.property.outdirMax"></a>
+
+```typescript
+public readonly outdirMax: number;
+```
+
+- *Type:* number
+
+Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20).
+
+---
+
+##### `outdirMin`<sup>Optional</sup> <a name="outdirMin" id="wdk-lib.RequirementProps.property.outdirMin"></a>
+
+```typescript
+public readonly outdirMin: number;
+```
+
+- *Type:* number
+
+Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20).
+
+---
+
+##### `ramMax`<sup>Optional</sup> <a name="ramMax" id="wdk-lib.RequirementProps.property.ramMax"></a>
+
+```typescript
+public readonly ramMax: number;
+```
+
+- *Type:* number
+
+Maximum reserved RAM in mebibytes (2**20).
+
+---
+
+##### `ramMin`<sup>Optional</sup> <a name="ramMin" id="wdk-lib.RequirementProps.property.ramMin"></a>
+
+```typescript
+public readonly ramMin: number;
+```
+
+- *Type:* number
+
+Minimum reserved RAM in mebibytes (2**20).
+
+---
+
+##### `tmpdirMax`<sup>Optional</sup> <a name="tmpdirMax" id="wdk-lib.RequirementProps.property.tmpdirMax"></a>
+
+```typescript
+public readonly tmpdirMax: number;
+```
+
+- *Type:* number
+
+Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20).
+
+---
+
+##### `tmpdirMin`<sup>Optional</sup> <a name="tmpdirMin" id="wdk-lib.RequirementProps.property.tmpdirMin"></a>
+
+```typescript
+public readonly tmpdirMin: number;
+```
+
+- *Type:* number
+
+Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20).
+
+---
 
 ## Classes <a name="Classes" id="Classes"></a>
 
@@ -2847,6 +2969,7 @@ public toMap(): {[ key: string ]: any}
 | <code><a href="#wdk-lib.Requirement.initialWorkDir">initialWorkDir</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.inlineJavascript">inlineJavascript</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.networkAccess">networkAccess</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Requirement.resource">resource</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.stepInputExpression">stepInputExpression</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.subworkflowFeature">subworkflowFeature</a></code> | *No description.* |
 
@@ -2945,6 +3068,26 @@ Requirement.networkAccess(scope: Construct)
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Requirement.networkAccess.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `resource` <a name="resource" id="wdk-lib.Requirement.resource"></a>
+
+```typescript
+import { Requirement } from 'wdk-lib'
+
+Requirement.resource(scope: Construct, props: RequirementProps)
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Requirement.resource.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="wdk-lib.Requirement.resource.parameter.props"></a>
+
+- *Type:* <a href="#wdk-lib.RequirementProps">RequirementProps</a>
 
 ---
 
@@ -4683,6 +4826,7 @@ public readonly cwlVersion: string;
 | <code><a href="#wdk-lib.ToolRequirementType.DOCKER">DOCKER</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.ENV_VAR">ENV_VAR</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.STEP_INPUT_EXPRESSION">STEP_INPUT_EXPRESSION</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ToolRequirementType.RESOURCE_REQUIREMENT">RESOURCE_REQUIREMENT</a></code> | *No description.* |
 
 ---
 
@@ -4717,6 +4861,11 @@ public readonly cwlVersion: string;
 
 
 ##### `STEP_INPUT_EXPRESSION` <a name="STEP_INPUT_EXPRESSION" id="wdk-lib.ToolRequirementType.STEP_INPUT_EXPRESSION"></a>
+
+---
+
+
+##### `RESOURCE_REQUIREMENT` <a name="RESOURCE_REQUIREMENT" id="wdk-lib.ToolRequirementType.RESOURCE_REQUIREMENT"></a>
 
 ---
 

@@ -7,6 +7,7 @@ export enum ToolRequirementType {
   NETWORK_ACCESS = 'NetworkAccess',
   DOCKER = 'DockerRequirement',
   ENV_VAR = 'EnvVarRequirement',
-  STEP_INPUT_EXPRESSION = 'StepInputExpressionRequirement'
+  STEP_INPUT_EXPRESSION = 'StepInputExpressionRequirement',
+  RESOURCE_REQUIREMENT = 'ResourceRequirement'
 }
 

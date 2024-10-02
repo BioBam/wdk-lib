@@ -38,7 +38,12 @@ export class Output extends LinkableConstruct implements IMappable {
     return output;
   }
 
-  static floatInput(scope: Construct, id: string): Output {
+  static fileArray(scope: Construct, id: string): Output {
+    const output = new Output(scope, id, Type.FILE_ARRAY);
+    return output;
+  }
+
+  static float(scope: Construct, id: string): Output {
     const output = new Output(scope, id, Type.FLOAT);
     return output;
   }

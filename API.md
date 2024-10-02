@@ -2312,7 +2312,8 @@ public withGlob(glob: string): Output
 | <code><a href="#wdk-lib.Output.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.bool">bool</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.file">file</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.floatInput">floatInput</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.fileArray">fileArray</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.float">float</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.fromStepOutput">fromStepOutput</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.integer">integer</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.string">string</a></code> | *No description.* |
@@ -2374,21 +2375,41 @@ Output.file(scope: Construct, id: string)
 
 ---
 
-##### `floatInput` <a name="floatInput" id="wdk-lib.Output.floatInput"></a>
+##### `fileArray` <a name="fileArray" id="wdk-lib.Output.fileArray"></a>
 
 ```typescript
 import { Output } from 'wdk-lib'
 
-Output.floatInput(scope: Construct, id: string)
+Output.fileArray(scope: Construct, id: string)
 ```
 
-###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.floatInput.parameter.scope"></a>
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.fileArray.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
 ---
 
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.floatInput.parameter.id"></a>
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.fileArray.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `float` <a name="float" id="wdk-lib.Output.float"></a>
+
+```typescript
+import { Output } from 'wdk-lib'
+
+Output.float(scope: Construct, id: string)
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.float.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.float.parameter.id"></a>
 
 - *Type:* string
 

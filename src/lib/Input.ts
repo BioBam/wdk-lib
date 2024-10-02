@@ -34,7 +34,7 @@ export class Input extends LinkableConstruct {
     return input;
   }
 
-  static doubleInput(scope: Construct, id: string): Input {
+  static double(scope: Construct, id: string): Input {
     const input = new Input(scope, id, Type.DOUBLE);
     return input;
   }
@@ -44,7 +44,12 @@ export class Input extends LinkableConstruct {
     return input;
   }
 
-  static floatInput(scope: Construct, id: string): Input {
+  static fileArray(scope: Construct, id: string): Input {
+    const input = new Input(scope, id, Type.FILE_ARRAY);
+    return input;
+  }
+
+  static float(scope: Construct, id: string): Input {
     const input = new Input(scope, id, Type.FLOAT);
     return input;
   }
@@ -136,7 +141,7 @@ export class Input extends LinkableConstruct {
     );
   }
 
-  toMap(): { [key: string]: any } {
+  toMap(short: boolean = true): { [key: string]: any } {
     const inputMap: { [key: string]: any } = {};
     const inputBindingMap: { [key: string]: any } = {};
 
@@ -146,10 +151,10 @@ export class Input extends LinkableConstruct {
       if (this._prefix) {
         inputBindingMap.prefix = this._prefix;
       }
-    } else if (this._type === Type.STRING_ARRAY) {
+    } else if (this._type === Type.STRING_ARRAY || this._type === Type.FILE_ARRAY) {
       let typeMap: { [key: string]: any } | string = {
         type: 'array',
-        items: 'string',
+        items: this._type.toString().slice(0, -2),
       };
 
       if (this._separate || this._prefix) {
@@ -168,8 +173,10 @@ export class Input extends LinkableConstruct {
         }
       }
 
-      // check if inputmap only has type: 'array', items: 'string', then return 'string[]'
-      typeMap = Shortify.input(typeMap);
+      if (short) {
+        // check if inputmap only has type: 'array', items: 'string', then return 'string[]'
+        typeMap = Shortify.input(typeMap);
+      }
 
       inputMap.type = typeMap;
     } else {

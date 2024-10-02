@@ -9,5 +9,6 @@ export enum Type {
   STRING_ARRAY = 'string[]',
   FLOAT = 'float',
   STDERR = 'stderr',
-  STDOUT = 'stdout'
+  STDOUT = 'stdout',
+  FILE_ARRAY = 'File[]'
 }

@@ -57,8 +57,8 @@ export class PathwayWorkflow extends Workflow {
     this.grameneSequenceLinking = Input.bool(this, 'gramene_sequence_linking');
     this.keggSequenceLinking = Input.bool(this, 'kegg_sequence_linking');
 
-    this.reactomeBlastEvalue = Input.floatInput(this, 'reactome_blast_evalue');
-    this.grameneBlastEvalue = Input.floatInput(this, 'gramene_blast_evalue');
+    this.reactomeBlastEvalue = Input.float(this, 'reactome_blast_evalue');
+    this.grameneBlastEvalue = Input.float(this, 'gramene_blast_evalue');
 
     this.reactomeMostSpecific = Input.bool(this, 'reactome_most_specific');
     this.grameneMostSpecific = Input.bool(this, 'gramene_most_specific');

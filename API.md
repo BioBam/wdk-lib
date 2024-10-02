@@ -1493,8 +1493,14 @@ public makeSeparate(separate: boolean): Input
 ##### `toMap` <a name="toMap" id="wdk-lib.Input.toMap"></a>
 
 ```typescript
-public toMap(): {[ key: string ]: any}
+public toMap(short?: boolean): {[ key: string ]: any}
 ```
+
+###### `short`<sup>Optional</sup> <a name="short" id="wdk-lib.Input.toMap.parameter.short"></a>
+
+- *Type:* boolean
+
+---
 
 ##### `withDefaultValue` <a name="withDefaultValue" id="wdk-lib.Input.withDefaultValue"></a>
 
@@ -1550,9 +1556,10 @@ public withPrefix(prefix: string): Input
 | --- | --- |
 | <code><a href="#wdk-lib.Input.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.bool">bool</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.doubleInput">doubleInput</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.double">double</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.file">file</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.floatInput">floatInput</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.fileArray">fileArray</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.float">float</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.fromStepInput">fromStepInput</a></code> | Create an input from a step input, using the same ID and type. |
 | <code><a href="#wdk-lib.Input.integer">integer</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.string">string</a></code> | *No description.* |
@@ -1594,21 +1601,21 @@ Input.bool(scope: Construct, id: string)
 
 ---
 
-##### `doubleInput` <a name="doubleInput" id="wdk-lib.Input.doubleInput"></a>
+##### `double` <a name="double" id="wdk-lib.Input.double"></a>
 
 ```typescript
 import { Input } from 'wdk-lib'
 
-Input.doubleInput(scope: Construct, id: string)
+Input.double(scope: Construct, id: string)
 ```
 
-###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.doubleInput.parameter.scope"></a>
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.double.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
 ---
 
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.doubleInput.parameter.id"></a>
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.double.parameter.id"></a>
 
 - *Type:* string
 
@@ -1634,21 +1641,41 @@ Input.file(scope: Construct, id: string)
 
 ---
 
-##### `floatInput` <a name="floatInput" id="wdk-lib.Input.floatInput"></a>
+##### `fileArray` <a name="fileArray" id="wdk-lib.Input.fileArray"></a>
 
 ```typescript
 import { Input } from 'wdk-lib'
 
-Input.floatInput(scope: Construct, id: string)
+Input.fileArray(scope: Construct, id: string)
 ```
 
-###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.floatInput.parameter.scope"></a>
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.fileArray.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
 ---
 
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.floatInput.parameter.id"></a>
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.fileArray.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `float` <a name="float" id="wdk-lib.Input.float"></a>
+
+```typescript
+import { Input } from 'wdk-lib'
+
+Input.float(scope: Construct, id: string)
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.float.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.float.parameter.id"></a>
 
 - *Type:* string
 
@@ -4886,6 +4913,7 @@ public readonly cwlVersion: string;
 | <code><a href="#wdk-lib.Type.FLOAT">FLOAT</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Type.STDERR">STDERR</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Type.STDOUT">STDOUT</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Type.FILE_ARRAY">FILE_ARRAY</a></code> | *No description.* |
 
 ---
 
@@ -4935,6 +4963,11 @@ public readonly cwlVersion: string;
 
 
 ##### `STDOUT` <a name="STDOUT" id="wdk-lib.Type.STDOUT"></a>
+
+---
+
+
+##### `FILE_ARRAY` <a name="FILE_ARRAY" id="wdk-lib.Type.FILE_ARRAY"></a>
 
 ---
 

@@ -17,6 +17,19 @@ export class InputReference implements IMappable {
     return inputReference;
   }
 
+  /**
+   * Create a local file reference.
+   *
+   * @param relativePaths path to local files like `["/home/file1.txt", "/home/file2.txt"]`
+   * @returns
+   */
+  static fileArray(relativePaths: string[]): InputReference[] {
+    const refArray: InputReference[] = []
+    for (const path of relativePaths) {
+      refArray.push(this.file(path));
+    }
+    return refArray;
+  }
 
   /**
    * Create a s3 file reference.
@@ -31,6 +44,21 @@ export class InputReference implements IMappable {
     return inputReference;
   }
 
+  /**
+   * Create a s3 file reference.
+   *
+   * @param s3FileReferences Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`
+   * @returns
+   */
+  static s3FileArray(s3FileReferences: string[]): InputReference[] {
+    const refArray: InputReference[] = []
+    for (const path of s3FileReferences) {
+      refArray.push(this.s3File(path));
+    }
+    return refArray;
+  }
+
+
   private type: string | undefined;
   private _path: string | undefined;
   private _location: string | undefined;
@@ -42,19 +70,6 @@ export class InputReference implements IMappable {
   get location(): string | undefined {
     return this._location;
   }
-
-
-  // // Private method to set reference type
-  // private setReferenceType(type: InputReferenceType): this {
-  //     this.type = type;
-  //     return this;
-  // }
-
-  // // Private method to set path
-  // private setPath(relativePath: string): this {
-  //     this.path = relativePath;
-  //     return this;
-  // }
 
   // Method to convert to a YAML map equivalent
   toMap(): { [key: string]: any } {

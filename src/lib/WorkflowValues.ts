@@ -2,7 +2,7 @@ import { IMappable } from './IMappable';
 import { Input } from './Input';
 import { InputReference } from './InputReference';
 
-type InputValue = string | boolean | number | string[] | Array<string> | InputReference | InputReference[] | Array<InputReference>;
+type InputValue = string | boolean | number | string[] | InputReference | InputReference[];
 
 export class WorkflowValues implements IMappable {
 
@@ -14,7 +14,7 @@ export class WorkflowValues implements IMappable {
   }
 
   private _taskName: string = 'Task';
-  private _inputs: Map<string, InputValue>;
+  private _inputs: Map<string, any>;
 
   // Constructor
   constructor() {
@@ -28,7 +28,7 @@ export class WorkflowValues implements IMappable {
    * @param value Value associated to the input
    * @returns
    */
-  public addInput(input: Input, value: InputValue): this {
+  public addInput(input: Input, value: any): this {
     this._inputs.set(input.id, value);
     return this;
   }

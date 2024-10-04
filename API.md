@@ -4319,7 +4319,7 @@ new WorkflowValues()
 ##### `addInput` <a name="addInput" id="wdk-lib.WorkflowValues.addInput"></a>
 
 ```typescript
-public addInput(input: Input, value: string | number | boolean | string[] | InputReference | InputReference[]): WorkflowValues
+public addInput(input: Input, value: any): WorkflowValues
 ```
 
 Associate a value to an input object.
@@ -4334,7 +4334,7 @@ Input object to reference the value to.
 
 ###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.WorkflowValues.addInput.parameter.value"></a>
 
-- *Type:* string | number | boolean | string[] | <a href="#wdk-lib.InputReference">InputReference</a> | <a href="#wdk-lib.InputReference">InputReference</a>[]
+- *Type:* any
 
 Value associated to the input.
 

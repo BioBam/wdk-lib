@@ -2,9 +2,10 @@ import { IMappable } from './IMappable';
 import { Input } from './Input';
 import { InputReference } from './InputReference';
 
-type InputValue = string | boolean | number | string[] | Array<string> | InputReference;
+type InputValue = string | boolean | number | string[] | Array<string> | InputReference | InputReference[];
 
 export class WorkflowValues implements IMappable {
+
   // Static factory method
   static create(taskName?: string): WorkflowValues {
     const w = new WorkflowValues();
@@ -13,58 +14,24 @@ export class WorkflowValues implements IMappable {
   }
 
   private _taskName: string = 'Task';
-  private _inputs: Map<string, any>;
+  private _inputs: Map<string, InputValue>;
 
   // Constructor
   constructor() {
     this._inputs = new Map<string, InputValue>();
   }
 
-  // Method to add input with InputReference value
-  public addInput(input: Input, value: InputReference | InputValue): this {
-    if (value instanceof InputReference) {
-      this._inputs.set(input.id, value);
-    } else {
-      this._inputs.set(input.id, value);
-    }
+  /**
+   * Associate a value to an input object.
+   *
+   * @param input Input object to reference the value to
+   * @param value Value associated to the input
+   * @returns
+   */
+  public addInput(input: Input, value: InputValue): this {
+    this._inputs.set(input.id, value);
     return this;
   }
-
-  // // Method to add input with string value
-  // addInput(input: Input, value: InputValue): this {
-  //     this.inputs.set(input.id, value);
-  //     return this;
-  // }
-
-  //   // Method to add input with string value
-  //   addInput(input: Input, value: string): this {
-  //     this.inputs.set(input.id, value);
-  //     return this;
-  //   }
-
-  //   // Method to add input with boolean value
-  //   addInput(input: Input, value: boolean): this {
-  //     this.inputs.set(input.id, value);
-  //     return this;
-  //   }
-
-  //   // Method to add input with double value
-  //   addInput(input: Input, value: number): this {
-  //     this.inputs.set(input.id, value);
-  //     return this;
-  //   }
-
-  //   // Overloaded method to add input with string array value
-  //   addInput(input: Input, values: string[]): this {
-  //     this.inputs.set(input.id, values);
-  //     return this;
-  //   }
-
-  //   // Overloaded method to add input with list of strings value
-  //   addInput(input: Input, values: Array<string>): this {
-  //     this.inputs.set(input.id, values);
-  //     return this;
-  //   }
 
   get taskName(): string {
     return this._taskName;
@@ -79,18 +46,28 @@ export class WorkflowValues implements IMappable {
     return obj;
   }
 
-  // Method to get input Files paths
-  public get filePaths(): { [key: string]: string } {
-    const obj: { [key: string]: string } = {};
-    this._inputs.forEach((value, key) => {
+  /**
+   * Get the file paths for all the file inputs
+   */
+  public get filePaths(): string[] {
+    const pathsList: string[] = [];
+    this._inputs.forEach((value) => {
       if (value instanceof InputReference) {
-        const path = (value as InputReference).path;
-        if (path) {
-          obj[key] = path;
+        const onePath = (value as InputReference).path;
+        if (onePath) {
+          pathsList.push(onePath);
         }
+      } else if (Array.isArray(value) && value.length > 0 && value[0] instanceof InputReference) {
+        const paths = value as InputReference[];
+        paths.forEach((path) => {
+          const onePath = path.path;
+          if (onePath) {
+            pathsList.push(onePath);
+          }
+        });
       }
     });
-    return obj;
+    return pathsList;
   }
 
   // Method to convert the inputs map to an object for easier serialization
@@ -99,6 +76,9 @@ export class WorkflowValues implements IMappable {
     this._inputs.forEach((value, key) => {
       if (value instanceof InputReference) {
         obj[key] = (value as InputReference).toMap();
+      } else if (Array.isArray(value) && value.length > 0 && value[0] instanceof InputReference) {
+        const paths = value as InputReference[];
+        obj[key] = paths.map(path => path.toMap());
       } else {
         obj[key] = value;
       }

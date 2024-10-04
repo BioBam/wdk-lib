@@ -2,7 +2,7 @@ import { IMappable } from './IMappable';
 import { Input } from './Input';
 import { InputReference } from './InputReference';
 
-type InputValue = string | boolean | number | string[] | Array<string> | InputReference | InputReference[];
+type InputValue = string | boolean | number | string[] | Array<string> | InputReference | InputReference[] | Array<InputReference>;
 
 export class WorkflowValues implements IMappable {
 

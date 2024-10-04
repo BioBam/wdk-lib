@@ -18,15 +18,15 @@ export class InputReference implements IMappable {
   }
 
   /**
-   * Create a local file reference.
+   * Create a reference to a list of local files.
    *
    * @param relativePaths path to local files like `["/home/file1.txt", "/home/file2.txt"]`
    * @returns
    */
   static fileArray(relativePaths: string[]): InputReference[] {
-    const refArray: InputReference[] = []
-    for (const path of relativePaths) {
-      refArray.push(this.file(path));
+    const refArray: InputReference[] = [];
+    for (const filePath of relativePaths) {
+      refArray.push(this.file(filePath));
     }
     return refArray;
   }
@@ -45,15 +45,15 @@ export class InputReference implements IMappable {
   }
 
   /**
-   * Create a s3 file reference.
+   * Create a reference to a list of s3 files.
    *
    * @param s3FileReferences Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`
    * @returns
    */
   static s3FileArray(s3FileReferences: string[]): InputReference[] {
-    const refArray: InputReference[] = []
-    for (const path of s3FileReferences) {
-      refArray.push(this.s3File(path));
+    const refArray: InputReference[] = [];
+    for (const filePath of s3FileReferences) {
+      refArray.push(this.s3File(filePath));
     }
     return refArray;
   }

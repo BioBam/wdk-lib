@@ -1906,7 +1906,9 @@ public toMap(): {[ key: string ]: any}
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.InputReference.file">file</a></code> | Create a local file reference. |
+| <code><a href="#wdk-lib.InputReference.fileArray">fileArray</a></code> | Create a reference to a list of local files. |
 | <code><a href="#wdk-lib.InputReference.s3File">s3File</a></code> | Create a s3 file reference. |
+| <code><a href="#wdk-lib.InputReference.s3FileArray">s3FileArray</a></code> | Create a reference to a list of s3 files. |
 
 ---
 
@@ -1928,6 +1930,24 @@ path to a local file like `/Users/username/file.txt`.
 
 ---
 
+##### `fileArray` <a name="fileArray" id="wdk-lib.InputReference.fileArray"></a>
+
+```typescript
+import { InputReference } from 'wdk-lib'
+
+InputReference.fileArray(relativePaths: string[])
+```
+
+Create a reference to a list of local files.
+
+###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.InputReference.fileArray.parameter.relativePaths"></a>
+
+- *Type:* string[]
+
+path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
+
+---
+
 ##### `s3File` <a name="s3File" id="wdk-lib.InputReference.s3File"></a>
 
 ```typescript
@@ -1943,6 +1963,24 @@ Create a s3 file reference.
 - *Type:* string
 
 Reference to an S3 file formatted like `s3://bucket-name/path/to/file`.
+
+---
+
+##### `s3FileArray` <a name="s3FileArray" id="wdk-lib.InputReference.s3FileArray"></a>
+
+```typescript
+import { InputReference } from 'wdk-lib'
+
+InputReference.s3FileArray(s3FileReferences: string[])
+```
+
+Create a reference to a list of s3 files.
+
+###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.InputReference.s3FileArray.parameter.s3FileReferences"></a>
+
+- *Type:* string[]
+
+Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`.
 
 ---
 
@@ -4273,7 +4311,7 @@ new WorkflowValues()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.WorkflowValues.addInput">addInput</a></code> | *No description.* |
+| <code><a href="#wdk-lib.WorkflowValues.addInput">addInput</a></code> | Associate a value to an input object. |
 | <code><a href="#wdk-lib.WorkflowValues.toMap">toMap</a></code> | *No description.* |
 
 ---
@@ -4281,18 +4319,24 @@ new WorkflowValues()
 ##### `addInput` <a name="addInput" id="wdk-lib.WorkflowValues.addInput"></a>
 
 ```typescript
-public addInput(input: Input, value: string | number | boolean | string[] | InputReference): WorkflowValues
+public addInput(input: Input, value: string | number | boolean | string[] | InputReference | InputReference[]): WorkflowValues
 ```
+
+Associate a value to an input object.
 
 ###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.WorkflowValues.addInput.parameter.input"></a>
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
 
+Input object to reference the value to.
+
 ---
 
 ###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.WorkflowValues.addInput.parameter.value"></a>
 
-- *Type:* string | number | boolean | string[] | <a href="#wdk-lib.InputReference">InputReference</a>
+- *Type:* string | number | boolean | string[] | <a href="#wdk-lib.InputReference">InputReference</a> | <a href="#wdk-lib.InputReference">InputReference</a>[]
+
+Value associated to the input.
 
 ---
 
@@ -4328,8 +4372,8 @@ WorkflowValues.create(taskName?: string)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.WorkflowValues.property.filePaths">filePaths</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>{[ key: string ]: string \| number \| boolean \| string[] \| <a href="#wdk-lib.InputReference">InputReference</a>}</code> | *No description.* |
+| <code><a href="#wdk-lib.WorkflowValues.property.filePaths">filePaths</a></code> | <code>string[]</code> | Get the file paths for all the file inputs. |
+| <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>{[ key: string ]: string \| number \| boolean \| string[] \| <a href="#wdk-lib.InputReference">InputReference</a> \| <a href="#wdk-lib.InputReference">InputReference</a>[]}</code> | *No description.* |
 | <code><a href="#wdk-lib.WorkflowValues.property.taskName">taskName</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -4337,20 +4381,22 @@ WorkflowValues.create(taskName?: string)
 ##### `filePaths`<sup>Required</sup> <a name="filePaths" id="wdk-lib.WorkflowValues.property.filePaths"></a>
 
 ```typescript
-public readonly filePaths: {[ key: string ]: string};
+public readonly filePaths: string[];
 ```
 
-- *Type:* {[ key: string ]: string}
+- *Type:* string[]
+
+Get the file paths for all the file inputs.
 
 ---
 
 ##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.WorkflowValues.property.inputs"></a>
 
 ```typescript
-public readonly inputs: {[ key: string ]: string | number | boolean | string[] | InputReference};
+public readonly inputs: {[ key: string ]: string | number | boolean | string[] | InputReference | InputReference[]};
 ```
 
-- *Type:* {[ key: string ]: string | number | boolean | string[] | <a href="#wdk-lib.InputReference">InputReference</a>}
+- *Type:* {[ key: string ]: string | number | boolean | string[] | <a href="#wdk-lib.InputReference">InputReference</a> | <a href="#wdk-lib.InputReference">InputReference</a>[]}
 
 ---
 

@@ -1691,6 +1691,8 @@ Input.fromStepInput(scope: Construct, input: Input)
 
 Create an input from a step input, using the same ID and type.
 
+It also copies the default value, the optional flag, and the doc.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.fromStepInput.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>

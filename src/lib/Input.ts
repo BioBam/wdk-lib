@@ -5,9 +5,12 @@ import { Type } from './Type';
 
 export class Input extends LinkableConstruct {
 
-  /** Create an input from a step input, using the same ID and type. */
+  /** Create an input from a step input, using the same ID and type. It also copies the default value, the optional flag, and the doc. */
   static fromStepInput(scope: Construct, input: Input): Input {
     const newInput = new Input(scope, input.id, input.type);
+    newInput._optional = input.optional;
+    newInput._defaultValue = input._defaultValue;
+    newInput._doc = input._doc;
     input.linkTo(newInput);
     return newInput;
   }

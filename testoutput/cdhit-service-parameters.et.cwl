@@ -23,10 +23,12 @@ expression: |-
   ${
         var params = {};
         for (var key in inputs) {
-          if (typeof inputs[key] === 'object' && inputs[key] !== null && inputs[key].class === 'File') {
-            params[key] = inputs[key].basename;
-          } else {
-            params[key] = inputs[key];
+          if (inputs[key] !== undefined && inputs[key] !== null) { // Check if inputs[key] is set
+            if (typeof inputs[key] === 'object' && inputs[key].class === 'File') {
+              params[key] = inputs[key].basename;
+            } else {
+              params[key] = inputs[key];
+            }
           }
         }
 

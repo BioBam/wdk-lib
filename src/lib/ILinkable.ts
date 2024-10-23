@@ -1,7 +1,9 @@
+import { Type } from './Type';
 
 export interface ILinkable {
   get id(): string;
   set id(newID: string);
+  get type(): Type;
 
   get idAsReference(): string;
 

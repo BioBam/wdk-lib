@@ -1,7 +1,8 @@
 import { Construct } from './Construct';
 import { ILinkable } from './ILinkable';
+import { Type } from './Type';
 
-export class LinkableConstruct extends Construct implements ILinkable {
+export abstract class LinkableConstruct extends Construct implements ILinkable {
   private _link: ILinkable | null = null;
   private referencedIn: ILinkable[] = [];
 
@@ -9,12 +10,17 @@ export class LinkableConstruct extends Construct implements ILinkable {
     super(scope, id);
   }
 
+  abstract get type(): Type;
+
   public get idAsReference(): string {
     return this.id;
     // throw new Error('Method not implemented.');
   }
 
   public linkTo(linkInput: ILinkable): void {
+    if (linkInput.type != this.type) {
+      throw new Error('Link type mismatch between ' + this.id + '(' + this.type + ') and ' + linkInput.id + '(' + linkInput.type + ')');
+    }
     this._link = linkInput;
     linkInput.addReferencedIn(this);
   }

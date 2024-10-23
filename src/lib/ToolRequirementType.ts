@@ -8,6 +8,7 @@ export enum ToolRequirementType {
   DOCKER = 'DockerRequirement',
   ENV_VAR = 'EnvVarRequirement',
   STEP_INPUT_EXPRESSION = 'StepInputExpressionRequirement',
-  RESOURCE_REQUIREMENT = 'ResourceRequirement'
+  RESOURCE_REQUIREMENT = 'ResourceRequirement',
+  SCATTER_FEATURE = 'ScatterFeatureRequirement',
 }
 

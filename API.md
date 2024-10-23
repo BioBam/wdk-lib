@@ -146,6 +146,7 @@ new App()
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.App.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.App.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.App.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.App.synth">synth</a></code> | *No description.* |
 
@@ -160,6 +161,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.App.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.App.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.App.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -274,6 +287,7 @@ new BashTool(scope: any, id: string, props: IBashToolProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.BashTool.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.BashTool.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
 | <code><a href="#wdk-lib.BashTool.serialize">serialize</a></code> | *No description.* |
@@ -290,6 +304,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.BashTool.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.BashTool.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.BashTool.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -367,6 +393,7 @@ BashTool.createRoot(id: string)
 | <code><a href="#wdk-lib.BashTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.BashTool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.BashTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.BashTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -487,6 +514,18 @@ All steps nested within this step.
 
 ---
 
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.BashTool.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
 ##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.BashTool.property.config"></a>
 
 ```typescript
@@ -559,6 +598,7 @@ new CheckFileNameTool(scope: any, id: string, props?: IToolProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.CheckFileNameTool.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CheckFileNameTool.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
 | <code><a href="#wdk-lib.CheckFileNameTool.serialize">serialize</a></code> | *No description.* |
@@ -575,6 +615,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.CheckFileNameTool.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.CheckFileNameTool.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.CheckFileNameTool.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -652,6 +704,7 @@ CheckFileNameTool.createRoot(id: string)
 | <code><a href="#wdk-lib.CheckFileNameTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -774,6 +827,18 @@ All steps nested within this step.
 
 ---
 
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.CheckFileNameTool.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
 ##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.CheckFileNameTool.property.config"></a>
 
 ```typescript
@@ -852,6 +917,7 @@ new Construct(id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Construct.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Construct.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Construct.nodesOf">nodesOf</a></code> | *No description.* |
 
 ---
@@ -865,6 +931,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Construct.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.Construct.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Construct.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -1009,6 +1087,7 @@ new ExpressionTool(scope: Workflow, id: string, props?: IToolProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.ExpressionTool.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ExpressionTool.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
 | <code><a href="#wdk-lib.ExpressionTool.serialize">serialize</a></code> | *No description.* |
@@ -1026,6 +1105,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.ExpressionTool.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.ExpressionTool.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.ExpressionTool.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -1128,6 +1219,7 @@ Example: call with makeParametersJsonExpression()
 | <code><a href="#wdk-lib.ExpressionTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.ExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -1246,6 +1338,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.ExpressionTool.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
 
 ---
 
@@ -1392,15 +1496,18 @@ new Input(scope: Construct, id: string, type: Type)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Input.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.as">as</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.isArray">isArray</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.makeSeparate">makeSeparate</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.toMap">toMap</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.withDefaultValue">withDefaultValue</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.withDoc">withDoc</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.withItemSeparator">withItemSeparator</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.withPosition">withPosition</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.withPrefix">withPrefix</a></code> | *No description.* |
 
@@ -1415,6 +1522,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Input.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.Input.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Input.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -1465,6 +1584,12 @@ public as(newId: string): Input
 - *Type:* string
 
 ---
+
+##### `isArray` <a name="isArray" id="wdk-lib.Input.isArray"></a>
+
+```typescript
+public isArray(): boolean
+```
 
 ##### `makeOptional` <a name="makeOptional" id="wdk-lib.Input.makeOptional"></a>
 
@@ -1521,6 +1646,18 @@ public withDoc(doc: string): Input
 ```
 
 ###### `doc`<sup>Required</sup> <a name="doc" id="wdk-lib.Input.withDoc.parameter.doc"></a>
+
+- *Type:* string
+
+---
+
+##### `withItemSeparator` <a name="withItemSeparator" id="wdk-lib.Input.withItemSeparator"></a>
+
+```typescript
+public withItemSeparator(separator: string): Input
+```
+
+###### `separator`<sup>Required</sup> <a name="separator" id="wdk-lib.Input.withItemSeparator.parameter.separator"></a>
 
 - *Type:* string
 
@@ -2052,6 +2189,7 @@ new LinkableConstruct(scope: Construct, id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.LinkableConstruct.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.linkTo">linkTo</a></code> | *No description.* |
@@ -2067,6 +2205,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.LinkableConstruct.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.LinkableConstruct.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.LinkableConstruct.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -2245,6 +2395,7 @@ new Output(scope: Construct, id: string, type: Type)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Output.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | *No description.* |
@@ -2264,6 +2415,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Output.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.Output.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Output.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -2672,6 +2835,7 @@ new RenameExpressionTool(scope: Workflow, id: string, props?: IRenameExpressionT
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.RenameExpressionTool.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.RenameExpressionTool.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
 | <code><a href="#wdk-lib.RenameExpressionTool.serialize">serialize</a></code> | *No description.* |
@@ -2689,6 +2853,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.RenameExpressionTool.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.RenameExpressionTool.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.RenameExpressionTool.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -2791,6 +2967,7 @@ Example: call with makeParametersJsonExpression()
 | <code><a href="#wdk-lib.RenameExpressionTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -2915,6 +3092,18 @@ All steps nested within this step.
 
 ---
 
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.RenameExpressionTool.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
 ##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.RenameExpressionTool.property.config"></a>
 
 ```typescript
@@ -2993,6 +3182,7 @@ public readonly out: Output;
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Requirement.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Requirement.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.addListing">addListing</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.toMap">toMap</a></code> | *No description.* |
@@ -3008,6 +3198,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Requirement.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.Requirement.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Requirement.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -3058,6 +3260,7 @@ public toMap(): {[ key: string ]: any}
 | <code><a href="#wdk-lib.Requirement.inlineJavascript">inlineJavascript</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.networkAccess">networkAccess</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.resource">resource</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Requirement.scatterFeature">scatterFeature</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.stepInputExpression">stepInputExpression</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.subworkflowFeature">subworkflowFeature</a></code> | *No description.* |
 
@@ -3179,6 +3382,20 @@ Requirement.resource(scope: Construct, props: RequirementProps)
 
 ---
 
+##### `scatterFeature` <a name="scatterFeature" id="wdk-lib.Requirement.scatterFeature"></a>
+
+```typescript
+import { Requirement } from 'wdk-lib'
+
+Requirement.scatterFeature(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Requirement.scatterFeature.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
 ##### `stepInputExpression` <a name="stepInputExpression" id="wdk-lib.Requirement.stepInputExpression"></a>
 
 ```typescript
@@ -3244,6 +3461,261 @@ public readonly requirementType: string;
 ```
 
 - *Type:* string
+
+---
+
+
+### Scatter <a name="Scatter" id="wdk-lib.Scatter"></a>
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.Scatter.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Scatter.nodeOf">nodeOf</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Scatter.nodesOf">nodesOf</a></code> | *No description.* |
+
+---
+
+##### `addNode` <a name="addNode" id="wdk-lib.Scatter.addNode"></a>
+
+```typescript
+public addNode(node: Construct): void
+```
+
+###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Scatter.addNode.parameter.node"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.Scatter.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Scatter.nodeOf.parameter.type"></a>
+
+- *Type:* any
+
+---
+
+##### `nodesOf` <a name="nodesOf" id="wdk-lib.Scatter.nodesOf"></a>
+
+```typescript
+public nodesOf(type: any): Construct[]
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Scatter.nodesOf.parameter.type"></a>
+
+- *Type:* any
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.Scatter.createRoot">createRoot</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Scatter.dotProduct">dotProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
+| <code><a href="#wdk-lib.Scatter.flatCrossProduct">flatCrossProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
+| <code><a href="#wdk-lib.Scatter.nestedCrossProduct">nestedCrossProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
+| <code><a href="#wdk-lib.Scatter.simple">simple</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
+
+---
+
+##### `createRoot` <a name="createRoot" id="wdk-lib.Scatter.createRoot"></a>
+
+```typescript
+import { Scatter } from 'wdk-lib'
+
+Scatter.createRoot(id: string)
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Scatter.createRoot.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `dotProduct` <a name="dotProduct" id="wdk-lib.Scatter.dotProduct"></a>
+
+```typescript
+import { Scatter } from 'wdk-lib'
+
+Scatter.dotProduct(scope: Workflow, step: IStep, inputs: Input[])
+```
+
+A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
+
+Each of the input arrays are aligned and one element taken from each array to construct each job.
+It is an error if all input arrays are not the same length.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Scatter.dotProduct.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+---
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.Scatter.dotProduct.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+
+---
+
+###### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.Scatter.dotProduct.parameter.inputs"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>[]
+
+---
+
+##### `flatCrossProduct` <a name="flatCrossProduct" id="wdk-lib.Scatter.flatCrossProduct"></a>
+
+```typescript
+import { Scatter } from 'wdk-lib'
+
+Scatter.flatCrossProduct(scope: Workflow, step: IStep, inputs: Input[])
+```
+
+A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
+
+Cartesian product of the inputs, producing a job for every combination of the scattered inputs.
+The output arrays are flattened to a single level, but otherwise listed in the order that the input arrays are listed in the scatter field.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Scatter.flatCrossProduct.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+---
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.Scatter.flatCrossProduct.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+
+---
+
+###### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.Scatter.flatCrossProduct.parameter.inputs"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>[]
+
+---
+
+##### `nestedCrossProduct` <a name="nestedCrossProduct" id="wdk-lib.Scatter.nestedCrossProduct"></a>
+
+```typescript
+import { Scatter } from 'wdk-lib'
+
+Scatter.nestedCrossProduct(scope: Workflow, step: IStep, inputs: Input[])
+```
+
+A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
+
+Cartesian product of the inputs, producing a job for every combination of the scattered inputs.
+The output is nested arrays for each level of scattering, in the order that the input arrays are listed in the scatter field.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Scatter.nestedCrossProduct.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+---
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.Scatter.nestedCrossProduct.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+
+---
+
+###### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.Scatter.nestedCrossProduct.parameter.inputs"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>[]
+
+---
+
+##### `simple` <a name="simple" id="wdk-lib.Scatter.simple"></a>
+
+```typescript
+import { Scatter } from 'wdk-lib'
+
+Scatter.simple(scope: Workflow, step: IStep, input: Input)
+```
+
+A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
+
+Each job making up a scatter operation is independent and may be executed concurrently.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Scatter.simple.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+The Workflow to which the scatter belongs.
+
+---
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.Scatter.simple.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+
+The step to scatter.
+
+---
+
+###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.Scatter.simple.parameter.input"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+The input to scatter.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.Scatter.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Scatter.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Scatter.property.ids">ids</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#wdk-lib.Scatter.property.method">method</a></code> | <code><a href="#wdk-lib.ScatterMethod">ScatterMethod</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.Scatter.property.scope"></a>
+
+```typescript
+public readonly scope: Construct;
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Scatter.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `ids`<sup>Required</sup> <a name="ids" id="wdk-lib.Scatter.property.ids"></a>
+
+```typescript
+public readonly ids: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `method`<sup>Required</sup> <a name="method" id="wdk-lib.Scatter.property.method"></a>
+
+```typescript
+public readonly method: ScatterMethod;
+```
+
+- *Type:* <a href="#wdk-lib.ScatterMethod">ScatterMethod</a>
 
 ---
 
@@ -3402,6 +3874,7 @@ new Tool(scope: Workflow, id: string, props?: IToolProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Tool.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Tool.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
 | <code><a href="#wdk-lib.Tool.serialize">serialize</a></code> | *No description.* |
@@ -3418,6 +3891,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Tool.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.Tool.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Tool.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -3495,6 +3980,7 @@ Tool.createRoot(id: string)
 | <code><a href="#wdk-lib.Tool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.Tool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.Tool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Tool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -3615,6 +4101,18 @@ All steps nested within this step.
 
 ---
 
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.Tool.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
 ##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.Tool.property.config"></a>
 
 ```typescript
@@ -3673,6 +4171,7 @@ new ToolConfig(id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.ToolConfig.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ToolConfig.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withArguments">withArguments</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withBaseCommand">withBaseCommand</a></code> | *No description.* |
@@ -3689,6 +4188,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.ToolConfig.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.ToolConfig.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.ToolConfig.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -4048,6 +4559,7 @@ new Workflow(scope: any, id: string, props?: IWorkflowProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Workflow.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Workflow.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.addStep">addStep</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
@@ -4065,6 +4577,18 @@ public addNode(node: Construct): void
 ###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Workflow.addNode.parameter.node"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.Workflow.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Workflow.nodeOf.parameter.type"></a>
+
+- *Type:* any
 
 ---
 
@@ -4163,6 +4687,7 @@ Workflow.basicProps()
 | <code><a href="#wdk-lib.Workflow.property.props">props</a></code> | <code><a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.Workflow.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Workflow.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 
 ---
@@ -4278,6 +4803,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.Workflow.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
 
 ---
 
@@ -4691,6 +5228,7 @@ public serialize(dirPath: string): SynthFiles
 | <code><a href="#wdk-lib.IStep.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.IStep.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.IStep.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.IStep.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.IStep.property.id">id</a></code> | <code>string</code> | Unique identifier for the step in the workflow. |
 | <code><a href="#wdk-lib.IStep.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 
@@ -4767,6 +5305,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.IStep.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
 
 ---
 
@@ -4882,6 +5432,33 @@ public readonly cwlVersion: string;
 
 ## Enums <a name="Enums" id="Enums"></a>
 
+### ScatterMethod <a name="ScatterMethod" id="wdk-lib.ScatterMethod"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.ScatterMethod.DOT_PRODUCT">DOT_PRODUCT</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ScatterMethod.NESTED_CROSS_PRODUCT">NESTED_CROSS_PRODUCT</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ScatterMethod.FLAT_CROSS_PRODUCT">FLAT_CROSS_PRODUCT</a></code> | *No description.* |
+
+---
+
+##### `DOT_PRODUCT` <a name="DOT_PRODUCT" id="wdk-lib.ScatterMethod.DOT_PRODUCT"></a>
+
+---
+
+
+##### `NESTED_CROSS_PRODUCT` <a name="NESTED_CROSS_PRODUCT" id="wdk-lib.ScatterMethod.NESTED_CROSS_PRODUCT"></a>
+
+---
+
+
+##### `FLAT_CROSS_PRODUCT` <a name="FLAT_CROSS_PRODUCT" id="wdk-lib.ScatterMethod.FLAT_CROSS_PRODUCT"></a>
+
+---
+
+
 ### StepClass <a name="StepClass" id="wdk-lib.StepClass"></a>
 
 #### Members <a name="Members" id="Members"></a>
@@ -4923,6 +5500,7 @@ public readonly cwlVersion: string;
 | <code><a href="#wdk-lib.ToolRequirementType.ENV_VAR">ENV_VAR</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.STEP_INPUT_EXPRESSION">STEP_INPUT_EXPRESSION</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.RESOURCE_REQUIREMENT">RESOURCE_REQUIREMENT</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ToolRequirementType.SCATTER_FEATURE">SCATTER_FEATURE</a></code> | *No description.* |
 
 ---
 
@@ -4962,6 +5540,11 @@ public readonly cwlVersion: string;
 
 
 ##### `RESOURCE_REQUIREMENT` <a name="RESOURCE_REQUIREMENT" id="wdk-lib.ToolRequirementType.RESOURCE_REQUIREMENT"></a>
+
+---
+
+
+##### `SCATTER_FEATURE` <a name="SCATTER_FEATURE" id="wdk-lib.ToolRequirementType.SCATTER_FEATURE"></a>
 
 ---
 

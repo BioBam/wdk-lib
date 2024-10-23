@@ -10,6 +10,7 @@ export * from './LinkableConstruct';
 export * from './Output';
 export * from './Requirement';
 export * from './SynthFiles';
+export * from './Scatter';
 export * from './Tool';
 export * from './ToolClass';
 export * from './ToolConfig';

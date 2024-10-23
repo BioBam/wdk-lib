@@ -1,7 +1,7 @@
+import { Construct, Input, Output, Requirement } from '../lib';
 import { PathwayAnalysisServiceTool } from './PathwayAnalysisServiceTool';
 import { PathwayLoadExpressionTool } from './PathwayExpressionTool';
 import { PathwayLoadSequencesTool } from './PathwayLoadSequencesTool';
-import { Construct, Input, Output, Requirement } from '../lib';
 import { Workflow } from '../lib/Workflow';
 
 export class PathwayWorkflow extends Workflow {

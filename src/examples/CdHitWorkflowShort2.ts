@@ -1,7 +1,7 @@
+import { Construct, Input, Output, Requirement, Workflow } from '../lib';
 import { CdHitPostTool } from './CdHitPostTool';
 import { CdHitServiceParametersExpressionTool } from './CdHitServiceParametersExpressionTool';
 import { CdHitServiceTool } from './CdHitServiceTool';
-import { Construct, Input, Output, Requirement, Workflow } from '../lib';
 
 export class CdHitWorkflow extends Workflow {
 
@@ -13,6 +13,7 @@ export class CdHitWorkflow extends Workflow {
     // Tools
     const propsGen = new CdHitServiceParametersExpressionTool(this, 'cdhit-service-parameters');
     const cdHit = new CdHitServiceTool(this, 'cdhit-service');
+
     const post = new CdHitPostTool(this, 'cdhit-post');
     // Inputs
     const inputFasta = Input.fromStepInput(this, propsGen.input).as('input_fasta');

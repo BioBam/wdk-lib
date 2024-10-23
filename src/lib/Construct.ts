@@ -34,6 +34,10 @@ export class Construct {
     return this._nodes.filter(node => node instanceof type);
   }
 
+  public nodeOf(type: any): Construct | undefined {
+    return this._nodes.filter(node => node instanceof type)[0];
+  }
+
   public get scope(): Construct | undefined {
     return this._scope;
   }

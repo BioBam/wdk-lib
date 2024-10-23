@@ -76,6 +76,22 @@ describe('Input Class', () => {
       });
     });
 
+    it('should convert string array input to map correctly with item separator', () => {
+      const input = Input.stringArray(mockScope, 'testStringArrayId');
+      input.withPrefix('--prefix').withItemSeparator(',');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        type: {
+          type: 'string[]',
+          inputBinding: {
+            prefix: '--prefix',
+            itemSeparator: ',',
+          },
+        },
+      });
+    });
+
     it('should convert file array input to map correctly', () => {
       const input = Input.fileArray(mockScope, 'testFileArrayId');
       input.withDefaultValue(['file1', 'file2']);

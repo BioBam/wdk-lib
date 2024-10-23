@@ -6,6 +6,7 @@ import { Input } from './Input'; // Adjust imports as needed
 import { IStep } from './IStep';
 import { Output } from './Output';
 import { Requirement } from './Requirement';
+import { Scatter } from './Scatter';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
 import { ToolConfig } from './ToolConfig';
@@ -64,6 +65,11 @@ export class Tool extends Construct implements IMappable, IStep {
     //     inputs: [],
     //     outputs: []
     //   })
+  }
+
+
+  get scatter(): Scatter | undefined {
+    return this.nodeOf(Scatter) as Scatter;
   }
 
   get fileName(): string {

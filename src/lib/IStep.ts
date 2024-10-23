@@ -1,5 +1,6 @@
 import { Input } from './Input';
 import { Output } from './Output';
+import { Scatter } from './Scatter';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
 
@@ -54,4 +55,10 @@ export interface IStep {
    * Outputs of the step that are actually being used (linked) in parent workflow.
    */
   get linkedOutputs(): Output[];
+
+  /**
+   * Get the scatter object if the step is a scatter step.
+   */
+  get scatter(): Scatter | undefined;
+
 }

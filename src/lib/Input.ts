@@ -71,6 +71,8 @@ export class Input extends LinkableConstruct {
   private _defaultValue?: any;
   private _position?: number;
   private _separate = false;
+  private _separator: string | undefined;
+
   private _doc?: string;
 
 
@@ -84,7 +86,6 @@ export class Input extends LinkableConstruct {
     this.id = newId;
     return this;
   }
-
 
   // Instance methods
   get type(): Type {
@@ -120,6 +121,11 @@ export class Input extends LinkableConstruct {
 
   makeSeparate(separate: boolean): this {
     this._separate = separate;
+    return this;
+  }
+
+  withItemSeparator(separator: string): this {
+    this._separator = separator;
     return this;
   }
 
@@ -160,7 +166,7 @@ export class Input extends LinkableConstruct {
         items: this._type.toString().slice(0, -2),
       };
 
-      if (this._separate || this._prefix) {
+      if (this._separate || this._prefix || this._separator) {
         const innerInputBindingMap: { [key: string]: any } = {};
 
         if (this._separate) {
@@ -169,6 +175,10 @@ export class Input extends LinkableConstruct {
 
         if (this._prefix) {
           innerInputBindingMap.prefix = this._prefix;
+        }
+
+        if (this._separator) {
+          innerInputBindingMap.itemSeparator = this._separator;
         }
 
         if (Object.keys(innerInputBindingMap).length > 0) {
@@ -199,5 +209,9 @@ export class Input extends LinkableConstruct {
     }
 
     return inputMap;
+  }
+
+  isArray() {
+    return this._type === Type.STRING_ARRAY || this._type === Type.FILE_ARRAY;
   }
 }

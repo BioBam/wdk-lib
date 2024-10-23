@@ -7,6 +7,7 @@ import { IStep } from './IStep';
 import { IWorkflowProps } from './IWorkflowProps';
 import { Output } from './Output';
 import { Requirement } from './Requirement';
+import { Scatter } from './Scatter';
 import { Shortify } from './Shortify';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
@@ -59,6 +60,10 @@ export class Workflow extends Construct implements IStep, IMappable {
     return this.nodesOf(Input) as Input[];
   }
 
+  get scatter(): Scatter | undefined {
+    return this.nodeOf(Scatter) as Scatter;
+  }
+
   public get steps(): IStep[] {
     return this._steps;
   }
@@ -86,7 +91,7 @@ export class Workflow extends Construct implements IStep, IMappable {
   toMap(): { [key: string]: any } {
     const wData: { [key: string]: any } = {
       class: this.stepClass.toString(),
-      cwlVersion: this.props.cwlVersion? this.props.cwlVersion : Constants.cwlVersion,
+      cwlVersion: this.props.cwlVersion ? this.props.cwlVersion : Constants.cwlVersion,
       inputs: {},
       outputs: [],
       requirements: {},
@@ -148,6 +153,16 @@ export class Workflow extends Construct implements IStep, IMappable {
     }
     stepData.out = outLinks;
     stepData.run = runName;
+
+    if (step.scatter) {
+      const scatter = step.scatter;
+      if (scatter.ids.length == 1) {
+        stepData.scatter = scatter.ids[0];
+      } else {
+        stepData.scatter = step.scatter.ids;
+        stepData.method = step.scatter.method;
+      }
+    }
     return stepData;
   }
 

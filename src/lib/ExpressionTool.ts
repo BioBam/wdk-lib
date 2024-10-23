@@ -16,7 +16,9 @@ export class ExpressionTool extends Tool implements IMappable {
       var params = {};
       for (var key in inputs) {
         if (inputs[key] !== undefined && inputs[key] !== null) { // Check if inputs[key] is set
-          if (typeof inputs[key] === 'object' && inputs[key].class === 'File') {
+          if (Array.isArray(inputs[key]) && inputs[key][0].class === 'File') {
+              params[key] = inputs[key].map(file => file.basename);
+		      } else if (typeof inputs[key] === 'object' && inputs[key].class === 'File') {
             params[key] = inputs[key].basename;
           } else {
             params[key] = inputs[key];

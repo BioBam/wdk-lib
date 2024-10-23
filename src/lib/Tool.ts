@@ -1,4 +1,5 @@
 import * as yaml from 'js-yaml';
+import { Conditional } from './Conditional';
 import { Constants } from './Constants';
 import { Construct } from './Construct';
 import { IMappable } from './IMappable';
@@ -40,6 +41,7 @@ export class Tool extends Construct implements IMappable, IStep {
   private _stepClass: StepClass = StepClass.COMMAND_LINE_TOOL;
   props: IToolProps;
 
+
   public constructor(scope: Workflow, id: string, props?: IToolProps) {
     super(scope, id);
     this.props = props || {};
@@ -70,6 +72,10 @@ export class Tool extends Construct implements IMappable, IStep {
 
   get scatter(): Scatter | undefined {
     return this.nodeOf(Scatter) as Scatter;
+  }
+
+  get conditional(): Conditional | undefined {
+    return this.nodeOf(Conditional) as Conditional;
   }
 
   get fileName(): string {

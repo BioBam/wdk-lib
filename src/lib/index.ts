@@ -1,5 +1,6 @@
 export * from './App';
 export * from './Construct';
+export * from './Conditional';
 export * from './ExpressionTool';
 export * from './ILinkable';
 export * from './IMappable';

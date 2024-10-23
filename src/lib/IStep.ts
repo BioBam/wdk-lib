@@ -1,3 +1,4 @@
+import { Conditional } from './Conditional';
 import { Input } from './Input';
 import { Output } from './Output';
 import { Scatter } from './Scatter';
@@ -60,5 +61,10 @@ export interface IStep {
    * Get the scatter object if the step is a scatter step.
    */
   get scatter(): Scatter | undefined;
+
+  /**
+   * Get the conditional object if the step is a scatter step.
+   */
+  get conditional(): Conditional | undefined;
 
 }

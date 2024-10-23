@@ -393,6 +393,7 @@ BashTool.createRoot(id: string)
 | <code><a href="#wdk-lib.BashTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.BashTool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.BashTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.BashTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.BashTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
@@ -511,6 +512,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.BashTool.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
 
 ---
 
@@ -704,6 +717,7 @@ CheckFileNameTool.createRoot(id: string)
 | <code><a href="#wdk-lib.CheckFileNameTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
@@ -827,6 +841,18 @@ All steps nested within this step.
 
 ---
 
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.CheckFileNameTool.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
+
+---
+
 ##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.CheckFileNameTool.property.scatter"></a>
 
 ```typescript
@@ -886,6 +912,151 @@ public readonly f1: Input;
 ```
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
+
+---
+
+
+### Conditional <a name="Conditional" id="wdk-lib.Conditional"></a>
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.Conditional.addNode">addNode</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.nodeOf">nodeOf</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.nodesOf">nodesOf</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.whenBooleanInputIs">whenBooleanInputIs</a></code> | *No description.* |
+
+---
+
+##### `addNode` <a name="addNode" id="wdk-lib.Conditional.addNode"></a>
+
+```typescript
+public addNode(node: Construct): void
+```
+
+###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Conditional.addNode.parameter.node"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `nodeOf` <a name="nodeOf" id="wdk-lib.Conditional.nodeOf"></a>
+
+```typescript
+public nodeOf(type: any): Construct
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Conditional.nodeOf.parameter.type"></a>
+
+- *Type:* any
+
+---
+
+##### `nodesOf` <a name="nodesOf" id="wdk-lib.Conditional.nodesOf"></a>
+
+```typescript
+public nodesOf(type: any): Construct[]
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Conditional.nodesOf.parameter.type"></a>
+
+- *Type:* any
+
+---
+
+##### `whenBooleanInputIs` <a name="whenBooleanInputIs" id="wdk-lib.Conditional.whenBooleanInputIs"></a>
+
+```typescript
+public whenBooleanInputIs(input: Input, value: boolean): void
+```
+
+###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.Conditional.whenBooleanInputIs.parameter.input"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Conditional.whenBooleanInputIs.parameter.value"></a>
+
+- *Type:* boolean
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.Conditional.createRoot">createRoot</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.step">step</a></code> | *No description.* |
+
+---
+
+##### `createRoot` <a name="createRoot" id="wdk-lib.Conditional.createRoot"></a>
+
+```typescript
+import { Conditional } from 'wdk-lib'
+
+Conditional.createRoot(id: string)
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Conditional.createRoot.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `step` <a name="step" id="wdk-lib.Conditional.step"></a>
+
+```typescript
+import { Conditional } from 'wdk-lib'
+
+Conditional.step(step: IStep)
+```
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.Conditional.step.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.Conditional.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.property.expression">expression</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.Conditional.property.scope"></a>
+
+```typescript
+public readonly scope: Construct;
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Conditional.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `expression`<sup>Optional</sup> <a name="expression" id="wdk-lib.Conditional.property.expression"></a>
+
+```typescript
+public readonly expression: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -1219,6 +1390,7 @@ Example: call with makeParametersJsonExpression()
 | <code><a href="#wdk-lib.ExpressionTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.ExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
@@ -1338,6 +1510,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.ExpressionTool.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
 
 ---
 
@@ -1912,8 +2096,8 @@ Input.stringArray(scope: Construct, id: string)
 | <code><a href="#wdk-lib.Input.property.link">link</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.doc">doc</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -1978,16 +2162,6 @@ public readonly referenced: boolean;
 
 ---
 
-##### `optional`<sup>Required</sup> <a name="optional" id="wdk-lib.Input.property.optional"></a>
-
-```typescript
-public readonly optional: boolean;
-```
-
-- *Type:* boolean
-
----
-
 ##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Input.property.type"></a>
 
 ```typescript
@@ -1995,6 +2169,16 @@ public readonly type: Type;
 ```
 
 - *Type:* <a href="#wdk-lib.Type">Type</a>
+
+---
+
+##### `optional`<sup>Required</sup> <a name="optional" id="wdk-lib.Input.property.optional"></a>
+
+```typescript
+public readonly optional: boolean;
+```
+
+- *Type:* boolean
 
 ---
 
@@ -2288,6 +2472,7 @@ LinkableConstruct.createRoot(id: string)
 | <code><a href="#wdk-lib.LinkableConstruct.property.link">link</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
 
 ---
 
@@ -2348,6 +2533,16 @@ public readonly referenced: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.LinkableConstruct.property.type"></a>
+
+```typescript
+public readonly type: Type;
+```
+
+- *Type:* <a href="#wdk-lib.Type">Type</a>
 
 ---
 
@@ -2967,6 +3162,7 @@ Example: call with makeParametersJsonExpression()
 | <code><a href="#wdk-lib.RenameExpressionTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
@@ -3089,6 +3285,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.RenameExpressionTool.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
 
 ---
 
@@ -3980,6 +4188,7 @@ Tool.createRoot(id: string)
 | <code><a href="#wdk-lib.Tool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.Tool.property.requirementsMap">requirementsMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.Tool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Tool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Tool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
@@ -4098,6 +4307,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.Tool.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
 
 ---
 
@@ -4687,6 +4908,7 @@ Workflow.basicProps()
 | <code><a href="#wdk-lib.Workflow.property.props">props</a></code> | <code><a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.Workflow.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Workflow.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Workflow.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 
@@ -4803,6 +5025,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.Workflow.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
 
 ---
 
@@ -5052,6 +5286,7 @@ public linkTo(link: ILinkable): void
 | <code><a href="#wdk-lib.ILinkable.property.link">link</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.ILinkable.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.id">id</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -5093,6 +5328,16 @@ public readonly referenced: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.ILinkable.property.type"></a>
+
+```typescript
+public readonly type: Type;
+```
+
+- *Type:* <a href="#wdk-lib.Type">Type</a>
 
 ---
 
@@ -5228,6 +5473,7 @@ public serialize(dirPath: string): SynthFiles
 | <code><a href="#wdk-lib.IStep.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.IStep.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.IStep.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.IStep.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.IStep.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.IStep.property.id">id</a></code> | <code>string</code> | Unique identifier for the step in the workflow. |
 | <code><a href="#wdk-lib.IStep.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -5305,6 +5551,18 @@ public readonly steps: IStep[];
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
 
 All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.IStep.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
 
 ---
 

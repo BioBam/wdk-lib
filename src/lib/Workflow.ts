@@ -1,4 +1,5 @@
 import * as yaml from 'js-yaml';
+import { Conditional } from './Conditional';
 import { Constants } from './Constants';
 import { Construct } from './Construct';
 import { IMappable } from './IMappable';
@@ -84,6 +85,10 @@ export class Workflow extends Construct implements IStep, IMappable {
     return this.nodesOf(Requirement) as Requirement[];
   }
 
+  get conditional(): Conditional | undefined {
+    return this.nodeOf(Conditional) as Conditional;
+  }
+
   addStep(step: IStep) {
     this._steps.push(step);
   }
@@ -163,6 +168,11 @@ export class Workflow extends Construct implements IStep, IMappable {
         stepData.method = step.scatter.method;
       }
     }
+
+    if (step.conditional && step.conditional.expression) {
+      stepData.when = step.conditional.expression;
+    }
+
     return stepData;
   }
 

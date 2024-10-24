@@ -53,7 +53,7 @@ export abstract class LinkableConstruct extends Construct implements ILinkable {
     // throw new Error('Method not implemented.');
   }
 
-  public linkTo(linkInput: ILinkable): this {
+  public linkTo(linkInput: ILinkable): ILinkable {
     if (linkInput.type != this.type) {
       throw new Error('Link type mismatch between ' + this.id + '(' + this.type + ') and ' + linkInput.id + '(' + linkInput.type + ')');
     }
@@ -62,7 +62,7 @@ export abstract class LinkableConstruct extends Construct implements ILinkable {
     return this;
   }
 
-  public pickValue(method: PickValueMethod): this {
+  public pickValue(method: PickValueMethod): ILinkable {
     this._pickValueMethod = method;
     return this;
   }

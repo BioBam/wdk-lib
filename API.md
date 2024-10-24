@@ -1684,6 +1684,7 @@ new Input(scope: Construct, id: string, type: Type)
 | <code><a href="#wdk-lib.Input.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.as">as</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.isArray">isArray</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | *No description.* |
@@ -1748,12 +1749,24 @@ public addReferencedIn(link: ILinkable): void
 ##### `linkTo` <a name="linkTo" id="wdk-lib.Input.linkTo"></a>
 
 ```typescript
-public linkTo(linkInput: ILinkable): void
+public linkTo(linkInput: ILinkable): ILinkable
 ```
 
 ###### `linkInput`<sup>Required</sup> <a name="linkInput" id="wdk-lib.Input.linkTo.parameter.linkInput"></a>
 
 - *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
+
+---
+
+##### `pickValue` <a name="pickValue" id="wdk-lib.Input.pickValue"></a>
+
+```typescript
+public pickValue(method: PickValueMethod): ILinkable
+```
+
+###### `method`<sup>Required</sup> <a name="method" id="wdk-lib.Input.pickValue.parameter.method"></a>
+
+- *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
 
 ---
 
@@ -2093,10 +2106,12 @@ Input.stringArray(scope: Construct, id: string)
 | <code><a href="#wdk-lib.Input.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#wdk-lib.Input.property.link">link</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.links">links</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a>[]</code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.multiLinked">multiLinked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.doc">doc</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.valueFrom">valueFrom</a></code> | <code>string</code> | *No description.* |
@@ -2133,20 +2148,30 @@ public readonly idAsReference: string;
 
 ---
 
-##### `link`<sup>Required</sup> <a name="link" id="wdk-lib.Input.property.link"></a>
-
-```typescript
-public readonly link: ILinkable;
-```
-
-- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
-
----
-
 ##### `linked`<sup>Required</sup> <a name="linked" id="wdk-lib.Input.property.linked"></a>
 
 ```typescript
 public readonly linked: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `links`<sup>Required</sup> <a name="links" id="wdk-lib.Input.property.links"></a>
+
+```typescript
+public readonly links: ILinkable[];
+```
+
+- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>[]
+
+---
+
+##### `multiLinked`<sup>Required</sup> <a name="multiLinked" id="wdk-lib.Input.property.multiLinked"></a>
+
+```typescript
+public readonly multiLinked: boolean;
 ```
 
 - *Type:* boolean
@@ -2170,6 +2195,16 @@ public readonly type: Type;
 ```
 
 - *Type:* <a href="#wdk-lib.Type">Type</a>
+
+---
+
+##### `pickValueMethod`<sup>Optional</sup> <a name="pickValueMethod" id="wdk-lib.Input.property.pickValueMethod"></a>
+
+```typescript
+public readonly pickValueMethod: PickValueMethod;
+```
+
+- *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
 
 ---
 
@@ -2388,6 +2423,7 @@ new LinkableConstruct(scope: Construct, id: string)
 | <code><a href="#wdk-lib.LinkableConstruct.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.linkTo">linkTo</a></code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.pickValue">pickValue</a></code> | *No description.* |
 
 ---
 
@@ -2442,12 +2478,24 @@ public addReferencedIn(link: ILinkable): void
 ##### `linkTo` <a name="linkTo" id="wdk-lib.LinkableConstruct.linkTo"></a>
 
 ```typescript
-public linkTo(linkInput: ILinkable): void
+public linkTo(linkInput: ILinkable): ILinkable
 ```
 
 ###### `linkInput`<sup>Required</sup> <a name="linkInput" id="wdk-lib.LinkableConstruct.linkTo.parameter.linkInput"></a>
 
 - *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
+
+---
+
+##### `pickValue` <a name="pickValue" id="wdk-lib.LinkableConstruct.pickValue"></a>
+
+```typescript
+public pickValue(method: PickValueMethod): ILinkable
+```
+
+###### `method`<sup>Required</sup> <a name="method" id="wdk-lib.LinkableConstruct.pickValue.parameter.method"></a>
+
+- *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
 
 ---
 
@@ -2480,10 +2528,12 @@ LinkableConstruct.createRoot(id: string)
 | <code><a href="#wdk-lib.LinkableConstruct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#wdk-lib.LinkableConstruct.property.link">link</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.property.links">links</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a>[]</code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.property.multiLinked">multiLinked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
 
 ---
 
@@ -2517,20 +2567,30 @@ public readonly idAsReference: string;
 
 ---
 
-##### `link`<sup>Required</sup> <a name="link" id="wdk-lib.LinkableConstruct.property.link"></a>
-
-```typescript
-public readonly link: ILinkable;
-```
-
-- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
-
----
-
 ##### `linked`<sup>Required</sup> <a name="linked" id="wdk-lib.LinkableConstruct.property.linked"></a>
 
 ```typescript
 public readonly linked: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `links`<sup>Required</sup> <a name="links" id="wdk-lib.LinkableConstruct.property.links"></a>
+
+```typescript
+public readonly links: ILinkable[];
+```
+
+- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>[]
+
+---
+
+##### `multiLinked`<sup>Required</sup> <a name="multiLinked" id="wdk-lib.LinkableConstruct.property.multiLinked"></a>
+
+```typescript
+public readonly multiLinked: boolean;
 ```
 
 - *Type:* boolean
@@ -2554,6 +2614,16 @@ public readonly type: Type;
 ```
 
 - *Type:* <a href="#wdk-lib.Type">Type</a>
+
+---
+
+##### `pickValueMethod`<sup>Optional</sup> <a name="pickValueMethod" id="wdk-lib.LinkableConstruct.property.pickValueMethod"></a>
+
+```typescript
+public readonly pickValueMethod: PickValueMethod;
+```
+
+- *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
 
 ---
 
@@ -2605,6 +2675,7 @@ new Output(scope: Construct, id: string, type: Type)
 | <code><a href="#wdk-lib.Output.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.pickValue">pickValue</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.as">as</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.globFromInputString">globFromInputString</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.loadContents">loadContents</a></code> | *No description.* |
@@ -2665,12 +2736,24 @@ public addReferencedIn(link: ILinkable): void
 ##### `linkTo` <a name="linkTo" id="wdk-lib.Output.linkTo"></a>
 
 ```typescript
-public linkTo(linkInput: ILinkable): void
+public linkTo(linkInput: ILinkable): ILinkable
 ```
 
 ###### `linkInput`<sup>Required</sup> <a name="linkInput" id="wdk-lib.Output.linkTo.parameter.linkInput"></a>
 
 - *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
+
+---
+
+##### `pickValue` <a name="pickValue" id="wdk-lib.Output.pickValue"></a>
+
+```typescript
+public pickValue(method: PickValueMethod): ILinkable
+```
+
+###### `method`<sup>Required</sup> <a name="method" id="wdk-lib.Output.pickValue.parameter.method"></a>
+
+- *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
 
 ---
 
@@ -2931,10 +3014,12 @@ Output.stringArray(scope: Construct, id: string)
 | <code><a href="#wdk-lib.Output.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#wdk-lib.Output.property.link">link</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.Output.property.links">links</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a>[]</code> | *No description.* |
+| <code><a href="#wdk-lib.Output.property.multiLinked">multiLinked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.yamlMap">yamlMap</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 
 ---
@@ -2969,20 +3054,30 @@ public readonly idAsReference: string;
 
 ---
 
-##### `link`<sup>Required</sup> <a name="link" id="wdk-lib.Output.property.link"></a>
-
-```typescript
-public readonly link: ILinkable;
-```
-
-- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
-
----
-
 ##### `linked`<sup>Required</sup> <a name="linked" id="wdk-lib.Output.property.linked"></a>
 
 ```typescript
 public readonly linked: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `links`<sup>Required</sup> <a name="links" id="wdk-lib.Output.property.links"></a>
+
+```typescript
+public readonly links: ILinkable[];
+```
+
+- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>[]
+
+---
+
+##### `multiLinked`<sup>Required</sup> <a name="multiLinked" id="wdk-lib.Output.property.multiLinked"></a>
+
+```typescript
+public readonly multiLinked: boolean;
 ```
 
 - *Type:* boolean
@@ -3006,6 +3101,16 @@ public readonly type: Type;
 ```
 
 - *Type:* <a href="#wdk-lib.Type">Type</a>
+
+---
+
+##### `pickValueMethod`<sup>Optional</sup> <a name="pickValueMethod" id="wdk-lib.Output.property.pickValueMethod"></a>
+
+```typescript
+public readonly pickValueMethod: PickValueMethod;
+```
+
+- *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
 
 ---
 
@@ -3497,6 +3602,7 @@ public toMap(): {[ key: string ]: any}
 | <code><a href="#wdk-lib.Requirement.envVar">envVar</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.initialWorkDir">initialWorkDir</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.inlineJavascript">inlineJavascript</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Requirement.multipleInputFeature">multipleInputFeature</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.networkAccess">networkAccess</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.resource">resource</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.scatterFeature">scatterFeature</a></code> | *No description.* |
@@ -3582,6 +3688,20 @@ Requirement.inlineJavascript(scope: Construct)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Requirement.inlineJavascript.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+##### `multipleInputFeature` <a name="multipleInputFeature" id="wdk-lib.Requirement.multipleInputFeature"></a>
+
+```typescript
+import { Requirement } from 'wdk-lib'
+
+Requirement.multipleInputFeature(scope: Construct)
+```
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Requirement.multipleInputFeature.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
@@ -5282,6 +5402,7 @@ Provide either this or `inlineScript`.
 | --- | --- |
 | <code><a href="#wdk-lib.ILinkable.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.linkTo">linkTo</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ILinkable.pickValue">pickValue</a></code> | *No description.* |
 
 ---
 
@@ -5300,7 +5421,7 @@ public addReferencedIn(link: ILinkable): void
 ##### `linkTo` <a name="linkTo" id="wdk-lib.ILinkable.linkTo"></a>
 
 ```typescript
-public linkTo(link: ILinkable): void
+public linkTo(link: ILinkable): ILinkable
 ```
 
 ###### `link`<sup>Required</sup> <a name="link" id="wdk-lib.ILinkable.linkTo.parameter.link"></a>
@@ -5309,13 +5430,26 @@ public linkTo(link: ILinkable): void
 
 ---
 
+##### `pickValue` <a name="pickValue" id="wdk-lib.ILinkable.pickValue"></a>
+
+```typescript
+public pickValue(method: PickValueMethod): ILinkable
+```
+
+###### `method`<sup>Required</sup> <a name="method" id="wdk-lib.ILinkable.pickValue.parameter.method"></a>
+
+- *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
+
+---
+
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#wdk-lib.ILinkable.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#wdk-lib.ILinkable.property.link">link</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.ILinkable.property.links">links</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a>[]</code> | *No description.* |
+| <code><a href="#wdk-lib.ILinkable.property.multiLinked">multiLinked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.id">id</a></code> | <code>string</code> | *No description.* |
@@ -5332,20 +5466,30 @@ public readonly idAsReference: string;
 
 ---
 
-##### `link`<sup>Required</sup> <a name="link" id="wdk-lib.ILinkable.property.link"></a>
-
-```typescript
-public readonly link: ILinkable;
-```
-
-- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
-
----
-
 ##### `linked`<sup>Required</sup> <a name="linked" id="wdk-lib.ILinkable.property.linked"></a>
 
 ```typescript
 public readonly linked: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `links`<sup>Required</sup> <a name="links" id="wdk-lib.ILinkable.property.links"></a>
+
+```typescript
+public readonly links: ILinkable[];
+```
+
+- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>[]
+
+---
+
+##### `multiLinked`<sup>Required</sup> <a name="multiLinked" id="wdk-lib.ILinkable.property.multiLinked"></a>
+
+```typescript
+public readonly multiLinked: boolean;
 ```
 
 - *Type:* boolean
@@ -5721,6 +5865,65 @@ public readonly cwlVersion: string;
 
 ## Enums <a name="Enums" id="Enums"></a>
 
+### PickValueMethod <a name="PickValueMethod" id="wdk-lib.PickValueMethod"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.PickValueMethod.FIRST_NON_NULL">FIRST_NON_NULL</a></code> | For the first level of a list input, pick the first non-null element. |
+| <code><a href="#wdk-lib.PickValueMethod.THE_ONLY_NON_NULL">THE_ONLY_NON_NULL</a></code> | For the first level of a list input, pick the single non-null element. |
+| <code><a href="#wdk-lib.PickValueMethod.ALL_NON_NULL">ALL_NON_NULL</a></code> | For the first level of a list input, pick all non-null values. |
+
+---
+
+##### `FIRST_NON_NULL` <a name="FIRST_NON_NULL" id="wdk-lib.PickValueMethod.FIRST_NON_NULL"></a>
+
+For the first level of a list input, pick the first non-null element.
+
+The result is a scalar. It is an error if there is no non-null element.
+Examples:
+ - [null, x, null, y] -> x
+ - [null, [null], null, y] -> [null]
+ - [null, null, null] -> Runtime Error
+
+ Intended use case: If-else pattern where the value comes either from a conditional step or from a default or fallback value. The conditional step(s) should be placed first in the list.
+
+---
+
+
+##### `THE_ONLY_NON_NULL` <a name="THE_ONLY_NON_NULL" id="wdk-lib.PickValueMethod.THE_ONLY_NON_NULL"></a>
+
+For the first level of a list input, pick the single non-null element.
+
+The result is a scalar. It is an error if there is more than one non-null element.
+Examples:
+- [null, x, null] -> x
+- [null, x, null, y] -> Runtime Error
+- [null, [null], null] -> [null]
+- [null, null, null] -> Runtime Error
+
+Intended use case: Switch type patterns where developer considers more than one active code path as a workflow error (possibly indicating an error in writing when condition expressions).
+
+---
+
+
+##### `ALL_NON_NULL` <a name="ALL_NON_NULL" id="wdk-lib.PickValueMethod.ALL_NON_NULL"></a>
+
+For the first level of a list input, pick all non-null values.
+
+The result is a list, which may be empty.
+Examples:
+- [null, x, null] -> [x]
+- [x, null, y] -> [x, y]
+- [null, [x], [null]] -> [[x], [null]]
+- [null, null, null] -> []
+
+Intended use case: It is valid to have more than one source, but sources are conditional, so null sources (from skipped steps) should be filtered out.
+
+---
+
+
 ### ScatterMethod <a name="ScatterMethod" id="wdk-lib.ScatterMethod"></a>
 
 #### Members <a name="Members" id="Members"></a>
@@ -5790,6 +5993,7 @@ public readonly cwlVersion: string;
 | <code><a href="#wdk-lib.ToolRequirementType.STEP_INPUT_EXPRESSION">STEP_INPUT_EXPRESSION</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.RESOURCE_REQUIREMENT">RESOURCE_REQUIREMENT</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.SCATTER_FEATURE">SCATTER_FEATURE</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ToolRequirementType.MULTIPLE_INPUT_FEATURE">MULTIPLE_INPUT_FEATURE</a></code> | *No description.* |
 
 ---
 
@@ -5834,6 +6038,11 @@ public readonly cwlVersion: string;
 
 
 ##### `SCATTER_FEATURE` <a name="SCATTER_FEATURE" id="wdk-lib.ToolRequirementType.SCATTER_FEATURE"></a>
+
+---
+
+
+##### `MULTIPLE_INPUT_FEATURE` <a name="MULTIPLE_INPUT_FEATURE" id="wdk-lib.ToolRequirementType.MULTIPLE_INPUT_FEATURE"></a>
 
 ---
 

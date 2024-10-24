@@ -34,7 +34,9 @@ export class CdHitWorkflow extends Workflow {
     cdHit.parametersFile.linkTo(propsGen.outputParametersFile);
     cdHit.inputFasta.linkTo(inputFasta);
     post.inputFasta.linkTo(cdHit.clusteredFasta);
+
     post.extraInput.linkTo(cdHit.clusterFile).linkTo(inputFasta).pickValue(PickValueMethod.FIRST_NON_NULL);
+
     post.clusterPath.linkTo(cdHit.clusterFile);
     Output.fromStepOutput(this, propsGen.outputParametersFile).as('parameters_file');
     Output.fromStepOutput(this, cdHit.clusteredFasta).as('clustered_fasta_file');

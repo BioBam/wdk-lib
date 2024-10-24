@@ -1,3 +1,4 @@
+import { PickValueMethod } from './LinkableConstruct';
 import { Type } from './Type';
 
 export interface ILinkable {
@@ -7,8 +8,9 @@ export interface ILinkable {
 
   get idAsReference(): string;
 
-  linkTo(link: ILinkable): void;
+  linkTo(link: ILinkable): ILinkable;
   addReferencedIn(link: ILinkable): void;
+  pickValue(method: PickValueMethod): ILinkable;
 
   get links(): ILinkable[];
   get linked(): boolean;

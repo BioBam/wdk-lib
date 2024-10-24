@@ -4,6 +4,7 @@ import { Workflow } from '../lib/Workflow';
 export class CdHitServiceTool extends Tool {
   public clusteredFasta: Output;
   public clusterFile: Output;
+  public jsonString: Output;
   public parametersFile: Input;
   public inputFasta: Input;
 
@@ -43,7 +44,10 @@ export class CdHitServiceTool extends Tool {
     // Outputs
     this.clusteredFasta = Output.file(this, 'clusteredFasta')
       .withGlob('cluster.fasta');
+
     this.clusterFile = Output.file(this, 'cluster_file')
       .withGlob('cluster.fasta.clstr');
+    this.jsonString = Output.string(this, 'json_example')
+      .withGlob('cluster.json').loadContents().outputEval('$(self[0].contents)');
   }
 }

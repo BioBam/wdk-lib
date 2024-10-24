@@ -2099,6 +2099,7 @@ Input.stringArray(scope: Construct, id: string)
 | <code><a href="#wdk-lib.Input.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.doc">doc</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.valueFrom">valueFrom</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -2186,6 +2187,16 @@ public readonly optional: boolean;
 
 ```typescript
 public readonly doc: string;
+```
+
+- *Type:* string
+
+---
+
+##### `valueFrom`<sup>Optional</sup> <a name="valueFrom" id="wdk-lib.Input.property.valueFrom"></a>
+
+```typescript
+public readonly valueFrom: string;
 ```
 
 - *Type:* string
@@ -2596,6 +2607,8 @@ new Output(scope: Construct, id: string, type: Type)
 | <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.as">as</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.globFromInputString">globFromInputString</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.loadContents">loadContents</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.outputEval">outputEval</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.toMap">toMap</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.withGlob">withGlob</a></code> | *No description.* |
 
@@ -2682,6 +2695,24 @@ public globFromInputString(inputString: Input): Output
 ###### `inputString`<sup>Required</sup> <a name="inputString" id="wdk-lib.Output.globFromInputString.parameter.inputString"></a>
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
+
+---
+
+##### `loadContents` <a name="loadContents" id="wdk-lib.Output.loadContents"></a>
+
+```typescript
+public loadContents(): Output
+```
+
+##### `outputEval` <a name="outputEval" id="wdk-lib.Output.outputEval"></a>
+
+```typescript
+public outputEval(expression: string): Output
+```
+
+###### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.Output.outputEval.parameter.expression"></a>
+
+- *Type:* string
 
 ---
 

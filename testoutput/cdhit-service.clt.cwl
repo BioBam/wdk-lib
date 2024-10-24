@@ -43,4 +43,10 @@ outputs:
     type: File
     outputBinding:
       glob: cluster.fasta.clstr
+  json_example:
+    type: string
+    outputBinding:
+      glob: cluster.json
+      loadContents: true
+      outputEval: $(self[0].contents)
 arguments: []

@@ -22,7 +22,9 @@ steps:
   cdhit-service-parameters:
     in:
       CdhitParameters.input: input_fasta
-      CdhitParameters.lengthDifferenceCutoff: CdhitParameters.lengthDifferenceCutoff
+      CdhitParameters.lengthDifferenceCutoff:
+        source: CdhitParameters.lengthDifferenceCutoff
+        valueFrom: '5'
       CdhitParameters.bandWidth: CdhitParameters.bandWidth
       CdhitParameters.sequenceIdentityType: CdhitParameters.sequenceIdentityType
       CdhitParameters.sequenceIdentity: CdhitParameters.sequenceIdentity

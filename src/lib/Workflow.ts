@@ -148,7 +148,15 @@ export class Workflow extends Construct implements IStep, IMappable {
     // creating in links
     const inLinks: { [key: string]: any } = {};
     for (const input of step.linkedInputs) {
-      inLinks[input.id] = input.link.idAsReference;
+      if (input.valueFrom) {
+        const inDetail: { [key: string]: any } = {};
+        inDetail.source = input.link.idAsReference;
+        inDetail.valueFrom = input.valueFrom;
+        inLinks[input.id] = inDetail;
+      } else {
+        inLinks[input.id] = input.link.idAsReference;
+      }
+
     }
     stepData.in = inLinks;
     // creating out links

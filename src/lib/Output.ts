@@ -55,6 +55,8 @@ export class Output extends LinkableConstruct implements IMappable {
 
 
   private _glob: string | null = null;
+  private _loadContents: boolean = false;
+  private _outputEval: string | undefined;
 
 
   constructor(scope: Construct, id: string, type: Type) {
@@ -87,8 +89,19 @@ export class Output extends LinkableConstruct implements IMappable {
 
 
   // Instance methods
+
   withGlob(glob: string): this {
     this._glob = glob;
+    return this;
+  }
+
+  loadContents(): this {
+    this._loadContents = true;
+    return this;
+  }
+
+  outputEval(expression: string): this {
+    this._outputEval = expression;
     return this;
   }
 
@@ -101,6 +114,13 @@ export class Output extends LinkableConstruct implements IMappable {
       map.outputBinding = {
         glob: this._glob,
       };
+      if (this._loadContents) {
+        map.outputBinding.loadContents = true;
+      }
+      if (this._outputEval) {
+        map.outputBinding.outputEval = this._outputEval;
+      }
+
     }
 
     return map;

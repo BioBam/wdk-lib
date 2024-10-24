@@ -18,6 +18,7 @@ export class CdHitWorkflow extends Workflow {
     // Inputs
     const inputFasta = Input.fromStepInput(this, propsGen.input).as('input_fasta');
     Input.fromStepInput(this, propsGen.lengthDifferenceCutoff);
+    propsGen.lengthDifferenceCutoff.valueFrom = '5';
     Input.fromStepInput(this, propsGen.bandWidth);
     Input.fromStepInput(this, propsGen.sequenceIdentityType);
     Input.fromStepInput(this, propsGen.sequenceIdentity);

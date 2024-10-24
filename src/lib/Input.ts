@@ -73,6 +73,8 @@ export class Input extends LinkableConstruct {
   private _separate = false;
   private _separator: string | undefined;
 
+  private _valueFrom: string | undefined;
+
   private _doc?: string;
 
 
@@ -132,6 +134,14 @@ export class Input extends LinkableConstruct {
   withDoc(doc: string): this {
     this._doc = doc;
     return this;
+  }
+
+  set valueFrom(expression: string) {
+    this._valueFrom = expression;
+  }
+
+  get valueFrom(): string | undefined {
+    return this._valueFrom;
   }
 
   get doc(): string | undefined {

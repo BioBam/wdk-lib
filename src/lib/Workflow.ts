@@ -134,7 +134,16 @@ export class Workflow extends Construct implements IStep, IMappable {
       const outputData: { [key: string]: any } = {};
       outputData.id = output.id;
       outputData.type = output.type.toString();
-      outputData.outputSource = output.link.idAsReference;
+      if (output.linked) {
+        if (output.multiLinked) {
+          outputData.outputSource = output.links.map(l => l.idAsReference);
+        } else {
+          outputData.outputSource = output.links[0].idAsReference;
+        }
+      }
+      if (output.pickValueMethod) {
+        outputData.pickValue = output.pickValueMethod.toString();
+      }
       workflowOutputs.push(outputData);
     }
 
@@ -150,11 +159,20 @@ export class Workflow extends Construct implements IStep, IMappable {
     for (const input of step.linkedInputs) {
       if (input.valueFrom) {
         const inDetail: { [key: string]: any } = {};
-        inDetail.source = input.link.idAsReference;
+        inDetail.source = input.links[0].idAsReference;
         inDetail.valueFrom = input.valueFrom;
         inLinks[input.id] = inDetail;
       } else {
-        inLinks[input.id] = input.link.idAsReference;
+        if (input.multiLinked) {
+          const inDetail: { [key: string]: any } = {};
+          inDetail.source = input.links.map(l => l.idAsReference);
+          if (input.pickValueMethod) {
+            inDetail.pickValue = input.pickValueMethod.toString();
+          }
+          inLinks[input.id] = inDetail;
+        } else {
+          inLinks[input.id] = input.links[0].idAsReference;
+        }
       }
 
     }
@@ -221,7 +239,17 @@ export class Workflow extends Construct implements IStep, IMappable {
       const outputData: { [key: string]: any } = {};
       outputData.id = output.id;
       outputData.type = output.type.toString();
-      outputData.outputSource = output.link.idAsReference;
+
+      if (output.linked) {
+        if (output.multiLinked) {
+          outputData.outputSource = output.links.map(l => l.idAsReference);
+        } else {
+          outputData.outputSource = output.links[0].idAsReference;
+        }
+      }
+      if (output.pickValueMethod) {
+        outputData.pickValue = output.pickValueMethod.toString();
+      }
       workflowOutputs.push(outputData);
     }
     wData.outputs = workflowOutputs;

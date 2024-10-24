@@ -1,4 +1,4 @@
-import { Construct, Input, Output, Requirement, Workflow } from '../lib';
+import { Construct, Input, Output, PickValueMethod, Requirement, Workflow } from '../lib';
 import { CdHitPostTool } from './CdHitPostTool';
 import { CdHitServiceParametersExpressionTool } from './CdHitServiceParametersExpressionTool';
 import { CdHitServiceTool } from './CdHitServiceTool';
@@ -34,11 +34,14 @@ export class CdHitWorkflow extends Workflow {
     cdHit.parametersFile.linkTo(propsGen.outputParametersFile);
     cdHit.inputFasta.linkTo(inputFasta);
     post.inputFasta.linkTo(cdHit.clusteredFasta);
+    post.extraInput.linkTo(cdHit.clusterFile).linkTo(inputFasta).pickValue(PickValueMethod.FIRST_NON_NULL);
     post.clusterPath.linkTo(cdHit.clusterFile);
     Output.fromStepOutput(this, propsGen.outputParametersFile).as('parameters_file');
     Output.fromStepOutput(this, cdHit.clusteredFasta).as('clustered_fasta_file');
     Output.fromStepOutput(this, cdHit.clusterFile).as('cluster_file');
     Output.fromStepOutput(this, post.outputChartFile).as('output_chart_file');
     Output.fromStepOutput(this, post.outputReportFile).as('output_report_file');
+
+    // Output.fromStepOutput(this, post.outputReportFile).as('one_file').linkTo(inputFasta).pickValue(PickValueMethod.FIRST_NON_NULL)
   }
 }

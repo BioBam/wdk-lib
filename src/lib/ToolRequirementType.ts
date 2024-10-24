@@ -10,5 +10,6 @@ export enum ToolRequirementType {
   STEP_INPUT_EXPRESSION = 'StepInputExpressionRequirement',
   RESOURCE_REQUIREMENT = 'ResourceRequirement',
   SCATTER_FEATURE = 'ScatterFeatureRequirement',
+  MULTIPLE_INPUT_FEATURE = 'MultipleInputFeatureRequirement',
 }
 

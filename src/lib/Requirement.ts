@@ -48,6 +48,10 @@ export class Requirement extends Construct {
     return new Requirement(scope, ToolRequirementType.SCATTER_FEATURE);
   }
 
+  public static multipleInputFeature(scope: Construct): Requirement {
+    return new Requirement(scope, ToolRequirementType.MULTIPLE_INPUT_FEATURE);
+  }
+
   public static envVar(scope: Construct, envDef: { [key: string]: string }): Requirement {
     const toolRequirement = new Requirement(scope, ToolRequirementType.ENV_VAR);
     toolRequirement._data.envDef = envDef;

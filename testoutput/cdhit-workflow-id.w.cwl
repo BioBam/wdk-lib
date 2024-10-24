@@ -52,6 +52,11 @@ steps:
     in:
       cluster_path: cdhit-service/cluster_file
       input_fasta: cdhit-service/clusteredFasta
+      extra_input:
+        source:
+          - cdhit-service/cluster_file
+          - input_fasta
+        pickValue: first_non_null
     out:
       - output_chart_file
       - output_report_file

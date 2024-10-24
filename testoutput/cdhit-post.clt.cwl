@@ -20,6 +20,11 @@ inputs:
     inputBinding:
       prefix: '-inputFasta'
       position: 2
+  extra_input:
+    type: File
+    inputBinding:
+      prefix: '-extraInput'
+      position: 2
   output_chart:
     type: string
     default: chart.box

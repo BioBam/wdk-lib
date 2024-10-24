@@ -10,7 +10,8 @@ export interface ILinkable {
   linkTo(link: ILinkable): void;
   addReferencedIn(link: ILinkable): void;
 
-  get link(): ILinkable;
+  get links(): ILinkable[];
   get linked(): boolean;
+  get multiLinked(): boolean;
   get referenced(): boolean;
 }

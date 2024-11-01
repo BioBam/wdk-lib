@@ -59,13 +59,16 @@ contribute to the project. Please consider the following venues (in order):
 
 ## Documentation
 
-See [wdk Documentation](./docs).
+See [API](./API.md)  
 
-See [API](./API.md)
+The `./API.md` is updated during the build script.
+
+See [wdk Documentation (missing)](./docs). 
+
 
 ## Examples
 
-See our [Examples Directory](./examples).
+See our [Examples Directory (missing)](./examples).
 
 
 ## Roadmap
@@ -102,8 +105,11 @@ See [Docs Directory](./docs/README.md).
 The library is thouroughly tested and the tests can be executed using the command:
 
 ```
+# alias for: npx projen test
 pj test
-# aka: npx projen test
+
+# run a specific .test.ts
+pj test <.test.ts file path>
 ```
 
 The test files come from multiple websites and projects that implement CWL workflows and tools, and try to reproduce those use cases.

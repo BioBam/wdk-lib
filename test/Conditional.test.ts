@@ -38,4 +38,24 @@ describe('Scatter', () => {
     expect(step.conditional?.expression).toStrictEqual('$(inputs.a_new_var == true)');
   });
 
+  test('should create not null conditional expression', () => {
+    // Arrange
+    const input = Input.string(step, 'test_input');
+
+    // Act
+    Conditional.step(step).whenInputNotNull(input);
+
+    // Assert
+    expect(step.conditional?.expression).toBe('$(inputs.test_input !== null)');
+  });
+
+  test('should throw error when non-boolean input used in whenBooleanInputIs', () => {
+    // Arrange
+    const input = Input.string(step, 'string_input');
+
+    // Act & Assert
+    expect(() => {
+      Conditional.step(step).whenBooleanInputIs(input, true);
+    }).toThrow('Input string_input is not a boolean. Conditional can only be applied on boolean inputs.');
+  });
 });

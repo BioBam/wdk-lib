@@ -24,7 +24,7 @@ export class Conditional extends Construct {
   }
 
   /**
-   * 
+   *
    * @param input A boolean step input parameter.
    * @param value <code>true</code> to run the step only if the input is true, <code>false</code> to run the step only if the input is false.
    */
@@ -38,7 +38,7 @@ export class Conditional extends Construct {
 
   /**
    * Skip this step if the specified input is null.
-   * 
+   *
    * @param input One of the step input parameters.
    */
   whenInputNotNull(input: Input) {

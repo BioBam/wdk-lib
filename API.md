@@ -926,6 +926,7 @@ public readonly f1: Input;
 | <code><a href="#wdk-lib.Conditional.nodeOf">nodeOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Conditional.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Conditional.whenBooleanInputIs">whenBooleanInputIs</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.whenInputNotNull">whenInputNotNull</a></code> | Skip this step if the specified input is null. |
 
 ---
 
@@ -975,11 +976,31 @@ public whenBooleanInputIs(input: Input, value: boolean): void
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
 
+A boolean step input parameter.
+
 ---
 
 ###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Conditional.whenBooleanInputIs.parameter.value"></a>
 
 - *Type:* boolean
+
+<code>true</code> to run the step only if the input is true, <code>false</code> to run the step only if the input is false.
+
+---
+
+##### `whenInputNotNull` <a name="whenInputNotNull" id="wdk-lib.Conditional.whenInputNotNull"></a>
+
+```typescript
+public whenInputNotNull(input: Input): void
+```
+
+Skip this step if the specified input is null.
+
+###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.Conditional.whenInputNotNull.parameter.input"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+One of the step input parameters.
 
 ---
 

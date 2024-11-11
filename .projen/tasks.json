@@ -110,6 +110,15 @@
         }
       ]
     },
+    "docgen-java": {
+      "name": "docgen-java",
+      "description": "Generate API_JAVA.md from .jsii manifest",
+      "steps": [
+        {
+          "exec": "jsii-docgen -o API_JAVA.md -l java"
+        }
+      ]
+    },
     "eject": {
       "name": "eject",
       "description": "Remove projen from the project",
@@ -200,6 +209,9 @@
       "steps": [
         {
           "spawn": "docgen"
+        },
+        {
+          "spawn": "docgen-java"
         }
       ]
     },

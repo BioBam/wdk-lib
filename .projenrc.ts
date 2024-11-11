@@ -28,6 +28,19 @@ const project = new cdk.JsiiProject({
   // packageName: undefined,  /* The "name" in package.json. */
 });
 
+// -- start generate java API documentation
+// Add a task to generate API_JAVA.md from the .jsii manifest. Used code from https://github.com/projen/projen/blob/main/src/cdk/jsii-docgen.ts
+const mdApiJava = 'API_JAVA.md';
+const docgen = project.addTask('docgen-java', {
+  description: `Generate ${mdApiJava} from .jsii manifest`,
+  exec: `jsii-docgen -o ${mdApiJava} -l java`,
+});
+project.postCompileTask.spawn(docgen);
+project.gitignore.include(`/${mdApiJava}`);
+project.annotateGenerated(`/${mdApiJava}`);
+
+// -- end generate java API documentation
+
 project.addBundledDeps('cwl-ts-auto');
 project.addBundledDeps('js-yaml');
 project.synth();

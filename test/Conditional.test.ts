@@ -20,7 +20,7 @@ describe('Scatter', () => {
     // Input.integer(step, 'a_new_var');
 
     // Act
-    Conditional.step(step)._expression = '$(inputs.a_new_var > 2)';
+    Conditional.step(step).expression = '$(inputs.a_new_var > 2)';
 
     // Assert
     expect(step.conditional?._expression).toStrictEqual('$(inputs.a_new_var > 2)');

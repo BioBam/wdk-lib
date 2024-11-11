@@ -853,6 +853,7 @@ Conditional.step(step: IStep)
 | --- | --- | --- |
 | <code><a href="#wdk-lib.Conditional.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Conditional.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.Conditional.property.expression">expression</a></code> | <code>string</code> | Set a conditional expression for this step. |
 
 ---
 
@@ -879,6 +880,18 @@ public readonly id: string;
 Unique identifier for the construct in it's scope.
 
 set or update the id of this construct
+
+---
+
+##### `expression`<sup>Optional</sup> <a name="expression" id="wdk-lib.Conditional.property.expression"></a>
+
+```typescript
+public readonly expression: string;
+```
+
+- *Type:* string
+
+Set a conditional expression for this step.
 
 ---
 

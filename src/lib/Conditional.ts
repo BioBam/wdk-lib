@@ -22,7 +22,10 @@ export class Conditional extends Construct {
     return this.__expression;
   }
 
-  set _expression(js: string | undefined) {
+  /**
+   * Set a conditional expression for this step.
+   */
+  public set expression(js: string | undefined) {
     this.__expression = js;
   }
 

@@ -9,7 +9,25 @@ export interface ILinkable {
   get idAsReference(): string;
 
   linkTo(link: ILinkable): ILinkable;
-  addReferencedIn(link: ILinkable): void;
+
+  /**
+   * @internal
+   * @param link
+   */
+  _addReferencedIn(link: ILinkable): void;
+
+
+  /**
+   * Set the PickValueMethod for this linkable if there are multiple sources linked to it.
+   *
+   * @example
+   * myStepTool.input
+   *           .linkTo(cdHit.clusterFile)
+   *           .linkTo(inputFasta)
+   *           .pickValue(PickValueMethod.FIRST_NON_NULL);
+   *
+   * @param method
+   */
   pickValue(method: PickValueMethod): ILinkable;
 
   get links(): ILinkable[];

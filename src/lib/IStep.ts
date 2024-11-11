@@ -9,14 +9,16 @@ import { StepClass } from './ToolClass';
  * Represents a step in a workflow.
  */
 export interface IStep {
+
   /**
-   * The name of the step file. It defaults to the step id + '.cwl'. It can be set using the metadata.fileName property.
+   * The name of the step file. It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
    */
   get fileName(): string;
   // set fileName(newName: string);
+
   /**
    * Whether the step has sub
-   * steps (nested steps).
+   * steps like in case of a workflow step.
    * */
   hasSteps(): boolean;
 
@@ -28,6 +30,9 @@ export interface IStep {
   get stepClass(): StepClass;
   set stepClass(newClass: StepClass);
 
+  /**
+   * Serialize the step to a directory. If the step has substeps, they will be serialized recursively.
+   */
   serialize(dirPath: string): SynthFiles;
 
   /**

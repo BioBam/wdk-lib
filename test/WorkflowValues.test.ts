@@ -1,4 +1,4 @@
-import { Construct } from '../src/lib/Construct';
+import { Constructs } from '../src/lib/Constructs';
 import { Input } from '../src/lib/Input';
 import { InputReference } from '../src/lib/InputReference';
 import { WorkflowValues } from '../src/lib/WorkflowValues';
@@ -10,8 +10,8 @@ describe('WorkflowValues', () => {
   });
 
   it('should include the file path from InputReferences', () => {
-    const input1 = Input.file(Construct.createRoot('root'), 'input1');
-    const s3Input2 = Input.file(Construct.createRoot('root'), 'input2');
+    const input1 = Input.file(Constructs.createRoot('root'), 'input1');
+    const s3Input2 = Input.file(Constructs.createRoot('root'), 'input2');
     const inputReference1 = InputReference.file('/path/to/file1');
     const s3InputReference = InputReference.s3File('s3://my-bucket/path/to/input2');
 
@@ -22,8 +22,8 @@ describe('WorkflowValues', () => {
   });
 
   it('should not include entries that are not InputReferences', () => {
-    const input1 = Input.file(Construct.createRoot('root'), 'input1');
-    const input2 = Input.string(Construct.createRoot('root'), 'input2');
+    const input1 = Input.file(Constructs.createRoot('root'), 'input1');
+    const input2 = Input.string(Constructs.createRoot('root'), 'input2');
     const inputReference1 = InputReference.file('/path/to/file1');
     const stringValue = 'Some string value';
 
@@ -35,8 +35,8 @@ describe('WorkflowValues', () => {
   });
 
   it('should handle multiple InputReferences with paths correctly', () => {
-    const input1 = Input.file(Construct.createRoot('root'), 'input1');
-    const input2 = Input.file(Construct.createRoot('root'), 'input2');
+    const input1 = Input.file(Constructs.createRoot('root'), 'input1');
+    const input2 = Input.file(Constructs.createRoot('root'), 'input2');
     const inputReference1 = InputReference.file('/path/to/file1');
     const inputReference2 = InputReference.file('/path/to/file2');
 
@@ -48,8 +48,8 @@ describe('WorkflowValues', () => {
   });
 
   it('should ignore InputReferences without paths', () => {
-    const input1 = Input.file(Construct.createRoot('root'), 'input1');
-    const input2 = Input.file(Construct.createRoot('root'), 'input2');
+    const input1 = Input.file(Constructs.createRoot('root'), 'input1');
+    const input2 = Input.file(Constructs.createRoot('root'), 'input2');
     const inputReference1 = InputReference.file('/path/to/file1');
     const inputReferenceWithoutPath = new InputReference(); // No path provided
 

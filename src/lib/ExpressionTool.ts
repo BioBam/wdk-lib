@@ -45,6 +45,10 @@ export class ExpressionTool extends Tool implements IMappable {
     this.stepClass = StepClass.EXPRESSION_TOOL;
   }
 
+  /**
+   * Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool.
+   * @returns
+   */
   public toMap(): { [key: string]: any } {
     const map: { [key: string]: any } = {};
     map.class = this.stepClass.toString();
@@ -89,11 +93,19 @@ export class ExpressionTool extends Tool implements IMappable {
     return map;
   }
 
+  /**
+   * Specify a custom JavaScript expression for this ExpressionTool
+   * @param expression
+   * @returns
+   */
   public withExpression(expression: string): this {
     this._expression = expression;
     return this;
   }
 
+  /**
+   * Get the custom JavaScript expression for this ExpressionTool
+   */
   public get expression(): string | undefined {
     return this._expression;
   }

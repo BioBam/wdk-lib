@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as yaml from 'js-yaml';
 import { BashTool, CheckFileNameTool, FileUtils, Input, RenameExpressionTool, Requirement, Workflow } from '../src/lib';
-import { ConstructUtils } from '../src/lib/utils';
+import { Constructs } from '../src/lib/Constructs';
 
 
 // Function to get all files recursively from a directory
@@ -37,7 +37,7 @@ const scriptCheckPath = path.join(__dirname, 'script-check.sh');
 
 // Utility function to create the staging-basename workflow components
 const createStagingBasename = (destDirectory: string) => {
-  const checkTool = new BashTool(ConstructUtils.rootWorkflow(), 'check', { inlineScriptPath: scriptCheckPath });
+  const checkTool = new BashTool(Constructs.rootWorkflow(), 'check', { inlineScriptPath: scriptCheckPath });
   Input.file(checkTool, 'p');
   Input.string(checkTool, 'checkname');
   const toolMap = checkTool.toMap();
@@ -45,13 +45,13 @@ const createStagingBasename = (destDirectory: string) => {
 };
 
 const createRename = (destDirectory: string) => {
-  const renameTool = new RenameExpressionTool(ConstructUtils.rootWorkflow(), 'check');
+  const renameTool = new RenameExpressionTool(Constructs.rootWorkflow(), 'check');
   const toolMap = renameTool.toMap();
   printMap(toolMap, destDirectory, 'rename.cwl');
 };
 
 const createWfRen = (destDirectory: string) => {
-  const wfRen = new Workflow(ConstructUtils.rootWorkflow(), 'wf_ren', Workflow.basicProps());
+  const wfRen = new Workflow(Constructs.rootWorkflow(), 'wf_ren', Workflow.basicProps());
   Requirement.stepInputExpression(wfRen);
   Requirement.inlineJavascript(wfRen);
   const renameTool = new RenameExpressionTool(wfRen, 'rename');

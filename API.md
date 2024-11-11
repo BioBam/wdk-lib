@@ -145,46 +145,7 @@ new App()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.App.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.App.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.App.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.App.synth">synth</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.App.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.App.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.App.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.App.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.App.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.App.nodesOf.parameter.type"></a>
-
-- *Type:* any
 
 ---
 
@@ -194,34 +155,13 @@ public nodesOf(type: any): Construct[]
 public synth(): void
 ```
 
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.App.createRoot">createRoot</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.App.createRoot"></a>
-
-```typescript
-import { App } from 'wdk-lib'
-
-App.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.App.createRoot.parameter.id"></a>
-
-- *Type:* string
-
----
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.App.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.App.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.App.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.App.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 
 ---
 
@@ -233,6 +173,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.App.property.id"></a>
@@ -242,6 +184,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -258,8 +204,8 @@ new BashTool(scope: any, id: string, props: IBashToolProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.BashTool.Initializer.parameter.scope">scope</a></code> | <code>any</code> | *No description.* |
-| <code><a href="#wdk-lib.BashTool.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.BashTool.Initializer.parameter.scope">scope</a></code> | <code>any</code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.BashTool.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.BashTool.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.IBashToolProps">IBashToolProps</a></code> | *No description.* |
 
 ---
@@ -268,11 +214,17 @@ new BashTool(scope: any, id: string, props: IBashToolProps)
 
 - *Type:* any
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.BashTool.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -286,48 +238,9 @@ new BashTool(scope: any, id: string, props: IBashToolProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.BashTool.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.BashTool.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.BashTool.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.BashTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
-| <code><a href="#wdk-lib.BashTool.serialize">serialize</a></code> | *No description.* |
-| <code><a href="#wdk-lib.BashTool.toMap">toMap</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.BashTool.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.BashTool.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.BashTool.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.BashTool.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.BashTool.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.BashTool.nodesOf.parameter.type"></a>
-
-- *Type:* any
+| <code><a href="#wdk-lib.BashTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.BashTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.BashTool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
 
 ---
 
@@ -337,13 +250,15 @@ public nodesOf(type: any): Construct[]
 public hasSteps(): boolean
 ```
 
-Whether the step has sub steps (nested steps).
+Whether the step has sub steps like in case of a workflow step.
 
 ##### `serialize` <a name="serialize" id="wdk-lib.BashTool.serialize"></a>
 
 ```typescript
 public serialize(dirPath: string): SynthFiles
 ```
+
+Serialize the tool to a CWL file.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.BashTool.serialize.parameter.dirPath"></a>
 
@@ -357,34 +272,15 @@ public serialize(dirPath: string): SynthFiles
 public toMap(): {[ key: string ]: any}
 ```
 
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+Create a map repsentation of the tool following the CWL specification.
 
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.BashTool.createRoot">createRoot</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.BashTool.createRoot"></a>
-
-```typescript
-import { BashTool } from 'wdk-lib'
-
-BashTool.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.BashTool.createRoot.parameter.id"></a>
-
-- *Type:* string
-
----
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.BashTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.BashTool.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.BashTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.BashTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.BashTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.BashTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
 | <code><a href="#wdk-lib.BashTool.property.label">label</a></code> | <code>any</code> | *No description.* |
@@ -409,6 +305,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.BashTool.property.id"></a>
@@ -418,6 +316,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -431,7 +333,7 @@ public readonly fileName: string;
 
 The name of the step file.
 
-It defaults to the step id + '.cwl'. It can be set using the metadata.fileName property.
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -582,8 +484,8 @@ new CheckFileNameTool(scope: any, id: string, props?: IToolProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.CheckFileNameTool.Initializer.parameter.scope">scope</a></code> | <code>any</code> | *No description.* |
-| <code><a href="#wdk-lib.CheckFileNameTool.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.CheckFileNameTool.Initializer.parameter.scope">scope</a></code> | <code>any</code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.CheckFileNameTool.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.CheckFileNameTool.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
@@ -592,11 +494,17 @@ new CheckFileNameTool(scope: any, id: string, props?: IToolProps)
 
 - *Type:* any
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CheckFileNameTool.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -610,48 +518,9 @@ new CheckFileNameTool(scope: any, id: string, props?: IToolProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.CheckFileNameTool.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.CheckFileNameTool.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.CheckFileNameTool.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.CheckFileNameTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
-| <code><a href="#wdk-lib.CheckFileNameTool.serialize">serialize</a></code> | *No description.* |
-| <code><a href="#wdk-lib.CheckFileNameTool.toMap">toMap</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.CheckFileNameTool.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.CheckFileNameTool.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.CheckFileNameTool.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.CheckFileNameTool.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.CheckFileNameTool.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.CheckFileNameTool.nodesOf.parameter.type"></a>
-
-- *Type:* any
+| <code><a href="#wdk-lib.CheckFileNameTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.CheckFileNameTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.CheckFileNameTool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
 
 ---
 
@@ -661,13 +530,15 @@ public nodesOf(type: any): Construct[]
 public hasSteps(): boolean
 ```
 
-Whether the step has sub steps (nested steps).
+Whether the step has sub steps like in case of a workflow step.
 
 ##### `serialize` <a name="serialize" id="wdk-lib.CheckFileNameTool.serialize"></a>
 
 ```typescript
 public serialize(dirPath: string): SynthFiles
 ```
+
+Serialize the tool to a CWL file.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.CheckFileNameTool.serialize.parameter.dirPath"></a>
 
@@ -681,34 +552,15 @@ public serialize(dirPath: string): SynthFiles
 public toMap(): {[ key: string ]: any}
 ```
 
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+Create a map repsentation of the tool following the CWL specification.
 
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.CheckFileNameTool.createRoot">createRoot</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.CheckFileNameTool.createRoot"></a>
-
-```typescript
-import { CheckFileNameTool } from 'wdk-lib'
-
-CheckFileNameTool.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CheckFileNameTool.createRoot.parameter.id"></a>
-
-- *Type:* string
-
----
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.CheckFileNameTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.CheckFileNameTool.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.label">label</a></code> | <code>any</code> | *No description.* |
@@ -735,6 +587,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CheckFileNameTool.property.id"></a>
@@ -744,6 +598,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -757,7 +615,7 @@ public readonly fileName: string;
 
 The name of the step file.
 
-It defaults to the step id + '.cwl'. It can be set using the metadata.fileName property.
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -922,47 +780,8 @@ public readonly f1: Input;
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Conditional.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Conditional.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Conditional.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Conditional.whenBooleanInputIs">whenBooleanInputIs</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.whenBooleanInputIs">whenBooleanInputIs</a></code> | Skip this step if the boolean input associated to this condition does not match the specified value. |
 | <code><a href="#wdk-lib.Conditional.whenInputNotNull">whenInputNotNull</a></code> | Skip this step if the specified input is null. |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.Conditional.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Conditional.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.Conditional.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Conditional.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.Conditional.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Conditional.nodesOf.parameter.type"></a>
-
-- *Type:* any
 
 ---
 
@@ -971,6 +790,8 @@ public nodesOf(type: any): Construct[]
 ```typescript
 public whenBooleanInputIs(input: Input, value: boolean): void
 ```
+
+Skip this step if the boolean input associated to this condition does not match the specified value.
 
 ###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.Conditional.whenBooleanInputIs.parameter.input"></a>
 
@@ -1008,22 +829,7 @@ One of the step input parameters.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Conditional.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Conditional.step">step</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.Conditional.createRoot"></a>
-
-```typescript
-import { Conditional } from 'wdk-lib'
-
-Conditional.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Conditional.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -1045,9 +851,8 @@ Conditional.step(step: IStep)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Conditional.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Conditional.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#wdk-lib.Conditional.property.expression">expression</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Conditional.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Conditional.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 
 ---
 
@@ -1059,6 +864,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Conditional.property.id"></a>
@@ -1069,15 +876,9 @@ public readonly id: string;
 
 - *Type:* string
 
----
+Unique identifier for the construct in it's scope.
 
-##### `expression`<sup>Optional</sup> <a name="expression" id="wdk-lib.Conditional.property.expression"></a>
-
-```typescript
-public readonly expression: string;
-```
-
-- *Type:* string
+set or update the id of this construct
 
 ---
 
@@ -1104,80 +905,14 @@ new Construct(id: string)
 
 ---
 
-#### Methods <a name="Methods" id="Methods"></a>
 
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.Construct.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Construct.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Construct.nodesOf">nodesOf</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.Construct.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Construct.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.Construct.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Construct.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.Construct.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Construct.nodesOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.Construct.createRoot">createRoot</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.Construct.createRoot"></a>
-
-```typescript
-import { Construct } from 'wdk-lib'
-
-Construct.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Construct.createRoot.parameter.id"></a>
-
-- *Type:* string
-
----
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Construct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Construct.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Construct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Construct.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 
 ---
 
@@ -1189,6 +924,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Construct.property.id"></a>
@@ -1199,17 +936,23 @@ public readonly id: string;
 
 - *Type:* string
 
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
 ---
 
 
-### ConstructUtils <a name="ConstructUtils" id="wdk-lib.ConstructUtils"></a>
+### Constructs <a name="Constructs" id="wdk-lib.Constructs"></a>
 
-#### Initializers <a name="Initializers" id="wdk-lib.ConstructUtils.Initializer"></a>
+A utility class for Constructs.
+
+#### Initializers <a name="Initializers" id="wdk-lib.Constructs.Initializer"></a>
 
 ```typescript
-import { ConstructUtils } from 'wdk-lib'
+import { Constructs } from 'wdk-lib'
 
-new ConstructUtils()
+new Constructs()
 ```
 
 | **Name** | **Type** | **Description** |
@@ -1222,17 +965,38 @@ new ConstructUtils()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ConstructUtils.rootWorkflow">rootWorkflow</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Constructs.createRoot">createRoot</a></code> | Create a construct that does not need to extend another construct. |
+| <code><a href="#wdk-lib.Constructs.rootWorkflow">rootWorkflow</a></code> | Utility to create a root Workflow and use in tests. |
 
 ---
 
-##### `rootWorkflow` <a name="rootWorkflow" id="wdk-lib.ConstructUtils.rootWorkflow"></a>
+##### `createRoot` <a name="createRoot" id="wdk-lib.Constructs.createRoot"></a>
 
 ```typescript
-import { ConstructUtils } from 'wdk-lib'
+import { Constructs } from 'wdk-lib'
 
-ConstructUtils.rootWorkflow()
+Constructs.createRoot(id: string)
 ```
+
+Create a construct that does not need to extend another construct.
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Constructs.createRoot.parameter.id"></a>
+
+- *Type:* string
+
+Identifier for the construct.
+
+---
+
+##### `rootWorkflow` <a name="rootWorkflow" id="wdk-lib.Constructs.rootWorkflow"></a>
+
+```typescript
+import { Constructs } from 'wdk-lib'
+
+Constructs.rootWorkflow()
+```
+
+Utility to create a root Workflow and use in tests.
 
 
 
@@ -1250,8 +1014,8 @@ new ExpressionTool(scope: Workflow, id: string, props?: IToolProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.ExpressionTool.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.ExpressionTool.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.ExpressionTool.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.ExpressionTool.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
@@ -1260,11 +1024,17 @@ new ExpressionTool(scope: Workflow, id: string, props?: IToolProps)
 
 - *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.ExpressionTool.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -1278,49 +1048,10 @@ new ExpressionTool(scope: Workflow, id: string, props?: IToolProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ExpressionTool.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
-| <code><a href="#wdk-lib.ExpressionTool.serialize">serialize</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.toMap">toMap</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.withExpression">withExpression</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.ExpressionTool.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.ExpressionTool.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.ExpressionTool.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.ExpressionTool.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.ExpressionTool.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.ExpressionTool.nodesOf.parameter.type"></a>
-
-- *Type:* any
+| <code><a href="#wdk-lib.ExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.ExpressionTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.ExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
+| <code><a href="#wdk-lib.ExpressionTool.withExpression">withExpression</a></code> | Specify a custom JavaScript expression for this ExpressionTool. |
 
 ---
 
@@ -1330,13 +1061,15 @@ public nodesOf(type: any): Construct[]
 public hasSteps(): boolean
 ```
 
-Whether the step has sub steps (nested steps).
+Whether the step has sub steps like in case of a workflow step.
 
 ##### `serialize` <a name="serialize" id="wdk-lib.ExpressionTool.serialize"></a>
 
 ```typescript
 public serialize(dirPath: string): SynthFiles
 ```
+
+Serialize the tool to a CWL file.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.ExpressionTool.serialize.parameter.dirPath"></a>
 
@@ -1350,11 +1083,15 @@ public serialize(dirPath: string): SynthFiles
 public toMap(): {[ key: string ]: any}
 ```
 
+Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool.
+
 ##### `withExpression` <a name="withExpression" id="wdk-lib.ExpressionTool.withExpression"></a>
 
 ```typescript
 public withExpression(expression: string): ExpressionTool
 ```
+
+Specify a custom JavaScript expression for this ExpressionTool.
 
 ###### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.ExpressionTool.withExpression.parameter.expression"></a>
 
@@ -1366,22 +1103,7 @@ public withExpression(expression: string): ExpressionTool
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ExpressionTool.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.ExpressionTool.createRoot"></a>
-
-```typescript
-import { ExpressionTool } from 'wdk-lib'
-
-ExpressionTool.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.ExpressionTool.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -1401,8 +1123,8 @@ Example: call with makeParametersJsonExpression()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.ExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.ExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.ExpressionTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.ExpressionTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.ExpressionTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.label">label</a></code> | <code>any</code> | *No description.* |
@@ -1416,7 +1138,7 @@ Example: call with makeParametersJsonExpression()
 | <code><a href="#wdk-lib.ExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.property.expression">expression</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.ExpressionTool.property.expression">expression</a></code> | <code>string</code> | Get the custom JavaScript expression for this ExpressionTool. |
 
 ---
 
@@ -1428,6 +1150,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.ExpressionTool.property.id"></a>
@@ -1437,6 +1161,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -1450,7 +1178,7 @@ public readonly fileName: string;
 
 The name of the step file.
 
-It defaults to the step id + '.cwl'. It can be set using the metadata.fileName property.
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -1596,6 +1324,8 @@ public readonly expression: string;
 
 - *Type:* string
 
+Get the custom JavaScript expression for this ExpressionTool.
+
 ---
 
 
@@ -1619,8 +1349,8 @@ new FileUtils()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.FileUtils.readFileContent">readFileContent</a></code> | *No description.* |
-| <code><a href="#wdk-lib.FileUtils.writeFileContent">writeFileContent</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FileUtils.readFileContent">readFileContent</a></code> | Utility function to read the content of a file. |
+| <code><a href="#wdk-lib.FileUtils.writeFileContent">writeFileContent</a></code> | Utility to write (or overwrite) the YAML content into the file. |
 
 ---
 
@@ -1631,6 +1361,8 @@ import { FileUtils } from 'wdk-lib'
 
 FileUtils.readFileContent(filePath: string)
 ```
+
+Utility function to read the content of a file.
 
 ###### `filePath`<sup>Required</sup> <a name="filePath" id="wdk-lib.FileUtils.readFileContent.parameter.filePath"></a>
 
@@ -1645,6 +1377,8 @@ import { FileUtils } from 'wdk-lib'
 
 FileUtils.writeFileContent(outputFile: string, yamlOutput: string)
 ```
+
+Utility to write (or overwrite) the YAML content into the file.
 
 ###### `outputFile`<sup>Required</sup> <a name="outputFile" id="wdk-lib.FileUtils.writeFileContent.parameter.outputFile"></a>
 
@@ -1662,6 +1396,19 @@ FileUtils.writeFileContent(outputFile: string, yamlOutput: string)
 
 ### Input <a name="Input" id="wdk-lib.Input"></a>
 
+Represents an input parameter of a workflow or a tool.
+
+*Example*
+
+```typescript
+import { Input, Construct } from 'wdk-lib';
+const root = Constructs.createRoot('root');
+const input = Input.string(root, 'myInput')
+                   .withDefaultValue('default')
+                   .withDoc('This is my input');
+```
+
+
 #### Initializers <a name="Initializers" id="wdk-lib.Input.Initializer"></a>
 
 ```typescript
@@ -1672,8 +1419,8 @@ new Input(scope: Construct, id: string, type: Type)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Input.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Input.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Input.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Input.Initializer.parameter.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
 
 ---
@@ -1682,11 +1429,17 @@ new Input(scope: Construct, id: string, type: Type)
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -1700,12 +1453,8 @@ new Input(scope: Construct, id: string, type: Type)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Input.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Input.as">as</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.isArray">isArray</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | *No description.* |
@@ -1716,54 +1465,6 @@ new Input(scope: Construct, id: string, type: Type)
 | <code><a href="#wdk-lib.Input.withItemSeparator">withItemSeparator</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.withPosition">withPosition</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.withPrefix">withPrefix</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.Input.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Input.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.Input.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Input.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.Input.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Input.nodesOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `addReferencedIn` <a name="addReferencedIn" id="wdk-lib.Input.addReferencedIn"></a>
-
-```typescript
-public addReferencedIn(link: ILinkable): void
-```
-
-###### `link`<sup>Required</sup> <a name="link" id="wdk-lib.Input.addReferencedIn.parameter.link"></a>
-
-- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
 
 ---
 
@@ -1784,6 +1485,8 @@ public linkTo(linkInput: ILinkable): ILinkable
 ```typescript
 public pickValue(method: PickValueMethod): ILinkable
 ```
+
+Set the PickValueMethod for this linkable if there are multiple sources linked to it.
 
 ###### `method`<sup>Required</sup> <a name="method" id="wdk-lib.Input.pickValue.parameter.method"></a>
 
@@ -1909,7 +1612,6 @@ public withPrefix(prefix: string): Input
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Input.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.bool">bool</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.double">double</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.file">file</a></code> | *No description.* |
@@ -1919,20 +1621,6 @@ public withPrefix(prefix: string): Input
 | <code><a href="#wdk-lib.Input.integer">integer</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.string">string</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.stringArray">stringArray</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.Input.createRoot"></a>
-
-```typescript
-import { Input } from 'wdk-lib'
-
-Input.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -2124,8 +1812,8 @@ Input.stringArray(scope: Construct, id: string)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Input.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Input.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Input.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.links">links</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a>[]</code> | *No description.* |
@@ -2147,6 +1835,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.property.id"></a>
@@ -2156,6 +1846,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -2281,7 +1975,7 @@ new InputReference()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.InputReference.toMap">toMap</a></code> | *No description.* |
+| <code><a href="#wdk-lib.InputReference.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
 
 ---
 
@@ -2290,6 +1984,8 @@ new InputReference()
 ```typescript
 public toMap(): {[ key: string ]: any}
 ```
+
+Convert the object to a map representation following the CWL specification.
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -2418,8 +2114,8 @@ new LinkableConstruct(scope: Construct, id: string)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.LinkableConstruct.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.LinkableConstruct.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.LinkableConstruct.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 
 ---
 
@@ -2427,11 +2123,17 @@ new LinkableConstruct(scope: Construct, id: string)
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.LinkableConstruct.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -2439,60 +2141,8 @@ new LinkableConstruct(scope: Construct, id: string)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.LinkableConstruct.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.LinkableConstruct.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.LinkableConstruct.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.LinkableConstruct.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.linkTo">linkTo</a></code> | *No description.* |
-| <code><a href="#wdk-lib.LinkableConstruct.pickValue">pickValue</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.LinkableConstruct.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.LinkableConstruct.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.LinkableConstruct.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.LinkableConstruct.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.LinkableConstruct.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.LinkableConstruct.nodesOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `addReferencedIn` <a name="addReferencedIn" id="wdk-lib.LinkableConstruct.addReferencedIn"></a>
-
-```typescript
-public addReferencedIn(link: ILinkable): void
-```
-
-###### `link`<sup>Required</sup> <a name="link" id="wdk-lib.LinkableConstruct.addReferencedIn.parameter.link"></a>
-
-- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
+| <code><a href="#wdk-lib.LinkableConstruct.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 
 ---
 
@@ -2514,40 +2164,21 @@ public linkTo(linkInput: ILinkable): ILinkable
 public pickValue(method: PickValueMethod): ILinkable
 ```
 
+Set the PickValueMethod for this linkable if there are multiple sources linked to it.
+
 ###### `method`<sup>Required</sup> <a name="method" id="wdk-lib.LinkableConstruct.pickValue.parameter.method"></a>
 
 - *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
 
 ---
 
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.LinkableConstruct.createRoot">createRoot</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.LinkableConstruct.createRoot"></a>
-
-```typescript
-import { LinkableConstruct } from 'wdk-lib'
-
-LinkableConstruct.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.LinkableConstruct.createRoot.parameter.id"></a>
-
-- *Type:* string
-
----
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.LinkableConstruct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.LinkableConstruct.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.LinkableConstruct.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.LinkableConstruct.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.links">links</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a>[]</code> | *No description.* |
@@ -2566,6 +2197,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.LinkableConstruct.property.id"></a>
@@ -2575,6 +2208,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -2663,8 +2300,8 @@ new Output(scope: Construct, id: string, type: Type)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Output.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Output.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Output.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Output.Initializer.parameter.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
 
 ---
@@ -2673,11 +2310,17 @@ new Output(scope: Construct, id: string, type: Type)
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -2691,66 +2334,14 @@ new Output(scope: Construct, id: string, type: Type)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Output.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.pickValue">pickValue</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Output.as">as</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.globFromInputString">globFromInputString</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.loadContents">loadContents</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.outputEval">outputEval</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.toMap">toMap</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
 | <code><a href="#wdk-lib.Output.withGlob">withGlob</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.Output.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Output.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.Output.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Output.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.Output.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Output.nodesOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `addReferencedIn` <a name="addReferencedIn" id="wdk-lib.Output.addReferencedIn"></a>
-
-```typescript
-public addReferencedIn(link: ILinkable): void
-```
-
-###### `link`<sup>Required</sup> <a name="link" id="wdk-lib.Output.addReferencedIn.parameter.link"></a>
-
-- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
 
 ---
 
@@ -2771,6 +2362,8 @@ public linkTo(linkInput: ILinkable): ILinkable
 ```typescript
 public pickValue(method: PickValueMethod): ILinkable
 ```
+
+Set the PickValueMethod for this linkable if there are multiple sources linked to it.
 
 ###### `method`<sup>Required</sup> <a name="method" id="wdk-lib.Output.pickValue.parameter.method"></a>
 
@@ -2826,6 +2419,8 @@ public outputEval(expression: string): Output
 public toMap(): {[ key: string ]: any}
 ```
 
+Convert the object to a map representation following the CWL specification.
+
 ##### `withGlob` <a name="withGlob" id="wdk-lib.Output.withGlob"></a>
 
 ```typescript
@@ -2842,7 +2437,6 @@ public withGlob(glob: string): Output
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Output.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.bool">bool</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.file">file</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.fileArray">fileArray</a></code> | *No description.* |
@@ -2851,20 +2445,6 @@ public withGlob(glob: string): Output
 | <code><a href="#wdk-lib.Output.integer">integer</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.string">string</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.stringArray">stringArray</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.Output.createRoot"></a>
-
-```typescript
-import { Output } from 'wdk-lib'
-
-Output.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -3032,8 +2612,8 @@ Output.stringArray(scope: Construct, id: string)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Output.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Output.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Output.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Output.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.linked">linked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.links">links</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a>[]</code> | *No description.* |
@@ -3053,6 +2633,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.property.id"></a>
@@ -3062,6 +2644,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -3158,8 +2744,8 @@ new RenameExpressionTool(scope: Workflow, id: string, props?: IRenameExpressionT
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.RenameExpressionTool.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.RenameExpressionTool.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.RenameExpressionTool.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.RenameExpressionTool.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.IRenameExpressionToolProps">IRenameExpressionToolProps</a></code> | *No description.* |
 
 ---
@@ -3168,11 +2754,17 @@ new RenameExpressionTool(scope: Workflow, id: string, props?: IRenameExpressionT
 
 - *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.RenameExpressionTool.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -3186,49 +2778,10 @@ new RenameExpressionTool(scope: Workflow, id: string, props?: IRenameExpressionT
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.RenameExpressionTool.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
-| <code><a href="#wdk-lib.RenameExpressionTool.serialize">serialize</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.toMap">toMap</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.withExpression">withExpression</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.RenameExpressionTool.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.RenameExpressionTool.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.RenameExpressionTool.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.RenameExpressionTool.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.RenameExpressionTool.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.RenameExpressionTool.nodesOf.parameter.type"></a>
-
-- *Type:* any
+| <code><a href="#wdk-lib.RenameExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.RenameExpressionTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.RenameExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
+| <code><a href="#wdk-lib.RenameExpressionTool.withExpression">withExpression</a></code> | Specify a custom JavaScript expression for this ExpressionTool. |
 
 ---
 
@@ -3238,13 +2791,15 @@ public nodesOf(type: any): Construct[]
 public hasSteps(): boolean
 ```
 
-Whether the step has sub steps (nested steps).
+Whether the step has sub steps like in case of a workflow step.
 
 ##### `serialize` <a name="serialize" id="wdk-lib.RenameExpressionTool.serialize"></a>
 
 ```typescript
 public serialize(dirPath: string): SynthFiles
 ```
+
+Serialize the tool to a CWL file.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.RenameExpressionTool.serialize.parameter.dirPath"></a>
 
@@ -3258,11 +2813,15 @@ public serialize(dirPath: string): SynthFiles
 public toMap(): {[ key: string ]: any}
 ```
 
+Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool.
+
 ##### `withExpression` <a name="withExpression" id="wdk-lib.RenameExpressionTool.withExpression"></a>
 
 ```typescript
 public withExpression(expression: string): ExpressionTool
 ```
+
+Specify a custom JavaScript expression for this ExpressionTool.
 
 ###### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.RenameExpressionTool.withExpression.parameter.expression"></a>
 
@@ -3274,22 +2833,7 @@ public withExpression(expression: string): ExpressionTool
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.RenameExpressionTool.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.RenameExpressionTool.createRoot"></a>
-
-```typescript
-import { RenameExpressionTool } from 'wdk-lib'
-
-RenameExpressionTool.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.RenameExpressionTool.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -3309,8 +2853,8 @@ Example: call with makeParametersJsonExpression()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.RenameExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.label">label</a></code> | <code>any</code> | *No description.* |
@@ -3324,7 +2868,7 @@ Example: call with makeParametersJsonExpression()
 | <code><a href="#wdk-lib.RenameExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.property.expression">expression</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.expression">expression</a></code> | <code>string</code> | Get the custom JavaScript expression for this ExpressionTool. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.f1">f1</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.newname">newname</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.out">out</a></code> | <code><a href="#wdk-lib.Output">Output</a></code> | *No description.* |
@@ -3339,6 +2883,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.RenameExpressionTool.property.id"></a>
@@ -3348,6 +2894,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -3361,7 +2911,7 @@ public readonly fileName: string;
 
 The name of the step file.
 
-It defaults to the step id + '.cwl'. It can be set using the metadata.fileName property.
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -3507,6 +3057,8 @@ public readonly expression: string;
 
 - *Type:* string
 
+Get the custom JavaScript expression for this ExpressionTool.
+
 ---
 
 ##### `f1`<sup>Required</sup> <a name="f1" id="wdk-lib.RenameExpressionTool.property.f1"></a>
@@ -3546,47 +3098,8 @@ public readonly out: Output;
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Requirement.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Requirement.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Requirement.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.addListing">addListing</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.toMap">toMap</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.Requirement.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Requirement.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.Requirement.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Requirement.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.Requirement.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Requirement.nodesOf.parameter.type"></a>
-
-- *Type:* any
 
 ---
 
@@ -3618,7 +3131,6 @@ public toMap(): {[ key: string ]: any}
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Requirement.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.docker">docker</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.envVar">envVar</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.initialWorkDir">initialWorkDir</a></code> | *No description.* |
@@ -3629,20 +3141,6 @@ public toMap(): {[ key: string ]: any}
 | <code><a href="#wdk-lib.Requirement.scatterFeature">scatterFeature</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.stepInputExpression">stepInputExpression</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.subworkflowFeature">subworkflowFeature</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.Requirement.createRoot"></a>
-
-```typescript
-import { Requirement } from 'wdk-lib'
-
-Requirement.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Requirement.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -3808,8 +3306,8 @@ Requirement.subworkflowFeature(scope: Construct)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Requirement.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Requirement.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Requirement.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Requirement.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Requirement.property.requirementType">requirementType</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -3822,6 +3320,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Requirement.property.id"></a>
@@ -3831,6 +3331,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -3847,75 +3351,15 @@ public readonly requirementType: string;
 
 ### Scatter <a name="Scatter" id="wdk-lib.Scatter"></a>
 
-#### Methods <a name="Methods" id="Methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.Scatter.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Scatter.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Scatter.nodesOf">nodesOf</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.Scatter.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Scatter.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.Scatter.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Scatter.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.Scatter.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Scatter.nodesOf.parameter.type"></a>
-
-- *Type:* any
-
----
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Scatter.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Scatter.dotProduct">dotProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
 | <code><a href="#wdk-lib.Scatter.flatCrossProduct">flatCrossProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
 | <code><a href="#wdk-lib.Scatter.nestedCrossProduct">nestedCrossProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
 | <code><a href="#wdk-lib.Scatter.simple">simple</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.Scatter.createRoot"></a>
-
-```typescript
-import { Scatter } from 'wdk-lib'
-
-Scatter.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Scatter.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -4052,8 +3496,8 @@ The input to scatter.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Scatter.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Scatter.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Scatter.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Scatter.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Scatter.property.ids">ids</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#wdk-lib.Scatter.property.method">method</a></code> | <code><a href="#wdk-lib.ScatterMethod">ScatterMethod</a></code> | *No description.* |
 
@@ -4067,6 +3511,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Scatter.property.id"></a>
@@ -4076,6 +3522,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -4225,8 +3675,8 @@ new Tool(scope: Workflow, id: string, props?: IToolProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Tool.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Tool.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Tool.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Tool.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Tool.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
@@ -4235,11 +3685,17 @@ new Tool(scope: Workflow, id: string, props?: IToolProps)
 
 - *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Tool.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -4253,48 +3709,9 @@ new Tool(scope: Workflow, id: string, props?: IToolProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Tool.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Tool.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Tool.nodesOf">nodesOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Tool.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
-| <code><a href="#wdk-lib.Tool.serialize">serialize</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Tool.toMap">toMap</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.Tool.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Tool.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.Tool.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Tool.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.Tool.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Tool.nodesOf.parameter.type"></a>
-
-- *Type:* any
+| <code><a href="#wdk-lib.Tool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.Tool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.Tool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
 
 ---
 
@@ -4304,13 +3721,15 @@ public nodesOf(type: any): Construct[]
 public hasSteps(): boolean
 ```
 
-Whether the step has sub steps (nested steps).
+Whether the step has sub steps like in case of a workflow step.
 
 ##### `serialize` <a name="serialize" id="wdk-lib.Tool.serialize"></a>
 
 ```typescript
 public serialize(dirPath: string): SynthFiles
 ```
+
+Serialize the tool to a CWL file.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.Tool.serialize.parameter.dirPath"></a>
 
@@ -4324,34 +3743,15 @@ public serialize(dirPath: string): SynthFiles
 public toMap(): {[ key: string ]: any}
 ```
 
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+Create a map repsentation of the tool following the CWL specification.
 
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.Tool.createRoot">createRoot</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.Tool.createRoot"></a>
-
-```typescript
-import { Tool } from 'wdk-lib'
-
-Tool.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Tool.createRoot.parameter.id"></a>
-
-- *Type:* string
-
----
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Tool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Tool.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Tool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Tool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Tool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Tool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
 | <code><a href="#wdk-lib.Tool.property.label">label</a></code> | <code>any</code> | *No description.* |
@@ -4376,6 +3776,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Tool.property.id"></a>
@@ -4385,6 +3787,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -4398,7 +3804,7 @@ public readonly fileName: string;
 
 The name of the step file.
 
-It defaults to the step id + '.cwl'. It can be set using the metadata.fileName property.
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -4563,48 +3969,9 @@ new ToolConfig(id: string)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ToolConfig.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ToolConfig.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ToolConfig.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withArguments">withArguments</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withBaseCommand">withBaseCommand</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withLabel">withLabel</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.ToolConfig.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.ToolConfig.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.ToolConfig.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.ToolConfig.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.ToolConfig.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.ToolConfig.nodesOf.parameter.type"></a>
-
-- *Type:* any
 
 ---
 
@@ -4648,22 +4015,7 @@ public withLabel(label: string): ToolConfig
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ToolConfig.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.basic">basic</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.ToolConfig.createRoot"></a>
-
-```typescript
-import { ToolConfig } from 'wdk-lib'
-
-ToolConfig.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.ToolConfig.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -4685,8 +4037,8 @@ ToolConfig.basic(scope: Tool)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.ToolConfig.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ToolConfig.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.ToolConfig.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.ToolConfig.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.ToolConfig.property.arguments">arguments</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.property.baseCommand">baseCommand</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.property.cwlVersion">cwlVersion</a></code> | <code>string</code> | *No description.* |
@@ -4702,6 +4054,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.ToolConfig.property.id"></a>
@@ -4711,6 +4065,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -4923,8 +4281,8 @@ new Workflow(scope: any, id: string, props?: IWorkflowProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Workflow.Initializer.parameter.scope">scope</a></code> | <code>any</code> | *No description.* |
-| <code><a href="#wdk-lib.Workflow.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Workflow.Initializer.parameter.scope">scope</a></code> | <code>any</code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Workflow.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Workflow.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a></code> | *No description.* |
 
 ---
@@ -4933,11 +4291,17 @@ new Workflow(scope: any, id: string, props?: IWorkflowProps)
 
 - *Type:* any
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Workflow.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -4951,49 +4315,10 @@ new Workflow(scope: any, id: string, props?: IWorkflowProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Workflow.addNode">addNode</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Workflow.nodeOf">nodeOf</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Workflow.nodesOf">nodesOf</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.addStep">addStep</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Workflow.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
-| <code><a href="#wdk-lib.Workflow.serialize">serialize</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Workflow.toMap">toMap</a></code> | *No description.* |
-
----
-
-##### `addNode` <a name="addNode" id="wdk-lib.Workflow.addNode"></a>
-
-```typescript
-public addNode(node: Construct): void
-```
-
-###### `node`<sup>Required</sup> <a name="node" id="wdk-lib.Workflow.addNode.parameter.node"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
----
-
-##### `nodeOf` <a name="nodeOf" id="wdk-lib.Workflow.nodeOf"></a>
-
-```typescript
-public nodeOf(type: any): Construct
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Workflow.nodeOf.parameter.type"></a>
-
-- *Type:* any
-
----
-
-##### `nodesOf` <a name="nodesOf" id="wdk-lib.Workflow.nodesOf"></a>
-
-```typescript
-public nodesOf(type: any): Construct[]
-```
-
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Workflow.nodesOf.parameter.type"></a>
-
-- *Type:* any
+| <code><a href="#wdk-lib.Workflow.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.Workflow.serialize">serialize</a></code> | Serialize the step to a directory. |
+| <code><a href="#wdk-lib.Workflow.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
 
 ---
 
@@ -5015,13 +4340,17 @@ public addStep(step: IStep): void
 public hasSteps(): boolean
 ```
 
-Whether the step has sub steps (nested steps).
+Whether the step has sub steps like in case of a workflow step.
 
 ##### `serialize` <a name="serialize" id="wdk-lib.Workflow.serialize"></a>
 
 ```typescript
 public serialize(dirPath: string): SynthFiles
 ```
+
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.Workflow.serialize.parameter.dirPath"></a>
 
@@ -5035,26 +4364,13 @@ public serialize(dirPath: string): SynthFiles
 public toMap(): {[ key: string ]: any}
 ```
 
+Convert the object to a map representation following the CWL specification.
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Workflow.createRoot">createRoot</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.basicProps">basicProps</a></code> | *No description.* |
-
----
-
-##### `createRoot` <a name="createRoot" id="wdk-lib.Workflow.createRoot"></a>
-
-```typescript
-import { Workflow } from 'wdk-lib'
-
-Workflow.createRoot(id: string)
-```
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Workflow.createRoot.parameter.id"></a>
-
-- *Type:* string
 
 ---
 
@@ -5070,8 +4386,8 @@ Workflow.basicProps()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.Workflow.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Workflow.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.Workflow.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.Workflow.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Workflow.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Workflow.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
 | <code><a href="#wdk-lib.Workflow.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
@@ -5094,6 +4410,8 @@ public readonly scope: Construct;
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
+The scope in which this construct is defined.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Workflow.property.id"></a>
@@ -5103,6 +4421,10 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -5116,7 +4438,7 @@ public readonly fileName: string;
 
 The name of the step file.
 
-It defaults to the step id + '.cwl'. It can be set using the metadata.fileName property.
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -5257,7 +4579,7 @@ new WorkflowValues()
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.WorkflowValues.addInput">addInput</a></code> | Associate a value to an input object. |
-| <code><a href="#wdk-lib.WorkflowValues.toMap">toMap</a></code> | *No description.* |
+| <code><a href="#wdk-lib.WorkflowValues.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
 
 ---
 
@@ -5290,6 +4612,8 @@ Value associated to the input.
 ```typescript
 public toMap(): {[ key: string ]: any}
 ```
+
+Convert the object to a map representation following the CWL specification.
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -5421,21 +4745,8 @@ Provide either this or `inlineScript`.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ILinkable.addReferencedIn">addReferencedIn</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.linkTo">linkTo</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ILinkable.pickValue">pickValue</a></code> | *No description.* |
-
----
-
-##### `addReferencedIn` <a name="addReferencedIn" id="wdk-lib.ILinkable.addReferencedIn"></a>
-
-```typescript
-public addReferencedIn(link: ILinkable): void
-```
-
-###### `link`<sup>Required</sup> <a name="link" id="wdk-lib.ILinkable.addReferencedIn.parameter.link"></a>
-
-- *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
+| <code><a href="#wdk-lib.ILinkable.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 
 ---
 
@@ -5456,6 +4767,18 @@ public linkTo(link: ILinkable): ILinkable
 ```typescript
 public pickValue(method: PickValueMethod): ILinkable
 ```
+
+Set the PickValueMethod for this linkable if there are multiple sources linked to it.
+
+*Example*
+
+```typescript
+myStepTool.input
+          .linkTo(cdHit.clusterFile)
+          .linkTo(inputFasta)
+          .pickValue(PickValueMethod.FIRST_NON_NULL);
+```
+
 
 ###### `method`<sup>Required</sup> <a name="method" id="wdk-lib.ILinkable.pickValue.parameter.method"></a>
 
@@ -5555,7 +4878,7 @@ public readonly id: string;
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.IMappable.toMap">toMap</a></code> | *No description.* |
+| <code><a href="#wdk-lib.IMappable.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
 
 ---
 
@@ -5564,6 +4887,8 @@ public readonly id: string;
 ```typescript
 public toMap(): {[ key: string ]: any}
 ```
+
+Convert the object to a map representation following the CWL specification.
 
 
 ### IRenameExpressionToolProps <a name="IRenameExpressionToolProps" id="wdk-lib.IRenameExpressionToolProps"></a>
@@ -5634,8 +4959,8 @@ Represents a step in a workflow.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.IStep.hasSteps">hasSteps</a></code> | Whether the step has sub steps (nested steps). |
-| <code><a href="#wdk-lib.IStep.serialize">serialize</a></code> | *No description.* |
+| <code><a href="#wdk-lib.IStep.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.IStep.serialize">serialize</a></code> | Serialize the step to a directory. |
 
 ---
 
@@ -5645,13 +4970,17 @@ Represents a step in a workflow.
 public hasSteps(): boolean
 ```
 
-Whether the step has sub steps (nested steps).
+Whether the step has sub steps like in case of a workflow step.
 
 ##### `serialize` <a name="serialize" id="wdk-lib.IStep.serialize"></a>
 
 ```typescript
 public serialize(dirPath: string): SynthFiles
 ```
+
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.IStep.serialize.parameter.dirPath"></a>
 
@@ -5686,7 +5015,7 @@ public readonly fileName: string;
 
 The name of the step file.
 
-It defaults to the step id + '.cwl'. It can be set using the metadata.fileName property.
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 

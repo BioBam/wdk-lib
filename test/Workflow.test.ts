@@ -1,5 +1,5 @@
 import { Constants } from '../src/lib/Constants';
-import { Construct } from '../src/lib/Construct';
+import { Constructs } from '../src/lib/Constructs';
 import { Input } from '../src/lib/Input';
 import { Output } from '../src/lib/Output';
 import { StepClass } from '../src/lib/ToolClass';
@@ -9,7 +9,7 @@ describe('Workflow', () => {
   let workflow: Workflow;
 
   beforeEach(() => {
-    const root = Construct.createRoot('root');
+    const root = Constructs.createRoot('root');
     workflow = new Workflow(root, 'test-workflow');
   });
 
@@ -22,7 +22,7 @@ describe('Workflow', () => {
     });
 
     it('should create workflow with custom properties', () => {
-      const root = Construct.createRoot('root');
+      const root = Constructs.createRoot('root');
       const customWorkflow = new Workflow(root, 'custom-workflow', {
         cwlVersion: 'v1.2',
       });
@@ -32,7 +32,7 @@ describe('Workflow', () => {
 
   describe('steps management', () => {
     it('should correctly add and retrieve steps', () => {
-      const root = Construct.createRoot('root');
+      const root = Constructs.createRoot('root');
       const step1 = new Workflow(root, 'step1');
       const step2 = new Workflow(root, 'step2');
 
@@ -70,7 +70,7 @@ describe('Workflow', () => {
 
     it('should filter linked inputs and outputs', () => {
       const input1 = Input.string(workflow, 'input1');
-      const root = Construct.createRoot('root');
+      const root = Constructs.createRoot('root');
       const step = new Workflow(root, 'step1');
       const stepInput = Input.string(step, 'stepInput');
 

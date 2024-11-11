@@ -1,4 +1,5 @@
 import { Construct } from '../src/lib/Construct';
+import { Constructs } from '../src/lib/Constructs';
 import { Requirement } from '../src/lib/Requirement';
 import { ToolRequirementType } from '../src/lib/ToolRequirementType';
 
@@ -6,7 +7,7 @@ describe('Requirement Class', () => {
   let scope: Construct;
 
   beforeEach(() => {
-    scope = Construct.createRoot('root'); // Assuming Construct has a default constructor
+    scope = Constructs.createRoot('root'); // Assuming Construct has a default constructor
   });
 
   it('should create a subworkflow feature requirement', () => {

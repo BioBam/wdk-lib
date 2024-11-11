@@ -3,6 +3,15 @@ import { LinkableConstruct } from './LinkableConstruct';
 import { Shortify } from './Shortify';
 import { Type } from './Type';
 
+/**
+ * Represents an input parameter of a workflow or a tool.
+ * @example
+ * import { Input, Construct } from 'wdk-lib';
+ * const root = Constructs.createRoot('root');
+ * const input = Input.string(root, 'myInput')
+ *                    .withDefaultValue('default')
+ *                    .withDoc('This is my input');
+ */
 export class Input extends LinkableConstruct {
 
   /** Create an input from a step input, using the same ID and type. It also copies the default value, the optional flag, and the doc. */

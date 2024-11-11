@@ -58,11 +58,11 @@ export class Workflow extends Construct implements IStep, IMappable {
   }
 
   public get inputs(): Input[] {
-    return this.nodesOf(Input) as Input[];
+    return this._nodesOf(Input) as Input[];
   }
 
   get scatter(): Scatter | undefined {
-    return this.nodeOf(Scatter) as Scatter;
+    return this._nodeOf(Scatter) as Scatter;
   }
 
   public get steps(): IStep[] {
@@ -74,7 +74,7 @@ export class Workflow extends Construct implements IStep, IMappable {
   }
 
   public get outputs(): Output[] {
-    return this.nodesOf(Output) as Output[];
+    return this._nodesOf(Output) as Output[];
   }
 
   public get linkedOutputs(): Output[] {
@@ -82,11 +82,11 @@ export class Workflow extends Construct implements IStep, IMappable {
   }
 
   public get requirements(): Requirement[] {
-    return this.nodesOf(Requirement) as Requirement[];
+    return this._nodesOf(Requirement) as Requirement[];
   }
 
   get conditional(): Conditional | undefined {
-    return this.nodeOf(Conditional) as Conditional;
+    return this._nodeOf(Conditional) as Conditional;
   }
 
   addStep(step: IStep) {
@@ -195,8 +195,8 @@ export class Workflow extends Construct implements IStep, IMappable {
       }
     }
 
-    if (step.conditional && step.conditional.expression) {
-      stepData.when = step.conditional.expression;
+    if (step.conditional && step.conditional._expression) {
+      stepData.when = step.conditional._expression;
     }
 
     return stepData;

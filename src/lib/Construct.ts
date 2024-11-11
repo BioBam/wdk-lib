@@ -1,9 +1,5 @@
 export class Construct {
 
-  public static createRoot(id: string): Construct {
-    return new Construct(id);
-  }
-
   private readonly _scope: Construct | undefined;
   private _id: string;
   private _nodes: Construct[] = [];
@@ -22,30 +18,56 @@ export class Construct {
       this._id = id!;
     }
     if (this._scope !== undefined && this._scope !== null) {
-      this._scope.addNode(this);
+      this._scope._addNode(this);
     }
   }
 
-  public addNode(node: Construct) {
+  /**
+   * Add a node to this construct
+   * @internal
+   * @param node
+   */
+  public _addNode(node: Construct) {
     this._nodes.push(node);
   }
 
-  public nodesOf(type: any): Construct[] {
+  /**
+   * Find all nodes of a certain type
+   * @internal
+   * @param type
+   * @returns
+   */
+  public _nodesOf(type: any): Construct[] {
     return this._nodes.filter(node => node instanceof type);
   }
 
-  public nodeOf(type: any): Construct | undefined {
+  /**
+   * Find the first node of a certain type
+   * @internal
+   * @param type
+   * @returns
+   */
+  public _nodeOf(type: any): Construct | undefined {
     return this._nodes.filter(node => node instanceof type)[0];
   }
 
+  /**
+   * The scope in which this construct is defined.
+   */
   public get scope(): Construct | undefined {
     return this._scope;
   }
 
+  /**
+   * Unique identifier for the construct in it's scope.
+   */
   public get id() {
     return this._id;
   }
 
+  /**
+   * set or update the id of this construct
+   */
   public set id(newID: string) {
     this._id = newID;
   }

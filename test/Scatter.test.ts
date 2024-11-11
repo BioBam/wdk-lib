@@ -1,4 +1,4 @@
-import { Construct } from '../src/lib/Construct';
+import { Constructs } from '../src/lib/Constructs';
 import { Input } from '../src/lib/Input';
 import { IStep } from '../src/lib/IStep';
 import { Requirement } from '../src/lib/Requirement';
@@ -19,7 +19,7 @@ describe('Scatter', () => {
   let step: IStep;
 
   beforeEach(() => {
-    const rootConstruct = Construct.createRoot('root');
+    const rootConstruct = Constructs.createRoot('root');
     scope = new Workflow(rootConstruct, 'testWorkflow', Workflow.basicProps());
     step = new Tool(scope, 'testStep');
   });

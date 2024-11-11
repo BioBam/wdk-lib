@@ -9,21 +9,25 @@ export class Conditional extends Construct {
     return new Conditional(step as unknown as Construct);
   }
 
-  private _expression: string | undefined;
+  private __expression: string | undefined;
 
   private constructor(scope: Construct) {
     super(scope, '');
   }
 
-  get expression(): string | undefined {
-    return this._expression;
+  /**
+   * @internal
+   */
+  get _expression(): string | undefined {
+    return this.__expression;
   }
 
-  set expression(js: string | undefined) {
-    this._expression = js;
+  set _expression(js: string | undefined) {
+    this.__expression = js;
   }
 
   /**
+   * Skip this step if the boolean input associated to this condition does not match the specified value.
    *
    * @param input A boolean step input parameter.
    * @param value <code>true</code> to run the step only if the input is true, <code>false</code> to run the step only if the input is false.
@@ -33,7 +37,7 @@ export class Conditional extends Construct {
     if (input.type != Type.BOOLEAN) {
       throw new Error(`Input ${input.id} is not a boolean. Conditional can only be applied on boolean inputs.`);
     }
-    this._expression = `$(inputs.${input.id} == ${value})`;
+    this.__expression = `$(inputs.${input.id} == ${value})`;
   }
 
   /**
@@ -43,7 +47,7 @@ export class Conditional extends Construct {
    */
   whenInputNotNull(input: Input) {
     // Check if the referenced input is part of the step.
-    this._expression = `$(inputs.${input.id} !== null)`;
+    this.__expression = `$(inputs.${input.id} !== null)`;
   }
 
 }

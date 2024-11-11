@@ -71,11 +71,11 @@ export class Tool extends Construct implements IMappable, IStep {
 
 
   get scatter(): Scatter | undefined {
-    return this.nodeOf(Scatter) as Scatter;
+    return this._nodeOf(Scatter) as Scatter;
   }
 
   get conditional(): Conditional | undefined {
-    return this.nodeOf(Conditional) as Conditional;
+    return this._nodeOf(Conditional) as Conditional;
   }
 
   get fileName(): string {
@@ -110,20 +110,20 @@ export class Tool extends Construct implements IMappable, IStep {
   }
 
   get inputs(): Input[] {
-    return this.nodesOf(Input) as Input[];
+    return this._nodesOf(Input) as Input[];
   }
 
   get linkedInputs(): Input[] {
-    const inputs = this.nodesOf(Input) as Input[];
+    const inputs = this._nodesOf(Input) as Input[];
     return inputs.filter(input => input.linked);
   }
 
   get outputs(): Output[] {
-    return this.nodesOf(Output) as Output[];
+    return this._nodesOf(Output) as Output[];
   }
 
   get linkedOutputs(): Output[] {
-    const nodes = this.nodesOf(Output) as Output[];
+    const nodes = this._nodesOf(Output) as Output[];
     return nodes.filter(node => node.referenced);
   }
 
@@ -132,7 +132,7 @@ export class Tool extends Construct implements IMappable, IStep {
   }
 
   get requirementsMap(): { [key: string]: any } {
-    const nodes = this.nodesOf(Requirement) as Requirement[];
+    const nodes = this._nodesOf(Requirement) as Requirement[];
     const reqMap: { [key: string]: any } = {};
     nodes.forEach(node => {
       reqMap[node.requirementType.toString()] = node.toMap();
@@ -140,6 +140,11 @@ export class Tool extends Construct implements IMappable, IStep {
     return reqMap;
   }
 
+  /**
+   * Create a map repsentation of the tool following the CWL specification.
+   *
+   * @returns
+   */
   toMap(): { [key: string]: any } {
     const tData: { [key: string]: any } = {
       class: this.stepClass.toString(),
@@ -191,6 +196,13 @@ export class Tool extends Construct implements IMappable, IStep {
   }
 
 
+  /**
+   *
+   * Serialize the tool to a CWL file.
+   *
+   * @param dirPath
+   * @returns
+   */
   serialize(dirPath: string): SynthFiles {
     const shortClass = WdkUtils.getLowercaseInitials(this.stepClass);
     const cwlFile = WdkUtils.newFilePath(dirPath, `${this.id}.${shortClass}.cwl`);

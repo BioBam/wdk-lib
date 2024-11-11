@@ -58,7 +58,7 @@ export abstract class LinkableConstruct extends Construct implements ILinkable {
       throw new Error('Link type mismatch between ' + this.id + '(' + this.type + ') and ' + linkInput.id + '(' + linkInput.type + ')');
     }
     this._links.push(linkInput);
-    linkInput.addReferencedIn(this);
+    linkInput._addReferencedIn(this);
     return this;
   }
 
@@ -83,7 +83,11 @@ export abstract class LinkableConstruct extends Construct implements ILinkable {
     return this._links.length > 1;
   }
 
-  public addReferencedIn(link: ILinkable): void {
+  /**
+   * @internal
+   * @param link
+   */
+  public _addReferencedIn(link: ILinkable): void {
     this.referencedIn.push(link);
   }
 

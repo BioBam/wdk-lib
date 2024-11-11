@@ -1,4 +1,5 @@
 import { Construct } from '../src/lib/Construct';
+import { Constructs } from '../src/lib/Constructs';
 import { Input } from '../src/lib/Input';
 import { Type } from '../src/lib/Type';
 
@@ -6,7 +7,7 @@ describe('Input Class', () => {
   let mockScope: Construct;
 
   beforeEach(() => {
-    mockScope = Construct.createRoot('root');
+    mockScope = Constructs.createRoot('root');
   });
 
   describe('Static factory methods', () => {

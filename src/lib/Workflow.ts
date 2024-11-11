@@ -34,6 +34,12 @@ export class Workflow extends Construct implements IStep, IMappable {
       props = Workflow.basicProps();
     }
     this._props = props;
+
+    // Check if scope is not null and instance of workflow
+    if (scope && scope instanceof Workflow) {
+      scope.addStep(this);
+    }
+
   }
 
   get fileName(): string {

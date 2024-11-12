@@ -4,7 +4,9 @@ requirements: {}
 inputs: {}
 steps:
   L3:
-    in: {}
+    in:
+      str1InputL4:
+        valueFrom: strL3WorkflowInput
     out: []
     run: L3.w.cwl
 outputs: []

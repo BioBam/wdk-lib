@@ -4126,6 +4126,233 @@ public readonly label: string;
 ---
 
 
+### Value <a name="Value" id="wdk-lib.Value"></a>
+
+Helper class for generating CWL valueFrom expressions.
+
+#### Initializers <a name="Initializers" id="wdk-lib.Value.Initializer"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+new Value()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.Value.boolean">boolean</a></code> | Generates a CWL boolean expression. |
+| <code><a href="#wdk-lib.Value.double">double</a></code> | Generates a CWL double expression. |
+| <code><a href="#wdk-lib.Value.expression">expression</a></code> | Generates a CWL expression from a custom JavaScript-compatible string. |
+| <code><a href="#wdk-lib.Value.float">float</a></code> | Generates a CWL float expression. |
+| <code><a href="#wdk-lib.Value.int">int</a></code> | Generates a CWL integer expression. |
+| <code><a href="#wdk-lib.Value.long">long</a></code> | Generates a CWL long integer expression. |
+| <code><a href="#wdk-lib.Value.null">null</a></code> | Generates a CWL null expression to represent no value. |
+| <code><a href="#wdk-lib.Value.string">string</a></code> | Generates a CWL string expression. |
+
+---
+
+##### `boolean` <a name="boolean" id="wdk-lib.Value.boolean"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.boolean(value: boolean)
+```
+
+Generates a CWL boolean expression.
+
+*Example*
+
+```typescript
+Value.boolean(true); // "$( true )"
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.boolean.parameter.value"></a>
+
+- *Type:* boolean
+
+The boolean value (true or false).
+
+---
+
+##### `double` <a name="double" id="wdk-lib.Value.double"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.double(value: number)
+```
+
+Generates a CWL double expression.
+
+*Example*
+
+```typescript
+Value.double(3.14159); // "$( 3.14159 )"
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.double.parameter.value"></a>
+
+- *Type:* number
+
+A 64-bit floating-point number.
+
+---
+
+##### `expression` <a name="expression" id="wdk-lib.Value.expression"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.expression(expr: string)
+```
+
+Generates a CWL expression from a custom JavaScript-compatible string.
+
+*Example*
+
+```typescript
+Value.expression("inputs.my_input * 2"); // "$( inputs.my_input * 2 )"
+```
+
+
+###### `expr`<sup>Required</sup> <a name="expr" id="wdk-lib.Value.expression.parameter.expr"></a>
+
+- *Type:* string
+
+A custom JavaScript-compatible expression.
+
+---
+
+##### `float` <a name="float" id="wdk-lib.Value.float"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.float(value: number)
+```
+
+Generates a CWL float expression.
+
+*Example*
+
+```typescript
+Value.float(3.14); // "$( 3.14 )"
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.float.parameter.value"></a>
+
+- *Type:* number
+
+A 32-bit floating-point number.
+
+---
+
+##### `int` <a name="int" id="wdk-lib.Value.int"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.int(value: number)
+```
+
+Generates a CWL integer expression.
+
+*Example*
+
+```typescript
+Value.int(42); // "$( 42 )"
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.int.parameter.value"></a>
+
+- *Type:* number
+
+A 32-bit signed integer.
+
+---
+
+##### `long` <a name="long" id="wdk-lib.Value.long"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.long(value: number)
+```
+
+Generates a CWL long integer expression.
+
+*Example*
+
+```typescript
+Value.long(1000000000); // "$( 1000000000 )"
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.long.parameter.value"></a>
+
+- *Type:* number
+
+A 64-bit signed integer.
+
+---
+
+##### `null` <a name="null" id="wdk-lib.Value.null"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.null()
+```
+
+Generates a CWL null expression to represent no value.
+
+*Example*
+
+```typescript
+Value.null(); // "$(null)"
+```
+
+
+##### `string` <a name="string" id="wdk-lib.Value.string"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.string(value: string)
+```
+
+Generates a CWL string expression.
+
+*Example*
+
+```typescript
+Value.string("hello world"); // "$( "hello world" )"
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.string.parameter.value"></a>
+
+- *Type:* string
+
+A Unicode character sequence.
+
+---
+
+
+
 ### WdkUtils <a name="WdkUtils" id="wdk-lib.WdkUtils"></a>
 
 #### Initializers <a name="Initializers" id="wdk-lib.WdkUtils.Initializer"></a>

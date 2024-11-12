@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Input, Workflow } from '../src/lib';
+import { Input, Tool, Workflow } from '../src/lib';
 import { Constructs } from '../src/lib/Constructs';
 
 describe('Workflow In Workflow YAML output', () => {
@@ -16,6 +16,15 @@ describe('Workflow In Workflow YAML output', () => {
     Input.string(l3, 'l3Input');
     // l1.addStep(l2);
     // l2.addStep(l3);
+
+    const tooL4 = new Tool(l3, 'l4');
+    const str1InputL4 = Input.string(tooL4, 'str1InputL4');
+    const strToolInputL4 = Input.string(tooL4, 'str2InputL4');
+    strToolInputL4.valueFrom = 'toolStepInputInWorkflow';
+
+    const strL3WorkflowInput = Input.fromStepInput(l3, str1InputL4);
+    // Input.fromStepInput(l3, strToolInputL4);
+    strL3WorkflowInput.valueFrom = 'strL3WorkflowInput';
 
 
     // Define output path

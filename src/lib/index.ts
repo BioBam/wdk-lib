@@ -3,6 +3,7 @@ export * from './Construct';
 export * from './Constructs';
 export * from './Conditional';
 export * from './ExpressionTool';
+export * from './Expressions';
 export * from './ILinkable';
 export * from './IMappable';
 export * from './Input';

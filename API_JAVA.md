@@ -4136,6 +4136,241 @@ public java.lang.String getLabel();
 ---
 
 
+### Value <a name="Value" id="wdk-lib.Value"></a>
+
+Helper class for generating CWL valueFrom expressions.
+
+#### Initializers <a name="Initializers" id="wdk-lib.Value.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+new Value();
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.Value.boolean">boolean</a></code> | Generates a CWL boolean expression. |
+| <code><a href="#wdk-lib.Value.double">double</a></code> | Generates a CWL double expression. |
+| <code><a href="#wdk-lib.Value.expression">expression</a></code> | Generates a CWL expression from a custom JavaScript-compatible string. |
+| <code><a href="#wdk-lib.Value.float">float</a></code> | Generates a CWL float expression. |
+| <code><a href="#wdk-lib.Value.int">int</a></code> | Generates a CWL integer expression. |
+| <code><a href="#wdk-lib.Value.long">long</a></code> | Generates a CWL long integer expression. |
+| <code><a href="#wdk-lib.Value.null">null</a></code> | Generates a CWL null expression to represent no value. |
+| <code><a href="#wdk-lib.Value.string">string</a></code> | Generates a CWL string expression. |
+
+---
+
+##### `boolean` <a name="boolean" id="wdk-lib.Value.boolean"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.boolean(java.lang.Boolean value)
+```
+
+Generates a CWL boolean expression.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.boolean(true);
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.boolean.parameter.value"></a>
+
+- *Type:* java.lang.Boolean
+
+The boolean value (true or false).
+
+---
+
+##### `double` <a name="double" id="wdk-lib.Value.double"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.double(java.lang.Number value)
+```
+
+Generates a CWL double expression.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.double(3.14159);
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.double.parameter.value"></a>
+
+- *Type:* java.lang.Number
+
+A 64-bit floating-point number.
+
+---
+
+##### `expression` <a name="expression" id="wdk-lib.Value.expression"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.expression(java.lang.String expr)
+```
+
+Generates a CWL expression from a custom JavaScript-compatible string.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.expression("inputs.my_input * 2");
+```
+
+
+###### `expr`<sup>Required</sup> <a name="expr" id="wdk-lib.Value.expression.parameter.expr"></a>
+
+- *Type:* java.lang.String
+
+A custom JavaScript-compatible expression.
+
+---
+
+##### `float` <a name="float" id="wdk-lib.Value.float"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.float(java.lang.Number value)
+```
+
+Generates a CWL float expression.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.float(3.14);
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.float.parameter.value"></a>
+
+- *Type:* java.lang.Number
+
+A 32-bit floating-point number.
+
+---
+
+##### `int` <a name="int" id="wdk-lib.Value.int"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.int(java.lang.Number value)
+```
+
+Generates a CWL integer expression.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.int(42);
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.int.parameter.value"></a>
+
+- *Type:* java.lang.Number
+
+A 32-bit signed integer.
+
+---
+
+##### `long` <a name="long" id="wdk-lib.Value.long"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.long(java.lang.Number value)
+```
+
+Generates a CWL long integer expression.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.long(1000000000);
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.long.parameter.value"></a>
+
+- *Type:* java.lang.Number
+
+A 64-bit signed integer.
+
+---
+
+##### `null` <a name="null" id="wdk-lib.Value.null"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.null()
+```
+
+Generates a CWL null expression to represent no value.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.null();
+```
+
+
+##### `string` <a name="string" id="wdk-lib.Value.string"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.string(java.lang.String value)
+```
+
+Generates a CWL string expression.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.string("hello world");
+```
+
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Value.string.parameter.value"></a>
+
+- *Type:* java.lang.String
+
+A Unicode character sequence.
+
+---
+
+
+
 ### WdkUtils <a name="WdkUtils" id="wdk-lib.WdkUtils"></a>
 
 #### Initializers <a name="Initializers" id="wdk-lib.WdkUtils.Initializer"></a>

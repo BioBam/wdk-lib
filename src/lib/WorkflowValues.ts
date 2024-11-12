@@ -12,7 +12,7 @@ type InputValue = string | boolean | number | string[] | InputReference | InputR
  * inputs to serializable formats.
  *
  * @example
- * import { WorkflowValues, Input, Construct } from 'wdk-lib';
+ * import { WorkflowValues, Input, Constructs } from 'wdk-lib';
  * const root = Constructs.createRoot('root');
  * const input1 = Input.string(root, 'firstInput').withDefaultValue('defaultValue');
  * const input2 = Input.file(root, 'fileInput');

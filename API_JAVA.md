@@ -976,6 +976,7 @@ A utility class for Constructs.
 | --- | --- |
 | <code><a href="#wdk-lib.Constructs.createRoot">createRoot</a></code> | Create a construct that does not need to extend another construct. |
 | <code><a href="#wdk-lib.Constructs.rootWorkflow">rootWorkflow</a></code> | Utility to create a root Workflow and use in tests. |
+| <code><a href="#wdk-lib.Constructs.rootWorkflowWithName">rootWorkflowWithName</a></code> | Utility to create a root Workflow with name to use in tests. |
 
 ---
 
@@ -1006,6 +1007,22 @@ Constructs.rootWorkflow()
 ```
 
 Utility to create a root Workflow and use in tests.
+
+##### `rootWorkflowWithName` <a name="rootWorkflowWithName" id="wdk-lib.Constructs.rootWorkflowWithName"></a>
+
+```java
+import com.biobam.wdk.lib.Constructs;
+
+Constructs.rootWorkflowWithName(java.lang.String name)
+```
+
+Utility to create a root Workflow with name to use in tests.
+
+###### `name`<sup>Required</sup> <a name="name" id="wdk-lib.Constructs.rootWorkflowWithName.parameter.name"></a>
+
+- *Type:* java.lang.String
+
+---
 
 
 
@@ -1397,10 +1414,9 @@ Represents an input parameter of a workflow or a tool.
 *Example*
 
 ```java
-// Example automatically generated from non-compiling source. May contain errors.
 import com.biobam.wdk.lib.Input;
-import com.biobam.wdk.lib.Construct;
-Object root = Constructs.createRoot("root");
+import com.biobam.wdk.lib.Constructs;
+Construct root = Constructs.createRoot("root");
 Input input = Input.string(root, "myInput").withDefaultValue("default").withDoc("This is my input");
 ```
 
@@ -3779,7 +3795,6 @@ SynthFiles.createWithMain(java.lang.String cwlFile)
 | --- | --- | --- |
 | <code><a href="#wdk-lib.SynthFiles.property.attachedFiles">attachedFiles</a></code> | <code>java.util.List<java.lang.String></code> | *No description.* |
 | <code><a href="#wdk-lib.SynthFiles.property.main">main</a></code> | <code>java.lang.String</code> | *No description.* |
-| <code><a href="#wdk-lib.SynthFiles.property.attached">attached</a></code> | <code>java.util.List<java.lang.String></code> | *No description.* |
 
 ---
 
@@ -3800,16 +3815,6 @@ public java.lang.String getMain();
 ```
 
 - *Type:* java.lang.String
-
----
-
-##### `attached`<sup>Required</sup> <a name="attached" id="wdk-lib.SynthFiles.property.attached"></a>
-
-```java
-public java.util.List<java.lang.String> getAttached();
-```
-
-- *Type:* java.util.List<java.lang.String>
 
 ---
 
@@ -4935,8 +4940,8 @@ inputs to serializable formats.
 // Example automatically generated from non-compiling source. May contain errors.
 import com.biobam.wdk.lib.WorkflowValues;
 import com.biobam.wdk.lib.Input;
-import com.biobam.wdk.lib.Construct;
-Object root = Constructs.createRoot("root");
+import com.biobam.wdk.lib.Constructs;
+Construct root = Constructs.createRoot("root");
 Input input1 = Input.string(root, "firstInput").withDefaultValue("defaultValue");
 Input input2 = Input.file(root, "fileInput");
 WorkflowValues workflowValues = WorkflowValues.create("MyTask").addInput(input1, "customValue").addInput(input2, new InputReference("/path/to/file"));

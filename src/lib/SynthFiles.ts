@@ -6,7 +6,7 @@ export class SynthFiles {
   }
 
   private _main: string;
-  attached: string[];
+  private attached: string[];
 
   private constructor(cwlFile: string) {
     this._main = cwlFile;

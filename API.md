@@ -967,6 +967,7 @@ A utility class for Constructs.
 | --- | --- |
 | <code><a href="#wdk-lib.Constructs.createRoot">createRoot</a></code> | Create a construct that does not need to extend another construct. |
 | <code><a href="#wdk-lib.Constructs.rootWorkflow">rootWorkflow</a></code> | Utility to create a root Workflow and use in tests. |
+| <code><a href="#wdk-lib.Constructs.rootWorkflowWithName">rootWorkflowWithName</a></code> | Utility to create a root Workflow with name to use in tests. |
 
 ---
 
@@ -997,6 +998,22 @@ Constructs.rootWorkflow()
 ```
 
 Utility to create a root Workflow and use in tests.
+
+##### `rootWorkflowWithName` <a name="rootWorkflowWithName" id="wdk-lib.Constructs.rootWorkflowWithName"></a>
+
+```typescript
+import { Constructs } from 'wdk-lib'
+
+Constructs.rootWorkflowWithName(name: string)
+```
+
+Utility to create a root Workflow with name to use in tests.
+
+###### `name`<sup>Required</sup> <a name="name" id="wdk-lib.Constructs.rootWorkflowWithName.parameter.name"></a>
+
+- *Type:* string
+
+---
 
 
 
@@ -1388,7 +1405,7 @@ Represents an input parameter of a workflow or a tool.
 *Example*
 
 ```typescript
-import { Input, Construct } from 'wdk-lib';
+import { Input, Constructs } from 'wdk-lib';
 const root = Constructs.createRoot('root');
 const input = Input.string(root, 'myInput')
                    .withDefaultValue('default')
@@ -3770,7 +3787,6 @@ SynthFiles.createWithMain(cwlFile: string)
 | --- | --- | --- |
 | <code><a href="#wdk-lib.SynthFiles.property.attachedFiles">attachedFiles</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#wdk-lib.SynthFiles.property.main">main</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#wdk-lib.SynthFiles.property.attached">attached</a></code> | <code>string[]</code> | *No description.* |
 
 ---
 
@@ -3791,16 +3807,6 @@ public readonly main: string;
 ```
 
 - *Type:* string
-
----
-
-##### `attached`<sup>Required</sup> <a name="attached" id="wdk-lib.SynthFiles.property.attached"></a>
-
-```typescript
-public readonly attached: string[];
-```
-
-- *Type:* string[]
 
 ---
 
@@ -4915,7 +4921,7 @@ inputs to serializable formats.
 *Example*
 
 ```typescript
-import { WorkflowValues, Input, Construct } from 'wdk-lib';
+import { WorkflowValues, Input, Constructs } from 'wdk-lib';
 const root = Constructs.createRoot('root');
 const input1 = Input.string(root, 'firstInput').withDefaultValue('defaultValue');
 const input2 = Input.file(root, 'fileInput');

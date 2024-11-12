@@ -17,6 +17,15 @@ export class Constructs {
   }
 
   /**
+   * Utility to create a root Workflow with name to use in tests
+   * @returns a root Workflow
+   */
+  static rootWorkflowWithName(name: string): Workflow {
+    let w = new Construct(null as any, 'root') as Workflow;
+    return new Workflow(w, name);
+  }
+
+  /**
    * Utility to create a root Workflow and use in tests
    * @returns a root Workflow
    */
@@ -24,6 +33,6 @@ export class Constructs {
     return new Construct(null as any, 'root') as Workflow;
   }
 
-  private constructor() {} // Prevent instantiation
+  private constructor() { } // Prevent instantiation
 
 }

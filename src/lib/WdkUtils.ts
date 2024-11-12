@@ -7,7 +7,6 @@ import { SynthFiles } from './SynthFiles';
 
 export class WdkUtils {
 
-
   public static newFilePath(workflowDirectory: string, fileName: string): string {
     const filePath = path.join(workflowDirectory, fileName);
     return filePath;
@@ -52,5 +51,9 @@ export class WdkUtils {
   public static getLowercaseInitials(str: string): string {
     return str.match(/[A-Z]/g)?.map(letter => letter.toLowerCase()).join('') || '';
   }
+
+
+  // This class is not meant to be instantiated.
+  private constructor() { }
 }
 

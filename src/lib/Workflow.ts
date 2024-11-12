@@ -58,7 +58,6 @@ export class Workflow extends Construct implements IStep, IMappable {
     this._stepClass = newClass;
   }
 
-
   public get props(): IWorkflowProps {
     return this._props;
   }

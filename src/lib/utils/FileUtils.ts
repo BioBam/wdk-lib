@@ -25,4 +25,8 @@ export class FileUtils {
     return fs.readFileSync(filePath, 'utf-8');
   };
 
+
+  // This class is not meant to be instantiated.
+  private constructor() { }
+
 }

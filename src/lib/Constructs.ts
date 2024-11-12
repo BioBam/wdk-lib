@@ -23,4 +23,7 @@ export class Constructs {
   static rootWorkflow(): Workflow {
     return new Construct(null as any, 'root') as Workflow;
   }
+
+  private constructor() {} // Prevent instantiation
+
 }

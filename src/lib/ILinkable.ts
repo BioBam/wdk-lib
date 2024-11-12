@@ -2,12 +2,24 @@ import { PickValueMethod } from './LinkableConstruct';
 import { Type } from './Type';
 
 export interface ILinkable {
+
+  /**
+   * Access the identified of this construct.
+   * @returns the identifier of the construct
+   */
   get id(): string;
   set id(newID: string);
+
   get type(): Type;
 
   get idAsReference(): string;
 
+  /**
+   * Link this linkable construct to another one.
+   *
+   *
+   * @param link
+   */
   linkTo(link: ILinkable): ILinkable;
 
   /**

@@ -969,19 +969,6 @@ set or update the id of this construct
 
 A utility class for Constructs.
 
-#### Initializers <a name="Initializers" id="wdk-lib.Constructs.Initializer"></a>
-
-```java
-import com.biobam.wdk.lib.Constructs;
-
-new Constructs();
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-
----
-
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -1353,19 +1340,6 @@ Get the custom JavaScript expression for this ExpressionTool.
 
 ### FileUtils <a name="FileUtils" id="wdk-lib.FileUtils"></a>
 
-#### Initializers <a name="Initializers" id="wdk-lib.FileUtils.Initializer"></a>
-
-```java
-import com.biobam.wdk.lib.FileUtils;
-
-new FileUtils();
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-
----
-
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -1431,62 +1405,22 @@ Input input = Input.string(root, "myInput").withDefaultValue("default").withDoc(
 ```
 
 
-#### Initializers <a name="Initializers" id="wdk-lib.Input.Initializer"></a>
-
-```java
-import com.biobam.wdk.lib.Input;
-
-new Input(Construct scope, java.lang.String id, Type type);
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#wdk-lib.Input.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
-| <code><a href="#wdk-lib.Input.Initializer.parameter.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
-| <code><a href="#wdk-lib.Input.Initializer.parameter.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
-
----
-
-##### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.Initializer.parameter.scope"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
-The scope in which this construct is defined.
-
----
-
-##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.Initializer.parameter.id"></a>
-
-- *Type:* java.lang.String
-
-Unique identifier for the construct in it's scope.
-
-set or update the id of this construct
-
----
-
-##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Input.Initializer.parameter.type"></a>
-
-- *Type:* <a href="#wdk-lib.Type">Type</a>
-
----
-
 #### Methods <a name="Methods" id="Methods"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
 | <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
-| <code><a href="#wdk-lib.Input.as">as</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.isArray">isArray</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.makeSeparate">makeSeparate</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.toMap">toMap</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.withDefaultValue">withDefaultValue</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.withDoc">withDoc</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.withItemSeparator">withItemSeparator</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.withPosition">withPosition</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.withPrefix">withPrefix</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.as">as</a></code> | Changes the ID of the input and returns the modified input instance. |
+| <code><a href="#wdk-lib.Input.isArray">isArray</a></code> | Checks if the input is an array type. |
+| <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | Sets the optionality of the input. |
+| <code><a href="#wdk-lib.Input.makeSeparate">makeSeparate</a></code> | Sets whether the input items should be separated. |
+| <code><a href="#wdk-lib.Input.toMap">toMap</a></code> | Converts the input to a CWL-compatible JSON object. |
+| <code><a href="#wdk-lib.Input.withDefaultValue">withDefaultValue</a></code> | Assigns a default value to the input. |
+| <code><a href="#wdk-lib.Input.withDoc">withDoc</a></code> | Adds documentation to the input. |
+| <code><a href="#wdk-lib.Input.withItemSeparator">withItemSeparator</a></code> | Sets an item separator for array inputs. |
+| <code><a href="#wdk-lib.Input.withPosition">withPosition</a></code> | Specifies a position for the input. |
+| <code><a href="#wdk-lib.Input.withPrefix">withPrefix</a></code> | Sets a prefix for the input. |
 
 ---
 
@@ -1495,6 +1429,8 @@ set or update the id of this construct
 ```java
 public ILinkable linkTo(ILinkable linkInput)
 ```
+
+Link this linkable construct to another one.
 
 ###### `linkInput`<sup>Required</sup> <a name="linkInput" id="wdk-lib.Input.linkTo.parameter.linkInput"></a>
 
@@ -1522,9 +1458,13 @@ Set the PickValueMethod for this linkable if there are multiple sources linked t
 public Input as(java.lang.String newId)
 ```
 
+Changes the ID of the input and returns the modified input instance.
+
 ###### `newId`<sup>Required</sup> <a name="newId" id="wdk-lib.Input.as.parameter.newId"></a>
 
 - *Type:* java.lang.String
+
+The new identifier for this input.
 
 ---
 
@@ -1534,15 +1474,21 @@ public Input as(java.lang.String newId)
 public java.lang.Boolean isArray()
 ```
 
+Checks if the input is an array type.
+
 ##### `makeOptional` <a name="makeOptional" id="wdk-lib.Input.makeOptional"></a>
 
 ```java
 public Input makeOptional(java.lang.Boolean optional)
 ```
 
+Sets the optionality of the input.
+
 ###### `optional`<sup>Required</sup> <a name="optional" id="wdk-lib.Input.makeOptional.parameter.optional"></a>
 
 - *Type:* java.lang.Boolean
+
+A flag indicating if the input should be optional.
 
 ---
 
@@ -1552,9 +1498,13 @@ public Input makeOptional(java.lang.Boolean optional)
 public Input makeSeparate(java.lang.Boolean separate)
 ```
 
+Sets whether the input items should be separated.
+
 ###### `separate`<sup>Required</sup> <a name="separate" id="wdk-lib.Input.makeSeparate.parameter.separate"></a>
 
 - *Type:* java.lang.Boolean
+
+A flag indicating separation status.
 
 ---
 
@@ -1565,9 +1515,13 @@ public java.util.Map<java.lang.String, java.lang.Object> toMap()
 public java.util.Map<java.lang.String, java.lang.Object> toMap(java.lang.Boolean short)
 ```
 
+Converts the input to a CWL-compatible JSON object.
+
 ###### `short`<sup>Optional</sup> <a name="short" id="wdk-lib.Input.toMap.parameter.short"></a>
 
 - *Type:* java.lang.Boolean
+
+A flag indicating if the output should be shortened.
 
 ---
 
@@ -1577,9 +1531,13 @@ public java.util.Map<java.lang.String, java.lang.Object> toMap(java.lang.Boolean
 public Input withDefaultValue(java.lang.Object defaultValue)
 ```
 
+Assigns a default value to the input.
+
 ###### `defaultValue`<sup>Required</sup> <a name="defaultValue" id="wdk-lib.Input.withDefaultValue.parameter.defaultValue"></a>
 
 - *Type:* java.lang.Object
+
+The default value to assign.
 
 ---
 
@@ -1589,9 +1547,13 @@ public Input withDefaultValue(java.lang.Object defaultValue)
 public Input withDoc(java.lang.String doc)
 ```
 
+Adds documentation to the input.
+
 ###### `doc`<sup>Required</sup> <a name="doc" id="wdk-lib.Input.withDoc.parameter.doc"></a>
 
 - *Type:* java.lang.String
+
+The documentation string to add.
 
 ---
 
@@ -1601,9 +1563,13 @@ public Input withDoc(java.lang.String doc)
 public Input withItemSeparator(java.lang.String separator)
 ```
 
+Sets an item separator for array inputs.
+
 ###### `separator`<sup>Required</sup> <a name="separator" id="wdk-lib.Input.withItemSeparator.parameter.separator"></a>
 
 - *Type:* java.lang.String
+
+The separator string to set.
 
 ---
 
@@ -1613,9 +1579,13 @@ public Input withItemSeparator(java.lang.String separator)
 public Input withPosition(java.lang.Number position)
 ```
 
+Specifies a position for the input.
+
 ###### `position`<sup>Required</sup> <a name="position" id="wdk-lib.Input.withPosition.parameter.position"></a>
 
 - *Type:* java.lang.Number
+
+The position index to set.
 
 ---
 
@@ -1625,9 +1595,13 @@ public Input withPosition(java.lang.Number position)
 public Input withPrefix(java.lang.String prefix)
 ```
 
+Sets a prefix for the input.
+
 ###### `prefix`<sup>Required</sup> <a name="prefix" id="wdk-lib.Input.withPrefix.parameter.prefix"></a>
 
 - *Type:* java.lang.String
+
+The prefix to set.
 
 ---
 
@@ -1635,15 +1609,15 @@ public Input withPrefix(java.lang.String prefix)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Input.bool">bool</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.double">double</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.file">file</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.fileArray">fileArray</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.float">float</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.bool">bool</a></code> | Creates a boolean type input. |
+| <code><a href="#wdk-lib.Input.double">double</a></code> | Creates a double type input. |
+| <code><a href="#wdk-lib.Input.file">file</a></code> | Creates a file type input. |
+| <code><a href="#wdk-lib.Input.fileArray">fileArray</a></code> | Creates a file array type input. |
+| <code><a href="#wdk-lib.Input.float">float</a></code> | Creates a float type input. |
 | <code><a href="#wdk-lib.Input.fromStepInput">fromStepInput</a></code> | Create an input from a step input, using the same ID and type. |
-| <code><a href="#wdk-lib.Input.integer">integer</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.string">string</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.stringArray">stringArray</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.integer">integer</a></code> | Creates an integer type input. |
+| <code><a href="#wdk-lib.Input.string">string</a></code> | Creates a string type input. |
+| <code><a href="#wdk-lib.Input.stringArray">stringArray</a></code> | Creates a string array type input. |
 
 ---
 
@@ -1655,15 +1629,21 @@ import com.biobam.wdk.lib.Input;
 Input.bool(Construct scope, java.lang.String id)
 ```
 
+Creates a boolean type input.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.bool.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this input is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.bool.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this input.
 
 ---
 
@@ -1675,15 +1655,21 @@ import com.biobam.wdk.lib.Input;
 Input.double(Construct scope, java.lang.String id)
 ```
 
+Creates a double type input.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.double.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this input is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.double.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this input.
 
 ---
 
@@ -1695,15 +1681,21 @@ import com.biobam.wdk.lib.Input;
 Input.file(Construct scope, java.lang.String id)
 ```
 
+Creates a file type input.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.file.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this input is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.file.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this input.
 
 ---
 
@@ -1715,15 +1707,21 @@ import com.biobam.wdk.lib.Input;
 Input.fileArray(Construct scope, java.lang.String id)
 ```
 
+Creates a file array type input.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.fileArray.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this input is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.fileArray.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this input.
 
 ---
 
@@ -1735,15 +1733,21 @@ import com.biobam.wdk.lib.Input;
 Input.float(Construct scope, java.lang.String id)
 ```
 
+Creates a float type input.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.float.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this input is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.float.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this input.
 
 ---
 
@@ -1779,15 +1783,21 @@ import com.biobam.wdk.lib.Input;
 Input.integer(Construct scope, java.lang.String id)
 ```
 
+Creates an integer type input.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.integer.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this input is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.integer.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this input.
 
 ---
 
@@ -1799,15 +1809,21 @@ import com.biobam.wdk.lib.Input;
 Input.string(Construct scope, java.lang.String id)
 ```
 
+Creates a string type input.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.string.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this input is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.string.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this input.
 
 ---
 
@@ -1819,15 +1835,21 @@ import com.biobam.wdk.lib.Input;
 Input.stringArray(Construct scope, java.lang.String id)
 ```
 
+Creates a string array type input.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.stringArray.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this input is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.stringArray.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this input.
 
 ---
 
@@ -1842,11 +1864,11 @@ Input.stringArray(Construct scope, java.lang.String id)
 | <code><a href="#wdk-lib.Input.property.links">links</a></code> | <code>java.util.List<<a href="#wdk-lib.ILinkable">ILinkable</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
-| <code><a href="#wdk-lib.Input.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | Retrieves the type of the input. |
 | <code><a href="#wdk-lib.Input.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>java.lang.Boolean</code> | *No description.* |
-| <code><a href="#wdk-lib.Input.property.doc">doc</a></code> | <code>java.lang.String</code> | *No description.* |
-| <code><a href="#wdk-lib.Input.property.valueFrom">valueFrom</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>java.lang.Boolean</code> | Indicates whether the input is optional. |
+| <code><a href="#wdk-lib.Input.property.doc">doc</a></code> | <code>java.lang.String</code> | Retrieves the documentation associated with the input. |
+| <code><a href="#wdk-lib.Input.property.valueFrom">valueFrom</a></code> | <code>java.lang.String</code> | Retrieves the expression from which the input's value is derived. |
 
 ---
 
@@ -1934,6 +1956,8 @@ public Type getType();
 
 - *Type:* <a href="#wdk-lib.Type">Type</a>
 
+Retrieves the type of the input.
+
 ---
 
 ##### `pickValueMethod`<sup>Optional</sup> <a name="pickValueMethod" id="wdk-lib.Input.property.pickValueMethod"></a>
@@ -1954,6 +1978,8 @@ public java.lang.Boolean getOptional();
 
 - *Type:* java.lang.Boolean
 
+Indicates whether the input is optional.
+
 ---
 
 ##### `doc`<sup>Optional</sup> <a name="doc" id="wdk-lib.Input.property.doc"></a>
@@ -1963,6 +1989,8 @@ public java.lang.String getDoc();
 ```
 
 - *Type:* java.lang.String
+
+Retrieves the documentation associated with the input.
 
 ---
 
@@ -1974,7 +2002,21 @@ public java.lang.String getValueFrom();
 
 - *Type:* java.lang.String
 
+Retrieves the expression from which the input's value is derived.
+
+Sets the expression from which the input's value is derived. Use this in the workflows to set a value of a step input from some other value.
+
 ---
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+tool.getMessage().getValueFrom() = "Hello World!"; // This will set the value of the step input to 'Hello World!'
+tool.getWidth().getValueFrom() = Value.double(3.14); // This will set the value of the step input to 3.14
+tool.getHeight().getValueFrom() = Value.expression("inputs.my_input * 2");
+```
+
 
 
 ### InputReference <a name="InputReference" id="wdk-lib.InputReference"></a>
@@ -2164,7 +2206,7 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.LinkableConstruct.linkTo">linkTo</a></code> | *No description.* |
+| <code><a href="#wdk-lib.LinkableConstruct.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
 | <code><a href="#wdk-lib.LinkableConstruct.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 
 ---
@@ -2174,6 +2216,8 @@ set or update the id of this construct
 ```java
 public ILinkable linkTo(ILinkable linkInput)
 ```
+
+Link this linkable construct to another one.
 
 ###### `linkInput`<sup>Required</sup> <a name="linkInput" id="wdk-lib.LinkableConstruct.linkTo.parameter.linkInput"></a>
 
@@ -2313,6 +2357,18 @@ public PickValueMethod getPickValueMethod();
 
 - *Implements:* <a href="#wdk-lib.IMappable">IMappable</a>
 
+Represents an output parameter of a workflow, tool, or step.
+
+*Example*
+
+```java
+import com.biobam.wdk.lib.Output;
+import com.biobam.wdk.lib.Constructs;
+Construct root = Constructs.createRoot("root");
+Output output = Output.file(root, "myOutput").withGlob("*.txt").loadContents().outputEval("$(self[0].contents)");
+```
+
+
 #### Initializers <a name="Initializers" id="wdk-lib.Output.Initializer"></a>
 
 ```java
@@ -2357,14 +2413,14 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
 | <code><a href="#wdk-lib.Output.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
-| <code><a href="#wdk-lib.Output.as">as</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.globFromInputString">globFromInputString</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.loadContents">loadContents</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.outputEval">outputEval</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
-| <code><a href="#wdk-lib.Output.withGlob">withGlob</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.as">as</a></code> | Sets a new identifier for this output. |
+| <code><a href="#wdk-lib.Output.globFromInputString">globFromInputString</a></code> | Sets a glob pattern based on an input string identifier. |
+| <code><a href="#wdk-lib.Output.loadContents">loadContents</a></code> | Enables loading contents of the output files. |
+| <code><a href="#wdk-lib.Output.outputEval">outputEval</a></code> | Specifies an expression to evaluate the output. |
+| <code><a href="#wdk-lib.Output.toMap">toMap</a></code> | Converts the output's properties into a map format. |
+| <code><a href="#wdk-lib.Output.withGlob">withGlob</a></code> | Specifies a glob pattern to locate output files. |
 
 ---
 
@@ -2373,6 +2429,8 @@ set or update the id of this construct
 ```java
 public ILinkable linkTo(ILinkable linkInput)
 ```
+
+Link this linkable construct to another one.
 
 ###### `linkInput`<sup>Required</sup> <a name="linkInput" id="wdk-lib.Output.linkTo.parameter.linkInput"></a>
 
@@ -2400,9 +2458,13 @@ Set the PickValueMethod for this linkable if there are multiple sources linked t
 public Output as(java.lang.String id)
 ```
 
+Sets a new identifier for this output.
+
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.as.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The new identifier for this output.
 
 ---
 
@@ -2412,9 +2474,13 @@ public Output as(java.lang.String id)
 public Output globFromInputString(Input inputString)
 ```
 
+Sets a glob pattern based on an input string identifier.
+
 ###### `inputString`<sup>Required</sup> <a name="inputString" id="wdk-lib.Output.globFromInputString.parameter.inputString"></a>
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
+
+An Input instance whose ID forms the basis of the glob pattern.
 
 ---
 
@@ -2424,15 +2490,21 @@ public Output globFromInputString(Input inputString)
 public Output loadContents()
 ```
 
+Enables loading contents of the output files.
+
 ##### `outputEval` <a name="outputEval" id="wdk-lib.Output.outputEval"></a>
 
 ```java
 public Output outputEval(java.lang.String expression)
 ```
 
+Specifies an expression to evaluate the output.
+
 ###### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.Output.outputEval.parameter.expression"></a>
 
 - *Type:* java.lang.String
+
+The expression for evaluation.
 
 ---
 
@@ -2442,7 +2514,7 @@ public Output outputEval(java.lang.String expression)
 public java.util.Map<java.lang.String, java.lang.Object> toMap()
 ```
 
-Convert the object to a map representation following the CWL specification.
+Converts the output's properties into a map format.
 
 ##### `withGlob` <a name="withGlob" id="wdk-lib.Output.withGlob"></a>
 
@@ -2450,9 +2522,13 @@ Convert the object to a map representation following the CWL specification.
 public Output withGlob(java.lang.String glob)
 ```
 
+Specifies a glob pattern to locate output files.
+
 ###### `glob`<sup>Required</sup> <a name="glob" id="wdk-lib.Output.withGlob.parameter.glob"></a>
 
 - *Type:* java.lang.String
+
+The glob pattern.
 
 ---
 
@@ -2460,14 +2536,14 @@ public Output withGlob(java.lang.String glob)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Output.bool">bool</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.file">file</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.fileArray">fileArray</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.float">float</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.fromStepOutput">fromStepOutput</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.integer">integer</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.string">string</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.stringArray">stringArray</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.bool">bool</a></code> | Creates a boolean type output. |
+| <code><a href="#wdk-lib.Output.file">file</a></code> | Creates a file type output. |
+| <code><a href="#wdk-lib.Output.fileArray">fileArray</a></code> | Creates a file array type output. |
+| <code><a href="#wdk-lib.Output.float">float</a></code> | Creates a float type output. |
+| <code><a href="#wdk-lib.Output.fromStepOutput">fromStepOutput</a></code> | Creates an output from a step output, using the same ID and type. |
+| <code><a href="#wdk-lib.Output.integer">integer</a></code> | Creates an integer type output. |
+| <code><a href="#wdk-lib.Output.string">string</a></code> | Creates a string type output. |
+| <code><a href="#wdk-lib.Output.stringArray">stringArray</a></code> | Creates a string array type output. |
 
 ---
 
@@ -2479,15 +2555,21 @@ import com.biobam.wdk.lib.Output;
 Output.bool(Construct scope, java.lang.String id)
 ```
 
+Creates a boolean type output.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.bool.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this output is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.bool.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this output.
 
 ---
 
@@ -2499,15 +2581,21 @@ import com.biobam.wdk.lib.Output;
 Output.file(Construct scope, java.lang.String id)
 ```
 
+Creates a file type output.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.file.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this output is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.file.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this output.
 
 ---
 
@@ -2519,15 +2607,21 @@ import com.biobam.wdk.lib.Output;
 Output.fileArray(Construct scope, java.lang.String id)
 ```
 
+Creates a file array type output.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.fileArray.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this output is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.fileArray.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this output.
 
 ---
 
@@ -2539,15 +2633,21 @@ import com.biobam.wdk.lib.Output;
 Output.float(Construct scope, java.lang.String id)
 ```
 
+Creates a float type output.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.float.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this output is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.float.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this output.
 
 ---
 
@@ -2559,15 +2659,23 @@ import com.biobam.wdk.lib.Output;
 Output.fromStepOutput(Construct scope, Output linkedOutput)
 ```
 
+Creates an output from a step output, using the same ID and type.
+
+It also links the existing output to the new one.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.fromStepOutput.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this output is defined.
 
 ---
 
 ###### `linkedOutput`<sup>Required</sup> <a name="linkedOutput" id="wdk-lib.Output.fromStepOutput.parameter.linkedOutput"></a>
 
 - *Type:* <a href="#wdk-lib.Output">Output</a>
+
+The output to link and copy properties from.
 
 ---
 
@@ -2579,15 +2687,21 @@ import com.biobam.wdk.lib.Output;
 Output.integer(Construct scope, java.lang.String id)
 ```
 
+Creates an integer type output.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.integer.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this output is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.integer.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this output.
 
 ---
 
@@ -2599,15 +2713,21 @@ import com.biobam.wdk.lib.Output;
 Output.string(Construct scope, java.lang.String id)
 ```
 
+Creates a string type output.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.string.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this output is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.string.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this output.
 
 ---
 
@@ -2619,15 +2739,21 @@ import com.biobam.wdk.lib.Output;
 Output.stringArray(Construct scope, java.lang.String id)
 ```
 
+Creates a string array type output.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.stringArray.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The construct within which this output is defined.
 
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.stringArray.parameter.id"></a>
 
 - *Type:* java.lang.String
+
+The identifier for this output.
 
 ---
 
@@ -2642,9 +2768,9 @@ Output.stringArray(Construct scope, java.lang.String id)
 | <code><a href="#wdk-lib.Output.property.links">links</a></code> | <code>java.util.List<<a href="#wdk-lib.ILinkable">ILinkable</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
-| <code><a href="#wdk-lib.Output.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | Gets the type of the output. |
 | <code><a href="#wdk-lib.Output.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.property.yamlMap">yamlMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.Output.property.yamlMap">yamlMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | Generates a YAML map of the output's bindings and settings. |
 
 ---
 
@@ -2732,6 +2858,8 @@ public Type getType();
 
 - *Type:* <a href="#wdk-lib.Type">Type</a>
 
+Gets the type of the output.
+
 ---
 
 ##### `pickValueMethod`<sup>Optional</sup> <a name="pickValueMethod" id="wdk-lib.Output.property.pickValueMethod"></a>
@@ -2751,6 +2879,8 @@ public java.util.Map<java.lang.String, java.lang.Object> getYamlMap();
 ```
 
 - *Type:* java.util.Map<java.lang.String, java.lang.Object>
+
+Generates a YAML map of the output's bindings and settings.
 
 ---
 
@@ -4140,19 +4270,6 @@ public java.lang.String getLabel();
 
 Helper class for generating CWL valueFrom expressions.
 
-#### Initializers <a name="Initializers" id="wdk-lib.Value.Initializer"></a>
-
-```java
-import com.biobam.wdk.lib.Value;
-
-new Value();
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-
----
-
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -4372,19 +4489,6 @@ A Unicode character sequence.
 
 
 ### WdkUtils <a name="WdkUtils" id="wdk-lib.WdkUtils"></a>
-
-#### Initializers <a name="Initializers" id="wdk-lib.WdkUtils.Initializer"></a>
-
-```java
-import com.biobam.wdk.lib.WdkUtils;
-
-new WdkUtils();
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-
----
 
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
@@ -4819,6 +4923,26 @@ public StepClass getStepClass();
 
 - *Implements:* <a href="#wdk-lib.IMappable">IMappable</a>
 
+Represents the values associated with inputs of a workflow.
+
+This class allows for the management and retrieval of input values that are part of a workflow,
+facilitating tasks such as mapping inputs to their values, extracting file paths, and converting
+inputs to serializable formats.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+import com.biobam.wdk.lib.WorkflowValues;
+import com.biobam.wdk.lib.Input;
+import com.biobam.wdk.lib.Construct;
+Object root = Constructs.createRoot("root");
+Input input1 = Input.string(root, "firstInput").withDefaultValue("defaultValue");
+Input input2 = Input.file(root, "fileInput");
+WorkflowValues workflowValues = WorkflowValues.create("MyTask").addInput(input1, "customValue").addInput(input2, new InputReference("/path/to/file"));
+```
+
+
 #### Initializers <a name="Initializers" id="wdk-lib.WorkflowValues.Initializer"></a>
 
 ```java
@@ -4836,8 +4960,8 @@ new WorkflowValues();
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.WorkflowValues.addInput">addInput</a></code> | Associate a value to an input object. |
-| <code><a href="#wdk-lib.WorkflowValues.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
+| <code><a href="#wdk-lib.WorkflowValues.addInput">addInput</a></code> | Associates a value with an input object. |
+| <code><a href="#wdk-lib.WorkflowValues.toMap">toMap</a></code> | Converts the internal map of inputs to an object for easier serialization. |
 
 ---
 
@@ -4847,13 +4971,13 @@ new WorkflowValues();
 public WorkflowValues addInput(Input input, java.lang.Object value)
 ```
 
-Associate a value to an input object.
+Associates a value with an input object.
 
 ###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.WorkflowValues.addInput.parameter.input"></a>
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
 
-Input object to reference the value to.
+The input object to reference the value to.
 
 ---
 
@@ -4861,7 +4985,7 @@ Input object to reference the value to.
 
 - *Type:* java.lang.Object
 
-Value associated to the input.
+The value to be associated with the input.
 
 ---
 
@@ -4871,13 +4995,16 @@ Value associated to the input.
 public java.util.Map<java.lang.String, java.lang.Object> toMap()
 ```
 
-Convert the object to a map representation following the CWL specification.
+Converts the internal map of inputs to an object for easier serialization.
+
+Each input's value is mapped either directly or through its `toMap` method
+if it is an instance of `InputReference`.
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.WorkflowValues.create">create</a></code> | *No description.* |
+| <code><a href="#wdk-lib.WorkflowValues.create">create</a></code> | Creates a new instance of WorkflowValues with an optional task name. |
 
 ---
 
@@ -4889,9 +5016,15 @@ import com.biobam.wdk.lib.WorkflowValues;
 WorkflowValues.create(),WorkflowValues.create(java.lang.String taskName)
 ```
 
+Creates a new instance of WorkflowValues with an optional task name.
+
 ###### `taskName`<sup>Optional</sup> <a name="taskName" id="wdk-lib.WorkflowValues.create.parameter.taskName"></a>
 
 - *Type:* java.lang.String
+
+An optional name for the workflow task.
+
+Defaults to "Task" if none is provided.
 
 ---
 
@@ -4899,9 +5032,9 @@ WorkflowValues.create(),WorkflowValues.create(java.lang.String taskName)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.WorkflowValues.property.filePaths">filePaths</a></code> | <code>java.util.List<java.lang.String></code> | Get the file paths for all the file inputs. |
-| <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>></code> | *No description.* |
-| <code><a href="#wdk-lib.WorkflowValues.property.taskName">taskName</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.WorkflowValues.property.filePaths">filePaths</a></code> | <code>java.util.List<java.lang.String></code> | Retrieves the file paths for all inputs that are files. |
+| <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>></code> | Returns a map of input IDs to their associated values. |
+| <code><a href="#wdk-lib.WorkflowValues.property.taskName">taskName</a></code> | <code>java.lang.String</code> | Retrieves the task name associated with these workflow values. |
 
 ---
 
@@ -4913,7 +5046,7 @@ public java.util.List<java.lang.String> getFilePaths();
 
 - *Type:* java.util.List<java.lang.String>
 
-Get the file paths for all the file inputs.
+Retrieves the file paths for all inputs that are files.
 
 ---
 
@@ -4925,6 +5058,8 @@ public java.lang.Object getInputs();
 
 - *Type:* java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>>
 
+Returns a map of input IDs to their associated values.
+
 ---
 
 ##### `taskName`<sup>Required</sup> <a name="taskName" id="wdk-lib.WorkflowValues.property.taskName"></a>
@@ -4934,6 +5069,8 @@ public java.lang.String getTaskName();
 ```
 
 - *Type:* java.lang.String
+
+Retrieves the task name associated with these workflow values.
 
 ---
 
@@ -5003,7 +5140,7 @@ Provide either this or `inlineScript`.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ILinkable.linkTo">linkTo</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ILinkable.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
 | <code><a href="#wdk-lib.ILinkable.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 
 ---
@@ -5013,6 +5150,8 @@ Provide either this or `inlineScript`.
 ```java
 public ILinkable linkTo(ILinkable link)
 ```
+
+Link this linkable construct to another one.
 
 ###### `link`<sup>Required</sup> <a name="link" id="wdk-lib.ILinkable.linkTo.parameter.link"></a>
 
@@ -5052,7 +5191,7 @@ myStepTool.input.linkTo(cdHit.clusterFile).linkTo(inputFasta).pickValue(PickValu
 | <code><a href="#wdk-lib.ILinkable.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ILinkable.property.id">id</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.ILinkable.property.id">id</a></code> | <code>java.lang.String</code> | Access the identified of this construct. |
 
 ---
 
@@ -5123,6 +5262,8 @@ public java.lang.String getId();
 ```
 
 - *Type:* java.lang.String
+
+Access the identified of this construct.
 
 ---
 

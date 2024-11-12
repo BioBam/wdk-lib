@@ -1,4 +1,5 @@
 export class Shortify {
+
   public static input(inputMap: { [key: string]: any }): { [key: string]: any } | string {
 
     // If the map contains an array type together with the items type,
@@ -16,4 +17,8 @@ export class Shortify {
 
     return inputMap;
   }
+
+
+  // This class is a utility class and should not be instantiated
+  private constructor() { }
 }

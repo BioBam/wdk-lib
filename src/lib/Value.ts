@@ -102,4 +102,8 @@ export class Value {
   public static expression(expr: string): string {
     return `$( ${expr} )`;
   }
+
+
+  // This class is not meant to be instantiated.
+  private constructor() {}
 }

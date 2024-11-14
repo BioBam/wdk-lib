@@ -28,6 +28,7 @@ export class Output extends LinkableConstruct implements IMappable {
   static fromStepOutput(scope: Construct, linkedOutput: Output): Output {
     const newOutput = new Output(scope, linkedOutput.id, linkedOutput.type);
     newOutput.linkTo(linkedOutput);
+    newOutput.makeOptional(linkedOutput._optional);
     return newOutput;
   }
 
@@ -125,10 +126,15 @@ export class Output extends LinkableConstruct implements IMappable {
   private _glob: string | null = null;
   private _loadContents: boolean = false;
   private _outputEval: string | undefined;
+  /**
+   * @internal
+   */
+  protected _optional: boolean;
 
   constructor(scope: Construct, id: string, type: Type) {
     super(scope, id);
     this._type = type;
+    this._optional = false;
   }
 
   /**
@@ -191,6 +197,16 @@ export class Output extends LinkableConstruct implements IMappable {
   }
 
   /**
+   * Sets the optionality of the output. In cwl this output will have the type 'null' besides the specified type.
+   * @param optional A flag indicating if the input should be optional.
+   * @returns The current instance for chaining method calls.
+   */
+  makeOptional(optional: boolean): this {
+    this._optional = optional;
+    return this;
+  }
+
+  /**
    * Specifies an expression to evaluate the output.
    *
    * @param expression The expression for evaluation.
@@ -210,6 +226,10 @@ export class Output extends LinkableConstruct implements IMappable {
     const map: { [key: string]: any } = {
       type: this.type.toString(),
     };
+
+    if (this._optional) {
+      map.type = [map.type, 'null'];
+    }
 
     if (this._glob !== null) {
       map.outputBinding = {

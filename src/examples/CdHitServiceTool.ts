@@ -46,7 +46,7 @@ export class CdHitServiceTool extends Tool {
       .withGlob('cluster.fasta');
 
     this.clusterFile = Output.file(this, 'cluster_file')
-      .withGlob('cluster.fasta.clstr');
+      .withGlob('cluster.fasta.clstr').makeOptional(true);
     this.jsonString = Output.string(this, 'json_example')
       .withGlob('cluster.json').loadContents().outputEval('$(self[0].contents)');
   }

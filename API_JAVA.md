@@ -2434,6 +2434,7 @@ set or update the id of this construct
 | <code><a href="#wdk-lib.Output.as">as</a></code> | Sets a new identifier for this output. |
 | <code><a href="#wdk-lib.Output.globFromInputString">globFromInputString</a></code> | Sets a glob pattern based on an input string identifier. |
 | <code><a href="#wdk-lib.Output.loadContents">loadContents</a></code> | Enables loading contents of the output files. |
+| <code><a href="#wdk-lib.Output.makeOptional">makeOptional</a></code> | Sets the optionality of the output. |
 | <code><a href="#wdk-lib.Output.outputEval">outputEval</a></code> | Specifies an expression to evaluate the output. |
 | <code><a href="#wdk-lib.Output.toMap">toMap</a></code> | Converts the output's properties into a map format. |
 | <code><a href="#wdk-lib.Output.withGlob">withGlob</a></code> | Specifies a glob pattern to locate output files. |
@@ -2507,6 +2508,24 @@ public Output loadContents()
 ```
 
 Enables loading contents of the output files.
+
+##### `makeOptional` <a name="makeOptional" id="wdk-lib.Output.makeOptional"></a>
+
+```java
+public Output makeOptional(java.lang.Boolean optional)
+```
+
+Sets the optionality of the output.
+
+In cwl this output will have the type 'null' besides the specified type.
+
+###### `optional`<sup>Required</sup> <a name="optional" id="wdk-lib.Output.makeOptional.parameter.optional"></a>
+
+- *Type:* java.lang.Boolean
+
+A flag indicating if the input should be optional.
+
+---
 
 ##### `outputEval` <a name="outputEval" id="wdk-lib.Output.outputEval"></a>
 

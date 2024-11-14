@@ -40,7 +40,9 @@ outputs:
     outputBinding:
       glob: cluster.fasta
   cluster_file:
-    type: File
+    type:
+      - File
+      - 'null'
     outputBinding:
       glob: cluster.fasta.clstr
   json_example:

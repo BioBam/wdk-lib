@@ -40,16 +40,28 @@ export class Conditional extends Construct {
     if (input.type != Type.BOOLEAN) {
       throw new Error(`Input ${input.id} is not a boolean. Conditional can only be applied on boolean inputs.`);
     }
+    this.failIfInputDoesNotBelongToStep(input);
     this.__expression = `$(inputs.${input.id} == ${value})`;
+  }
+
+  /**
+   * Check if the referenced input is part of the step.
+   * @param input A Step input parameter.
+   */
+  private failIfInputDoesNotBelongToStep(input: Input) {
+    //TODO: could accept linked workflow inputs by looking for the step input through the link.
+    if (!this.scope?._nodesOf(Input).includes(input)) {
+      throw new Error(`Input ${input.id} is not part of the step ${this.scope?.id} inputs.`);
+    }
   }
 
   /**
    * Skip this step if the specified input is null.
    *
-   * @param input One of the step input parameters.
+   * @param input One of the step input parameters. e.g. `step.inputFile`
    */
   whenInputNotNull(input: Input) {
-    // Check if the referenced input is part of the step.
+    this.failIfInputDoesNotBelongToStep(input);
     this.__expression = `$(inputs.${input.id} !== null)`;
   }
 

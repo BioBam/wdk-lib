@@ -93,6 +93,22 @@ describe('Input Class', () => {
       });
     });
 
+    it('should convert file array input to map correctly with item separator', () => {
+      const input = Input.fileArray(mockScope, 'testStringArrayId');
+      input.withPrefix('--prefix').withItemSeparator(',');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        type: {
+          type: 'File[]',
+          inputBinding: {
+            prefix: '--prefix',
+            itemSeparator: ',',
+          },
+        },
+      });
+    });
+
     it('should convert file array input to map correctly', () => {
       const input = Input.fileArray(mockScope, 'testFileArrayId');
       input.withDefaultValue(['file1', 'file2']);

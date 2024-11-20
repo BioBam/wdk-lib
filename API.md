@@ -823,6 +823,8 @@ Skip this step if the specified input is null.
 
 One of the step input parameters.
 
+e.g. `step.inputFile`
+
 ---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>

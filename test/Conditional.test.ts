@@ -58,4 +58,23 @@ describe('Scatter', () => {
       Conditional.step(step).whenBooleanInputIs(input, true);
     }).toThrow('Input string_input is not a boolean. Conditional can only be applied on boolean inputs.');
   });
+
+  test('should throw error when string non-step input is used in nonNull', () => {
+    // Arrange
+    const workflowInput = Input.string(scope, 'string_input');
+    // Act & Assert
+    expect(() => {
+      Conditional.step(step).whenInputNotNull(workflowInput);
+    }).toThrow(`Input ${workflowInput.id} is not part of the step ${step.id} inputs.`);
+  });
+
+  test('should throw error when boolean non-step input is used in nonNull', () => {
+    // Arrange
+    const workflowInput = Input.bool(scope, 'bool_input');
+    // Act & Assert
+    expect(() => {
+      Conditional.step(step).whenInputNotNull(workflowInput);
+    }).toThrow(`Input ${workflowInput.id} is not part of the step ${step.id} inputs.`);
+  });
+
 });

@@ -358,7 +358,13 @@ export class Input extends LinkableConstruct {
         typeMap = Shortify.input(typeMap);
       }
 
-      inputMap.type = typeMap;
+      if (this._optional) {
+        inputMap.type = ['null', typeMap];
+      } else {
+        inputMap.type = typeMap;
+      }
+
+
     } else {
       throw new Error(`Unsupported type: ${this._type.toString()}`);
     }

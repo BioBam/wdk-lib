@@ -123,5 +123,37 @@ describe('Input Class', () => {
     // Add more tests for toMap with different types and configurations, covering all possible configurations
   });
 
+  it('should convert an optional short file array input to map correctly', () => {
+    const input = Input.fileArray(mockScope, 'testStringArrayId');
+    input.makeOptional(true);
+
+    const map = input.toMap();
+    expect(map).toEqual({
+      type: [
+        'null',
+        'File[]',
+      ],
+    });
+  });
+
+  it('should convert an optional file array input with bindings to map correctly', () => {
+    const input = Input.fileArray(mockScope, 'testStringArrayId');
+    input.makeOptional(true).withPrefix('--prefix').withItemSeparator(',');
+
+    const map = input.toMap();
+    expect(map).toEqual({
+      type: [
+        'null',
+        {
+          type: 'File[]',
+          inputBinding: {
+            prefix: '--prefix',
+            itemSeparator: ',',
+          },
+        },
+      ],
+    });
+  });
+
   // Add more comprehensive tests to ensure complete coverage
 });

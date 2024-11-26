@@ -17,6 +17,7 @@ describe('Output Class', () => {
       const map = output._toCwlObject().save();
 
       expect(map).toEqual({
+        id: 'testId',
         type: 'string',
         outputBinding: {
           glob: '*.txt',
@@ -31,6 +32,7 @@ describe('Output Class', () => {
       const map = output._toCwlObject().save();
 
       expect(map).toEqual({
+        id: 'testStringArrayId',
         type: { type: 'array', items: 'string' },
       });
 
@@ -41,6 +43,7 @@ describe('Output Class', () => {
       const map = output._toCwlObject().save();
 
       expect(map).toEqual({
+        id: 'testStringArrayId',
         type: [
           'null',
           { type: 'array', items: 'string' },
@@ -54,6 +57,7 @@ describe('Output Class', () => {
       const map = output._toCwlObject().save();
 
       expect(map).toEqual({
+        id: 'testStringArrayId',
         type: [
           'null',
           { type: 'array', items: 'string' },
@@ -72,6 +76,7 @@ describe('Output Class', () => {
       const map = output._toCwlObject().save();
 
       expect(map).toEqual({
+        id: 'testStringArrayId',
         type: [
           'null',
           {

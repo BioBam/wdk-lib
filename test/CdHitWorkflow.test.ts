@@ -1,6 +1,3 @@
-import { execSync } from 'child_process';
-import * as fs from 'fs';
-import * as path from 'path';
 import { CdHitWorkflow } from '../src/examples/CdHitWorkflowShort2'; // Adjust this import as needed
 import { Construct } from '../src/lib/Construct';
 
@@ -11,35 +8,38 @@ describe('CdHitWorkflow YAML output', () => {
     const rootConstruct = new Construct(null as any, 'root');
 
     // Instantiate the CdHitWorkflow with the root construct.
+
     const cdHitWorkflow = new CdHitWorkflow(rootConstruct, 'cdhit-workflow-id');
 
-    // Define output path
-    const outputDir = path.join(__dirname, '../testoutput');
+    expect(cdHitWorkflow.toMap()).toMatchSnapshot();
 
-    // const outputFile = path.join(outputDir, 'cdHitWorkflow.yaml');
+    // // Define output path
+    // const outputDir = path.join(__dirname, '../testoutput');
 
-    // Ensure `testoutput` directory exists
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir);
-    }
-    const sFile = cdHitWorkflow.serialize(outputDir);
+    // // const outputFile = path.join(outputDir, 'cdHitWorkflow.yaml');
 
-    // Write (or overwrite) the YAML content to the file
-    // fs.writeFileSync(outputFile, yamlOutput, 'utf8');
+    // // Ensure `testoutput` directory exists
+    // if (!fs.existsSync(outputDir)) {
+    //   fs.mkdirSync(outputDir);
+    // }
+    // const sFile = cdHitWorkflow.serialize(outputDir);
 
-    // Compare with git diff
-    let diffResult: string;
-    try {
-      diffResult = execSync(`git diff -- ${sFile.main}`, { encoding: 'utf-8' });
-    } catch (error) {
-      if (error instanceof Error && 'stdout' in error) {
-        diffResult = (error.stdout as Buffer).toString();
-      } else {
-        throw error; // Re-throw if it's not the expected error type.
-      }
-    }
+    // // Write (or overwrite) the YAML content to the file
+    // // fs.writeFileSync(outputFile, yamlOutput, 'utf8');
 
-    // Assert there are no differences
-    expect(diffResult).toBe('');
+    // // Compare with git diff
+    // let diffResult: string;
+    // try {
+    //   diffResult = execSync(`git diff -- ${sFile.main}`, { encoding: 'utf-8' });
+    // } catch (error) {
+    //   if (error instanceof Error && 'stdout' in error) {
+    //     diffResult = (error.stdout as Buffer).toString();
+    //   } else {
+    //     throw error; // Re-throw if it's not the expected error type.
+    //   }
+    // }
+
+    // // Assert there are no differences
+    // expect(diffResult).toBe('');
   });
 });

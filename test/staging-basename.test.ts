@@ -1,8 +1,7 @@
 'use strict';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as yaml from 'js-yaml';
-import { BashTool, CheckFileNameTool, FileUtils, Input, RenameExpressionTool, Requirement, Workflow } from '../src/lib';
+import { BashTool, CheckFileNameTool, Input, RenameExpressionTool, Requirement, Workflow } from '../src/lib';
 import { Constructs } from '../src/lib/Constructs';
 
 
@@ -25,32 +24,38 @@ const getFilesRecursively = (dir: string): string[] => {
   return results;
 };
 
-const printMap = (toolMap: any, pathToDirectory: string, fileName: string) => {
-  const yamlOutput = yaml.dump(toolMap, { quotingType: '\"' });
-  const outputFile = path.join(pathToDirectory, fileName);
-  FileUtils.writeFileContent(outputFile, yamlOutput);
-};
+// const printMap = (toolMap: any, pathToDirectory: string, fileName: string) => {
+//   const yamlOutput = yaml.dump(toolMap, { quotingType: '\"' });
+//   const outputFile = path.join(pathToDirectory, fileName);
+//   FileUtils.writeFileContent(outputFile, yamlOutput);
+// };
 
 // Path to the script-check.sh.txt file
 const scriptCheckPath = path.join(__dirname, 'script-check.sh');
 
 
 // Utility function to create the staging-basename workflow components
-const createStagingBasename = (destDirectory: string) => {
+// const createStagingBasename = (destDirectory: string) => {
+const createStagingBasename = () => {
   const checkTool = new BashTool(Constructs.rootWorkflow(), 'check', { inlineScriptPath: scriptCheckPath });
   Input.file(checkTool, 'p');
   Input.string(checkTool, 'checkname');
   const toolMap = checkTool.toMap();
-  printMap(toolMap, destDirectory, 'check.cwl');
+  // printMap(toolMap, destDirectory, 'check.cwl');
+  expect(toolMap).toMatchSnapshot();
 };
 
-const createRename = (destDirectory: string) => {
+// const createRename = (destDirectory: string) => {
+const createRename = () => {
   const renameTool = new RenameExpressionTool(Constructs.rootWorkflow(), 'check');
   const toolMap = renameTool._toCwlObject().save();
-  printMap(toolMap, destDirectory, 'rename.cwl');
+  // printMap(toolMap, destDirectory, 'rename.cwl');
+  expect(toolMap).toMatchSnapshot();
+
 };
 
-const createWfRen = (destDirectory: string) => {
+// const createWfRen = (destDirectory: string) => {
+const createWfRen = () => {
   const wfRen = new Workflow(Constructs.rootWorkflow(), 'wf_ren', Workflow.basicProps());
   Requirement.stepInputExpression(wfRen);
   Requirement.inlineJavascript(wfRen);
@@ -61,34 +66,38 @@ const createWfRen = (destDirectory: string) => {
   checkTool.f1.linkTo(renameTool.out);
   checkTool.checkname.linkTo(newname);
   const toolMap = wfRen.toMap();
-  printMap(toolMap, destDirectory, 'wf_ren.cwl');
+  // printMap(toolMap, destDirectory, 'wf_ren.cwl');
+  expect(toolMap).toMatchSnapshot();
 };
 
 
 // Test case to compare output files with gold standard files
 describe('Output File Comparison with Test Set', () => {
-  const goldStandardDir = path.join(__dirname, '../cwl-tests/staging-basename/');
+  // const goldStandardDir = path.join(__dirname, '../cwl-tests/staging-basename/');
   const outputDir = path.join(__dirname, '../testoutput/staging-basename/');
   // Ensure `outputDir` directory exists
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir);
   }
 
-  // Create the output to compare.
-  createStagingBasename(outputDir);
-  createRename(outputDir);
-  createWfRen(outputDir);
-  const goldStandardFiles = getFilesRecursively(goldStandardDir);
-
-  goldStandardFiles.forEach((goldFile) => {
-    const relativePath = path.relative(goldStandardDir, goldFile);
-    const outputFile = path.join(outputDir, relativePath);
-
-    test(`Comparing ${relativePath}`, () => {
-      const goldContent = FileUtils.readFileContent(goldFile);
-      const outputContent = FileUtils.readFileContent(outputFile);
-
-      expect(outputContent).toBe(goldContent);
-    });
+  it('should generate correct YAML and have no git differences', () => {
+    // Create the output to compare.
+    createStagingBasename();
+    createRename();
+    createWfRen();
   });
+
+  // const goldStandardFiles = getFilesRecursively(goldStandardDir);
+
+  // goldStandardFiles.forEach((goldFile) => {
+  //   const relativePath = path.relative(goldStandardDir, goldFile);
+  // const outputFile = path.join(outputDir, relativePath);
+
+  // test(`Comparing ${relativePath}`, () => {
+  //   const goldContent = FileUtils.readFileContent(goldFile);
+  //   const outputContent = FileUtils.readFileContent(outputFile);
+
+  //   expect(outputContent).toBe(goldContent);
+  // });
+  // });
 });

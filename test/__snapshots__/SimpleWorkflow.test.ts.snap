@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Simple Workflow cwl export test should generate valid YAML and match snapshot 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "my-simple-workflow",
+  "inputs": [
+    {
+      "id": "taFInput",
+      "type": "File",
+    },
+  ],
+  "outputs": [
+    {
+      "id": "tbFOutput",
+      "type": "File",
+    },
+  ],
+  "steps": [
+    {
+      "id": "tool-a",
+      "in": [
+        {
+          "id": "taFInput",
+          "source": "taFInput",
+        },
+      ],
+      "out": [
+        "taFOutput",
+      ],
+      "run": {
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "tool-a",
+        "inputs": [
+          {
+            "id": "taFInput",
+            "type": "File",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "taFOutput",
+            "type": "File",
+          },
+        ],
+      },
+    },
+    {
+      "id": "tool-b",
+      "in": [
+        {
+          "id": "tbFInput",
+          "source": "tool-a/taFOutput",
+        },
+      ],
+      "out": [
+        "tbFOutput",
+      ],
+      "run": {
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "tool-b",
+        "inputs": [
+          {
+            "id": "tbFInput",
+            "type": "File",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "tbFOutput",
+            "type": "File",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

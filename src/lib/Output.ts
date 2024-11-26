@@ -178,9 +178,7 @@ export class Output extends LinkableConstruct implements IMappable {
    * @returns A map representation of the output.
    */
   toMap(): { [key: string]: any } {
-    return {
-      type: this._parameterType.toString(),
-    };
+    return this._toCwlObject().save();
   }
 
   /**
@@ -225,34 +223,6 @@ export class Output extends LinkableConstruct implements IMappable {
     return this;
   }
 
-  /**
-   * Generates a YAML map of the output's bindings and settings.
-   *
-   * @returns A YAML map of the output configuration.
-   */
-  get yamlMap(): { [key: string]: any } {
-    const map: { [key: string]: any } = {
-      type: this._parameterType.toString(),
-    };
-
-    if (this._optional) {
-      map.type = [map.type, 'null'];
-    }
-
-    if (this._glob !== null) {
-      map.outputBinding = {
-        glob: this._glob,
-      };
-      if (this._loadContents) {
-        map.outputBinding.loadContents = true;
-      }
-      if (this._outputEval) {
-        map.outputBinding.outputEval = this._outputEval;
-      }
-    }
-
-    return map;
-  }
 
   /**
    * Sets a glob pattern based on an input string identifier.
@@ -304,6 +274,7 @@ export class Output extends LinkableConstruct implements IMappable {
     }
 
     let cop = new cwl.CommandOutputParameter({
+      id: this.id,
       type: typeToAssign,
     });
 
@@ -338,6 +309,7 @@ export class Output extends LinkableConstruct implements IMappable {
       id: this.id,
       type: typeToAssign,
     });
+    console.debug(`Output ${this.id} has type ${typeToAssign}`);
     return etop;
   }
 
@@ -348,7 +320,8 @@ export class Output extends LinkableConstruct implements IMappable {
     if (this._psc === StepClass.WORKFLOW) {
       return this.createWorkflowOutputParameter();
     } else if (this._psc === StepClass.EXPRESSION_TOOL) {
-      return this.createExpressionToolOutputParameter();
+      const output = this.createExpressionToolOutputParameter();
+      return output;
     } else if (this._psc === StepClass.COMMAND_LINE_TOOL) {
       return this.createCommandOutputParameter();
     } else {

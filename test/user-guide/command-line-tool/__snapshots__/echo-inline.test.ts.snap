@@ -10,6 +10,7 @@ exports[`Command-line Tool CWL output should generate correct CWL for the echo t
   ],
   "class": "CommandLineTool",
   "cwlVersion": "v1.2",
+  "id": "echo-inline",
   "inputs": [
     {
       "id": "message",

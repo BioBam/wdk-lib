@@ -136,15 +136,24 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
       "type": "File",
     },
   ],
+  "requirements": [
+    {
+      "class": "InlineJavascriptRequirement",
+    },
+    {
+      "class": "SubworkflowFeatureRequirement",
+    },
+  ],
   "steps": [
     {
+      "id": "pathway-analysis-pre",
       "in": [
         {
           "source": "input_file",
         },
       ],
       "out": [
-        undefined,
+        "loaded_project",
       ],
       "run": {
         "arguments": [
@@ -159,6 +168,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         ],
         "class": "CommandLineTool",
         "cwlVersion": "v1.2",
+        "id": "pathway-analysis-pre",
         "inputs": [
           {
             "id": "input_file",
@@ -187,9 +197,20 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
             "type": "File",
           },
         ],
+        "requirements": [
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
+          },
+        ],
       },
     },
     {
+      "id": "pathway-analysis-service",
       "in": [
         {
           "source": "pathway-analysis-pre/loaded_project",
@@ -256,7 +277,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         },
       ],
       "out": [
-        undefined,
+        "output_project",
       ],
       "run": {
         "arguments": [
@@ -271,6 +292,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         ],
         "class": "CommandLineTool",
         "cwlVersion": "v1.2",
+        "id": "pathway-analysis-service",
         "inputs": [
           {
             "id": "input_sequence",
@@ -452,9 +474,30 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
             "type": "File",
           },
         ],
+        "requirements": [
+          {
+            "class": "InitialWorkDirRequirement",
+            "listing": [
+              {
+                "entry": "$(inputs.input_sequence)",
+                "entryname": "input_file.box",
+                "writable": true,
+              },
+            ],
+          },
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
+          },
+        ],
       },
     },
     {
+      "id": "pathway-analysis-post",
       "in": [
         {
           "source": "pathway-analysis-service/output_project",
@@ -467,7 +510,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         },
       ],
       "out": [
-        undefined,
+        "output_full_project",
       ],
       "run": {
         "arguments": [
@@ -481,6 +524,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         ],
         "class": "CommandLineTool",
         "cwlVersion": "v1.2",
+        "id": "pathway-analysis-post",
         "inputs": [
           {
             "id": "input_project",
@@ -522,6 +566,31 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
               "glob": "$(inputs.output_project)",
             },
             "type": "File",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "InitialWorkDirRequirement",
+            "listing": [
+              {
+                "entry": "$(inputs.input_project)",
+                "entryname": "pathways_file.box",
+                "writable": true,
+              },
+              {
+                "entry": "$(inputs.input_expression)",
+                "entryname": "expression_file.box",
+                "writable": true,
+              },
+            ],
+          },
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
           },
         ],
       },

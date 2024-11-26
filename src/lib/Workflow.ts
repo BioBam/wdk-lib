@@ -10,7 +10,6 @@ import { IWorkflowProps } from './IWorkflowProps';
 import { Output } from './Output';
 import { Requirement } from './Requirement';
 import { Scatter } from './Scatter';
-import { Shortify } from './Shortify';
 import { StepConstruct } from './StepConstruct';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
@@ -88,170 +87,12 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
   }
 
   toMap(): { [key: string]: any } {
-    const wData: { [key: string]: any } = {
-      class: this.stepClass.toString(),
-      cwlVersion: this.props.cwlVersion ? this.props.cwlVersion : Constants.cwlVersion,
-      inputs: {},
-      outputs: [],
-      requirements: {},
-      steps: {},
-    };
-
-    // Adding requirements
-    const requirements: { [key: string]: any } = {};
-    for (const requirement of this.requirements) {
-      requirements[requirement.requirementType] = requirement.toMap();
-    }
-    wData.requirements = requirements;
-
-    // Adding inputs
-    const inputs: { [key: string]: any } = {};
-    for (const input of this.inputs) {
-      let inputMap = input.toMap();
-      inputs[input.id] = Shortify.input(inputMap);
-    }
-    wData.inputs = inputs;
-
-    // Adding steps
-    const steps: { [key: string]: any } = {};
-    for (const step of this.steps) {
-      const runName = step.fileName;
-      const stepData = this.createWorkflowStepMap(step, runName);
-      steps[step.id] = stepData;
-    }
-
-    wData.steps = steps;
-
-    // Adding outputs
-    const workflowOutputs: { [key: string]: any }[] = [];
-    for (const output of this.outputs) {
-      const outputData: { [key: string]: any } = {};
-      outputData.id = output.id;
-      outputData.type = output._type.toString();
-      if (output.linked) {
-        if (output.multiLinked) {
-          outputData.outputSource = output.links.map(l => l.idAsReference);
-        } else {
-          outputData.outputSource = output.links[0].idAsReference;
-        }
-      }
-      if (output.pickValueMethod) {
-        outputData.pickValue = output.pickValueMethod.toString();
-      }
-      workflowOutputs.push(outputData);
-    }
-
-    wData.outputs = workflowOutputs;
-
-    return wData;
+    return this._toCwlObject().save();
   }
-
-  private createWorkflowStepMap(step: IStep, runName: string): { [key: string]: any } {
-    const stepData: { [key: string]: any } = {};
-    // creating in links
-    const inLinks: { [key: string]: any } = {};
-    for (const input of step.inputs) {
-      if (!input.linked && !input.valueFrom) {
-        continue;
-      }
-
-      if (input.valueFrom) {
-        const inDetail: { [key: string]: any } = {};
-        inDetail.source = input.links[0]?.idAsReference;
-        inDetail.valueFrom = input.valueFrom;
-        inLinks[input.id] = inDetail;
-      } else {
-        if (input.multiLinked) {
-          const inDetail: { [key: string]: any } = {};
-          inDetail.source = input.links.map(l => l.idAsReference);
-          if (input.pickValueMethod) {
-            inDetail.pickValue = input.pickValueMethod.toString();
-          }
-          inLinks[input.id] = inDetail;
-        } else {
-          inLinks[input.id] = input.links[0].idAsReference;
-        }
-      }
-
-    }
-    stepData.in = inLinks;
-    // creating out links
-    const outLinks: string[] = [];
-    for (const output of step.linkedOutputs) {
-      outLinks.push(output.id);
-    }
-    stepData.out = outLinks;
-    stepData.run = runName;
-
-    if (step.scatter) {
-      const scatter = step.scatter;
-      if (scatter.ids.length == 1) {
-        stepData.scatter = scatter.ids[0];
-      } else {
-        stepData.scatter = step.scatter.ids;
-        stepData.method = step.scatter._method;
-      }
-    }
-
-    if (step.conditional && step.conditional._expression) {
-      stepData.when = step.conditional._expression;
-    }
-
-    return stepData;
-  }
-
 
   serialize(dirPath: string): SynthFiles {
     const synthInfo = WdkUtils.createSynthInfo(this, dirPath);
-    const wData: { [key: string]: any } = {};
-    wData.class = this.stepClass.toString();
-    wData.cwlVersion = this.props.cwlVersion;
-    // Adding requirements
-    const requirements: { [key: string]: any } = {};
-    for (const requirement of this.requirements) {
-      requirements[requirement.requirementType] = requirement.toMap();
-    }
-    wData.requirements = requirements;
-    // Adding inputs
-    const inputs: { [key: string]: any } = {};
-    for (const input of this.inputs) {
-      let type = input._type.toString();
-      if (input.optional) {
-        type += '?';
-      }
-      inputs[input.id] = type;
-    }
-    wData.inputs = inputs;
-    // Adding steps
-    const steps: { [key: string]: any } = {};
-    for (const step of this.steps) {
-      const sf: SynthFiles = step.serialize(dirPath);
-      synthInfo.addAsAttachment(sf);
-      const stepData = this.createWorkflowStepMap(step, WdkUtils.getFileBasename(sf.main));
-      steps[step.id] = stepData;
-    }
-    wData.steps = steps;
-    // Adding outputs
-    const workflowOutputs: { [key: string]: any }[] = [];
-    for (const output of this.outputs) {
-      const outputData: { [key: string]: any } = {};
-      outputData.id = output.id;
-      outputData.type = output._type.toString();
-
-      if (output.linked) {
-        if (output.multiLinked) {
-          outputData.outputSource = output.links.map(l => l.idAsReference);
-        } else {
-          outputData.outputSource = output.links[0].idAsReference;
-        }
-      }
-      if (output.pickValueMethod) {
-        outputData.pickValue = output.pickValueMethod.toString();
-      }
-      workflowOutputs.push(outputData);
-    }
-    wData.outputs = workflowOutputs;
-    const yamlString = yaml.dump(wData, { noRefs: true });
+    const yamlString = yaml.dump(this._toCwlObject().save(), { quotingType: '\"' });
     WdkUtils.writeToFile(yamlString, synthInfo.main);
     return synthInfo;
   }
@@ -263,6 +104,7 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
    */
   _toCwlObject(): cwl.Workflow {
     let w = new cwl.Workflow({
+      id: this.id,
       inputs: [],
       outputs: [],
       steps: [],
@@ -283,6 +125,7 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
     // Adding steps
     for (const step of this.steps) {
       let wStep = new cwl.WorkflowStep({
+        id: step.id,
         in_: [],
         out: [],
         run: step._toCwlObject(),
@@ -294,7 +137,9 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
           continue;
         }
 
-        let cwlStepInput = new cwl.WorkflowStepInput({});
+        let cwlStepInput = new cwl.WorkflowStepInput({
+          id: stepInput.id,
+        });
         if (stepInput.valueFrom) {
           cwlStepInput.source = stepInput.links[0]?.idAsReference;
           cwlStepInput.valueFrom = stepInput.valueFrom;
@@ -308,21 +153,20 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
             cwlStepInput.source = stepInput.links[0].idAsReference;
           }
         }
+        cwlStepInput.linkMerge;
         wStep.in_.push(cwlStepInput);
       }
 
       // step outputs
 
-      for (const output of step.linkedOutputs) {
-        const wsOutput = new cwl.WorkflowStepOutput({
-          id: output.id,
-        });
-        wStep.out.push(wsOutput);
+      for (const linkedOutput of step.linkedOutputs) {
+        // const wsOutput = new cwl.WorkflowStepOutput({});
+        // wsOutput.id = `${linkedOutput.id}`;
+        // wStep.out.push(wsOutput);
+        wStep.out.push(linkedOutput.id);
       }
 
       // Other step properties
-
-      w.id = this.id;
       w.cwlVersion = Constants.cwlVersion;
 
       if (step.scatter) {
@@ -340,6 +184,15 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
       }
 
       w.steps.push(wStep);
+    }
+
+    // Add Requirements if any
+    const requirements = this.requirements;
+    if (requirements.length > 0) {
+      w.requirements = [];
+      for (const requirement of requirements) {
+        w.requirements.push(requirement._toCwlObject());
+      }
     }
 
     return w;

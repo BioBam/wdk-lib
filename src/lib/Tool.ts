@@ -51,13 +51,8 @@ export class Tool extends StepConstruct implements IMappable {
     return [];
   }
 
-  get requirementsMap(): { [key: string]: any } {
-    const nodes = this._nodesOf(Requirement) as Requirement[];
-    const reqMap: { [key: string]: any } = {};
-    nodes.forEach(node => {
-      reqMap[node.requirementType.toString()] = node.toMap();
-    });
-    return reqMap;
+  public get requirements(): Requirement[] {
+    return this._nodesOf(Requirement) as Requirement[];
   }
 
   /**
@@ -66,51 +61,7 @@ export class Tool extends StepConstruct implements IMappable {
    * @returns
    */
   toMap(): { [key: string]: any } {
-
-    const cwlTool = this._toCwlObject();
-    const cwlDict = cwlTool.save();
-    return cwlDict;
-
-
-    // const tData: { [key: string]: any } = {
-    //   // id: this.id,
-    //   requirements: this.requirementsMap,
-    // };
-
-
-    // // Inputs section
-    // this.inputs.forEach(input => {
-    //   let inputMap = input.toMap();
-    //   // if the input map only has the type key, then we can just use the type value
-    //   if (Object.keys(inputMap).length === 1 && inputMap.type) {
-    //     inputMap = inputMap.type;
-    //   }
-    //   inputs[input.id] = inputMap;
-    // });
-    // tData.inputs = inputs;
-
-    // // Outputs section
-    // const outputs: { [key: string]: any } = {};
-    // this.outputs.forEach(output => {
-    //   outputs[output.id] = output.yamlMap;
-    // });
-    // if (Object.keys(outputs).length === 0) {
-    //   tData.outputs = [];
-    //   // delete tData.outputs;
-    // } else {
-    //   tData.outputs = outputs;
-    // }
-
-    // // if requirements is empty, remove it
-    // if (Object.keys(tData.requirements).length === 0) {
-    //   delete tData.requirements;
-    // }
-    // // if basecommand is empty, remove it
-    // if (tData.baseCommand.length === 0) {
-    //   delete tData.baseCommand;
-    // }
-
-    // return tData;
+    return this._toCwlObject().save();
   }
 
 
@@ -125,7 +76,7 @@ export class Tool extends StepConstruct implements IMappable {
     const shortClass = WdkUtils.getLowercaseInitials(this.stepClass);
     const cwlFile = WdkUtils.newFilePath(dirPath, `${this.id}.${shortClass}.cwl`);
     const synthInfo = SynthFiles.createWithMain(cwlFile);
-    const data = this.toMap();
+    const data = this._toCwlObject().save();
     const yamlString = yaml.dump(data, { noRefs: true });
     WdkUtils.writeToFile(yamlString, cwlFile);
     return synthInfo;
@@ -138,11 +89,11 @@ export class Tool extends StepConstruct implements IMappable {
   _toCwlObject(): cwl.CommandLineTool | cwl.ExpressionTool | cwl.Operation {
 
     let tool = new cwl.CommandLineTool({
+      id: this.id,
       cwlVersion: cwl.CWLVersion.V1_2,
       class_: cwl.CommandLineTool_class.COMMANDLINETOOL,
       inputs: [],
       outputs: [],
-      // TODO: Add requirements.
     });
 
     // Only add base command if it is not empty
@@ -170,6 +121,15 @@ export class Tool extends StepConstruct implements IMappable {
       let outputCwl = output._toCwlObject();
       tool.outputs.push(outputCwl);
     });
+
+    // Add Requirements if any
+    const requirements = this.requirements;
+    if (requirements.length > 0) {
+      tool.requirements = [];
+      for (const requirement of requirements) {
+        tool.requirements.push(requirement._toCwlObject());
+      }
+    }
 
     return tool;
   }

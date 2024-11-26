@@ -4,7 +4,6 @@ import { Construct } from '../src/lib/Construct';
 
 describe('PathwayLoadExpressionTool YAML output', () => {
   it('should generate correct YAML and have no git differences', () => {
-    // Ensure that Tool has a toMap() method.
     PathwayLoadExpressionTool.prototype.toMap = function () {
       // Mock implementation of toMap(), should reflect actual logic.
       return {

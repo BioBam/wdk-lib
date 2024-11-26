@@ -1,5 +1,4 @@
 import { CommandLineTool_class, CWLVersion } from 'cwl-ts-auto';
-import * as yaml from 'js-yaml';
 import { Constructs, Output } from '../src/lib';
 import { Input } from '../src/lib/Input';
 import { Tool } from '../src/lib/Tool';
@@ -64,7 +63,7 @@ describe('Tool Class', () => {
 
       // Assert
       const toolDictionary = result.save();
-      const yamlString = yaml.dump(toolDictionary);
+      // const yamlString = yaml.dump(toolDictionary);
 
       expect(toolDictionary.cwlVersion).toBe(CWLVersion.V1_2);
 

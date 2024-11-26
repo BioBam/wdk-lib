@@ -334,35 +334,7 @@ export class Input extends LinkableConstruct {
    * @returns A JSON object representing the input.
    */
   toMap(): { [key: string]: any } {
-    let cwlO = this._toCwlObject();
-    return cwlO.save();
-
-    // const inputMap: { [key: string]: any } = {};
-    // const inputBindingMap: { [key: string]: any } = {};
-
-    // let typeMap = {};
-
-    // if (this.isArray()) {
-
-    //   if (this._separate || this._prefix || this._separator) {
-
-    //     if (short) {
-    //       // check if inputmap only has type: 'array', items: 'string', then return 'string[]'
-    //       typeMap = Shortify.input(typeMap);
-    //     }
-
-
-    //     if (this._defaultValue !== undefined) {
-    //       inputMap.default = this._defaultValue;
-    //     }
-
-    //     if (this._position !== undefined) {
-    //       inputBindingMap.position = this._position;
-    //     }
-
-    //   }
-    // }
-    // return inputMap;
+    return this._toCwlObject().save();
   }
 
   private createWorkflowInputParameter(): cwl.WorkflowInputParameter {

@@ -1,3 +1,4 @@
+import * as cwl from 'cwl-ts-auto';
 import { Construct } from './Construct';
 import { ToolRequirementType } from './ToolRequirementType';
 
@@ -114,6 +115,51 @@ export class Requirement extends Construct {
   }
 
   public toMap(): { [key: string]: any } {
-    return this._data;
+    return this._toCwlObject().save();
+  }
+
+  _toCwlObject(): cwl.SubworkflowFeatureRequirement
+  | cwl.ScatterFeatureRequirement
+  | cwl.MultipleInputFeatureRequirement
+  | cwl.EnvVarRequirement
+  | cwl.ResourceRequirement
+  | cwl.InlineJavascriptRequirement
+  | cwl.StepInputExpressionRequirement
+  | cwl.InitialWorkDirRequirement
+  | cwl.NetworkAccess
+  | cwl.DockerRequirement {
+
+    switch (this._requirementType) {
+      case ToolRequirementType.SUBWORKFLOW_FEATURE:
+        return new cwl.SubworkflowFeatureRequirement({});
+      case ToolRequirementType.SCATTER_FEATURE:
+        return new cwl.ScatterFeatureRequirement({});
+      case ToolRequirementType.MULTIPLE_INPUT_FEATURE:
+        return new cwl.MultipleInputFeatureRequirement({});
+      case ToolRequirementType.ENV_VAR:
+        return new cwl.EnvVarRequirement({
+          envDef: this._data.envDef,
+        });
+      case ToolRequirementType.RESOURCE_REQUIREMENT:
+        return new cwl.ResourceRequirement(this._data);
+      case ToolRequirementType.INLINE_JAVASCRIPT:
+        return new cwl.InlineJavascriptRequirement({});
+      case ToolRequirementType.STEP_INPUT_EXPRESSION:
+        return new cwl.StepInputExpressionRequirement({});
+      case ToolRequirementType.INITIAL_WORK_DIR:
+        return new cwl.InitialWorkDirRequirement({
+          listing: this._data.listing,
+        });
+      case ToolRequirementType.NETWORK_ACCESS:
+        return new cwl.NetworkAccess({
+          networkAccess: this._data.networkAccess,
+        });
+      case ToolRequirementType.DOCKER:
+        return new cwl.DockerRequirement({
+          dockerPull: this._data.dockerPull,
+        });
+      default:
+        throw new Error(`Unknown requirement type ${this._requirementType}`);
+    }
   }
 }

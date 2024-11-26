@@ -24,6 +24,7 @@ describe('Requirement Class', () => {
 
   it('should create a resource requirement with specified props', () => {
     const props = {
+      class: 'ResourceRequirement', // This is just for testing, not necessary in the Requirement.resource method
       ramMin: 512,
       ramMax: 1024,
       coresMin: 1,

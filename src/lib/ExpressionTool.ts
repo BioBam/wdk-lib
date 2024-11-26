@@ -77,7 +77,6 @@ export class ExpressionTool extends StepConstruct implements IMappable {
     const cwlFile = WdkUtils.newFilePath(dirPath, `${this.id}.${shortClass}.cwl`);
     const synthInfo = SynthFiles.createWithMain(cwlFile);
     const data = this._toCwlObject().save();
-    // const data = this.toMap();
     const yamlString = yaml.dump(data, { noRefs: true });
     WdkUtils.writeToFile(yamlString, cwlFile);
     return synthInfo;
@@ -85,13 +84,8 @@ export class ExpressionTool extends StepConstruct implements IMappable {
     throw new Error(`Method not implemented. ${dirPath}`);
   }
 
-  get requirementsMap(): { [key: string]: any } {
-    const nodes = this._nodesOf(Requirement) as Requirement[];
-    const reqMap: { [key: string]: any } = {};
-    nodes.forEach(node => {
-      reqMap[node.requirementType.toString()] = node.toMap();
-    });
-    return reqMap;
+  public get requirements(): Requirement[] {
+    return this._nodesOf(Requirement) as Requirement[];
   }
 
   /**
@@ -99,47 +93,7 @@ export class ExpressionTool extends StepConstruct implements IMappable {
    * @returns
    */
   public toMap(): { [key: string]: any } {
-    const map: { [key: string]: any } = {};
-    map.class = this.stepClass.toString();
-    // map.cwlVersion = this.config.cwlVersion;
-    // map.id = this.id;
-
-    map.requirements = this.requirementsMap;
-
-    // Inputs section
-    const inputs: { [key: string]: any } = {};
-    this.inputs.forEach(input => {
-      inputs[input.id] = input._type.toString() + (input.optional ? '?' : '');
-    });
-    map.inputs = inputs;
-
-    // Outputs section
-    const outputs: { [key: string]: any } = {};
-    this.outputs.forEach(output => {
-      const outputMap = output.toMap();
-      if (Object.keys(outputMap).length === 1 && outputMap.type) {
-        outputs[output.id] = outputMap.type;
-      } else {
-        outputs[output.id] = outputMap;
-      }
-    });
-
-    if (Object.keys(outputs).length === 0) {
-      map.outputs = [];
-      // delete tData.outputs;
-    } else {
-      map.outputs = outputs;
-    }
-
-    // Expression section
-    map.expression = this.expression;
-
-    // if requirements is empty, remove it
-    if (Object.keys(map.requirements).length === 0) {
-      delete map.requirements;
-    }
-
-    return map;
+    return this._toCwlObject().save();
   }
 
   /**
@@ -166,6 +120,7 @@ export class ExpressionTool extends StepConstruct implements IMappable {
    */
   public _toCwlObject(): cwl.ExpressionTool {
     const cwlETool = new cwl.ExpressionTool({
+      id: this.id,
       cwlVersion: cwl.CWLVersion.V1_2,
       inputs: [],
       outputs: [],
@@ -183,6 +138,15 @@ export class ExpressionTool extends StepConstruct implements IMappable {
       let outputCwl = output._toCwlObject();
       cwlETool.outputs.push(outputCwl);
     });
+
+    // Add Requirements if any
+    const requirements = this.requirements;
+    if (requirements.length > 0) {
+      cwlETool.requirements = [];
+      for (const requirement of requirements) {
+        cwlETool.requirements.push(requirement._toCwlObject());
+      }
+    }
 
 
     return cwlETool;

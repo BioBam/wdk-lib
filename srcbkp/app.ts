@@ -20,7 +20,6 @@ export class App extends Construct {
     // Here you can set any other properties related to the command line tool.
 
     let json = JSON.stringify(blastxTool.save(), null, 2);
-    console.log(json);
     return json;
   }
 

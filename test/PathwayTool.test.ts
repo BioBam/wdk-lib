@@ -1,7 +1,3 @@
-import { execSync } from 'child_process';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as yaml from 'js-yaml';
 import { PathwayLoadExpressionTool } from '../src/examples/PathwayExpressionTool';
 import { PathwayWorkflow } from '../src/examples/PathwayWorkflow';
 import { Construct } from '../src/lib/Construct';
@@ -9,7 +5,7 @@ import { Construct } from '../src/lib/Construct';
 describe('PathwayLoadExpressionTool YAML output', () => {
   it('should generate correct YAML and have no git differences', () => {
     // Ensure that Tool has a toMap() method.
-    PathwayLoadExpressionTool.prototype.toMap = function() {
+    PathwayLoadExpressionTool.prototype.toMap = function () {
       // Mock implementation of toMap(), should reflect actual logic.
       return {
         inputProject: this.inputProject ? this.inputProject.toMap() : null,
@@ -26,40 +22,43 @@ describe('PathwayLoadExpressionTool YAML output', () => {
     // const pathwayTool = new PathwayLoadExpressionTool(rootConstruct, 'unique-id');
     const pathwayWorkflow = new PathwayWorkflow(rootConstruct, 'workflow-id');
 
-    // Assuming the toMap method exists and functions properly.
-    // const aMap = pathwayTool.toMap();
-    const aMap = pathwayWorkflow.toMap();
+    // // Assuming the toMap method exists and functions properly.
+    // // const aMap = pathwayTool.toMap();
+    // const aMap = pathwayWorkflow.toMap();
 
-    // console.log(aMap);
+    // // console.log(aMap);
 
-    // Convert to YAML
-    const yamlOutput = yaml.dump(aMap);
+    // // Convert to YAML
+    // const yamlOutput = yaml.dump(aMap);
 
-    // Define output path
-    const outputDir = path.join(__dirname, '../testoutput');
-    const outputFile = path.join(outputDir, 'pathwayWorkflow.yaml');
+    // // Define output path
+    // const outputDir = path.join(__dirname, '../testoutput');
+    // const outputFile = path.join(outputDir, 'pathwayWorkflow.yaml');
 
-    // Ensure `testoutput` directory exists
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir);
-    }
+    // // Ensure `testoutput` directory exists
+    // if (!fs.existsSync(outputDir)) {
+    //   fs.mkdirSync(outputDir);
+    // }
 
-    // Write (or overwrite) the YAML content to the file
-    fs.writeFileSync(outputFile, yamlOutput, 'utf8');
+    // // Write (or overwrite) the YAML content to the file
+    // fs.writeFileSync(outputFile, yamlOutput, 'utf8');
 
-    // Compare with git diff
-    let diffResult: string;
-    try {
-      diffResult = execSync(`git diff -- ${outputFile}`, { encoding: 'utf-8' });
-    } catch (error) {
-      if (error instanceof Error && 'stdout' in error) {
-        diffResult = (error.stdout as Buffer).toString();
-      } else {
-        throw error; // Re-throw if it's not the expected error type.
-      }
-    }
+    // // Compare with git diff
+    // let diffResult: string;
+    // try {
+    //   diffResult = execSync(`git diff -- ${outputFile}`, { encoding: 'utf-8' });
+    // } catch (error) {
+    //   if (error instanceof Error && 'stdout' in error) {
+    //     diffResult = (error.stdout as Buffer).toString();
+    //   } else {
+    //     throw error; // Re-throw if it's not the expected error type.
+    //   }
+    // }
 
-    // Assert there are no differences
-    expect(diffResult).toBe('');
+    const workflowCwlMap = pathwayWorkflow._toCwlObject().save();
+    expect(workflowCwlMap).toMatchSnapshot();
+
+    // // Assert there are no differences
+    // expect(diffResult).toBe('');
   });
 });

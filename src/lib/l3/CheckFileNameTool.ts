@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { Input } from '../Input';
+import { IToolProps } from '../IToolProps';
 import { BashTool, IBashToolProps } from '../l2';
-import { IToolProps } from '../Tool';
 
 export class CheckFileNameTool extends BashTool {
 

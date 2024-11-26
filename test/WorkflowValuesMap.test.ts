@@ -1,16 +1,23 @@
-import { Constructs } from '../src/lib/Constructs';
+import { Workflow } from '../src/lib';
 import { Input } from '../src/lib/Input';
 import { InputReference } from '../src/lib/InputReference';
 import { WorkflowValues } from '../src/lib/WorkflowValues';
 
 describe('WorkflowValues', () => {
+  let w0: Workflow;
+
+  beforeEach(() => {
+    const root = w0;
+    w0 = new Workflow(root, 'test-workflow');
+  });
+
   it('should return an empty object if no inputs are added', () => {
     const workflow = WorkflowValues.create();
     expect(workflow.toMap()).toEqual({});
   });
 
   it('should return a map with string input values', () => {
-    const input1 = Input.string(Constructs.createRoot('root'), 'input1');
+    const input1 = Input.string(w0, 'input1');
     const stringValue = 'Some string value';
 
     const workflow = WorkflowValues.create();
@@ -22,7 +29,7 @@ describe('WorkflowValues', () => {
   });
 
   it('should return a map with boolean input values', () => {
-    const input1 = Input.string(Constructs.createRoot('root'), 'input1');
+    const input1 = Input.string(w0, 'input1');
     const booleanValue = true;
 
     const workflow = WorkflowValues.create();
@@ -34,7 +41,7 @@ describe('WorkflowValues', () => {
   });
 
   it('should return a map with number input values', () => {
-    const input1 = Input.string(Constructs.createRoot('root'), 'input1');
+    const input1 = Input.string(w0, 'input1');
     const numberValue = 42;
 
     const workflow = WorkflowValues.create();
@@ -46,7 +53,7 @@ describe('WorkflowValues', () => {
   });
 
   it('should return a map with array of strings input values', () => {
-    const input1 = Input.string(Constructs.createRoot('root'), 'input1');
+    const input1 = Input.string(w0, 'input1');
     const arrayValue = ['value1', 'value2'];
 
     const workflow = WorkflowValues.create();
@@ -58,7 +65,7 @@ describe('WorkflowValues', () => {
   });
 
   it('should return a map with InputReference values', () => {
-    const input1 = Input.file(Constructs.createRoot('root'), 'input1');
+    const input1 = Input.file(w0, 'input1');
     const inputReference1 = InputReference.file('/path/to/file1');
 
     const workflow = WorkflowValues.create();
@@ -70,9 +77,9 @@ describe('WorkflowValues', () => {
   });
 
   it('should handle mixed types correctly in the map', () => {
-    const input1 = Input.file(Constructs.createRoot('root'), 'input1');
-    const input2 = Input.string(Constructs.createRoot('root'), 'input2');
-    const input3 = Input.string(Constructs.createRoot('root'), 'input3');
+    const input1 = Input.file(w0, 'input1');
+    const input2 = Input.string(w0, 'input2');
+    const input3 = Input.string(w0, 'input3');
     const inputReference1 = InputReference.file('/path/to/file1');
     const stringValue = 'Some string value';
     const numberValue = 123;

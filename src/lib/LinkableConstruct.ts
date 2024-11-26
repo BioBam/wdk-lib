@@ -1,6 +1,6 @@
+import * as cwl from 'cwl-ts-auto';
 import { Construct } from './Construct';
-import { ILinkable } from './ILinkable';
-import { Type } from './Type';
+import { ILinkable, InputType, InputTypeArray } from './ILinkable';
 
 export enum PickValueMethod {
   /**
@@ -12,7 +12,7 @@ export enum PickValueMethod {
 
       Intended use case: If-else pattern where the value comes either from a conditional step or from a default or fallback value. The conditional step(s) should be placed first in the list.
    */
-  FIRST_NON_NULL = 'first_non_null',
+  FIRST_NON_NULL = cwl.PickValueMethod.FIRST_NON_NULL,
   /**
    * For the first level of a list input, pick the single non-null element. The result is a scalar. It is an error if there is more than one non-null element.
    * Examples:
@@ -23,7 +23,7 @@ export enum PickValueMethod {
 
     Intended use case: Switch type patterns where developer considers more than one active code path as a workflow error (possibly indicating an error in writing when condition expressions).
    */
-  THE_ONLY_NON_NULL = 'the_only_non_null',
+  THE_ONLY_NON_NULL = cwl.PickValueMethod.THE_ONLY_NON_NULL,
   /**
    * For the first level of a list input, pick all non-null values. The result is a list, which may be empty.
    * Examples:
@@ -34,8 +34,9 @@ export enum PickValueMethod {
 
     Intended use case: It is valid to have more than one source, but sources are conditional, so null sources (from skipped steps) should be filtered out.
    */
-  ALL_NON_NULL = 'all_non_null',
+  ALL_NON_NULL = cwl.PickValueMethod.ALL_NON_NULL,
 }
+
 
 export abstract class LinkableConstruct extends Construct implements ILinkable {
   private _links: ILinkable[] = [];
@@ -46,7 +47,15 @@ export abstract class LinkableConstruct extends Construct implements ILinkable {
     super(scope, id);
   }
 
-  abstract get type(): Type;
+  /**
+   * @internal
+   */
+  abstract _toCwlObject(): any;
+
+  /**
+   * @internal
+   */
+  abstract get _type(): InputType | InputTypeArray;
 
   public get idAsReference(): string {
     return this.id;
@@ -54,9 +63,9 @@ export abstract class LinkableConstruct extends Construct implements ILinkable {
   }
 
   public linkTo(linkInput: ILinkable): ILinkable {
-    if (linkInput.type != this.type) {
-      throw new Error('Link type mismatch between ' + this.id + '(' + this.type + ') and ' + linkInput.id + '(' + linkInput.type + ')');
-    }
+    // if (linkInput.type != this.type) {
+    //   throw new Error('Link type mismatch between ' + this.id + '(' + this.type + ') and ' + linkInput.id + '(' + linkInput.type + ')');
+    // }
     this._links.push(linkInput);
     linkInput._addReferencedIn(this);
     return this;

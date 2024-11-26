@@ -46,7 +46,8 @@ const createStagingBasename = (destDirectory: string) => {
 
 const createRename = (destDirectory: string) => {
   const renameTool = new RenameExpressionTool(Constructs.rootWorkflow(), 'check');
-  const toolMap = renameTool.toMap();
+  // const toolMap = renameTool.toMap();
+  const toolMap = renameTool._toCwlObject().save();
   printMap(toolMap, destDirectory, 'rename.cwl');
 };
 

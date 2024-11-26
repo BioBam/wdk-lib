@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as yaml from 'js-yaml';
-import { IStep } from './IStep';
+import { StepConstruct } from './StepConstruct';
 import { SynthFiles } from './SynthFiles';
 
 
@@ -13,7 +13,7 @@ export class WdkUtils {
   }
 
 
-  public static createSynthInfo(step: IStep, workflowDirectory: string): SynthFiles {
+  public static createSynthInfo(step: StepConstruct, workflowDirectory: string): SynthFiles {
     const classInitials = this.getLowercaseInitials(step.stepClass);
     const cwlFile = this.newFilePath(workflowDirectory, `${step.id}.${classInitials}.cwl`);
     const synthInfo = SynthFiles.createWithMain(cwlFile);

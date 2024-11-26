@@ -1,4 +1,5 @@
-import { IToolProps, Tool } from '../Tool';
+import { IToolProps } from '../IToolProps';
+import { Tool } from '../Tool';
 import { ToolConfig } from '../ToolConfig';
 import { FileUtils } from '../utils/FileUtils';
 

@@ -1,5 +1,12 @@
+import { CommandInputArraySchema, CommandInputEnumSchema, CommandInputRecordSchema, CommandOutputArraySchema, CommandOutputEnumSchema, CommandOutputRecordSchema, CWLType, stderr, stdin, stdout } from 'cwl-ts-auto';
 import { PickValueMethod } from './LinkableConstruct';
-import { Type } from './Type';
+
+
+export type InputType = CWLType | stdin | CommandInputRecordSchema | CommandInputEnumSchema | CommandInputArraySchema | string;
+export type InputTypeArray = (CWLType | CommandInputRecordSchema | CommandInputEnumSchema | CommandInputArraySchema | string)[];
+
+export type OutputType = CWLType | stdout | stderr | CommandOutputRecordSchema | CommandOutputEnumSchema | CommandOutputArraySchema | string;
+export type OutputTypeArray = (CWLType | CommandOutputRecordSchema | CommandOutputEnumSchema | CommandOutputArraySchema | string)[];
 
 export interface ILinkable {
 
@@ -10,7 +17,10 @@ export interface ILinkable {
   get id(): string;
   set id(newID: string);
 
-  get type(): Type;
+  /**
+   * @internal
+   */
+  get _type(): InputType | InputTypeArray;
 
   get idAsReference(): string;
 
@@ -46,4 +56,9 @@ export interface ILinkable {
   get linked(): boolean;
   get multiLinked(): boolean;
   get referenced(): boolean;
+
+  /**
+   * @internal
+   */
+  _toCwlObject(): any;
 }

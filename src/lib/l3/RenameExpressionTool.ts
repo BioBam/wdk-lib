@@ -1,7 +1,7 @@
 import { ExpressionTool } from '../ExpressionTool';
 import { Input } from '../Input';
+import { IToolProps } from '../IToolProps';
 import { Output } from '../Output';
-import { IToolProps } from '../Tool';
 import { Workflow } from '../Workflow';
 
 export interface IRenameExpressionToolProps extends IToolProps {
@@ -24,7 +24,6 @@ export class RenameExpressionTool extends ExpressionTool {
     // Inputs
     this.f1 = Input.file(this, props?.inFilePropId || 'f1');
     this.newname = Input.string(this, props?.newNamePropId || 'newname');
-
     // Outputs
     this.out = Output.file(this, props?.outFilePropId || 'out');
 

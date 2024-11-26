@@ -290,19 +290,19 @@ Create a map repsentation of the tool following the CWL specification.
 | --- | --- | --- |
 | <code><a href="#wdk-lib.BashTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.BashTool.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
-| <code><a href="#wdk-lib.BashTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.BashTool.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
 | <code><a href="#wdk-lib.BashTool.property.label">label</a></code> | <code>java.lang.Object</code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.BashTool.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.BashTool.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
-| <code><a href="#wdk-lib.BashTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.BashTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.BashTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.BashTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
-| <code><a href="#wdk-lib.BashTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.BashTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.BashTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+| <code><a href="#wdk-lib.BashTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.BashTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
 
@@ -329,20 +329,6 @@ public java.lang.String getId();
 Unique identifier for the construct in it's scope.
 
 set or update the id of this construct
-
----
-
-##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.BashTool.property.fileName"></a>
-
-```java
-public java.lang.String getFileName();
-```
-
-- *Type:* java.lang.String
-
-The name of the step file.
-
-It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -404,16 +390,6 @@ All outputs of the step.
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.BashTool.property.requirementsMap"></a>
-
-```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
-```
-
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
-
----
-
 ##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.BashTool.property.steps"></a>
 
 ```java
@@ -460,13 +436,17 @@ public ToolConfig getConfig();
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.BashTool.property.props"></a>
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.BashTool.property.fileName"></a>
 
 ```java
-public IToolProps getProps();
+public java.lang.String getFileName();
 ```
 
-- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -477,6 +457,26 @@ public StepClass getStepClass();
 ```
 
 - *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.BashTool.property.requirementsMap"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+```
+
+- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.BashTool.property.props"></a>
+
+```java
+public IToolProps getProps();
+```
+
+- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
 
 ---
 
@@ -570,19 +570,19 @@ Create a map repsentation of the tool following the CWL specification.
 | --- | --- | --- |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
-| <code><a href="#wdk-lib.CheckFileNameTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.label">label</a></code> | <code>java.lang.Object</code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
-| <code><a href="#wdk-lib.CheckFileNameTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
-| <code><a href="#wdk-lib.CheckFileNameTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.checkname">checkname</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.f1">f1</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 
@@ -611,20 +611,6 @@ public java.lang.String getId();
 Unique identifier for the construct in it's scope.
 
 set or update the id of this construct
-
----
-
-##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.CheckFileNameTool.property.fileName"></a>
-
-```java
-public java.lang.String getFileName();
-```
-
-- *Type:* java.lang.String
-
-The name of the step file.
-
-It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -686,16 +672,6 @@ All outputs of the step.
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.CheckFileNameTool.property.requirementsMap"></a>
-
-```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
-```
-
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
-
----
-
 ##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.CheckFileNameTool.property.steps"></a>
 
 ```java
@@ -742,13 +718,17 @@ public ToolConfig getConfig();
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.CheckFileNameTool.property.props"></a>
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.CheckFileNameTool.property.fileName"></a>
 
 ```java
-public IToolProps getProps();
+public java.lang.String getFileName();
 ```
 
-- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -759,6 +739,26 @@ public StepClass getStepClass();
 ```
 
 - *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.CheckFileNameTool.property.requirementsMap"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+```
+
+- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.CheckFileNameTool.property.props"></a>
+
+```java
+public IToolProps getProps();
+```
+
+- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
 
 ---
 
@@ -1077,7 +1077,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.ExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
-| <code><a href="#wdk-lib.ExpressionTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.ExpressionTool.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.ExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.ExpressionTool.withExpression">withExpression</a></code> | Specify a custom JavaScript expression for this ExpressionTool. |
 
@@ -1097,7 +1097,9 @@ Whether the step has sub steps like in case of a workflow step.
 public SynthFiles serialize(java.lang.String dirPath)
 ```
 
-Serialize the tool to a CWL file.
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.ExpressionTool.serialize.parameter.dirPath"></a>
 
@@ -1153,20 +1155,20 @@ Example: call with makeParametersJsonExpression()
 | --- | --- | --- |
 | <code><a href="#wdk-lib.ExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.ExpressionTool.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
-| <code><a href="#wdk-lib.ExpressionTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.ExpressionTool.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.label">label</a></code> | <code>java.lang.Object</code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.ExpressionTool.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.ExpressionTool.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
-| <code><a href="#wdk-lib.ExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ExpressionTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.ExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.expression">expression</a></code> | <code>java.lang.String</code> | Get the custom JavaScript expression for this ExpressionTool. |
+| <code><a href="#wdk-lib.ExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.ExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
 
@@ -1193,20 +1195,6 @@ public java.lang.String getId();
 Unique identifier for the construct in it's scope.
 
 set or update the id of this construct
-
----
-
-##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.ExpressionTool.property.fileName"></a>
-
-```java
-public java.lang.String getFileName();
-```
-
-- *Type:* java.lang.String
-
-The name of the step file.
-
-It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -1268,16 +1256,6 @@ All outputs of the step.
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.ExpressionTool.property.requirementsMap"></a>
-
-```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
-```
-
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
-
----
-
 ##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.ExpressionTool.property.steps"></a>
 
 ```java
@@ -1324,13 +1302,17 @@ public ToolConfig getConfig();
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.ExpressionTool.property.props"></a>
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.ExpressionTool.property.fileName"></a>
 
 ```java
-public IToolProps getProps();
+public java.lang.String getFileName();
 ```
 
-- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -1344,7 +1326,7 @@ public StepClass getStepClass();
 
 ---
 
-##### `expression`<sup>Optional</sup> <a name="expression" id="wdk-lib.ExpressionTool.property.expression"></a>
+##### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.ExpressionTool.property.expression"></a>
 
 ```java
 public java.lang.String getExpression();
@@ -1353,6 +1335,26 @@ public java.lang.String getExpression();
 - *Type:* java.lang.String
 
 Get the custom JavaScript expression for this ExpressionTool.
+
+---
+
+##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.ExpressionTool.property.requirementsMap"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+```
+
+- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.ExpressionTool.property.props"></a>
+
+```java
+public IToolProps getProps();
+```
+
+- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
 
 ---
 
@@ -1416,6 +1418,7 @@ Represents an input parameter of a workflow or a tool.
 *Example*
 
 ```java
+// Example automatically generated from non-compiling source. May contain errors.
 import com.biobam.wdk.lib.Input;
 import com.biobam.wdk.lib.Constructs;
 Construct root = Constructs.createRoot("root");
@@ -1530,18 +1533,9 @@ A flag indicating separation status.
 
 ```java
 public java.util.Map<java.lang.String, java.lang.Object> toMap()
-public java.util.Map<java.lang.String, java.lang.Object> toMap(java.lang.Boolean short)
 ```
 
 Converts the input to a CWL-compatible JSON object.
-
-###### `short`<sup>Optional</sup> <a name="short" id="wdk-lib.Input.toMap.parameter.short"></a>
-
-- *Type:* java.lang.Boolean
-
-A flag indicating if the output should be shortened.
-
----
 
 ##### `withDefaultValue` <a name="withDefaultValue" id="wdk-lib.Input.withDefaultValue"></a>
 
@@ -1644,14 +1638,14 @@ The prefix to set.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.bool(Construct scope, java.lang.String id)
+Input.bool(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a boolean type input.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.bool.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this input is defined.
 
@@ -1670,14 +1664,14 @@ The identifier for this input.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.double(Construct scope, java.lang.String id)
+Input.double(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a double type input.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.double.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this input is defined.
 
@@ -1696,14 +1690,14 @@ The identifier for this input.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.file(Construct scope, java.lang.String id)
+Input.file(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a file type input.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.file.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this input is defined.
 
@@ -1722,14 +1716,14 @@ The identifier for this input.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.fileArray(Construct scope, java.lang.String id)
+Input.fileArray(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a file array type input.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.fileArray.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this input is defined.
 
@@ -1748,14 +1742,14 @@ The identifier for this input.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.float(Construct scope, java.lang.String id)
+Input.float(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a float type input.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.float.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this input is defined.
 
@@ -1774,7 +1768,7 @@ The identifier for this input.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.fromStepInput(Construct scope, Input input)
+Input.fromStepInput(StepConstruct scope, Input input)
 ```
 
 Create an input from a step input, using the same ID and type.
@@ -1783,7 +1777,7 @@ It also copies the default value, the optional flag, and the doc.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.fromStepInput.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 ---
 
@@ -1798,14 +1792,14 @@ It also copies the default value, the optional flag, and the doc.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.integer(Construct scope, java.lang.String id)
+Input.integer(StepConstruct scope, java.lang.String id)
 ```
 
 Creates an integer type input.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.integer.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this input is defined.
 
@@ -1824,14 +1818,14 @@ The identifier for this input.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.string(Construct scope, java.lang.String id)
+Input.string(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a string type input.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.string.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this input is defined.
 
@@ -1850,14 +1844,14 @@ The identifier for this input.
 ```java
 import com.biobam.wdk.lib.Input;
 
-Input.stringArray(Construct scope, java.lang.String id)
+Input.stringArray(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a string array type input.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.stringArray.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this input is defined.
 
@@ -1882,7 +1876,6 @@ The identifier for this input.
 | <code><a href="#wdk-lib.Input.property.links">links</a></code> | <code>java.util.List<<a href="#wdk-lib.ILinkable">ILinkable</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
-| <code><a href="#wdk-lib.Input.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | Retrieves the type of the input. |
 | <code><a href="#wdk-lib.Input.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>java.lang.Boolean</code> | Indicates whether the input is optional. |
 | <code><a href="#wdk-lib.Input.property.doc">doc</a></code> | <code>java.lang.String</code> | Retrieves the documentation associated with the input. |
@@ -1963,18 +1956,6 @@ public java.lang.Boolean getReferenced();
 ```
 
 - *Type:* java.lang.Boolean
-
----
-
-##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Input.property.type"></a>
-
-```java
-public Type getType();
-```
-
-- *Type:* <a href="#wdk-lib.Type">Type</a>
-
-Retrieves the type of the input.
 
 ---
 
@@ -2269,7 +2250,6 @@ Set the PickValueMethod for this linkable if there are multiple sources linked t
 | <code><a href="#wdk-lib.LinkableConstruct.property.links">links</a></code> | <code>java.util.List<<a href="#wdk-lib.ILinkable">ILinkable</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
-| <code><a href="#wdk-lib.LinkableConstruct.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
 
 ---
@@ -2350,16 +2330,6 @@ public java.lang.Boolean getReferenced();
 
 ---
 
-##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.LinkableConstruct.property.type"></a>
-
-```java
-public Type getType();
-```
-
-- *Type:* <a href="#wdk-lib.Type">Type</a>
-
----
-
 ##### `pickValueMethod`<sup>Optional</sup> <a name="pickValueMethod" id="wdk-lib.LinkableConstruct.property.pickValueMethod"></a>
 
 ```java
@@ -2380,52 +2350,13 @@ Represents an output parameter of a workflow, tool, or step.
 *Example*
 
 ```java
+// Example automatically generated from non-compiling source. May contain errors.
 import com.biobam.wdk.lib.Output;
 import com.biobam.wdk.lib.Constructs;
 Construct root = Constructs.createRoot("root");
 Output output = Output.file(root, "myOutput").withGlob("*.txt").loadContents().outputEval("$(self[0].contents)");
 ```
 
-
-#### Initializers <a name="Initializers" id="wdk-lib.Output.Initializer"></a>
-
-```java
-import com.biobam.wdk.lib.Output;
-
-new Output(Construct scope, java.lang.String id, Type type);
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#wdk-lib.Output.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
-| <code><a href="#wdk-lib.Output.Initializer.parameter.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
-| <code><a href="#wdk-lib.Output.Initializer.parameter.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
-
----
-
-##### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.Initializer.parameter.scope"></a>
-
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
-
-The scope in which this construct is defined.
-
----
-
-##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.Initializer.parameter.id"></a>
-
-- *Type:* java.lang.String
-
-Unique identifier for the construct in it's scope.
-
-set or update the id of this construct
-
----
-
-##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Output.Initializer.parameter.type"></a>
-
-- *Type:* <a href="#wdk-lib.Type">Type</a>
-
----
 
 #### Methods <a name="Methods" id="Methods"></a>
 
@@ -2589,14 +2520,14 @@ The glob pattern.
 ```java
 import com.biobam.wdk.lib.Output;
 
-Output.bool(Construct scope, java.lang.String id)
+Output.bool(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a boolean type output.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.bool.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this output is defined.
 
@@ -2615,14 +2546,14 @@ The identifier for this output.
 ```java
 import com.biobam.wdk.lib.Output;
 
-Output.file(Construct scope, java.lang.String id)
+Output.file(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a file type output.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.file.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this output is defined.
 
@@ -2641,14 +2572,14 @@ The identifier for this output.
 ```java
 import com.biobam.wdk.lib.Output;
 
-Output.fileArray(Construct scope, java.lang.String id)
+Output.fileArray(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a file array type output.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.fileArray.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this output is defined.
 
@@ -2667,14 +2598,14 @@ The identifier for this output.
 ```java
 import com.biobam.wdk.lib.Output;
 
-Output.float(Construct scope, java.lang.String id)
+Output.float(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a float type output.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.float.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this output is defined.
 
@@ -2693,7 +2624,7 @@ The identifier for this output.
 ```java
 import com.biobam.wdk.lib.Output;
 
-Output.fromStepOutput(Construct scope, Output linkedOutput)
+Output.fromStepOutput(StepConstruct scope, Output linkedOutput)
 ```
 
 Creates an output from a step output, using the same ID and type.
@@ -2702,7 +2633,7 @@ It also links the existing output to the new one.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.fromStepOutput.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this output is defined.
 
@@ -2721,14 +2652,14 @@ The output to link and copy properties from.
 ```java
 import com.biobam.wdk.lib.Output;
 
-Output.integer(Construct scope, java.lang.String id)
+Output.integer(StepConstruct scope, java.lang.String id)
 ```
 
 Creates an integer type output.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.integer.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this output is defined.
 
@@ -2747,14 +2678,14 @@ The identifier for this output.
 ```java
 import com.biobam.wdk.lib.Output;
 
-Output.string(Construct scope, java.lang.String id)
+Output.string(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a string type output.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.string.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this output is defined.
 
@@ -2773,14 +2704,14 @@ The identifier for this output.
 ```java
 import com.biobam.wdk.lib.Output;
 
-Output.stringArray(Construct scope, java.lang.String id)
+Output.stringArray(StepConstruct scope, java.lang.String id)
 ```
 
 Creates a string array type output.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.stringArray.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 The construct within which this output is defined.
 
@@ -2805,7 +2736,6 @@ The identifier for this output.
 | <code><a href="#wdk-lib.Output.property.links">links</a></code> | <code>java.util.List<<a href="#wdk-lib.ILinkable">ILinkable</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
-| <code><a href="#wdk-lib.Output.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | Gets the type of the output. |
 | <code><a href="#wdk-lib.Output.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.yamlMap">yamlMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | Generates a YAML map of the output's bindings and settings. |
 
@@ -2887,18 +2817,6 @@ public java.lang.Boolean getReferenced();
 
 ---
 
-##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Output.property.type"></a>
-
-```java
-public Type getType();
-```
-
-- *Type:* <a href="#wdk-lib.Type">Type</a>
-
-Gets the type of the output.
-
----
-
 ##### `pickValueMethod`<sup>Optional</sup> <a name="pickValueMethod" id="wdk-lib.Output.property.pickValueMethod"></a>
 
 ```java
@@ -2969,7 +2887,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.RenameExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
-| <code><a href="#wdk-lib.RenameExpressionTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.RenameExpressionTool.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.RenameExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.RenameExpressionTool.withExpression">withExpression</a></code> | Specify a custom JavaScript expression for this ExpressionTool. |
 
@@ -2989,7 +2907,9 @@ Whether the step has sub steps like in case of a workflow step.
 public SynthFiles serialize(java.lang.String dirPath)
 ```
 
-Serialize the tool to a CWL file.
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
 
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.RenameExpressionTool.serialize.parameter.dirPath"></a>
 
@@ -3045,20 +2965,20 @@ Example: call with makeParametersJsonExpression()
 | --- | --- | --- |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
-| <code><a href="#wdk-lib.RenameExpressionTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.label">label</a></code> | <code>java.lang.Object</code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
-| <code><a href="#wdk-lib.RenameExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
-| <code><a href="#wdk-lib.RenameExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.expression">expression</a></code> | <code>java.lang.String</code> | Get the custom JavaScript expression for this ExpressionTool. |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.f1">f1</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.newname">newname</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.out">out</a></code> | <code><a href="#wdk-lib.Output">Output</a></code> | *No description.* |
@@ -3088,20 +3008,6 @@ public java.lang.String getId();
 Unique identifier for the construct in it's scope.
 
 set or update the id of this construct
-
----
-
-##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.RenameExpressionTool.property.fileName"></a>
-
-```java
-public java.lang.String getFileName();
-```
-
-- *Type:* java.lang.String
-
-The name of the step file.
-
-It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -3163,16 +3069,6 @@ All outputs of the step.
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.RenameExpressionTool.property.requirementsMap"></a>
-
-```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
-```
-
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
-
----
-
 ##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.RenameExpressionTool.property.steps"></a>
 
 ```java
@@ -3219,13 +3115,17 @@ public ToolConfig getConfig();
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.RenameExpressionTool.property.props"></a>
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.RenameExpressionTool.property.fileName"></a>
 
 ```java
-public IToolProps getProps();
+public java.lang.String getFileName();
 ```
 
-- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -3239,7 +3139,7 @@ public StepClass getStepClass();
 
 ---
 
-##### `expression`<sup>Optional</sup> <a name="expression" id="wdk-lib.RenameExpressionTool.property.expression"></a>
+##### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.RenameExpressionTool.property.expression"></a>
 
 ```java
 public java.lang.String getExpression();
@@ -3248,6 +3148,26 @@ public java.lang.String getExpression();
 - *Type:* java.lang.String
 
 Get the custom JavaScript expression for this ExpressionTool.
+
+---
+
+##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.RenameExpressionTool.property.requirementsMap"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+```
+
+- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.RenameExpressionTool.property.props"></a>
+
+```java
+public IToolProps getProps();
+```
+
+- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
 
 ---
 
@@ -3689,7 +3609,6 @@ The input to scatter.
 | <code><a href="#wdk-lib.Scatter.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Scatter.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Scatter.property.ids">ids</a></code> | <code>java.util.List<java.lang.String></code> | *No description.* |
-| <code><a href="#wdk-lib.Scatter.property.method">method</a></code> | <code><a href="#wdk-lib.ScatterMethod">ScatterMethod</a></code> | *No description.* |
 
 ---
 
@@ -3729,13 +3648,249 @@ public java.util.List<java.lang.String> getIds();
 
 ---
 
-##### `method`<sup>Required</sup> <a name="method" id="wdk-lib.Scatter.property.method"></a>
+
+### StepConstruct <a name="StepConstruct" id="wdk-lib.StepConstruct"></a>
+
+- *Implements:* <a href="#wdk-lib.IStep">IStep</a>
+
+#### Initializers <a name="Initializers" id="wdk-lib.StepConstruct.Initializer"></a>
 
 ```java
-public ScatterMethod getMethod();
+import com.biobam.wdk.lib.StepConstruct;
+
+new StepConstruct(StepConstruct scope, java.lang.String id);
 ```
 
-- *Type:* <a href="#wdk-lib.ScatterMethod">ScatterMethod</a>
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.StepConstruct.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.StepConstruct">StepConstruct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.StepConstruct.Initializer.parameter.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.StepConstruct.Initializer.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.StepConstruct.Initializer.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.StepConstruct.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.StepConstruct.serialize">serialize</a></code> | Serialize the step to a directory. |
+
+---
+
+##### `hasSteps` <a name="hasSteps" id="wdk-lib.StepConstruct.hasSteps"></a>
+
+```java
+public java.lang.Boolean hasSteps()
+```
+
+Whether the step has sub steps like in case of a workflow step.
+
+##### `serialize` <a name="serialize" id="wdk-lib.StepConstruct.serialize"></a>
+
+```java
+public SynthFiles serialize(java.lang.String dirPath)
+```
+
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
+
+###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.StepConstruct.serialize.parameter.dirPath"></a>
+
+- *Type:* java.lang.String
+
+---
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.StepConstruct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.StepConstruct.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.StepConstruct.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
+| <code><a href="#wdk-lib.StepConstruct.property.label">label</a></code> | <code>java.lang.Object</code> | *No description.* |
+| <code><a href="#wdk-lib.StepConstruct.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.StepConstruct.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.StepConstruct.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
+| <code><a href="#wdk-lib.StepConstruct.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.StepConstruct.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.StepConstruct.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.StepConstruct.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
+| <code><a href="#wdk-lib.StepConstruct.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
+| <code><a href="#wdk-lib.StepConstruct.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.StepConstruct.property.scope"></a>
+
+```java
+public Construct getScope();
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.StepConstruct.property.id"></a>
+
+```java
+public java.lang.String getId();
+```
+
+- *Type:* java.lang.String
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
+---
+
+##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.StepConstruct.property.inputs"></a>
+
+```java
+public java.util.List<Input> getInputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+All inputs of the step.
+
+---
+
+##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.StepConstruct.property.label"></a>
+
+```java
+public java.lang.Object getLabel();
+```
+
+- *Type:* java.lang.Object
+
+---
+
+##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.StepConstruct.property.linkedInputs"></a>
+
+```java
+public java.util.List<Input> getLinkedInputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+Inputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `linkedOutputs`<sup>Required</sup> <a name="linkedOutputs" id="wdk-lib.StepConstruct.property.linkedOutputs"></a>
+
+```java
+public java.util.List<Output> getLinkedOutputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Output">Output</a>>
+
+Outputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `outputs`<sup>Required</sup> <a name="outputs" id="wdk-lib.StepConstruct.property.outputs"></a>
+
+```java
+public java.util.List<Output> getOutputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Output">Output</a>>
+
+All outputs of the step.
+
+---
+
+##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.StepConstruct.property.steps"></a>
+
+```java
+public java.util.List<IStep> getSteps();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.IStep">IStep</a>>
+
+All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.StepConstruct.property.conditional"></a>
+
+```java
+public Conditional getConditional();
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
+
+---
+
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.StepConstruct.property.scatter"></a>
+
+```java
+public Scatter getScatter();
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
+##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.StepConstruct.property.config"></a>
+
+```java
+public ToolConfig getConfig();
+```
+
+- *Type:* <a href="#wdk-lib.ToolConfig">ToolConfig</a>
+
+---
+
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.StepConstruct.property.fileName"></a>
+
+```java
+public java.lang.String getFileName();
+```
+
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
+
+---
+
+##### `stepClass`<sup>Required</sup> <a name="stepClass" id="wdk-lib.StepConstruct.property.stepClass"></a>
+
+```java
+public StepClass getStepClass();
+```
+
+- *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
 
 ---
 
@@ -3842,7 +3997,7 @@ public java.lang.String getMain();
 
 ### Tool <a name="Tool" id="wdk-lib.Tool"></a>
 
-- *Implements:* <a href="#wdk-lib.IMappable">IMappable</a>, <a href="#wdk-lib.IStep">IStep</a>
+- *Implements:* <a href="#wdk-lib.IMappable">IMappable</a>
 
 #### Initializers <a name="Initializers" id="wdk-lib.Tool.Initializer"></a>
 
@@ -3931,19 +4086,19 @@ Create a map repsentation of the tool following the CWL specification.
 | --- | --- | --- |
 | <code><a href="#wdk-lib.Tool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Tool.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
-| <code><a href="#wdk-lib.Tool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Tool.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
 | <code><a href="#wdk-lib.Tool.property.label">label</a></code> | <code>java.lang.Object</code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.Tool.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.Tool.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
-| <code><a href="#wdk-lib.Tool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.Tool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Tool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Tool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Tool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Tool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Tool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Tool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.Tool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
 
@@ -3970,20 +4125,6 @@ public java.lang.String getId();
 Unique identifier for the construct in it's scope.
 
 set or update the id of this construct
-
----
-
-##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.Tool.property.fileName"></a>
-
-```java
-public java.lang.String getFileName();
-```
-
-- *Type:* java.lang.String
-
-The name of the step file.
-
-It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -4045,16 +4186,6 @@ All outputs of the step.
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.Tool.property.requirementsMap"></a>
-
-```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
-```
-
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
-
----
-
 ##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.Tool.property.steps"></a>
 
 ```java
@@ -4101,13 +4232,17 @@ public ToolConfig getConfig();
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.Tool.property.props"></a>
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.Tool.property.fileName"></a>
 
 ```java
-public IToolProps getProps();
+public java.lang.String getFileName();
 ```
 
-- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -4118,6 +4253,26 @@ public StepClass getStepClass();
 ```
 
 - *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.Tool.property.requirementsMap"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+```
+
+- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.Tool.property.props"></a>
+
+```java
+public IToolProps getProps();
+```
+
+- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
 
 ---
 
@@ -4203,12 +4358,12 @@ public ToolConfig withLabel(java.lang.String label)
 ```java
 import com.biobam.wdk.lib.ToolConfig;
 
-ToolConfig.basic(Tool scope)
+ToolConfig.basic(StepConstruct scope)
 ```
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.ToolConfig.basic.parameter.scope"></a>
 
-- *Type:* <a href="#wdk-lib.Tool">Tool</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 ---
 
@@ -4536,12 +4691,12 @@ A Unicode character sequence.
 ```java
 import com.biobam.wdk.lib.WdkUtils;
 
-WdkUtils.createSynthInfo(IStep step, java.lang.String workflowDirectory)
+WdkUtils.createSynthInfo(StepConstruct step, java.lang.String workflowDirectory)
 ```
 
 ###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.WdkUtils.createSynthInfo.parameter.step"></a>
 
-- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
 ---
 
@@ -4657,7 +4812,7 @@ TODO: Take care of await correctly.
 
 ### Workflow <a name="Workflow" id="wdk-lib.Workflow"></a>
 
-- *Implements:* <a href="#wdk-lib.IStep">IStep</a>, <a href="#wdk-lib.IMappable">IMappable</a>
+- *Implements:* <a href="#wdk-lib.IMappable">IMappable</a>, <a href="#wdk-lib.IWorkflow">IWorkflow</a>
 
 #### Initializers <a name="Initializers" id="wdk-lib.Workflow.Initializer"></a>
 
@@ -4703,22 +4858,10 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Workflow.addStep">addStep</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.Workflow.serialize">serialize</a></code> | Serialize the step to a directory. |
+| <code><a href="#wdk-lib.Workflow.addStep">addStep</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
-
----
-
-##### `addStep` <a name="addStep" id="wdk-lib.Workflow.addStep"></a>
-
-```java
-public void addStep(IStep step)
-```
-
-###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.Workflow.addStep.parameter.step"></a>
-
-- *Type:* <a href="#wdk-lib.IStep">IStep</a>
 
 ---
 
@@ -4743,6 +4886,18 @@ If the step has substeps, they will be serialized recursively.
 ###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.Workflow.serialize.parameter.dirPath"></a>
 
 - *Type:* java.lang.String
+
+---
+
+##### `addStep` <a name="addStep" id="wdk-lib.Workflow.addStep"></a>
+
+```java
+public void addStep(IStep step)
+```
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.Workflow.addStep.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
 
 ---
 
@@ -4776,17 +4931,19 @@ Workflow.basicProps()
 | --- | --- | --- |
 | <code><a href="#wdk-lib.Workflow.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Workflow.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
-| <code><a href="#wdk-lib.Workflow.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Workflow.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
+| <code><a href="#wdk-lib.Workflow.property.label">label</a></code> | <code>java.lang.Object</code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.Workflow.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.Workflow.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
-| <code><a href="#wdk-lib.Workflow.property.props">props</a></code> | <code><a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Workflow.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.Workflow.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Workflow.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.Workflow.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Workflow.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Workflow.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Workflow.property.props">props</a></code> | <code><a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Workflow.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
 
 ---
 
@@ -4816,20 +4973,6 @@ set or update the id of this construct
 
 ---
 
-##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.Workflow.property.fileName"></a>
-
-```java
-public java.lang.String getFileName();
-```
-
-- *Type:* java.lang.String
-
-The name of the step file.
-
-It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
-
----
-
 ##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.Workflow.property.inputs"></a>
 
 ```java
@@ -4839,6 +4982,16 @@ public java.util.List<Input> getInputs();
 - *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
 
 All inputs of the step.
+
+---
+
+##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.Workflow.property.label"></a>
+
+```java
+public java.lang.Object getLabel();
+```
+
+- *Type:* java.lang.Object
 
 ---
 
@@ -4878,26 +5031,6 @@ All outputs of the step.
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.Workflow.property.props"></a>
-
-```java
-public IWorkflowProps getProps();
-```
-
-- *Type:* <a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a>
-
----
-
-##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.Workflow.property.requirements"></a>
-
-```java
-public java.util.List<Requirement> getRequirements();
-```
-
-- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
-
----
-
 ##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.Workflow.property.steps"></a>
 
 ```java
@@ -4934,6 +5067,30 @@ Get the scatter object if the step is a scatter step.
 
 ---
 
+##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.Workflow.property.config"></a>
+
+```java
+public ToolConfig getConfig();
+```
+
+- *Type:* <a href="#wdk-lib.ToolConfig">ToolConfig</a>
+
+---
+
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.Workflow.property.fileName"></a>
+
+```java
+public java.lang.String getFileName();
+```
+
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
+
+---
+
 ##### `stepClass`<sup>Required</sup> <a name="stepClass" id="wdk-lib.Workflow.property.stepClass"></a>
 
 ```java
@@ -4941,6 +5098,26 @@ public StepClass getStepClass();
 ```
 
 - *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.Workflow.property.props"></a>
+
+```java
+public IWorkflowProps getProps();
+```
+
+- *Type:* <a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a>
+
+---
+
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.Workflow.property.requirements"></a>
+
+```java
+public java.util.List<Requirement> getRequirements();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
 
 ---
 
@@ -5158,6 +5335,12 @@ Provide either this or `inlineScript`.
 
 ---
 
+### IExpressionTool <a name="IExpressionTool" id="wdk-lib.IExpressionTool"></a>
+
+- *Implemented By:* <a href="#wdk-lib.IExpressionTool">IExpressionTool</a>
+
+
+
 ### ILinkable <a name="ILinkable" id="wdk-lib.ILinkable"></a>
 
 - *Implemented By:* <a href="#wdk-lib.Input">Input</a>, <a href="#wdk-lib.LinkableConstruct">LinkableConstruct</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.ILinkable">ILinkable</a>
@@ -5216,7 +5399,6 @@ myStepTool.input.linkTo(cdHit.clusterFile).linkTo(inputFasta).pickValue(PickValu
 | <code><a href="#wdk-lib.ILinkable.property.links">links</a></code> | <code>java.util.List<<a href="#wdk-lib.ILinkable">ILinkable</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
-| <code><a href="#wdk-lib.ILinkable.property.type">type</a></code> | <code><a href="#wdk-lib.Type">Type</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.id">id</a></code> | <code>java.lang.String</code> | Access the identified of this construct. |
 
 ---
@@ -5268,16 +5450,6 @@ public java.lang.Boolean getReferenced();
 ```
 
 - *Type:* java.lang.Boolean
-
----
-
-##### `type`<sup>Required</sup> <a name="type" id="wdk-lib.ILinkable.property.type"></a>
-
-```java
-public Type getType();
-```
-
-- *Type:* <a href="#wdk-lib.Type">Type</a>
 
 ---
 
@@ -5374,7 +5546,7 @@ public java.lang.String getOutFilePropId();
 
 ### IStep <a name="IStep" id="wdk-lib.IStep"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
 
 Represents a step in a workflow.
 
@@ -5415,7 +5587,6 @@ If the step has substeps, they will be serialized recursively.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.IStep.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.IStep.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
 | <code><a href="#wdk-lib.IStep.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.IStep.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
@@ -5423,22 +5594,8 @@ If the step has substeps, they will be serialized recursively.
 | <code><a href="#wdk-lib.IStep.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.IStep.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.IStep.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.IStep.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.IStep.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the step in the workflow. |
-| <code><a href="#wdk-lib.IStep.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
-
----
-
-##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.IStep.property.fileName"></a>
-
-```java
-public java.lang.String getFileName();
-```
-
-- *Type:* java.lang.String
-
-The name of the step file.
-
-It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
 
 ---
 
@@ -5526,6 +5683,20 @@ Get the scatter object if the step is a scatter step.
 
 ---
 
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.IStep.property.fileName"></a>
+
+```java
+public java.lang.String getFileName();
+```
+
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
+
+---
+
 ##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.IStep.property.id"></a>
 
 ```java
@@ -5538,15 +5709,11 @@ Unique identifier for the step in the workflow.
 
 ---
 
-##### `stepClass`<sup>Required</sup> <a name="stepClass" id="wdk-lib.IStep.property.stepClass"></a>
+### ITool <a name="ITool" id="wdk-lib.ITool"></a>
 
-```java
-public StepClass getStepClass();
-```
+- *Implemented By:* <a href="#wdk-lib.ITool">ITool</a>
 
-- *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
 
----
 
 ### IToolMetadata <a name="IToolMetadata" id="wdk-lib.IToolMetadata"></a>
 
@@ -5612,6 +5779,12 @@ public IToolMetadata getMetadata();
 - *Type:* <a href="#wdk-lib.IToolMetadata">IToolMetadata</a>
 
 ---
+
+### IWorkflow <a name="IWorkflow" id="wdk-lib.IWorkflow"></a>
+
+- *Implemented By:* <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IWorkflow">IWorkflow</a>
+
+
 
 ### IWorkflowProps <a name="IWorkflowProps" id="wdk-lib.IWorkflowProps"></a>
 
@@ -5700,33 +5873,6 @@ Intended use case: It is valid to have more than one source, but sources are con
 ---
 
 
-### ScatterMethod <a name="ScatterMethod" id="wdk-lib.ScatterMethod"></a>
-
-#### Members <a name="Members" id="Members"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.ScatterMethod.DOT_PRODUCT">DOT_PRODUCT</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ScatterMethod.NESTED_CROSS_PRODUCT">NESTED_CROSS_PRODUCT</a></code> | *No description.* |
-| <code><a href="#wdk-lib.ScatterMethod.FLAT_CROSS_PRODUCT">FLAT_CROSS_PRODUCT</a></code> | *No description.* |
-
----
-
-##### `DOT_PRODUCT` <a name="DOT_PRODUCT" id="wdk-lib.ScatterMethod.DOT_PRODUCT"></a>
-
----
-
-
-##### `NESTED_CROSS_PRODUCT` <a name="NESTED_CROSS_PRODUCT" id="wdk-lib.ScatterMethod.NESTED_CROSS_PRODUCT"></a>
-
----
-
-
-##### `FLAT_CROSS_PRODUCT` <a name="FLAT_CROSS_PRODUCT" id="wdk-lib.ScatterMethod.FLAT_CROSS_PRODUCT"></a>
-
----
-
-
 ### StepClass <a name="StepClass" id="wdk-lib.StepClass"></a>
 
 #### Members <a name="Members" id="Members"></a>
@@ -5736,6 +5882,7 @@ Intended use case: It is valid to have more than one source, but sources are con
 | <code><a href="#wdk-lib.StepClass.COMMAND_LINE_TOOL">COMMAND_LINE_TOOL</a></code> | *No description.* |
 | <code><a href="#wdk-lib.StepClass.EXPRESSION_TOOL">EXPRESSION_TOOL</a></code> | *No description.* |
 | <code><a href="#wdk-lib.StepClass.WORKFLOW">WORKFLOW</a></code> | *No description.* |
+| <code><a href="#wdk-lib.StepClass.UNDEFINED">UNDEFINED</a></code> | *No description.* |
 
 ---
 
@@ -5750,6 +5897,11 @@ Intended use case: It is valid to have more than one source, but sources are con
 
 
 ##### `WORKFLOW` <a name="WORKFLOW" id="wdk-lib.StepClass.WORKFLOW"></a>
+
+---
+
+
+##### `UNDEFINED` <a name="UNDEFINED" id="wdk-lib.StepClass.UNDEFINED"></a>
 
 ---
 

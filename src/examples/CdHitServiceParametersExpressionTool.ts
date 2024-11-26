@@ -1,4 +1,4 @@
-import { IToolProps, Input, Output, Requirement } from '../lib';
+import { Input, IToolProps, Output, Requirement } from '../lib';
 import { ExpressionTool } from '../lib/ExpressionTool';
 import { Workflow } from '../lib/Workflow';
 

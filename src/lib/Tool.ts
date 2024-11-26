@@ -1,58 +1,31 @@
+import * as cwl from 'cwl-ts-auto';
 import * as yaml from 'js-yaml';
-import { Conditional } from './Conditional';
-import { Constants } from './Constants';
-import { Construct } from './Construct';
 import { IMappable } from './IMappable';
-import { Input } from './Input'; // Adjust imports as needed
 import { IStep } from './IStep';
-import { Output } from './Output';
+import { IToolProps } from './IToolProps';
 import { Requirement } from './Requirement';
-import { Scatter } from './Scatter';
+import { StepConstruct } from './StepConstruct';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
-import { ToolConfig } from './ToolConfig';
 import { WdkUtils } from './WdkUtils';
 import { Workflow } from './Workflow';
 
 
-export interface IToolProps {
-  readonly metadata?: IToolMetadata;
-}
-
-/**
- * Metadata that needs to be passed as a parameter from the instantiating workflow in some cases.
- */
-export interface IToolMetadata {
-  /**
-   * The file name used when exporting a tool and referencing in a workflow. Default is the id + '.cwl'.
-   */
-  readonly fileName?: string;
-
-  /**
-   * Allow to customize the label in a tool.
-   */
-  readonly label?: string;
-}
-
-
-export class Tool extends Construct implements IMappable, IStep {
-  private _config: ToolConfig = ToolConfig.basic(this);
-  private _fileName: string = `${this.id}.cwl`;
-  private _stepClass: StepClass = StepClass.COMMAND_LINE_TOOL;
+export class Tool extends StepConstruct implements IMappable {
   props: IToolProps;
-
 
   public constructor(scope: Workflow, id: string, props?: IToolProps) {
     super(scope, id);
+    this.stepClass = StepClass.COMMAND_LINE_TOOL;
     this.props = props || {};
 
     // If the metadata is provided, use it to set the label and fileName
     if (props?.metadata) {
       if (props.metadata.label) {
-        this._config.label = props.metadata.label; // Set internal value to new label.
+        this.config.label = props.metadata.label; // Set internal value to new label.
       }
       if (props.metadata.fileName) {
-        this._fileName = props.metadata.fileName;
+        this.fileName = props.metadata.fileName;
       }
     }
 
@@ -70,65 +43,12 @@ export class Tool extends Construct implements IMappable, IStep {
   }
 
 
-  get scatter(): Scatter | undefined {
-    return this._nodeOf(Scatter) as Scatter;
-  }
-
-  get conditional(): Conditional | undefined {
-    return this._nodeOf(Conditional) as Conditional;
-  }
-
-  get fileName(): string {
-    return this._fileName;
-  }
-
   hasSteps(): boolean {
     return false;
   }
 
-
-  public get config(): ToolConfig {
-    return this._config;
-  }
-
-  set config(value: ToolConfig) {
-    this._config = value;
-
-  }
-
   get steps(): IStep[] {
     return [];
-  }
-
-
-  get stepClass(): StepClass {
-    return this._stepClass;
-  }
-
-  set stepClass(newClass: StepClass) {
-    this._stepClass = newClass;
-  }
-
-  get inputs(): Input[] {
-    return this._nodesOf(Input) as Input[];
-  }
-
-  get linkedInputs(): Input[] {
-    const inputs = this._nodesOf(Input) as Input[];
-    return inputs.filter(input => input.linked);
-  }
-
-  get outputs(): Output[] {
-    return this._nodesOf(Output) as Output[];
-  }
-
-  get linkedOutputs(): Output[] {
-    const nodes = this._nodesOf(Output) as Output[];
-    return nodes.filter(node => node.referenced);
-  }
-
-  get label(): any {
-    return this._config.label;
   }
 
   get requirementsMap(): { [key: string]: any } {
@@ -146,53 +66,51 @@ export class Tool extends Construct implements IMappable, IStep {
    * @returns
    */
   toMap(): { [key: string]: any } {
-    const tData: { [key: string]: any } = {
-      class: this.stepClass.toString(),
-      cwlVersion: Constants.cwlVersion,
-      // id: this.id,
-      label: this.label,
-      requirements: this.requirementsMap,
-      baseCommand: this.config.baseCommand,
-      inputs: {},
-      outputs: {},
-      arguments: this.config.arguments,
-    };
+
+    const cwlTool = this._toCwlObject();
+    const cwlDict = cwlTool.save();
+    return cwlDict;
 
 
-    // Inputs section
-    const inputs: { [key: string]: any } = {};
-    this.inputs.forEach(input => {
-      let inputMap = input.toMap();
-      // if the input map only has the type key, then we can just use the type value
-      if (Object.keys(inputMap).length === 1 && inputMap.type) {
-        inputMap = inputMap.type;
-      }
-      inputs[input.id] = inputMap;
-    });
-    tData.inputs = inputs;
+    // const tData: { [key: string]: any } = {
+    //   // id: this.id,
+    //   requirements: this.requirementsMap,
+    // };
 
-    // Outputs section
-    const outputs: { [key: string]: any } = {};
-    this.outputs.forEach(output => {
-      outputs[output.id] = output.yamlMap;
-    });
-    if (Object.keys(outputs).length === 0) {
-      tData.outputs = [];
-      // delete tData.outputs;
-    } else {
-      tData.outputs = outputs;
-    }
 
-    // if requirements is empty, remove it
-    if (Object.keys(tData.requirements).length === 0) {
-      delete tData.requirements;
-    }
-    // if basecommand is empty, remove it
-    if (tData.baseCommand.length === 0) {
-      delete tData.baseCommand;
-    }
+    // // Inputs section
+    // this.inputs.forEach(input => {
+    //   let inputMap = input.toMap();
+    //   // if the input map only has the type key, then we can just use the type value
+    //   if (Object.keys(inputMap).length === 1 && inputMap.type) {
+    //     inputMap = inputMap.type;
+    //   }
+    //   inputs[input.id] = inputMap;
+    // });
+    // tData.inputs = inputs;
 
-    return tData;
+    // // Outputs section
+    // const outputs: { [key: string]: any } = {};
+    // this.outputs.forEach(output => {
+    //   outputs[output.id] = output.yamlMap;
+    // });
+    // if (Object.keys(outputs).length === 0) {
+    //   tData.outputs = [];
+    //   // delete tData.outputs;
+    // } else {
+    //   tData.outputs = outputs;
+    // }
+
+    // // if requirements is empty, remove it
+    // if (Object.keys(tData.requirements).length === 0) {
+    //   delete tData.requirements;
+    // }
+    // // if basecommand is empty, remove it
+    // if (tData.baseCommand.length === 0) {
+    //   delete tData.baseCommand;
+    // }
+
+    // return tData;
   }
 
 
@@ -211,5 +129,48 @@ export class Tool extends Construct implements IMappable, IStep {
     const yamlString = yaml.dump(data, { noRefs: true });
     WdkUtils.writeToFile(yamlString, cwlFile);
     return synthInfo;
+  }
+
+  /**
+   * @internal
+   * @returns
+   */
+  _toCwlObject(): cwl.CommandLineTool | cwl.ExpressionTool | cwl.Operation {
+
+    let tool = new cwl.CommandLineTool({
+      cwlVersion: cwl.CWLVersion.V1_2,
+      class_: cwl.CommandLineTool_class.COMMANDLINETOOL,
+      inputs: [],
+      outputs: [],
+      // TODO: Add requirements.
+    });
+
+    // Only add base command if it is not empty
+    if (this.config.baseCommand.length > 0) {
+      tool.baseCommand = this.config.baseCommand;
+    }
+    // Only add arguments if it is not empty
+    if (this.config.arguments.length > 0) {
+      tool.arguments_ = this.config.arguments;
+    }
+
+    if (this.label) {
+      tool.label = this.label;
+    }
+
+    // Add inputs
+    this.inputs.forEach(input => {
+      let inputCwl = input._toCwlObject();
+      tool.inputs.push(inputCwl);
+    });
+
+
+    // Add outputs
+    this.outputs.forEach(output => {
+      let outputCwl = output._toCwlObject();
+      tool.outputs.push(outputCwl);
+    });
+
+    return tool;
   }
 }

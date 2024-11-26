@@ -42,5 +42,6 @@ project.annotateGenerated(`/${mdApiJava}`);
 // -- end generate java API documentation
 
 project.addBundledDeps('cwl-ts-auto');
+// project.addPeerDeps('cwl-ts-auto');
 project.addBundledDeps('js-yaml');
 project.synth();

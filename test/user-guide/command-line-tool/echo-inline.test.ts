@@ -1,6 +1,5 @@
 /// !hide
 import { Constructs, Input, Output, Tool, ToolConfig } from '../../../src/lib/';
-import { TestHelper } from '../test-helper';
 
 describe('Command-line Tool CWL output', () => {
   it('should generate correct CWL for the echo tool and have no git differences', () => {
@@ -17,6 +16,8 @@ describe('Command-line Tool CWL output', () => {
 
     /// !hide
     // Create output directory inside the testoutput directory
-    TestHelper.serializeAndCheckStepsInRootWorkflow(root);
+    let toolCwlMap = echoTool._toCwlObject().save();
+    // compare toolCwlMap with the expected CWL
+    expect(toolCwlMap).toMatchSnapshot();
   });
 });

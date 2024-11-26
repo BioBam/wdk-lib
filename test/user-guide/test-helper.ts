@@ -14,7 +14,6 @@ export class TestHelper {
       const diffResult = TestHelper.compareWithGitDiff(outputFile);
       expect(diffResult).toBe('');
     });
-
   }
 
   static ensureExampleDirectoryExistWithName(exampleName: string): string {

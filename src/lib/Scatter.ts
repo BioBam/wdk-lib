@@ -1,14 +1,15 @@
+import * as cwl from 'cwl-ts-auto';
 import { Construct } from './Construct';
 import { Input } from './Input';
 import { IStep } from './IStep';
 import { Requirement } from './Requirement';
 import { Workflow } from './Workflow';
 
-export enum ScatterMethod {
-  DOT_PRODUCT = 'dotproduct',
-  NESTED_CROSS_PRODUCT = 'nested_crossproduct',
-  FLAT_CROSS_PRODUCT = 'flat_crossproduct',
-}
+// export enum Method {
+//   DOT_PRODUCT = cwl.ScatterMethod.DOTPRODUCT,
+//   NESTED_CROSS_PRODUCT = cwl.ScatterMethod.NESTED_CROSSPRODUCT,
+//   FLAT_CROSS_PRODUCT = cwl.ScatterMethod.FLAT_CROSSPRODUCT,
+// }
 
 export class Scatter extends Construct {
 
@@ -35,7 +36,7 @@ export class Scatter extends Construct {
    * @param inputs
    */
   static dotProduct(scope: Workflow, step: IStep, inputs: Input[]) {
-    this.workflowStepInputs(scope, step, inputs, ScatterMethod.DOT_PRODUCT);
+    this.workflowStepInputs(scope, step, inputs, cwl.ScatterMethod.DOTPRODUCT);
   }
 
   /**
@@ -48,7 +49,7 @@ export class Scatter extends Construct {
    * @param inputs
    */
   static nestedCrossProduct(scope: Workflow, step: IStep, inputs: Input[]) {
-    this.workflowStepInputs(scope, step, inputs, ScatterMethod.NESTED_CROSS_PRODUCT);
+    this.workflowStepInputs(scope, step, inputs, cwl.ScatterMethod.NESTED_CROSSPRODUCT);
   }
 
   /**
@@ -61,11 +62,11 @@ export class Scatter extends Construct {
    * @param inputs
    */
   static flatCrossProduct(scope: Workflow, step: IStep, inputs: Input[]) {
-    this.workflowStepInputs(scope, step, inputs, ScatterMethod.FLAT_CROSS_PRODUCT);
+    this.workflowStepInputs(scope, step, inputs, cwl.ScatterMethod.FLAT_CROSSPRODUCT);
   }
 
 
-  private static workflowStepInputs(scope: Workflow, step: IStep, input: Input[], method: ScatterMethod = ScatterMethod.DOT_PRODUCT) {
+  private static workflowStepInputs(scope: Workflow, step: IStep, input: Input[], method: cwl.ScatterMethod = cwl.ScatterMethod.DOTPRODUCT) {
     // Throw exception if input is not an array
     for (const i of input) {
       if (!i.isArray()) {
@@ -87,13 +88,16 @@ export class Scatter extends Construct {
     return new Scatter((step as unknown as Construct), inputIds, method);
   }
 
-  readonly method: ScatterMethod;
+  /**
+   * @internal
+   */
+  readonly _method: cwl.ScatterMethod;
   readonly ids: string[];
 
-  private constructor(scope: Construct, ids: string[], method: ScatterMethod) {
+  private constructor(scope: Construct, ids: string[], method: cwl.ScatterMethod) {
     super(scope, '');
     this.ids = ids;
-    this.method = method;
+    this._method = method;
   }
 
 }

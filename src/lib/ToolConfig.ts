@@ -1,11 +1,11 @@
 import { Constants } from './Constants';
 import { Construct } from './Construct';
-import { Tool } from './Tool';
+import { StepConstruct } from './StepConstruct';
 
 export class ToolConfig extends Construct {
 
   // Static factory method
-  public static basic(scope: Tool): ToolConfig {
+  public static basic(scope: StepConstruct): ToolConfig {
     let tp = new ToolConfig(scope, 'fromBasic');
     scope.config = tp;
     return tp;

@@ -37,7 +37,7 @@ export class Conditional extends Construct {
    */
   whenBooleanInputIs(input: Input, value: boolean) {
     // Only accept this method if the input is a boolean
-    if (input.type != Type.BOOLEAN) {
+    if (input._type != Type.BOOLEAN) {
       throw new Error(`Input ${input.id} is not a boolean. Conditional can only be applied on boolean inputs.`);
     }
     this.failIfInputDoesNotBelongToStep(input);

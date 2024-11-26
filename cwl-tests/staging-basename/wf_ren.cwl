@@ -2,11 +2,13 @@ class: Workflow
 cwlVersion: v1.2
 inputs:
   f1:
-    type: File
+    id: f1
     default: whale.txt
+    type: File
   newname:
-    type: string
+    id: newname
     default: badger.txt
+    type: string
 outputs: []
 requirements:
   StepInputExpressionRequirement: {}

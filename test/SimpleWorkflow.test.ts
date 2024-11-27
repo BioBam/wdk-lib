@@ -1,4 +1,3 @@
-import * as path from 'path';
 import { Input, Output, Tool, Workflow } from '../src/lib';
 import { Constructs } from '../src/lib/Constructs';
 
@@ -25,9 +24,8 @@ describe('Simple Workflow cwl export test', () => {
     Input.fromStepInput(w, taFInput);
     Output.fromStepOutput(w, tbFOutput);
 
-    const outputDir = path.join(__dirname, '../testoutput');
-    const sFile = w.serialize(outputDir);
-    console.log(sFile);
+    // const outputDir = path.join(__dirname, '../testoutput');
+    // const sFile = w.serialize(outputDir);
 
     // Assert there are no differences
     expect(w.toMap()).toMatchSnapshot();

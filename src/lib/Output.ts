@@ -309,7 +309,6 @@ export class Output extends LinkableConstruct implements IMappable {
       id: this.id,
       type: typeToAssign,
     });
-    console.debug(`Output ${this.id} has type ${typeToAssign}`);
     return etop;
   }
 

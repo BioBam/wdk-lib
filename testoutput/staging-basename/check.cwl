@@ -1,9 +1,12 @@
+id: check
 class: CommandLineTool
-cwlVersion: v1.2
 inputs:
-  p: File
-  checkname: string
+  - id: p
+    type: File
+  - id: checkname
+    type: string
 outputs: []
+cwlVersion: v1.2
 arguments:
   - sh
   - "-c"

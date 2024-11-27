@@ -149,6 +149,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
       "id": "pathway-analysis-pre",
       "in": [
         {
+          "id": "input_file",
           "source": "input_file",
         },
       ],
@@ -191,6 +192,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         "label": "OmicsBox Pathway Load Sequences Tool",
         "outputs": [
           {
+            "id": "loaded_project",
             "outputBinding": {
               "glob": "$(inputs.output_project)",
             },
@@ -213,66 +215,87 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
       "id": "pathway-analysis-service",
       "in": [
         {
+          "id": "input_sequence",
           "source": "pathway-analysis-pre/loaded_project",
         },
         {
+          "id": "reactome_enable",
           "source": "reactome_enable",
         },
         {
+          "id": "gramene_enable",
           "source": "gramene_enable",
         },
         {
+          "id": "kegg_enable",
           "source": "kegg_enable",
         },
         {
+          "id": "reactome_annotation_linking",
           "source": "reactome_annotation_linking",
         },
         {
+          "id": "gramene_annotation_linking",
           "source": "gramene_annotation_linking",
         },
         {
+          "id": "kegg_annotation_linking",
           "source": "kegg_annotation_linking",
         },
         {
+          "id": "reactome_sequence_linking",
           "source": "reactome_sequence_linking",
         },
         {
+          "id": "gramene_sequence_linking",
           "source": "gramene_sequence_linking",
         },
         {
+          "id": "kegg_sequence_linking",
           "source": "kegg_sequence_linking",
         },
         {
+          "id": "reactome_most_specific",
           "source": "reactome_most_specific",
         },
         {
+          "id": "gramene_most_specific",
           "source": "gramene_most_specific",
         },
         {
+          "id": "reactome_prioritize_species",
           "source": "reactome_prioritize_species",
         },
         {
+          "id": "gramene_prioritize_species",
           "source": "gramene_prioritize_species",
         },
         {
+          "id": "reactome_priority_species",
           "source": "reactome_priority_species",
         },
         {
+          "id": "reactome_priority_taxa_id",
           "source": "reactome_priority_species_taxid",
         },
         {
+          "id": "gramene_priority_species",
           "source": "gramene_priority_species",
         },
         {
+          "id": "gramene_priority_taxa_id",
           "source": "gramene_priority_species_taxid",
         },
         {
+          "id": "reactome_categories",
           "source": "reactome_categories",
         },
         {
+          "id": "gramene_categories",
           "source": "gramene_categories",
         },
         {
+          "id": "kegg_categories",
           "source": "kegg_categories",
         },
       ],
@@ -468,6 +491,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         "label": "OmicsBox Pathway Analysis Service Tool",
         "outputs": [
           {
+            "id": "output_project",
             "outputBinding": {
               "glob": "$(inputs.output_project_file_name)",
             },
@@ -500,12 +524,15 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
       "id": "pathway-analysis-post",
       "in": [
         {
+          "id": "input_project",
           "source": "pathway-analysis-service/output_project",
         },
         {
+          "id": "input_expression",
           "source": "input_expression",
         },
         {
+          "id": "output_project_file_name",
           "source": "output_project",
         },
       ],
@@ -562,6 +589,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         "label": "OmicsBox Pathway Load Expression Tool",
         "outputs": [
           {
+            "id": "output_full_project",
             "outputBinding": {
               "glob": "$(inputs.output_project)",
             },

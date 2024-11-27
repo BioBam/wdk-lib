@@ -301,7 +301,7 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.BashTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.BashTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
-| <code><a href="#wdk-lib.BashTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.BashTool.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
@@ -460,13 +460,13 @@ public StepClass getStepClass();
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.BashTool.property.requirementsMap"></a>
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.BashTool.property.requirements"></a>
 
 ```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+public java.util.List<Requirement> getRequirements();
 ```
 
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
 
 ---
 
@@ -581,7 +581,7 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.CheckFileNameTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
-| <code><a href="#wdk-lib.CheckFileNameTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.checkname">checkname</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.f1">f1</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
@@ -742,13 +742,13 @@ public StepClass getStepClass();
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.CheckFileNameTool.property.requirementsMap"></a>
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.CheckFileNameTool.property.requirements"></a>
 
 ```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+public java.util.List<Requirement> getRequirements();
 ```
 
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
 
 ---
 
@@ -1167,7 +1167,7 @@ Example: call with makeParametersJsonExpression()
 | <code><a href="#wdk-lib.ExpressionTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.ExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.expression">expression</a></code> | <code>java.lang.String</code> | Get the custom JavaScript expression for this ExpressionTool. |
-| <code><a href="#wdk-lib.ExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.ExpressionTool.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
@@ -1338,13 +1338,13 @@ Get the custom JavaScript expression for this ExpressionTool.
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.ExpressionTool.property.requirementsMap"></a>
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.ExpressionTool.property.requirements"></a>
 
 ```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+public java.util.List<Requirement> getRequirements();
 ```
 
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
 
 ---
 
@@ -2737,7 +2737,6 @@ The identifier for this output.
 | <code><a href="#wdk-lib.Output.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Output.property.yamlMap">yamlMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | Generates a YAML map of the output's bindings and settings. |
 
 ---
 
@@ -2824,18 +2823,6 @@ public PickValueMethod getPickValueMethod();
 ```
 
 - *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
-
----
-
-##### `yamlMap`<sup>Required</sup> <a name="yamlMap" id="wdk-lib.Output.property.yamlMap"></a>
-
-```java
-public java.util.Map<java.lang.String, java.lang.Object> getYamlMap();
-```
-
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
-
-Generates a YAML map of the output's bindings and settings.
 
 ---
 
@@ -2977,7 +2964,7 @@ Example: call with makeParametersJsonExpression()
 | <code><a href="#wdk-lib.RenameExpressionTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.expression">expression</a></code> | <code>java.lang.String</code> | Get the custom JavaScript expression for this ExpressionTool. |
-| <code><a href="#wdk-lib.RenameExpressionTool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.f1">f1</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.newname">newname</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
@@ -3151,13 +3138,13 @@ Get the custom JavaScript expression for this ExpressionTool.
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.RenameExpressionTool.property.requirementsMap"></a>
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.RenameExpressionTool.property.requirements"></a>
 
 ```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+public java.util.List<Requirement> getRequirements();
 ```
 
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
 
 ---
 
@@ -4097,7 +4084,7 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.Tool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Tool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Tool.property.requirementsMap">requirementsMap</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | *No description.* |
+| <code><a href="#wdk-lib.Tool.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 
 ---
@@ -4256,13 +4243,13 @@ public StepClass getStepClass();
 
 ---
 
-##### `requirementsMap`<sup>Required</sup> <a name="requirementsMap" id="wdk-lib.Tool.property.requirementsMap"></a>
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.Tool.property.requirements"></a>
 
 ```java
-public java.util.Map<java.lang.String, java.lang.Object> getRequirementsMap();
+public java.util.List<Requirement> getRequirements();
 ```
 
-- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
 
 ---
 

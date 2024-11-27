@@ -1,7 +1,8 @@
 class: CommandLineTool
-cwlVersion: v1.2
 inputs:
-  str1InputL4: string
-  str2InputL4: string
+  - id: str1InputL4
+    type: string
+  - id: str2InputL4
+    type: string
 outputs: []
-arguments: []
+cwlVersion: v1.2

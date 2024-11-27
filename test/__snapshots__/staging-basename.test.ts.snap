@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Output File Comparison with Test Set should generate correct YAML and have no git differences 1`] = `
+{
+  "arguments": [
+    "sh",
+    "-c",
+    "name=\`basename $(inputs.p.path)\`
+ls -l $(inputs.p.path)
+if test $name = $(inputs.checkname) ; then
+  echo success
+else
+  echo expected basename to be $(inputs.checkname) but was $name
+  exit 1
+fi
+",
+  ],
+  "class": "CommandLineTool",
+  "cwlVersion": "v1.2",
+  "id": "check",
+  "inputs": [
+    {
+      "id": "p",
+      "type": "File",
+    },
+    {
+      "id": "checkname",
+      "type": "string",
+    },
+  ],
+  "outputs": [],
+}
+`;
+
+exports[`Output File Comparison with Test Set should generate correct YAML and have no git differences 2`] = `
+{
+  "class": "ExpressionTool",
+  "cwlVersion": "v1.2",
+  "expression": "\${
+inputs.f1.basename = inputs.newname;
+return {"out": inputs.f1};
+}
+",
+  "id": "check",
+  "inputs": [
+    {
+      "id": "f1",
+      "type": "File",
+    },
+    {
+      "id": "newname",
+      "type": "string",
+    },
+  ],
+  "outputs": [
+    {
+      "id": "out",
+      "type": "File",
+    },
+  ],
+}
+`;
+
+exports[`Output File Comparison with Test Set should generate correct YAML and have no git differences 3`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "wf_ren",
+  "inputs": [
+    {
+      "default": "whale.txt",
+      "id": "f1",
+      "type": "File",
+    },
+    {
+      "default": "badger.txt",
+      "id": "newname",
+      "type": "string",
+    },
+  ],
+  "outputs": [],
+  "requirements": [
+    {
+      "class": "StepInputExpressionRequirement",
+    },
+    {
+      "class": "InlineJavascriptRequirement",
+    },
+  ],
+  "steps": [
+    {
+      "id": "rename",
+      "in": [
+        {
+          "id": "f1",
+          "source": "f1",
+        },
+        {
+          "id": "newname",
+          "source": "newname",
+        },
+      ],
+      "out": [
+        "out",
+      ],
+      "run": {
+        "class": "ExpressionTool",
+        "cwlVersion": "v1.2",
+        "expression": "\${
+inputs.f1.basename = inputs.newname;
+return {"out": inputs.f1};
+}
+",
+        "id": "rename",
+        "inputs": [
+          {
+            "id": "f1",
+            "type": "File",
+          },
+          {
+            "id": "newname",
+            "type": "string",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "out",
+            "type": "File",
+          },
+        ],
+      },
+    },
+    {
+      "id": "echo",
+      "in": [
+        {
+          "id": "p",
+          "source": "rename/out",
+        },
+        {
+          "id": "checkname",
+          "source": "newname",
+        },
+      ],
+      "out": [],
+      "run": {
+        "arguments": [
+          "sh",
+          "-c",
+          "name=\`basename $(inputs.p.path)\`
+ls -l $(inputs.p.path)
+if test $name = $(inputs.checkname) ; then
+  echo success
+else
+  echo expected basename to be $(inputs.checkname) but was $name
+  exit 1
+fi
+",
+        ],
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "echo",
+        "inputs": [
+          {
+            "id": "p",
+            "type": "File",
+          },
+          {
+            "id": "checkname",
+            "type": "string",
+          },
+        ],
+        "outputs": [],
+      },
+    },
+  ],
+}
+`;

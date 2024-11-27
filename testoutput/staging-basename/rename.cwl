@@ -1,10 +1,14 @@
+id: check
 class: ExpressionTool
-cwlVersion: v1.2
 inputs:
-  f1: File
-  newname: string
+  - id: f1
+    type: File
+  - id: newname
+    type: string
 outputs:
-  out: File
+  - id: out
+    type: File
+cwlVersion: v1.2
 expression: |
   ${
   inputs.f1.basename = inputs.newname;

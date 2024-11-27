@@ -1,32 +1,94 @@
 class: Workflow
 cwlVersion: v1.2
 inputs:
-  input_file: File
-  input_expression: File?
-  output_project: string
-  output_report: string?
-  reactome_enable: boolean
-  gramene_enable: boolean
-  kegg_enable: boolean
-  reactome_annotation_linking: boolean
-  gramene_annotation_linking: boolean
-  kegg_annotation_linking: boolean
-  reactome_sequence_linking: boolean
-  gramene_sequence_linking: boolean
-  kegg_sequence_linking: boolean
-  reactome_blast_evalue: float
-  gramene_blast_evalue: float
-  reactome_most_specific: boolean
-  gramene_most_specific: boolean
-  reactome_prioritize_species: boolean
-  gramene_prioritize_species: boolean
-  reactome_priority_species: string
-  reactome_priority_species_taxid: int
-  gramene_priority_species: string
-  gramene_priority_species_taxid: int
-  reactome_categories: string[]
-  gramene_categories: string[]
-  kegg_categories: string[]
+  input_file:
+    id: input_file
+    type: File
+  input_expression:
+    id: input_expression
+    type:
+      - 'null'
+      - File
+  output_project:
+    id: output_project
+    type: string
+  output_report:
+    id: output_report
+    type:
+      - 'null'
+      - string
+  reactome_enable:
+    id: reactome_enable
+    type: boolean
+  gramene_enable:
+    id: gramene_enable
+    type: boolean
+  kegg_enable:
+    id: kegg_enable
+    type: boolean
+  reactome_annotation_linking:
+    id: reactome_annotation_linking
+    type: boolean
+  gramene_annotation_linking:
+    id: gramene_annotation_linking
+    type: boolean
+  kegg_annotation_linking:
+    id: kegg_annotation_linking
+    type: boolean
+  reactome_sequence_linking:
+    id: reactome_sequence_linking
+    type: boolean
+  gramene_sequence_linking:
+    id: gramene_sequence_linking
+    type: boolean
+  kegg_sequence_linking:
+    id: kegg_sequence_linking
+    type: boolean
+  reactome_blast_evalue:
+    id: reactome_blast_evalue
+    type: float
+  gramene_blast_evalue:
+    id: gramene_blast_evalue
+    type: float
+  reactome_most_specific:
+    id: reactome_most_specific
+    type: boolean
+  gramene_most_specific:
+    id: gramene_most_specific
+    type: boolean
+  reactome_prioritize_species:
+    id: reactome_prioritize_species
+    type: boolean
+  gramene_prioritize_species:
+    id: gramene_prioritize_species
+    type: boolean
+  reactome_priority_species:
+    id: reactome_priority_species
+    type: string
+  reactome_priority_species_taxid:
+    id: reactome_priority_species_taxid
+    type: int
+  gramene_priority_species:
+    id: gramene_priority_species
+    type: string
+  gramene_priority_species_taxid:
+    id: gramene_priority_species_taxid
+    type: int
+  reactome_categories:
+    id: reactome_categories
+    type:
+      items: string
+      type: array
+  gramene_categories:
+    id: gramene_categories
+    type:
+      items: string
+      type: array
+  kegg_categories:
+    id: kegg_categories
+    type:
+      items: string
+      type: array
 outputs:
   - id: pathways_project
     type: File

@@ -118,6 +118,10 @@ export class Requirement extends Construct {
     return this._toCwlObject().save();
   }
 
+  /**
+   * @internal
+   * @returns
+   */
   _toCwlObject(): cwl.SubworkflowFeatureRequirement
   | cwl.ScatterFeatureRequirement
   | cwl.MultipleInputFeatureRequirement

@@ -22,6 +22,7 @@ exports[`Command-line Tool CWL output should generate correct CWL for the echo t
   ],
   "outputs": [
     {
+      "id": "echoed",
       "type": "string",
     },
   ],

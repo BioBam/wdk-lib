@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Command-line Tool CWL output should generate correct CWL for the echo tool and have no git differences 1`] = `
+{
+  "arguments": [
+    "-n",
+  ],
+  "baseCommand": [
+    "echo",
+  ],
+  "class": "CommandLineTool",
+  "cwlVersion": "v1.2",
+  "id": "echo-inline",
+  "inputs": [
+    {
+      "id": "message",
+      "type": [
+        "null",
+        "string",
+      ],
+    },
+  ],
+  "outputs": [
+    {
+      "id": "echoed",
+      "type": "string",
+    },
+  ],
+}
+`;

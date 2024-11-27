@@ -1,7 +1,9 @@
-import { Construct } from './Construct';
+import * as cwl from 'cwl-ts-auto';
+import { InputType, InputTypeArray } from './ILinkable';
 import { LinkableConstruct } from './LinkableConstruct';
-import { Shortify } from './Shortify';
-import { Type } from './Type';
+import { StepConstruct } from './StepConstruct';
+import { StepClass } from './ToolClass';
+
 
 /**
  * Represents an input parameter of a workflow or a tool.
@@ -18,8 +20,8 @@ export class Input extends LinkableConstruct {
    * Create an input from a step input, using the same ID and type.
    * It also copies the default value, the optional flag, and the doc.
    */
-  static fromStepInput(scope: Construct, input: Input): Input {
-    const newInput = new Input(scope, input.id, input.type);
+  static fromStepInput(scope: StepConstruct, input: Input): Input {
+    const newInput = new Input(scope, input.id, input._type);
     newInput._optional = input.optional;
     newInput._defaultValue = input._defaultValue;
     newInput._doc = input._doc;
@@ -37,8 +39,8 @@ export class Input extends LinkableConstruct {
    * @param id The identifier for this input.
    * @returns A new instance of Input configured as a boolean.
    */
-  static bool(scope: Construct, id: string): Input {
-    const input = new Input(scope, id, Type.BOOLEAN);
+  static bool(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id, cwl.PrimitiveType.BOOLEAN);
     return input;
   }
 
@@ -49,8 +51,8 @@ export class Input extends LinkableConstruct {
    * @param id The identifier for this input.
    * @returns A new instance of Input configured as a double.
    */
-  static double(scope: Construct, id: string): Input {
-    const input = new Input(scope, id, Type.DOUBLE);
+  static double(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id, cwl.PrimitiveType.DOUBLE);
     return input;
   }
 
@@ -61,8 +63,8 @@ export class Input extends LinkableConstruct {
    * @param id The identifier for this input.
    * @returns A new instance of Input configured as a float.
    */
-  static float(scope: Construct, id: string): Input {
-    const input = new Input(scope, id, Type.FLOAT);
+  static float(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id, cwl.PrimitiveType.FLOAT);
     return input;
   }
 
@@ -73,8 +75,8 @@ export class Input extends LinkableConstruct {
    * @param id The identifier for this input.
    * @returns A new instance of Input configured as a file.
    */
-  static file(scope: Construct, id: string): Input {
-    const input = new Input(scope, id, Type.FILE);
+  static file(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id, cwl.CWLType.FILE);
     return input;
   }
 
@@ -85,8 +87,10 @@ export class Input extends LinkableConstruct {
    * @param id The identifier for this input.
    * @returns A new instance of Input configured as a file array.
    */
-  static fileArray(scope: Construct, id: string): Input {
-    const input = new Input(scope, id, Type.FILE_ARRAY);
+  static fileArray(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id,
+      new cwl.CommandInputArraySchema({ items: cwl.CWLType.FILE, type: cwl.enum_d062602be0b4b8fd33e69e29a841317b6ab665bc.ARRAY }),
+    );
     return input;
   }
 
@@ -97,8 +101,8 @@ export class Input extends LinkableConstruct {
    * @param id The identifier for this input.
    * @returns A new instance of Input configured as an integer.
    */
-  static integer(scope: Construct, id: string): Input {
-    const input = new Input(scope, id, Type.INT);
+  static integer(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id, cwl.PrimitiveType.INT);
     return input;
   }
 
@@ -109,8 +113,8 @@ export class Input extends LinkableConstruct {
    * @param id The identifier for this input.
    * @returns A new instance of Input configured as a string.
    */
-  static string(scope: Construct, id: string): Input {
-    const input = new Input(scope, id, Type.STRING);
+  static string(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id, cwl.PrimitiveType.STRING);
     return input;
   }
 
@@ -121,15 +125,22 @@ export class Input extends LinkableConstruct {
    * @param id The identifier for this input.
    * @returns A new instance of Input configured as a string array.
    */
-  static stringArray(scope: Construct, id: string): Input {
-    const input = new Input(scope, id, Type.STRING_ARRAY);
+  static stringArray(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id,
+      new cwl.CommandInputArraySchema({ items: cwl.PrimitiveType.STRING, type: cwl.enum_d062602be0b4b8fd33e69e29a841317b6ab665bc.ARRAY }),
+    );
     return input;
   }
 
   /**
    * @internal
    */
-  protected _type: Type;
+  private _psc: StepClass;
+
+  /**
+   * @internal
+   */
+  protected _parameterType: InputType | InputTypeArray;
 
   /**
    * @internal
@@ -148,10 +159,12 @@ export class Input extends LinkableConstruct {
   private _doc?: string;
 
   // Private constructor
-  private constructor(scope: Construct, id: string, type: Type) {
+  private constructor(scope: StepConstruct, id: string,
+    type: InputType | InputTypeArray) {
     super(scope, id);
+    this._psc = scope.stepClass;
     this._optional = false;
-    this._type = type;
+    this._parameterType = type;
   }
 
   // API Instance methods while building
@@ -260,11 +273,12 @@ export class Input extends LinkableConstruct {
   }
 
   /**
+   * @internal
    * Retrieves the type of the input.
    * @returns The type of the input.
    */
-  get type(): Type {
-    return this._type;
+  get _type(): InputType | InputTypeArray {
+    return this._parameterType;
   }
 
   /**
@@ -275,29 +289,32 @@ export class Input extends LinkableConstruct {
     return this._valueFrom;
   }
 
-  /**
-   * Determines if a given type is considered as a basic type.
-   * @param type The type to check.
-   * @returns True if the type is one of the basic types; otherwise, false.
-   */
-  private isBasicType(type: Type): boolean {
-    return (
-      type === Type.BOOLEAN ||
-      type === Type.INT ||
-      type === Type.DOUBLE ||
-      type === Type.FLOAT ||
-      type === Type.STRING ||
-      type === Type.FILE ||
-      type === Type.DIRECTORY
-    );
-  }
+  // /**
+  //  * Determines if a given type is considered as a basic type.
+  //  * @param type The type to check.
+  //  * @returns True if the type is one of the basic types; otherwise, false.
+  //  */
+  // private isBasicType(type: InputType): boolean {
+  //   return type instanceof String;
+  //   // return (
+  //   //   type === Type.BOOLEAN ||
+  //   //   type === Type.INT ||
+  //   //   type === Type.DOUBLE ||
+  //   //   type === Type.FLOAT ||
+  //   //   type === Type.STRING ||
+  //   //   type === Type.FILE ||
+  //   //   type === Type.DIRECTORY
+  //   // );
+  // }
+
 
   /**
    * Checks if the input is an array type.
    * @returns True if the type is either STRING_ARRAY or FILE_ARRAY; otherwise, false.
    */
   isArray() {
-    return this._type === Type.STRING_ARRAY || this._type === Type.FILE_ARRAY;
+    return this._type instanceof cwl.CommandInputArraySchema;
+    // return this._type === Type.STRING_ARRAY || this._type === Type.FILE_ARRAY;
   }
 
   /**
@@ -314,74 +331,99 @@ export class Input extends LinkableConstruct {
 
   /**
    * Converts the input to a CWL-compatible JSON object.
-   * @param short A flag indicating if the output should be shortened.
    * @returns A JSON object representing the input.
    */
-  toMap(short: boolean = true): { [key: string]: any } {
-    const inputMap: { [key: string]: any } = {};
-    const inputBindingMap: { [key: string]: any } = {};
+  toMap(): { [key: string]: any } {
+    return this._toCwlObject().save();
+  }
 
-    if (this.isBasicType(this._type)) {
-      inputMap.type = this._type.toString() + (this.optional ? '?' : '');
+  private createWorkflowInputParameter(): cwl.WorkflowInputParameter {
 
-      if (this._prefix) {
-        inputBindingMap.prefix = this._prefix;
-      }
-    } else if (this._type === Type.STRING_ARRAY || this._type === Type.FILE_ARRAY) {
-      let typeMap: { [key: string]: any } | string = {
-        type: 'array',
-        items: this._type.toString().slice(0, -2),
-      };
-
-      if (this._separate || this._prefix || this._separator) {
-        const innerInputBindingMap: { [key: string]: any } = {};
-
-        if (this._separate) {
-          innerInputBindingMap.separate = true;
-        }
-
-        if (this._prefix) {
-          innerInputBindingMap.prefix = this._prefix;
-        }
-
-        if (this._separator) {
-          innerInputBindingMap.itemSeparator = this._separator;
-        }
-
-        if (Object.keys(innerInputBindingMap).length > 0) {
-          typeMap.inputBinding = innerInputBindingMap;
-        }
-      }
-
-      if (short) {
-        // check if inputmap only has type: 'array', items: 'string', then return 'string[]'
-        typeMap = Shortify.input(typeMap);
-      }
-
-      if (this._optional) {
-        inputMap.type = ['null', typeMap];
+    // Prepare the type to assign to the input parameter
+    // if optional is true, then the type should be an array of the type(s) and 'null'
+    let typeToAssign: InputType | InputTypeArray;
+    if (this.optional) {
+      if (Array.isArray(this._parameterType)) {
+        typeToAssign = this._parameterType;
+        typeToAssign.push('null');
       } else {
-        inputMap.type = typeMap;
+        typeToAssign = ['null', this._parameterType];
       }
-
-
     } else {
-      throw new Error(`Unsupported type: ${this._type.toString()}`);
+      typeToAssign = this._parameterType;
     }
+
+    let wip = new cwl.WorkflowInputParameter({
+      type: typeToAssign,
+      id: this.id,
+    });
 
     if (this._defaultValue !== undefined) {
-      inputMap.default = this._defaultValue;
+      wip.default_ = this._defaultValue;
     }
 
-    if (this._position !== undefined) {
-      inputBindingMap.position = this._position;
+    return wip;
+  }
+
+  private createCommandInputParameter(): cwl.CommandInputParameter {
+    // Prepare the type to assign to the input parameter
+    // if optional is true, then the type should be an array of the type(s) and 'null'
+    let typeToAssign: InputType | InputTypeArray;
+    if (this.optional) {
+      if (Array.isArray(this._parameterType)) {
+        typeToAssign = this._parameterType;
+        typeToAssign.push('null');
+      } else {
+        typeToAssign = ['null', this._parameterType];
+      }
+    } else {
+      typeToAssign = this._parameterType;
     }
 
-    if (Object.keys(inputBindingMap).length > 0) {
-      inputMap.inputBinding = inputBindingMap;
+    let cip = new cwl.CommandInputParameter({
+      type: typeToAssign,
+      id: this.id,
+    });
+
+    if (this._prefix !== undefined || this._position !== undefined) {
+      cip.inputBinding = new cwl.CommandLineBinding({
+        prefix: this._prefix, // if missing, not set anyway.
+      });
+      cip.inputBinding!.position = this._position;
+    }
+    if (this._defaultValue !== undefined) {
+      cip.default_ = this._defaultValue;
     }
 
-    return inputMap;
+    if (this.isArray()) {
+      if (this._separate || this._separator) {
+        if (cip.inputBinding === undefined) {
+          cip.inputBinding = new cwl.CommandLineBinding({});
+        }
+        cip.inputBinding.itemSeparator = this._separator;
+        cip.inputBinding.separate = this._separate;
+      }
+
+    }
+
+    return cip;
+  }
+
+  /**
+   * @internal
+   * Converts the input to a CWL-compatible k-v object.
+   * @param short A flag indicating if the output should be shortened.
+   * @returns A JSON object representing
+   */
+  _toCwlObject(): cwl.WorkflowInputParameter | cwl.CommandInputParameter {
+    if (this._psc === StepClass.WORKFLOW || this._psc === StepClass.EXPRESSION_TOOL) {
+      return this.createWorkflowInputParameter();
+    } else if (this._psc === StepClass.COMMAND_LINE_TOOL) {
+      return this.createCommandInputParameter();
+    } else {
+      throw new Error('Unknown scope type: ' + this._psc);
+    }
   }
 
 }
+

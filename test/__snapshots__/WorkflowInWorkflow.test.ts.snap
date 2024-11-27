@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Workflow In Workflow YAML output should generate correct YAML and have no git differences 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "L1",
+  "inputs": [],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "L2",
+      "in": [],
+      "out": [],
+      "run": {
+        "class": "Workflow",
+        "cwlVersion": "v1.2",
+        "id": "L2",
+        "inputs": [],
+        "outputs": [],
+        "steps": [
+          {
+            "id": "L3",
+            "in": [
+              {
+                "id": "str1InputL4",
+                "valueFrom": "strL3WorkflowInput",
+              },
+            ],
+            "out": [],
+            "run": {
+              "class": "Workflow",
+              "cwlVersion": "v1.2",
+              "id": "L3",
+              "inputs": [
+                {
+                  "id": "l3Input",
+                  "type": "string",
+                },
+                {
+                  "id": "str1InputL4",
+                  "type": "string",
+                },
+              ],
+              "outputs": [],
+              "steps": [
+                {
+                  "id": "l4",
+                  "in": [
+                    {
+                      "id": "str1InputL4",
+                      "source": "str1InputL4",
+                    },
+                    {
+                      "id": "str2InputL4",
+                      "valueFrom": "toolStepInputInWorkflow",
+                    },
+                  ],
+                  "out": [],
+                  "run": {
+                    "class": "CommandLineTool",
+                    "cwlVersion": "v1.2",
+                    "id": "l4",
+                    "inputs": [
+                      {
+                        "id": "str1InputL4",
+                        "type": "string",
+                      },
+                      {
+                        "id": "str2InputL4",
+                        "type": "string",
+                      },
+                    ],
+                    "outputs": [],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

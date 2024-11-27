@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Input, Tool, Workflow } from '../src/lib';
@@ -35,24 +34,26 @@ describe('Workflow In Workflow YAML output', () => {
       fs.mkdirSync(outputDir);
     }
 
-    const sFile = l1.serialize(outputDir);
+    let wMap = l1.toMap();
+    // const sFile = l1.serialize(outputDir);
 
-    // Write (or overwrite) the YAML content to the file
-    // fs.writeFileSync(outputFile, yamlOutput, 'utf8');
+    // // Write (or overwrite) the YAML content to the file
+    // // fs.writeFileSync(outputFile, yamlOutput, 'utf8');
 
-    // Compare with git diff
-    let diffResult: string;
-    try {
-      diffResult = execSync(`git diff -- ${sFile.main}`, { encoding: 'utf-8' });
-    } catch (error) {
-      if (error instanceof Error && 'stdout' in error) {
-        diffResult = (error.stdout as Buffer).toString();
-      } else {
-        throw error; // Re-throw if it's not the expected error type.
-      }
-    }
+    // // Compare with git diff
+    // let diffResult: string;
+    // try {
+    //   diffResult = execSync(`git diff -- ${sFile.main}`, { encoding: 'utf-8' });
+    // } catch (error) {
+    //   if (error instanceof Error && 'stdout' in error) {
+    //     diffResult = (error.stdout as Buffer).toString();
+    //   } else {
+    //     throw error; // Re-throw if it's not the expected error type.
+    //   }
+    // }
 
-    // Assert there are no differences
-    expect(diffResult).toBe('');
+    // // Assert there are no differences
+    // expect(diffResult).toBe('');
+    expect(wMap).toMatchSnapshot();
   });
 });

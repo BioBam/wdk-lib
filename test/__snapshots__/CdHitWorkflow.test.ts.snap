@@ -1,0 +1,473 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdHitWorkflow YAML output should generate correct YAML and have no git differences 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "cdhit-workflow-id",
+  "inputs": [
+    {
+      "id": "input_fasta",
+      "type": "File",
+    },
+    {
+      "id": "CdhitParameters.lengthDifferenceCutoff",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.bandWidth",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.sequenceIdentityType",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.sequenceIdentity",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.maxUnmatchedPercentageLonger",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.accurateMode",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.alignmentCoverageShorter",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.maxUnmatchedPercentageShorter",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.alignmentPositionConstrains",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.wordLength",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.strand",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.lengthCutoff",
+      "type": "string",
+    },
+    {
+      "id": "CdhitParameters.alignmentCoverageLonger",
+      "type": "string",
+    },
+  ],
+  "outputs": [
+    {
+      "id": "parameters_file",
+      "type": "File",
+    },
+    {
+      "id": "clustered_fasta_file",
+      "type": "File",
+    },
+    {
+      "id": "cluster_file",
+      "type": [
+        "null",
+        "File",
+      ],
+    },
+    {
+      "id": "output_chart_file",
+      "type": "File",
+    },
+    {
+      "id": "output_report_file",
+      "type": "File",
+    },
+  ],
+  "requirements": [
+    {
+      "class": "SubworkflowFeatureRequirement",
+    },
+    {
+      "class": "InlineJavascriptRequirement",
+    },
+  ],
+  "steps": [
+    {
+      "id": "cdhit-service-parameters",
+      "in": [
+        {
+          "id": "CdhitParameters.input",
+          "source": "input_fasta",
+        },
+        {
+          "id": "CdhitParameters.lengthDifferenceCutoff",
+          "source": "CdhitParameters.lengthDifferenceCutoff",
+          "valueFrom": "5",
+        },
+        {
+          "id": "CdhitParameters.bandWidth",
+          "source": "CdhitParameters.bandWidth",
+        },
+        {
+          "id": "CdhitParameters.sequenceIdentityType",
+          "source": "CdhitParameters.sequenceIdentityType",
+        },
+        {
+          "id": "CdhitParameters.sequenceIdentity",
+          "source": "CdhitParameters.sequenceIdentity",
+        },
+        {
+          "id": "CdhitParameters.maxUnmatchedPercentageLonger",
+          "source": "CdhitParameters.maxUnmatchedPercentageLonger",
+        },
+        {
+          "id": "CdhitParameters.accurateMode",
+          "source": "CdhitParameters.accurateMode",
+        },
+        {
+          "id": "CdhitParameters.alignmentCoverageShorter",
+          "source": "CdhitParameters.alignmentCoverageShorter",
+        },
+        {
+          "id": "CdhitParameters.maxUnmatchedPercentageShorter",
+          "source": "CdhitParameters.maxUnmatchedPercentageShorter",
+        },
+        {
+          "id": "CdhitParameters.alignmentPositionConstrains",
+          "source": "CdhitParameters.alignmentPositionConstrains",
+        },
+        {
+          "id": "CdhitParameters.wordLength",
+          "source": "CdhitParameters.wordLength",
+        },
+        {
+          "id": "CdhitParameters.strand",
+          "source": "CdhitParameters.strand",
+        },
+        {
+          "id": "CdhitParameters.lengthCutoff",
+          "source": "CdhitParameters.lengthCutoff",
+        },
+        {
+          "id": "CdhitParameters.alignmentCoverageLonger",
+          "source": "CdhitParameters.alignmentCoverageLonger",
+        },
+      ],
+      "out": [
+        "parameters_file",
+      ],
+      "run": {
+        "class": "ExpressionTool",
+        "cwlVersion": "v1.2",
+        "expression": "\${
+      var params = {};
+        for (var key in inputs) {
+          if (inputs[key] !== undefined && inputs[key] !== null) { // Check if inputs[key] is set
+            if (Array.isArray(inputs[key]) && inputs[key][0].class === 'File') {
+              params[key] = inputs[key].map(file => file.basename);
+            } else if (typeof inputs[key] === 'object' && inputs[key].class === 'File') {
+              params[key] = inputs[key].basename;
+            } else {
+              params[key] = inputs[key];
+            }
+          }
+        }
+
+        return {
+          "parameters_file": {
+            "class": "File",
+            "basename": "parameters.txt",
+            "contents": JSON.stringify(params, null, 2)
+          }
+        };
+    }",
+        "id": "cdhit-service-parameters",
+        "inputs": [
+          {
+            "id": "CdhitParameters.input",
+            "type": "File",
+          },
+          {
+            "id": "CdhitParameters.lengthDifferenceCutoff",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.bandWidth",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.sequenceIdentityType",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.sequenceIdentity",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.maxUnmatchedPercentageLonger",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.accurateMode",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.alignmentCoverageShorter",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.maxUnmatchedPercentageShorter",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.alignmentPositionConstrains",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.wordLength",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.strand",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.lengthCutoff",
+            "type": "string",
+          },
+          {
+            "id": "CdhitParameters.alignmentCoverageLonger",
+            "type": "string",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "parameters_file",
+            "type": "File",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "InlineJavascriptRequirement",
+          },
+        ],
+      },
+    },
+    {
+      "id": "cdhit-service",
+      "in": [
+        {
+          "id": "parametersFile",
+          "source": "cdhit-service-parameters/parameters_file",
+        },
+        {
+          "id": "inputFasta",
+          "source": "input_fasta",
+        },
+      ],
+      "out": [
+        "clusteredFasta",
+        "cluster_file",
+      ],
+      "run": {
+        "baseCommand": [
+          "python3",
+          "/start/start.py",
+        ],
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "cdhit-service",
+        "inputs": [
+          {
+            "id": "parametersFile",
+            "type": "File",
+          },
+          {
+            "id": "inputFasta",
+            "inputBinding": {
+              "prefix": "-inputFasta",
+            },
+            "type": "File",
+          },
+        ],
+        "label": "CDHit",
+        "outputs": [
+          {
+            "id": "clusteredFasta",
+            "outputBinding": {
+              "glob": "cluster.fasta",
+            },
+            "type": "File",
+          },
+          {
+            "id": "cluster_file",
+            "outputBinding": {
+              "glob": "cluster.fasta.clstr",
+            },
+            "type": [
+              "null",
+              "File",
+            ],
+          },
+          {
+            "id": "json_example",
+            "outputBinding": {
+              "glob": "cluster.json",
+              "loadContents": true,
+              "outputEval": "$(self[0].contents)",
+            },
+            "type": "string",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/cdhit:latest",
+          },
+          {
+            "class": "EnvVarRequirement",
+            "envDef": {
+              "BATCH_CPU": "4",
+              "BATCH_MEMORY": "8000",
+              "BUCKET_JOB_FOLDER": "robert/cdblastjob",
+              "BUCKET_NAME": "scloud-test-data",
+              "BUCKET_SESSION_SHARED_FOLDER": "robert/cdblastjob",
+              "DEV_COMPRESSED_SHARED_DIR": "/data/compressedShared",
+              "DEV_COMPRESSED_SHARED_TAR_ZST": "/data/compressedShared.tar.zst",
+              "DEV_DATA_DIR": "/data",
+              "DEV_INPUT_DIR": "/data/input",
+              "DEV_OUTPUT_DIR": "/data/output",
+              "DEV_PARAMETERS_FILE": "$(inputs.parametersFile.path)",
+              "DEV_SHARED_DIR": "/data/shared",
+            },
+          },
+          {
+            "class": "InitialWorkDirRequirement",
+            "listing": [
+              {
+                "entry": "$(inputs.inputFasta)",
+                "entryname": "4seqs.fasta",
+                "writable": true,
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      "id": "cdhit-post",
+      "in": [
+        {
+          "id": "cluster_path",
+          "source": "cdhit-service/cluster_file",
+        },
+        {
+          "id": "input_fasta",
+          "source": "cdhit-service/clusteredFasta",
+        },
+        {
+          "id": "extra_input",
+          "pickValue": "first_non_null",
+          "source": [
+            "cdhit-service/cluster_file",
+            "input_fasta",
+          ],
+        },
+      ],
+      "out": [
+        "output_chart_file",
+        "output_report_file",
+      ],
+      "run": {
+        "arguments": [
+          "cdhitpost",
+        ],
+        "baseCommand": [
+          "java",
+          "-Dapp.custom.vmoptions=/opt/app/custom.vmoptions",
+          "-jar",
+          "/opt/app/omicsbox.jar",
+        ],
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "cdhit-post",
+        "inputs": [
+          {
+            "id": "cluster_path",
+            "inputBinding": {
+              "position": 1,
+              "prefix": "-clusterPath",
+            },
+            "type": "File",
+          },
+          {
+            "id": "input_fasta",
+            "inputBinding": {
+              "position": 2,
+              "prefix": "-inputFasta",
+            },
+            "type": "File",
+          },
+          {
+            "id": "extra_input",
+            "inputBinding": {
+              "position": 2,
+              "prefix": "-extraInput",
+            },
+            "type": "File",
+          },
+          {
+            "default": "chart.box",
+            "id": "output_chart",
+            "inputBinding": {
+              "position": 3,
+              "prefix": "-outputChart",
+            },
+            "type": "string",
+          },
+          {
+            "default": "report.box",
+            "id": "output_report",
+            "inputBinding": {
+              "prefix": "-outputReport",
+            },
+            "type": "string",
+          },
+        ],
+        "label": "OmicsBox CD-HIT-Post Tool",
+        "outputs": [
+          {
+            "id": "output_chart_file",
+            "outputBinding": {
+              "glob": "$(inputs.output_chart)",
+            },
+            "type": "File",
+          },
+          {
+            "id": "output_report_file",
+            "outputBinding": {
+              "glob": "$(inputs.output_report)",
+            },
+            "type": "File",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

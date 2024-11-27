@@ -1,12 +1,32 @@
 class: CommandLineTool
-cwlVersion: v1.2
 label: CDHit
+inputs:
+  - id: parametersFile
+    type: File
+  - id: inputFasta
+    type: File
+    inputBinding:
+      prefix: '-inputFasta'
+outputs:
+  - type: File
+    outputBinding:
+      glob: cluster.fasta
+  - type:
+      - 'null'
+      - File
+    outputBinding:
+      glob: cluster.fasta.clstr
+  - type: string
+    outputBinding:
+      loadContents: true
+      glob: cluster.json
+      outputEval: $(self[0].contents)
 requirements:
-  NetworkAccess:
+  - class: NetworkAccess
     networkAccess: true
-  DockerRequirement:
+  - class: DockerRequirement
     dockerPull: 188164850845.dkr.ecr.us-east-1.amazonaws.com/cdhit:latest
-  EnvVarRequirement:
+  - class: EnvVarRequirement
     envDef:
       BUCKET_NAME: scloud-test-data
       BUCKET_JOB_FOLDER: robert/cdblastjob
@@ -20,35 +40,12 @@ requirements:
       DEV_COMPRESSED_SHARED_TAR_ZST: /data/compressedShared.tar.zst
       BATCH_MEMORY: '8000'
       BATCH_CPU: '4'
-  InitialWorkDirRequirement:
+  - class: InitialWorkDirRequirement
     listing:
       - entryname: 4seqs.fasta
         entry: $(inputs.inputFasta)
         writable: true
+cwlVersion: v1.2
 baseCommand:
   - python3
   - /start/start.py
-inputs:
-  parametersFile: File
-  inputFasta:
-    type: File
-    inputBinding:
-      prefix: '-inputFasta'
-outputs:
-  clusteredFasta:
-    type: File
-    outputBinding:
-      glob: cluster.fasta
-  cluster_file:
-    type:
-      - File
-      - 'null'
-    outputBinding:
-      glob: cluster.fasta.clstr
-  json_example:
-    type: string
-    outputBinding:
-      glob: cluster.json
-      loadContents: true
-      outputEval: $(self[0].contents)
-arguments: []

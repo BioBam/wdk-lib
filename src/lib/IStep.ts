@@ -1,9 +1,9 @@
+import * as cwl from 'cwl-ts-auto';
 import { Conditional } from './Conditional';
 import { Input } from './Input';
 import { Output } from './Output';
 import { Scatter } from './Scatter';
 import { SynthFiles } from './SynthFiles';
-import { StepClass } from './ToolClass';
 
 /**
  * Represents a step in a workflow.
@@ -14,7 +14,7 @@ export interface IStep {
    * The name of the step file. It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
    */
   get fileName(): string;
-  // set fileName(newName: string);
+  set fileName(newName: string);
 
   /**
    * Whether the step has sub
@@ -27,8 +27,7 @@ export interface IStep {
    */
   get steps(): IStep[];
 
-  get stepClass(): StepClass;
-  set stepClass(newClass: StepClass);
+  // get stepClass(): StepClass;
 
   /**
    * Serialize the step to a directory. If the step has substeps, they will be serialized recursively.
@@ -71,5 +70,11 @@ export interface IStep {
    * Get the conditional object if the step is a scatter step.
    */
   get conditional(): Conditional | undefined;
+
+  /**
+   * @internal
+   * Create the CWL object for the step.
+   */
+  _toCwlObject(): string | cwl.Workflow | cwl.CommandLineTool | cwl.ExpressionTool | cwl.Operation;
 
 }

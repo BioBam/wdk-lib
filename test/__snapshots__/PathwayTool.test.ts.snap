@@ -1,0 +1,628 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and have no git differences 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "workflow-id",
+  "inputs": [
+    {
+      "id": "input_file",
+      "type": "File",
+    },
+    {
+      "id": "input_expression",
+      "type": [
+        "null",
+        "File",
+      ],
+    },
+    {
+      "id": "output_project",
+      "type": "string",
+    },
+    {
+      "id": "output_report",
+      "type": [
+        "null",
+        "string",
+      ],
+    },
+    {
+      "id": "reactome_enable",
+      "type": "boolean",
+    },
+    {
+      "id": "gramene_enable",
+      "type": "boolean",
+    },
+    {
+      "id": "kegg_enable",
+      "type": "boolean",
+    },
+    {
+      "id": "reactome_annotation_linking",
+      "type": "boolean",
+    },
+    {
+      "id": "gramene_annotation_linking",
+      "type": "boolean",
+    },
+    {
+      "id": "kegg_annotation_linking",
+      "type": "boolean",
+    },
+    {
+      "id": "reactome_sequence_linking",
+      "type": "boolean",
+    },
+    {
+      "id": "gramene_sequence_linking",
+      "type": "boolean",
+    },
+    {
+      "id": "kegg_sequence_linking",
+      "type": "boolean",
+    },
+    {
+      "id": "reactome_blast_evalue",
+      "type": "float",
+    },
+    {
+      "id": "gramene_blast_evalue",
+      "type": "float",
+    },
+    {
+      "id": "reactome_most_specific",
+      "type": "boolean",
+    },
+    {
+      "id": "gramene_most_specific",
+      "type": "boolean",
+    },
+    {
+      "id": "reactome_prioritize_species",
+      "type": "boolean",
+    },
+    {
+      "id": "gramene_prioritize_species",
+      "type": "boolean",
+    },
+    {
+      "id": "reactome_priority_species",
+      "type": "string",
+    },
+    {
+      "id": "reactome_priority_species_taxid",
+      "type": "int",
+    },
+    {
+      "id": "gramene_priority_species",
+      "type": "string",
+    },
+    {
+      "id": "gramene_priority_species_taxid",
+      "type": "int",
+    },
+    {
+      "id": "reactome_categories",
+      "type": {
+        "items": "string",
+        "type": "array",
+      },
+    },
+    {
+      "id": "gramene_categories",
+      "type": {
+        "items": "string",
+        "type": "array",
+      },
+    },
+    {
+      "id": "kegg_categories",
+      "type": {
+        "items": "string",
+        "type": "array",
+      },
+    },
+  ],
+  "outputs": [
+    {
+      "id": "pathways_project",
+      "type": "File",
+    },
+    {
+      "id": "output_project_file",
+      "type": "File",
+    },
+  ],
+  "requirements": [
+    {
+      "class": "InlineJavascriptRequirement",
+    },
+    {
+      "class": "SubworkflowFeatureRequirement",
+    },
+  ],
+  "steps": [
+    {
+      "id": "pathway-analysis-pre",
+      "in": [
+        {
+          "id": "input_file",
+          "source": "input_file",
+        },
+      ],
+      "out": [
+        "loaded_project",
+      ],
+      "run": {
+        "arguments": [
+          "pathway-load-sequences",
+        ],
+        "baseCommand": [
+          "java",
+          "-Dapp.custom.vmoptions=/opt/app/custom.vmoptions",
+          "-Dlucene_pathways_folder=/home/cmartinez/OmicsBoxFilesDev2/res/pathways_lucene",
+          "-jar",
+          "/opt/app/omicsbox.jar",
+        ],
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "pathway-analysis-pre",
+        "inputs": [
+          {
+            "id": "input_file",
+            "inputBinding": {
+              "position": 1,
+              "prefix": "-inputFile",
+            },
+            "type": "File",
+          },
+          {
+            "default": "roberto.box",
+            "id": "output_project",
+            "inputBinding": {
+              "position": 2,
+              "prefix": "-outputProject",
+            },
+            "type": "string",
+          },
+        ],
+        "label": "OmicsBox Pathway Load Sequences Tool",
+        "outputs": [
+          {
+            "id": "loaded_project",
+            "outputBinding": {
+              "glob": "$(inputs.output_project)",
+            },
+            "type": "File",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
+          },
+        ],
+      },
+    },
+    {
+      "id": "pathway-analysis-service",
+      "in": [
+        {
+          "id": "input_sequence",
+          "source": "pathway-analysis-pre/loaded_project",
+        },
+        {
+          "id": "reactome_enable",
+          "source": "reactome_enable",
+        },
+        {
+          "id": "gramene_enable",
+          "source": "gramene_enable",
+        },
+        {
+          "id": "kegg_enable",
+          "source": "kegg_enable",
+        },
+        {
+          "id": "reactome_annotation_linking",
+          "source": "reactome_annotation_linking",
+        },
+        {
+          "id": "gramene_annotation_linking",
+          "source": "gramene_annotation_linking",
+        },
+        {
+          "id": "kegg_annotation_linking",
+          "source": "kegg_annotation_linking",
+        },
+        {
+          "id": "reactome_sequence_linking",
+          "source": "reactome_sequence_linking",
+        },
+        {
+          "id": "gramene_sequence_linking",
+          "source": "gramene_sequence_linking",
+        },
+        {
+          "id": "kegg_sequence_linking",
+          "source": "kegg_sequence_linking",
+        },
+        {
+          "id": "reactome_most_specific",
+          "source": "reactome_most_specific",
+        },
+        {
+          "id": "gramene_most_specific",
+          "source": "gramene_most_specific",
+        },
+        {
+          "id": "reactome_prioritize_species",
+          "source": "reactome_prioritize_species",
+        },
+        {
+          "id": "gramene_prioritize_species",
+          "source": "gramene_prioritize_species",
+        },
+        {
+          "id": "reactome_priority_species",
+          "source": "reactome_priority_species",
+        },
+        {
+          "id": "reactome_priority_taxa_id",
+          "source": "reactome_priority_species_taxid",
+        },
+        {
+          "id": "gramene_priority_species",
+          "source": "gramene_priority_species",
+        },
+        {
+          "id": "gramene_priority_taxa_id",
+          "source": "gramene_priority_species_taxid",
+        },
+        {
+          "id": "reactome_categories",
+          "source": "reactome_categories",
+        },
+        {
+          "id": "gramene_categories",
+          "source": "gramene_categories",
+        },
+        {
+          "id": "kegg_categories",
+          "source": "kegg_categories",
+        },
+      ],
+      "out": [
+        "output_project",
+      ],
+      "run": {
+        "arguments": [
+          "pathway-analysis-service",
+        ],
+        "baseCommand": [
+          "java",
+          "-Dapp.custom.vmoptions=/tmp/custom.vmoptions",
+          "-Dlucene_pathways_folder=/data/pathways_lucene",
+          "-jar",
+          "/opt/app/omicsbox.jar",
+        ],
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "pathway-analysis-service",
+        "inputs": [
+          {
+            "id": "input_sequence",
+            "inputBinding": {
+              "prefix": "-inputSequence",
+            },
+            "type": "File",
+          },
+          {
+            "default": "pathways_project.box",
+            "id": "output_project_file_name",
+            "inputBinding": {
+              "prefix": "-outputProject",
+            },
+            "type": "string",
+          },
+          {
+            "id": "reactome_enable",
+            "inputBinding": {
+              "prefix": "-reactomeEnable",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "gramene_enable",
+            "inputBinding": {
+              "prefix": "-grameneEnable",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "kegg_enable",
+            "inputBinding": {
+              "prefix": "-keggEnable",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "reactome_annotation_linking",
+            "inputBinding": {
+              "prefix": "-reactomeAnnotationLinking",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "gramene_annotation_linking",
+            "inputBinding": {
+              "prefix": "-grameneAnnotationLinking",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "kegg_annotation_linking",
+            "inputBinding": {
+              "prefix": "-keggAnnotationLinking",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "reactome_sequence_linking",
+            "inputBinding": {
+              "prefix": "-reactomeSequenceLinking",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "gramene_sequence_linking",
+            "inputBinding": {
+              "prefix": "-grameneSequenceLinking",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "kegg_sequence_linking",
+            "inputBinding": {
+              "prefix": "-keggSequenceLinking",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "reactome_most_specific",
+            "inputBinding": {
+              "prefix": "-reactomeMostSpecific",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "gramene_most_specific",
+            "inputBinding": {
+              "prefix": "-grameneMostSpecific",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "reactome_prioritize_species",
+            "inputBinding": {
+              "prefix": "-reactomePrioritizeSpecies",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "gramene_prioritize_species",
+            "inputBinding": {
+              "prefix": "-gramenePrioritizeSpecies",
+            },
+            "type": "boolean",
+          },
+          {
+            "id": "reactome_priority_species",
+            "inputBinding": {
+              "prefix": "-reactomePrioritySpecies",
+            },
+            "type": "string",
+          },
+          {
+            "id": "reactome_priority_taxa_id",
+            "inputBinding": {
+              "prefix": "-reactomePriorityTaxaId",
+            },
+            "type": "int",
+          },
+          {
+            "id": "gramene_priority_species",
+            "inputBinding": {
+              "prefix": "-gramenePrioritySpecies",
+            },
+            "type": "string",
+          },
+          {
+            "id": "gramene_priority_taxa_id",
+            "inputBinding": {
+              "prefix": "-gramenePriorityTaxaId",
+            },
+            "type": "int",
+          },
+          {
+            "id": "reactome_categories",
+            "inputBinding": {
+              "position": 2,
+              "prefix": "-reactomeCategories",
+              "separate": true,
+            },
+            "type": {
+              "items": "string",
+              "type": "array",
+            },
+          },
+          {
+            "id": "gramene_categories",
+            "inputBinding": {
+              "position": 3,
+              "prefix": "-grameneCategories",
+              "separate": true,
+            },
+            "type": {
+              "items": "string",
+              "type": "array",
+            },
+          },
+          {
+            "id": "kegg_categories",
+            "inputBinding": {
+              "position": 4,
+              "prefix": "-keggCategories",
+              "separate": true,
+            },
+            "type": {
+              "items": "string",
+              "type": "array",
+            },
+          },
+        ],
+        "label": "OmicsBox Pathway Analysis Service Tool",
+        "outputs": [
+          {
+            "id": "output_project",
+            "outputBinding": {
+              "glob": "$(inputs.output_project_file_name)",
+            },
+            "type": "File",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "InitialWorkDirRequirement",
+            "listing": [
+              {
+                "entry": "$(inputs.input_sequence)",
+                "entryname": "input_file.box",
+                "writable": true,
+              },
+            ],
+          },
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
+          },
+        ],
+      },
+    },
+    {
+      "id": "pathway-analysis-post",
+      "in": [
+        {
+          "id": "input_project",
+          "source": "pathway-analysis-service/output_project",
+        },
+        {
+          "id": "input_expression",
+          "source": "input_expression",
+        },
+        {
+          "id": "output_project_file_name",
+          "source": "output_project",
+        },
+      ],
+      "out": [
+        "output_full_project",
+      ],
+      "run": {
+        "arguments": [
+          "pathway-analysis-load-expression",
+        ],
+        "baseCommand": [
+          "java",
+          "-Dapp.custom.vmoptions=/opt/app/custom.vmoptions",
+          "-jar",
+          "/opt/app/omicsbox.jar",
+        ],
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "pathway-analysis-post",
+        "inputs": [
+          {
+            "id": "input_project",
+            "inputBinding": {
+              "prefix": "-inputPathwayProject",
+            },
+            "type": "File",
+          },
+          {
+            "id": "input_expression",
+            "inputBinding": {
+              "prefix": "-inputExpressionProject",
+            },
+            "type": [
+              "null",
+              "File",
+            ],
+          },
+          {
+            "id": "output_project_file_name",
+            "inputBinding": {
+              "prefix": "-outputPathwayProject",
+            },
+            "type": "string",
+          },
+          {
+            "default": false,
+            "id": "clear_expression",
+            "inputBinding": {
+              "prefix": "-clearExpression",
+            },
+            "type": "boolean",
+          },
+        ],
+        "label": "OmicsBox Pathway Load Expression Tool",
+        "outputs": [
+          {
+            "id": "output_full_project",
+            "outputBinding": {
+              "glob": "$(inputs.output_project)",
+            },
+            "type": "File",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "InitialWorkDirRequirement",
+            "listing": [
+              {
+                "entry": "$(inputs.input_project)",
+                "entryname": "pathways_file.box",
+                "writable": true,
+              },
+              {
+                "entry": "$(inputs.input_expression)",
+                "entryname": "expression_file.box",
+                "writable": true,
+              },
+            ],
+          },
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

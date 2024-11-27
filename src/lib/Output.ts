@@ -1,8 +1,10 @@
-import { Construct } from './Construct';
+import * as cwl from 'cwl-ts-auto';
+import { OutputType, OutputTypeArray } from './ILinkable';
 import { IMappable } from './IMappable';
 import { Input } from './Input';
 import { LinkableConstruct } from './LinkableConstruct';
-import { Type } from './Type';
+import { StepConstruct } from './StepConstruct';
+import { StepClass } from './ToolClass';
 
 /**
  * Represents an output parameter of a workflow, tool, or step.
@@ -25,8 +27,8 @@ export class Output extends LinkableConstruct implements IMappable {
    * @param linkedOutput The output to link and copy properties from.
    * @returns A new instance of Output linked to the provided output.
    */
-  static fromStepOutput(scope: Construct, linkedOutput: Output): Output {
-    const newOutput = new Output(scope, linkedOutput.id, linkedOutput.type);
+  static fromStepOutput(scope: StepConstruct, linkedOutput: Output): Output {
+    const newOutput = new Output(scope, linkedOutput.id, linkedOutput._parameterType);
     newOutput.linkTo(linkedOutput);
     newOutput.makeOptional(linkedOutput._optional);
     return newOutput;
@@ -41,8 +43,8 @@ export class Output extends LinkableConstruct implements IMappable {
    * @param id The identifier for this output.
    * @returns A new instance of Output configured as a file.
    */
-  static file(scope: Construct, id: string): Output {
-    const output = new Output(scope, id, Type.FILE);
+  static file(scope: StepConstruct, id: string): Output {
+    const output = new Output(scope, id, cwl.CWLType.FILE);
     return output;
   }
 
@@ -53,8 +55,8 @@ export class Output extends LinkableConstruct implements IMappable {
    * @param id The identifier for this output.
    * @returns A new instance of Output configured as a string.
    */
-  static string(scope: Construct, id: string): Output {
-    const output = new Output(scope, id, Type.STRING);
+  static string(scope: StepConstruct, id: string): Output {
+    const output = new Output(scope, id, cwl.PrimitiveType.STRING);
     return output;
   }
 
@@ -65,8 +67,8 @@ export class Output extends LinkableConstruct implements IMappable {
    * @param id The identifier for this output.
    * @returns A new instance of Output configured as a boolean.
    */
-  static bool(scope: Construct, id: string): Output {
-    const output = new Output(scope, id, Type.BOOLEAN);
+  static bool(scope: StepConstruct, id: string): Output {
+    const output = new Output(scope, id, cwl.PrimitiveType.BOOLEAN);
     return output;
   }
 
@@ -77,8 +79,8 @@ export class Output extends LinkableConstruct implements IMappable {
    * @param id The identifier for this output.
    * @returns A new instance of Output configured as an integer.
    */
-  static integer(scope: Construct, id: string): Output {
-    const output = new Output(scope, id, Type.INT);
+  static integer(scope: StepConstruct, id: string): Output {
+    const output = new Output(scope, id, cwl.PrimitiveType.INT);
     return output;
   }
 
@@ -89,8 +91,10 @@ export class Output extends LinkableConstruct implements IMappable {
    * @param id The identifier for this output.
    * @returns A new instance of Output configured as a string array.
    */
-  static stringArray(scope: Construct, id: string): Output {
-    const output = new Output(scope, id, Type.STRING_ARRAY);
+  static stringArray(scope: StepConstruct, id: string): Output {
+    const output = new Output(scope, id,
+      new cwl.CommandOutputArraySchema({ items: cwl.PrimitiveType.STRING, type: cwl.enum_d062602be0b4b8fd33e69e29a841317b6ab665bc.ARRAY }),
+    );
     return output;
   }
 
@@ -101,8 +105,10 @@ export class Output extends LinkableConstruct implements IMappable {
    * @param id The identifier for this output.
    * @returns A new instance of Output configured as a file array.
    */
-  static fileArray(scope: Construct, id: string): Output {
-    const output = new Output(scope, id, Type.FILE_ARRAY);
+  static fileArray(scope: StepConstruct, id: string): Output {
+    const output = new Output(scope, id,
+      new cwl.CommandOutputArraySchema({ items: cwl.CWLType.FILE, type: cwl.enum_d062602be0b4b8fd33e69e29a841317b6ab665bc.ARRAY }),
+    );
     return output;
   }
 
@@ -113,15 +119,16 @@ export class Output extends LinkableConstruct implements IMappable {
    * @param id The identifier for this output.
    * @returns A new instance of Output configured as a float.
    */
-  static float(scope: Construct, id: string): Output {
-    const output = new Output(scope, id, Type.FLOAT);
+  static float(scope: StepConstruct, id: string): Output {
+    const output = new Output(scope, id, cwl.PrimitiveType.FLOAT);
     return output;
   }
 
   /**
    * @internal
    */
-  protected _type: Type;
+  protected _parameterType: OutputType | OutputTypeArray;
+  private _psc: StepClass;
 
   private _glob: string | null = null;
   private _loadContents: boolean = false;
@@ -131,9 +138,10 @@ export class Output extends LinkableConstruct implements IMappable {
    */
   protected _optional: boolean;
 
-  constructor(scope: Construct, id: string, type: Type) {
+  private constructor(scope: StepConstruct, id: string, type: OutputType | OutputTypeArray) {
     super(scope, id);
-    this._type = type;
+    this._psc = scope.stepClass;
+    this._parameterType = type;
     this._optional = false;
   }
 
@@ -150,11 +158,11 @@ export class Output extends LinkableConstruct implements IMappable {
 
   /**
    * Gets the type of the output.
-   *
+   * @internal
    * @returns The type of the output.
    */
-  get type(): Type {
-    return this._type;
+  get _type(): OutputType | OutputTypeArray {
+    return this._parameterType;
   }
 
   override get idAsReference(): string {
@@ -170,9 +178,7 @@ export class Output extends LinkableConstruct implements IMappable {
    * @returns A map representation of the output.
    */
   toMap(): { [key: string]: any } {
-    return {
-      type: this.type.toString(),
-    };
+    return this._toCwlObject().save();
   }
 
   /**
@@ -217,34 +223,6 @@ export class Output extends LinkableConstruct implements IMappable {
     return this;
   }
 
-  /**
-   * Generates a YAML map of the output's bindings and settings.
-   *
-   * @returns A YAML map of the output configuration.
-   */
-  get yamlMap(): { [key: string]: any } {
-    const map: { [key: string]: any } = {
-      type: this.type.toString(),
-    };
-
-    if (this._optional) {
-      map.type = [map.type, 'null'];
-    }
-
-    if (this._glob !== null) {
-      map.outputBinding = {
-        glob: this._glob,
-      };
-      if (this._loadContents) {
-        map.outputBinding.loadContents = true;
-      }
-      if (this._outputEval) {
-        map.outputBinding.outputEval = this._outputEval;
-      }
-    }
-
-    return map;
-  }
 
   /**
    * Sets a glob pattern based on an input string identifier.
@@ -255,4 +233,101 @@ export class Output extends LinkableConstruct implements IMappable {
   globFromInputString(inputString: Input): this {
     return this.withGlob(`\$(inputs.${inputString.id})`);
   }
+
+
+  private createWorkflowOutputParameter(): cwl.WorkflowOutputParameter {
+
+    let typeToAssign: OutputType | OutputTypeArray;
+    if (this._optional) {
+      if (Array.isArray(this._parameterType)) {
+        typeToAssign = this._parameterType;
+        typeToAssign.push('null');
+      } else {
+        typeToAssign = ['null', this._parameterType];
+      }
+    } else {
+      typeToAssign = this._parameterType;
+    }
+
+    let wop = new cwl.WorkflowOutputParameter({
+      id: this.id,
+      type: typeToAssign,
+    });
+
+
+    // wop.
+    return wop;
+  }
+
+
+  private createCommandOutputParameter(): cwl.CommandOutputParameter {
+    let typeToAssign: OutputType | OutputTypeArray;
+    if (this._optional) {
+      if (Array.isArray(this._parameterType)) {
+        typeToAssign = this._parameterType;
+        typeToAssign.push('null');
+      } else {
+        typeToAssign = ['null', this._parameterType];
+      }
+    } else {
+      typeToAssign = this._parameterType;
+    }
+
+    let cop = new cwl.CommandOutputParameter({
+      id: this.id,
+      type: typeToAssign,
+    });
+
+    if (this._glob !== null) {
+      cop.outputBinding = new cwl.CommandOutputBinding({});
+      cop.outputBinding.glob = this._glob;
+
+      if (this._loadContents) {
+        cop.outputBinding.loadContents = true;
+      }
+      if (this._outputEval) {
+        cop.outputBinding.outputEval = this._outputEval;
+      }
+    }
+    return cop;
+  }
+
+  private createExpressionToolOutputParameter(): cwl.ExpressionToolOutputParameter {
+    let typeToAssign: OutputType | OutputTypeArray;
+    if (this._optional) {
+      if (Array.isArray(this._parameterType)) {
+        typeToAssign = this._parameterType;
+        typeToAssign.push('null');
+      } else {
+        typeToAssign = ['null', this._parameterType];
+      }
+    } else {
+      typeToAssign = this._parameterType;
+    }
+
+    let etop = new cwl.ExpressionToolOutputParameter({
+      id: this.id,
+      type: typeToAssign,
+    });
+    console.debug(`Output ${this.id} has type ${typeToAssign}`);
+    return etop;
+  }
+
+  /**
+   * @internal
+    */
+  _toCwlObject(): cwl.WorkflowOutputParameter | cwl.CommandOutputParameter | cwl.ExpressionToolOutputParameter {
+    if (this._psc === StepClass.WORKFLOW) {
+      return this.createWorkflowOutputParameter();
+    } else if (this._psc === StepClass.EXPRESSION_TOOL) {
+      const output = this.createExpressionToolOutputParameter();
+      return output;
+    } else if (this._psc === StepClass.COMMAND_LINE_TOOL) {
+      return this.createCommandOutputParameter();
+    } else {
+      throw new Error('Unknown scope type');
+    }
+  }
+
+
 }

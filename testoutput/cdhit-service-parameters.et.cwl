@@ -1,24 +1,37 @@
 class: ExpressionTool
-cwlVersion: v1.2
-requirements:
-  InlineJavascriptRequirement: {}
 inputs:
-  CdhitParameters.input: File
-  CdhitParameters.lengthDifferenceCutoff: string
-  CdhitParameters.bandWidth: string
-  CdhitParameters.sequenceIdentityType: string
-  CdhitParameters.sequenceIdentity: string
-  CdhitParameters.maxUnmatchedPercentageLonger: string
-  CdhitParameters.accurateMode: string
-  CdhitParameters.alignmentCoverageShorter: string
-  CdhitParameters.maxUnmatchedPercentageShorter: string
-  CdhitParameters.alignmentPositionConstrains: string
-  CdhitParameters.wordLength: string
-  CdhitParameters.strand: string
-  CdhitParameters.lengthCutoff: string
-  CdhitParameters.alignmentCoverageLonger: string
+  - id: CdhitParameters.input
+    type: File
+  - id: CdhitParameters.lengthDifferenceCutoff
+    type: string
+  - id: CdhitParameters.bandWidth
+    type: string
+  - id: CdhitParameters.sequenceIdentityType
+    type: string
+  - id: CdhitParameters.sequenceIdentity
+    type: string
+  - id: CdhitParameters.maxUnmatchedPercentageLonger
+    type: string
+  - id: CdhitParameters.accurateMode
+    type: string
+  - id: CdhitParameters.alignmentCoverageShorter
+    type: string
+  - id: CdhitParameters.maxUnmatchedPercentageShorter
+    type: string
+  - id: CdhitParameters.alignmentPositionConstrains
+    type: string
+  - id: CdhitParameters.wordLength
+    type: string
+  - id: CdhitParameters.strand
+    type: string
+  - id: CdhitParameters.lengthCutoff
+    type: string
+  - id: CdhitParameters.alignmentCoverageLonger
+    type: string
 outputs:
-  parameters_file: File
+  - id: parameters_file
+    type: File
+cwlVersion: v1.2
 expression: |-
   ${
         var params = {};

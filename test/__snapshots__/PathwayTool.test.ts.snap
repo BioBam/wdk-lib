@@ -129,10 +129,12 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
   "outputs": [
     {
       "id": "pathways_project",
+      "outputSource": "pathway-analysis-service/output_project",
       "type": "File",
     },
     {
       "id": "output_project_file",
+      "outputSource": "pathway-analysis-post/output_full_project",
       "type": "File",
     },
   ],

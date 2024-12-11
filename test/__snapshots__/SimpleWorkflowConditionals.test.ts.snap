@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Simple Workflow cwl export test should generate valid YAML and match snapshot 1`] = `
+exports[`Simple Workflow Conditionals cwl export test should generate valid YAML and match snapshot 1`] = `
 {
   "class": "Workflow",
   "cwlVersion": "v1.2",
@@ -13,7 +13,12 @@ exports[`Simple Workflow cwl export test should generate valid YAML and match sn
   ],
   "outputs": [
     {
-      "id": "tbFOutput",
+      "id": "oa",
+      "outputSource": "tool-a/taFOutput",
+      "type": "File",
+    },
+    {
+      "id": "ob",
       "outputSource": "tool-b/tbFOutput",
       "type": "File",
     },
@@ -53,7 +58,7 @@ exports[`Simple Workflow cwl export test should generate valid YAML and match sn
       "in": [
         {
           "id": "tbFInput",
-          "source": "tool-a/taFOutput",
+          "source": "taFInput",
         },
       ],
       "out": [

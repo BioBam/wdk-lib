@@ -66,14 +66,17 @@ exports[`CdHitWorkflow YAML output should generate correct YAML and have no git 
   "outputs": [
     {
       "id": "parameters_file",
+      "outputSource": "cdhit-service-parameters/parameters_file",
       "type": "File",
     },
     {
       "id": "clustered_fasta_file",
+      "outputSource": "cdhit-service/clusteredFasta",
       "type": "File",
     },
     {
       "id": "cluster_file",
+      "outputSource": "cdhit-service/cluster_file",
       "type": [
         "null",
         "File",
@@ -81,10 +84,12 @@ exports[`CdHitWorkflow YAML output should generate correct YAML and have no git 
     },
     {
       "id": "output_chart_file",
+      "outputSource": "cdhit-post/output_chart_file",
       "type": "File",
     },
     {
       "id": "output_report_file",
+      "outputSource": "cdhit-post/output_report_file",
       "type": "File",
     },
   ],

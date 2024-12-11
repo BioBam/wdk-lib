@@ -249,11 +249,31 @@ export class Output extends LinkableConstruct implements IMappable {
       typeToAssign = this._parameterType;
     }
 
+
+    // If multilinked, we need to create an array of output sources and set a pickValue.
+    let outputSource: string[] | string | undefined;
+    if (this.linked) {
+      outputSource = this.links.map(link => link.idAsReference);
+    }
+    // If only one element is linked, we can just get the idAsReference.
+    if (this.links.length === 1) {
+      outputSource = this.links[0].idAsReference;
+    }
+
     let wop = new cwl.WorkflowOutputParameter({
       id: this.id,
       type: typeToAssign,
+      outputSource: outputSource,
     });
 
+    if (this.multiLinked) {
+      let pvm = this.pickValueMethod;
+      if (pvm) {
+        wop.pickValue = pvm;
+      } else {
+        throw new Error('Multiple links found, but no pickValueMethod set.');
+      }
+    }
 
     // wop.
     return wop;

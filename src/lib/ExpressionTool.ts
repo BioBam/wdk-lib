@@ -45,6 +45,38 @@ export class ExpressionTool extends StepConstruct implements IMappable {
     return expressionScript;
   }
 
+  /**
+     * Create a CWL expression script that generates a JSON file with the parameters of the tool. All parameters are converted to strings.
+     * Example: call with makeParametersJsonExpressionAllStrings()
+     *
+     * @return string of the CWL expression script
+     */
+  public static makeParametersJsonExpressionAllStrings(): string {
+    const expressionScript = `\${
+      var params = {};
+        for (var key in inputs) {
+          if (inputs[key] !== undefined && inputs[key] !== null) { // Check if inputs[key] is set
+            if (Array.isArray(inputs[key]) && inputs[key][0].class === 'File') {
+              params[key] = inputs[key].map(file => file.basename);
+            } else if (typeof inputs[key] === 'object' && inputs[key].class === 'File') {
+              params[key] = inputs[key].basename;
+            } else {
+              params[key] = inputs[key].toString();
+            }
+          }
+        }
+
+        return {
+          "parameters_file": {
+            "class": "File",
+            "basename": "parameters.txt",
+            "contents": JSON.stringify(params, null, 2)
+          }
+        };
+    }`;
+    return expressionScript;
+  }
+
 
   private _expression: string;
   props: IToolProps | undefined;

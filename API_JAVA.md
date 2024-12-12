@@ -1134,6 +1134,7 @@ Specify a custom JavaScript expression for this ExpressionTool.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+| <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 
 ---
 
@@ -1148,6 +1149,19 @@ ExpressionTool.makeParametersJsonExpression()
 Create a CWL expression script that generates a JSON file with the parameters of the tool.
 
 Example: call with makeParametersJsonExpression()
+
+##### `makeParametersJsonExpressionAllStrings` <a name="makeParametersJsonExpressionAllStrings" id="wdk-lib.ExpressionTool.makeParametersJsonExpressionAllStrings"></a>
+
+```java
+import com.biobam.wdk.lib.ExpressionTool;
+
+ExpressionTool.makeParametersJsonExpressionAllStrings()
+```
+
+Create a CWL expression script that generates a JSON file with the parameters of the tool.
+
+All parameters are converted to strings.
+Example: call with makeParametersJsonExpressionAllStrings()
 
 #### Properties <a name="Properties" id="Properties"></a>
 
@@ -1622,6 +1636,7 @@ The prefix to set.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Input.bool">bool</a></code> | Creates a boolean type input. |
+| <code><a href="#wdk-lib.Input.directory">directory</a></code> | Creates a directory type input. |
 | <code><a href="#wdk-lib.Input.double">double</a></code> | Creates a double type input. |
 | <code><a href="#wdk-lib.Input.file">file</a></code> | Creates a file type input. |
 | <code><a href="#wdk-lib.Input.fileArray">fileArray</a></code> | Creates a file array type input. |
@@ -1652,6 +1667,32 @@ The construct within which this input is defined.
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.bool.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+The identifier for this input.
+
+---
+
+##### `directory` <a name="directory" id="wdk-lib.Input.directory"></a>
+
+```java
+import com.biobam.wdk.lib.Input;
+
+Input.directory(StepConstruct scope, java.lang.String id)
+```
+
+Creates a directory type input.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.directory.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The construct within which this input is defined.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.directory.parameter.id"></a>
 
 - *Type:* java.lang.String
 
@@ -2505,6 +2546,7 @@ The glob pattern.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Output.bool">bool</a></code> | Creates a boolean type output. |
+| <code><a href="#wdk-lib.Output.directory">directory</a></code> | Creates a directory type output. |
 | <code><a href="#wdk-lib.Output.file">file</a></code> | Creates a file type output. |
 | <code><a href="#wdk-lib.Output.fileArray">fileArray</a></code> | Creates a file array type output. |
 | <code><a href="#wdk-lib.Output.float">float</a></code> | Creates a float type output. |
@@ -2534,6 +2576,32 @@ The construct within which this output is defined.
 ---
 
 ###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.bool.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+The identifier for this output.
+
+---
+
+##### `directory` <a name="directory" id="wdk-lib.Output.directory"></a>
+
+```java
+import com.biobam.wdk.lib.Output;
+
+Output.directory(StepConstruct scope, java.lang.String id)
+```
+
+Creates a directory type output.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.directory.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The construct within which this output is defined.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.directory.parameter.id"></a>
 
 - *Type:* java.lang.String
 
@@ -2931,6 +2999,7 @@ Specify a custom JavaScript expression for this ExpressionTool.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+| <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 
 ---
 
@@ -2945,6 +3014,19 @@ RenameExpressionTool.makeParametersJsonExpression()
 Create a CWL expression script that generates a JSON file with the parameters of the tool.
 
 Example: call with makeParametersJsonExpression()
+
+##### `makeParametersJsonExpressionAllStrings` <a name="makeParametersJsonExpressionAllStrings" id="wdk-lib.RenameExpressionTool.makeParametersJsonExpressionAllStrings"></a>
+
+```java
+import com.biobam.wdk.lib.RenameExpressionTool;
+
+RenameExpressionTool.makeParametersJsonExpressionAllStrings()
+```
+
+Create a CWL expression script that generates a JSON file with the parameters of the tool.
+
+All parameters are converted to strings.
+Example: call with makeParametersJsonExpressionAllStrings()
 
 #### Properties <a name="Properties" id="Properties"></a>
 

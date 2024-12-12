@@ -60,7 +60,6 @@ export class Output extends LinkableConstruct implements IMappable {
     return output;
   }
 
-  
 
   /**
    * Creates a string type output.

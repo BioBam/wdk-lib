@@ -81,6 +81,18 @@ export class Input extends LinkableConstruct {
   }
 
   /**
+   * Creates a directory type input.
+   *
+   * @param scope The construct within which this input is defined.
+   * @param id The identifier for this input.
+   * @returns A new instance of Input configured as a Directory.
+   */
+  static directory(scope: StepConstruct, id: string): Input {
+    const input = new Input(scope, id, cwl.CWLType.DIRECTORY);
+    return input;
+  }
+
+  /**
    * Creates a file array type input.
    *
    * @param scope The construct within which this input is defined.

@@ -49,6 +49,20 @@ export class Output extends LinkableConstruct implements IMappable {
   }
 
   /**
+   * Creates a directory type output.
+   *
+   * @param scope The construct within which this output is defined.
+   * @param id The identifier for this output.
+   * @returns A new instance of Output configured as a directory.
+   */
+  static directory(scope: StepConstruct, id: string): Output {
+    const output = new Output(scope, id, cwl.CWLType.DIRECTORY);
+    return output;
+  }
+
+  
+
+  /**
    * Creates a string type output.
    *
    * @param scope The construct within which this output is defined.

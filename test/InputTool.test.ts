@@ -31,7 +31,7 @@ describe('Input Class', () => {
 
     it('should convert string array input to map correctly', () => {
       const input = Input.stringArray(tool, 'testStringArrayId');
-      input.withPrefix('--prefix').makeSeparate(true);
+      input.withPrefix('--prefix').makeSeparate(false);
 
       const map = input.toMap();
       expect(map).toEqual({
@@ -42,7 +42,7 @@ describe('Input Class', () => {
         },
         inputBinding: {
           prefix: '--prefix',
-          separate: true,
+          separate: false,
         },
       });
     });
@@ -61,7 +61,7 @@ describe('Input Class', () => {
         inputBinding: {
           prefix: '--prefix',
           itemSeparator: ',',
-          separate: false,
+          separate: true,
         },
       });
     });
@@ -79,7 +79,7 @@ describe('Input Class', () => {
         },
         inputBinding: {
           prefix: '--prefix',
-          separate: false,
+          separate: true,
           itemSeparator: ',',
         },
       });

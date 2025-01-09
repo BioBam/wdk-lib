@@ -163,7 +163,7 @@ export class Input extends LinkableConstruct {
   private _prefix?: string;
   private _defaultValue?: any;
   private _position?: number;
-  private _separate = false;
+  private _separate = true;
   private _separator: string | undefined;
 
   private _valueFrom: string | undefined;
@@ -408,7 +408,7 @@ export class Input extends LinkableConstruct {
     }
 
     if (this.isArray()) {
-      if (this._separate || this._separator) {
+      if (!this._separate || this._separator) {
         if (cip.inputBinding === undefined) {
           cip.inputBinding = new cwl.CommandLineBinding({});
         }

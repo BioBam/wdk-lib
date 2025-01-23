@@ -1,0 +1,36 @@
+site_name: WDK Docs
+theme:
+  name: material
+
+  features:
+    - navigation.top
+  #   - navigation.footer
+    - navigation.indexes # Make navigation sections clickable - require an index file for each in children.
+
+  palette:
+    scheme: default
+    primary: white
+    accent: blue
+
+  
+plugins:
+  - glightbox
+  - search
+  - open-in-new-tab
+
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  # - toc:
+  #       permalink: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+
+nav:
+  - Welcome: index.md
+  - Java API Reference: API_JAVA.md
+  - TS API Reference: API.md

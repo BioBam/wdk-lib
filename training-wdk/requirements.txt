@@ -1,0 +1,6 @@
+markdownify
+mkdocs-material
+mkdocs-glightbox
+mkdocs-open-in-new-tab
+mike
+mkdocs-redirects

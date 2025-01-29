@@ -122,36 +122,36 @@ describe('Reference Deep Parameters', () => {
   });
 
 
-  // it('Link workflow output from deep tool output', () => {
+  it('Link workflow output from deep tool output', () => {
 
-  //   const root = Constructs.rootWorkflow();
+    const root = Constructs.rootWorkflow();
 
-  //   class ToolA extends Tool {
-  //     public fileOut: Output;
-  //     constructor(scope: Workflow, id: string) {
-  //       super(scope, id);
-  //       this.fileOut = Output.file(this, 'fileOut');
-  //     }
-  //   }
+    class ToolA extends Tool {
+      public fileOut: Output;
+      constructor(scope: Workflow, id: string) {
+        super(scope, id);
+        this.fileOut = Output.file(this, 'fileOut');
+      }
+    }
 
-  //   class MyWorkflowA extends Workflow {
-  //     public ta: ToolA;
-  //     constructor(scope: Workflow, id: string) {
-  //       super(scope, id);
-  //       this.ta = new ToolA(this, 'tool-a');
-  //     }
-  //   }
+    class MyWorkflowA extends Workflow {
+      public ta: ToolA;
+      constructor(scope: Workflow, id: string) {
+        super(scope, id);
+        this.ta = new ToolA(this, 'tool-a');
+      }
+    }
 
 
-  //   const w = new Workflow(root, 'top-workflow');
-  //   let workflowOutputFile = Output.file(w, 'workflowOutputFile');
+    const w = new Workflow(root, 'top-workflow');
+    let workflowOutputFile = Output.file(w, 'workflowOutputFile');
 
-  //   const wa = new MyWorkflowA(w, 'swa');
-  //   workflowOutputFile.linkTo(wa.ta.fileOut);
+    const wa = new MyWorkflowA(w, 'swa');
+    workflowOutputFile.linkTo(wa.ta.fileOut);
 
-  //   // Assert there are no differences
-  //   expect(w.toMap()).toMatchSnapshot();
-  // });
+    // Assert there are no differences
+    expect(w.toMap()).toMatchSnapshot();
+  });
 
 
   // it('Link Wo Parameters in Workflows', () => {

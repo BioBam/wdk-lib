@@ -218,46 +218,41 @@ export class Output extends LinkableConstruct implements IMappable {
     return upperOutput.createMatchingScopeUpper(targetScope);
   }
 
-  public linkTo(linkInput: ILinkable): ILinkable {
-    return super.linkTo(linkInput);
+  /**
+   * Links this output to another output.
+   *
+   * @param linkOutput The output to link to.
+   * @returns The current instance for chaining method calls.
+   */
+  public linkTo(linkOutput: ILinkable): ILinkable {
+    // The normal is linking a lower output to an upper output with 1 scope difference.
+    if (this.scope === linkOutput.scope?.scope) {
+      return super.linkTo(linkOutput);
+    } else {
+      // Find the scope that matches my scope in the other output's scope chain.
+      let otherScope = linkOutput.scope;
+      while (otherScope) {
+        if (this.scope === otherScope.scope) {
+          console.log(`Match found in while at ${otherScope.id}. Proceed to linking all intermediate scopes and finally linking to this output.`);
+          const matchingScopeLinkable = linkOutput.createMatchingScopeUpper(otherScope);
+          super.linkTo(matchingScopeLinkable);
+          return this;
+        }
+        // no need to go to the root.
+        if (otherScope.scope?.scope) {
+          otherScope = otherScope.scope;
+        } else {
+          otherScope = undefined;
+        }
+      }
+      // no match found, create the uppers of this input and link here.
+      let upperScope = this.scope?.scope as StepConstruct;
+      if (!upperScope) {
+        throw new Error(`Upper scope not found for ${this.id}`);
+      }
+      return this;
+    }
   }
-
-
-  // public linkTo(linkInput: ILinkable): ILinkable {
-  //   if (this.scope?.scope === linkInput.scope || this.scope?.scope === linkInput.scope?.scope) {
-  //     console.log(`Output match found at ${this.scope?.scope?.id}`);
-  //     return super.linkTo(linkInput);
-  //   } else {
-  //     // let upper = this.createMatchingScopeUpper(linkInput.scope as StepConstruct);
-  //     // return upper.linkTo(linkInput);
-
-  //     let otherScope = linkInput.scope;
-  //     while (otherScope) {
-  //       // if (otherScope === this.scope) {
-  //       if (this.scope?.scope === otherScope || this.scope?.scope === otherScope.scope) {
-  //         console.log(`Match found in while at ${otherScope.id}`);
-  //         // Match found, proceed to link
-  //         const matchingScopeLinkable = linkInput.createMatchingScopeUpper(otherScope);
-  //         super.linkTo(matchingScopeLinkable);
-  //         return this;
-  //       }
-  //       if (otherScope.scope?.scope) {
-  //         otherScope = otherScope.scope;
-  //         console.log(`updating otherScope in while to ${otherScope?.id}`);
-  //       } else {
-  //         console.log(`upper scope scope's is undefined, set as undefined while in ${otherScope?.id}`);
-  //         otherScope = undefined;
-  //       }
-  //     }
-
-  //     // no match found, create the uppers of this input and link here.
-  //     let upperScope = this.scope?.scope as StepConstruct;
-  //     if (!upperScope) {
-  //       throw new Error(`Upper scope not found for ${this.id}`);
-  //     }
-  //     return this;
-  //   }
-  // }
 
   /**
    * Sets a new identifier for this output.

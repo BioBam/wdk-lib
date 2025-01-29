@@ -238,3 +238,62 @@ exports[`Reference Deep Parameters Link top workflow input all the way into a de
   ],
 }
 `;
+
+exports[`Reference Deep Parameters Link workflow output from deep tool output 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "top-workflow",
+  "inputs": [],
+  "outputs": [
+    {
+      "id": "workflowOutputFile",
+      "outputSource": "swa/tool-afileOut",
+      "type": "File",
+    },
+  ],
+  "steps": [
+    {
+      "id": "swa",
+      "in": [],
+      "out": [
+        "tool-afileOut",
+      ],
+      "run": {
+        "class": "Workflow",
+        "cwlVersion": "v1.2",
+        "id": "swa",
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "tool-afileOut",
+            "outputSource": "tool-a/fileOut",
+            "type": "File",
+          },
+        ],
+        "steps": [
+          {
+            "id": "tool-a",
+            "in": [],
+            "out": [
+              "fileOut",
+            ],
+            "run": {
+              "class": "CommandLineTool",
+              "cwlVersion": "v1.2",
+              "id": "tool-a",
+              "inputs": [],
+              "outputs": [
+                {
+                  "id": "fileOut",
+                  "type": "File",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

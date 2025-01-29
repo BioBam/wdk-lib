@@ -6,9 +6,10 @@ import { Workflow } from '../src/lib/Workflow';
 
 describe('Workflow', () => {
   let workflow: Workflow;
+  let root: Workflow;
 
   beforeEach(() => {
-    const root = Constructs.rootWorkflow();
+    root = Constructs.rootWorkflow();
     workflow = new Workflow(root, 'test-workflow');
   });
 
@@ -20,7 +21,6 @@ describe('Workflow', () => {
     });
 
     it('should create workflow with custom properties', () => {
-      const root = Constructs.createRoot('root');
       const customWorkflow = new Workflow(root, 'custom-workflow', {
         cwlVersion: 'v1.2',
       });
@@ -30,7 +30,6 @@ describe('Workflow', () => {
 
   describe('steps management', () => {
     it('should correctly add and retrieve steps', () => {
-      const root = Constructs.createRoot('root');
       const step1 = new Workflow(root, 'step1');
       const step2 = new Workflow(root, 'step2');
 
@@ -68,19 +67,18 @@ describe('Workflow', () => {
 
     it('should filter linked inputs and outputs', () => {
       const input1 = Input.string(workflow, 'input1');
-      const root = Constructs.createRoot('root');
-      const step = new Workflow(root, 'step1');
+      const step = new Workflow(workflow, 'step1');
       const stepInput = Input.string(step, 'stepInput');
 
-      input1.linkTo(stepInput);
+      stepInput.linkTo(input1);
 
       const output1 = Output.string(workflow, 'output1');
       const stepOutput = Output.string(step, 'stepOutput');
 
       output1.linkTo(stepOutput);
 
-      expect(workflow.linkedInputs).toHaveLength(1);
-      expect(workflow.linkedInputs[0]).toBe(input1);
+      expect(step.linkedInputs).toHaveLength(1);
+      expect(step.linkedInputs[0]).toBe(stepInput);
       expect(workflow.linkedOutputs).toHaveLength(1);
       expect(workflow.linkedOutputs[0]).toBe(output1);
     });

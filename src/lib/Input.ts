@@ -241,12 +241,11 @@ export class Input extends LinkableConstruct {
       return this;
     }
     let upperName = this.getUpperName();
-    console.log(`Creating upper ${upperName} in ${targetScope.id}`);
+    console.log(`createMatchingScopeUpper ${upperName} in ${targetScope.id}`);
     let upperScope = this.scope?.scope as StepConstruct;
     if (this.isStepConstruct(upperScope)) {
       let upperInput = upperScope.tryFindChild(upperName) as Input;
       if (!upperInput) {
-        console.log(`Creating upper ${upperName} in ${upperScope.id}`);
         upperInput = Input.fromStepInput(upperScope, this).as(upperName);
       }
       return upperInput.createMatchingScopeUpper(targetScope);
@@ -255,52 +254,38 @@ export class Input extends LinkableConstruct {
   }
 
   public linkTo(linkInput: ILinkable): ILinkable {
-    // if the scope of this linkable and the scope of the link input are not the same,
-    // for each of the parent scopes (up to the root) of this linkable,
-    //  check if the scope of the linkInput or the parent scopes match, up to the root.
-    console.log(`Linking ${this.id} to ${linkInput.id}`);
-    console.log(`Checking Scope ${this.scope?.scope?.id} === ${linkInput.scope?.id}`);
+    // An Input can be linked to another Input if it's comming from an upper 1-scope-away.
+    // Outputs from a 1-scope-away can be linked when coming from another branch.
     if (this.scope?.scope === linkInput.scope || this.scope?.scope === linkInput.scope?.scope) {
-      console.log(`Match found at ${this.scope?.scope?.id}`);
       return super.linkTo(linkInput);
     } else {
-      // Do any of the upper scopes of the linkInput match the scope of this input?
-      // If yes, we just need to create the uppers of the linkInput and link here.
+      // Find the scope that matches my scope 1-scope-away in the other linkable's chain.
       let otherScope = linkInput.scope;
       while (otherScope) {
-        // if (otherScope === this.scope) {
         if (this.scope?.scope === otherScope || this.scope?.scope === otherScope.scope) {
-          console.log(`Match found in while at ${otherScope.id}`);
-          // Match found, proceed to link
+          // when found, create the intermediate links and parameters.
+          // console.log(`Match found in while at ${otherScope.id}. Proceed to linking all intermediate scopes and finally linking to this linkable.`);
           const matchingScopeLinkable = linkInput.createMatchingScopeUpper(otherScope);
           super.linkTo(matchingScopeLinkable);
           return this;
         }
+        // no need to go to the root, in case we can't find a match up to this level.
         if (otherScope.scope?.scope) {
           otherScope = otherScope.scope;
-          console.log(`updating otherScope in while to ${otherScope?.id}`);
         } else {
-          console.log(`upper scope scope's is undefined, set as undefined while in ${otherScope?.id}`);
           otherScope = undefined;
         }
       }
 
-      // no match found, create the uppers of this input and link here.
+      // No 1-scope-away match found. Create my upper parameter and try the upper again recursively.
       let upperScope = this.scope?.scope as StepConstruct;
       if (!upperScope) {
         throw new Error(`Upper scope not found for ${this.id}`);
       }
-
       const upperName = this.getUpperName();
-
       let upperInput = upperScope.tryFindChild(upperName) as Input;
-
       if (!upperInput) {
-        console.log(`Creating upper input ${this.id} in ${upperScope.id}`);
         upperInput = Input.fromStepInput(upperScope, this).as(upperName);
-        console.log(`Created upper input ${this.id} in ${upperScope.id} and changed name to ${upperName}`);
-        // this.linkTo(upperInput); // already done inside the fromStepInput once.
-        // upperInput.linkTo(linkInput);
       }
 
       upperInput.linkTo(linkInput);

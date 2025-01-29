@@ -229,26 +229,22 @@ export class Output extends LinkableConstruct implements IMappable {
     if (this.scope === linkOutput.scope?.scope) {
       return super.linkTo(linkOutput);
     } else {
-      // Find the scope that matches my scope in the other output's scope chain.
+      // Find the scope that matches my scope 1-scope-away in the other linkable's chain.
       let otherScope = linkOutput.scope;
       while (otherScope) {
         if (this.scope === otherScope.scope) {
-          console.log(`Match found in while at ${otherScope.id}. Proceed to linking all intermediate scopes and finally linking to this output.`);
+          // when found, create the intermediate links and parameters.
+          // console.log(`Match found in while at ${otherScope.id}. Proceed to linking all intermediate scopes and finally linking to this linkable.`);
           const matchingScopeLinkable = linkOutput.createMatchingScopeUpper(otherScope);
           super.linkTo(matchingScopeLinkable);
           return this;
         }
-        // no need to go to the root.
+        // no need to go to the root, in case we can't find a match up to this level.
         if (otherScope.scope?.scope) {
           otherScope = otherScope.scope;
         } else {
           otherScope = undefined;
         }
-      }
-      // no match found, create the uppers of this input and link here.
-      let upperScope = this.scope?.scope as StepConstruct;
-      if (!upperScope) {
-        throw new Error(`Upper scope not found for ${this.id}`);
       }
       return this;
     }

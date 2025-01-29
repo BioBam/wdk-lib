@@ -1446,6 +1446,7 @@ Input input = Input.string(root, "myInput").withDefaultValue("default").withDoc(
 | --- | --- |
 | <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
 | <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
+| <code><a href="#wdk-lib.Input.allowNullElements">allowNullElements</a></code> | Sets the type of the input elements of an array to be nullable. |
 | <code><a href="#wdk-lib.Input.as">as</a></code> | Changes the ID of the input and returns the modified input instance. |
 | <code><a href="#wdk-lib.Input.isArray">isArray</a></code> | Checks if the input is an array type. |
 | <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | Sets the optionality of the input. |
@@ -1486,6 +1487,14 @@ Set the PickValueMethod for this linkable if there are multiple sources linked t
 - *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
 
 ---
+
+##### `allowNullElements` <a name="allowNullElements" id="wdk-lib.Input.allowNullElements"></a>
+
+```java
+public Input allowNullElements()
+```
+
+Sets the type of the input elements of an array to be nullable.
 
 ##### `as` <a name="as" id="wdk-lib.Input.as"></a>
 

@@ -86,6 +86,59 @@ describe('Input Class', () => {
 
   });
 
+  describe('Allow Null Elements Method for Arrays', () => {
+
+    it('should allow null elements in boolean array input', () => {
+      const input = Input.array(tool, 'testBooleanArrayIdWithNulls', Type.BOOLEAN);
+      input.allowNullElements();
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: ['null', 'boolean'],
+        },
+      });
+    });
+
+    it('should allow null elements in integer array input', () => {
+      const input = Input.array(tool, 'testIntArrayIdWithNulls', Type.INT);
+      input.allowNullElements();
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: ['null', 'int'],
+        },
+      });
+    });
+
+    it('should allow null elements in string array input with configurations', () => {
+      const input = Input.array(tool, 'testStringArrayIdWithNulls', Type.STRING);
+      input.withPrefix('--strings').withItemSeparator(',').allowNullElements();
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: ['null', 'string'],
+        },
+        inputBinding: {
+          prefix: '--strings',
+          itemSeparator: ',',
+          separate: true,
+        },
+      });
+    });
+
+    // Add more cases for other types if needed
+
+  });
+
 
   describe('toMap Method', () => {
     it('should convert string input to map correctly', () => {

@@ -246,6 +246,19 @@ export class Input extends LinkableConstruct {
   }
 
   /**
+   * Sets the type of the input elements of an array to be nullable.
+   * @returns The current instance for chaining method calls.
+   */
+  allowNullElements(): this {
+    if (this.isArray()) {
+      (this._type as cwl.CommandInputArraySchema).items = ['null', (this._type as cwl.CommandInputArraySchema).items as string | cwl.CommandInputRecordSchema | cwl.CommandInputEnumSchema | cwl.CommandInputArraySchema];
+    } else {
+      throw new Error('allowNullElements() can only be used on array types');
+    }
+    return this;
+  }
+
+  /**
    * Sets whether the input items should be separated.
    * @param separate A flag indicating separation status.
    * @returns The current instance for chaining method calls.

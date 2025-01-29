@@ -221,34 +221,28 @@ export class Output extends LinkableConstruct implements IMappable {
   /**
    * Links this output to another output.
    *
-   * @param linkOutput The output to link to.
+   * @param linkable The output to link to.
    * @returns The current instance for chaining method calls.
    */
-  public linkTo(linkOutput: ILinkable): ILinkable {
-    // The normal is linking a lower output to an upper output with 1 scope difference.
-    if (this.scope === linkOutput.scope?.scope) {
-      return super.linkTo(linkOutput);
-    } else {
-      // Find the scope that matches my scope 1-scope-away in the other linkable's chain.
-      let otherScope = linkOutput.scope;
-      while (otherScope) {
-        if (this.scope === otherScope.scope) {
-          // when found, create the intermediate links and parameters.
-          // console.log(`Match found in while at ${otherScope.id}. Proceed to linking all intermediate scopes and finally linking to this linkable.`);
-          const matchingScopeLinkable = linkOutput.createMatchingScopeUpper(otherScope);
-          super.linkTo(matchingScopeLinkable);
-          return this;
-        }
-        // no need to go to the root, in case we can't find a match up to this level.
-        if (otherScope.scope?.scope) {
-          otherScope = otherScope.scope;
-        } else {
-          otherScope = undefined;
-        }
-      }
-      return this;
+  public linkTo(linkable: ILinkable): ILinkable {
+    let currentScope = this.scope;
+
+    // Check if linking with a one-scope-away Output
+    if (currentScope === linkable.scope?.scope) {
+      return super.linkTo(linkable);
     }
+
+    // Traverse through linkInput's scope chain to find a match with currentScope
+    for (let otherScope = linkable.scope; otherScope; otherScope = otherScope.scope) {
+      if (currentScope === otherScope.scope) {
+        const matchingScopeLinkable = linkable.createMatchingScopeUpper(otherScope);
+        super.linkTo(matchingScopeLinkable);
+        return this;
+      }
+    }
+    return this;
   }
+
 
   /**
    * Sets a new identifier for this output.

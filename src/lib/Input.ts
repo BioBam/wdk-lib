@@ -253,45 +253,44 @@ export class Input extends LinkableConstruct {
     return this;
   }
 
-  public linkTo(linkInput: ILinkable): ILinkable {
-    // An Input can be linked to another Input if it's comming from an upper 1-scope-away.
-    // Outputs from a 1-scope-away can be linked when coming from another branch.
-    if (this.scope?.scope === linkInput.scope || this.scope?.scope === linkInput.scope?.scope) {
-      return super.linkTo(linkInput);
-    } else {
-      // Find the scope that matches my scope 1-scope-away in the other linkable's chain.
-      let otherScope = linkInput.scope;
-      while (otherScope) {
-        if (this.scope?.scope === otherScope || this.scope?.scope === otherScope.scope) {
-          // when found, create the intermediate links and parameters.
-          // console.log(`Match found in while at ${otherScope.id}. Proceed to linking all intermediate scopes and finally linking to this linkable.`);
-          const matchingScopeLinkable = linkInput.createMatchingScopeUpper(otherScope);
-          super.linkTo(matchingScopeLinkable);
-          return this;
-        }
-        // no need to go to the root, in case we can't find a match up to this level.
-        if (otherScope.scope?.scope) {
-          otherScope = otherScope.scope;
-        } else {
-          otherScope = undefined;
-        }
-      }
+  /**
+   * Links the input to another input or output.
+   *
+   * @param linkable The input or output to link to.
+   * @returns The current instance for chaining method calls.
+   */
+  public linkTo(linkable: ILinkable): ILinkable {
+    let currentScope = this.scope?.scope;
 
-      // No 1-scope-away match found. Create my upper parameter and try the upper again recursively.
-      let upperScope = this.scope?.scope as StepConstruct;
-      if (!upperScope) {
-        throw new Error(`Upper scope not found for ${this.id}`);
-      }
-      const upperName = this.getUpperName();
-      let upperInput = upperScope.tryFindChild(upperName) as Input;
-      if (!upperInput) {
-        upperInput = Input.fromStepInput(upperScope, this).as(upperName);
-      }
-
-      upperInput.linkTo(linkInput);
-      return this;
+    // Check direct one-scope-away relationship
+    if (currentScope === linkable.scope || currentScope === linkable.scope?.scope) {
+      return super.linkTo(linkable);
     }
+
+    // Traverse through linkInput's scope chain to find a match with currentScope
+    for (let otherScope = linkable.scope; otherScope; otherScope = otherScope.scope) {
+      if (currentScope === otherScope.scope) {
+        const matchingScopeLinkable = linkable.createMatchingScopeUpper(otherScope);
+        super.linkTo(matchingScopeLinkable);
+        return this;
+      }
+    }
+
+    // Create upper parameter and retry linking recursively
+    // for when this parameter is deeper than the linkable or in another branch.
+    const upperScope = this.scope?.scope as StepConstruct;
+    if (!upperScope) {
+      throw new Error(`Upper scope not found for ${this.id}`);
+    }
+    const upperName = this.getUpperName();
+    let upperInput = upperScope.tryFindChild(upperName) as Input;
+    if (!upperInput) {
+      upperInput = Input.fromStepInput(upperScope, this).as(upperName);
+    }
+    upperInput.linkTo(linkable);
+    return this;
   }
+
 
   /**
    * Changes the ID of the input and returns the modified input instance.

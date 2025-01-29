@@ -229,31 +229,32 @@ export class Input extends LinkableConstruct {
     return `${this.scope?.id}${this.id}`;
   }
 
-  private isStepConstruct(obj: any): obj is StepConstruct {
-    if (!obj) {
-      return false;
-    }
-    return obj instanceof StepConstruct; // This check can be expanded
-  }
+  // private isStepConstruct(obj: any): obj is StepConstruct {
+  //   if (!obj) {
+  //     return false;
+  //   }
+  //   return obj instanceof StepConstruct; // This check can be expanded
+  // }
 
   /**
    * @internal
    */
   _createMatchingScopeUpper(targetScope: Construct): Input {
-    if (this.scope === targetScope) {
-      return this;
-    }
-    let upperName = this.getUpperName();
-    console.log(`createMatchingScopeUpper ${upperName} in ${targetScope.id}`);
-    let upperScope = this.scope?.scope as StepConstruct;
-    if (this.isStepConstruct(upperScope)) {
-      let upperInput = upperScope._tryFindChild(upperName) as Input;
-      if (!upperInput) {
-        upperInput = Input.fromStepInput(upperScope, this).as(upperName);
-      }
-      return upperInput._createMatchingScopeUpper(targetScope);
-    }
-    return this;
+    throw new Error(`The Input create matching scope should not be needed. Target scope: ${targetScope.id}`);
+    // if (this.scope === targetScope) {
+    //   return this;
+    // }
+    // let upperName = this.getUpperName();
+    // console.log(`createMatchingScopeUpper ${upperName} in ${targetScope.id}`);
+    // let upperScope = this.scope?.scope as StepConstruct;
+    // if (this.isStepConstruct(upperScope)) {
+    //   let upperInput = upperScope._tryFindChild(upperName) as Input;
+    //   if (!upperInput) {
+    //     upperInput = Input.fromStepInput(upperScope, this).as(upperName);
+    //   }
+    //   return upperInput._createMatchingScopeUpper(targetScope);
+    // }
+    // return this;
   }
 
   /**

@@ -1,5 +1,6 @@
 import * as cwl from 'cwl-ts-auto';
-import { InputType, InputTypeArray } from './ILinkable';
+import { Construct } from './Construct';
+import { ILinkable, InputType, InputTypeArray } from './ILinkable';
 import { LinkableConstruct } from './LinkableConstruct';
 import { StepConstruct } from './StepConstruct';
 import { StepClass } from './ToolClass';
@@ -223,6 +224,89 @@ export class Input extends LinkableConstruct {
   }
 
   // API Instance methods while building
+
+  private getUpperName(): string {
+    return `${this.scope?.id}${this.id}`;
+  }
+
+  private isStepConstruct(obj: any): obj is StepConstruct {
+    if (!obj) {
+      return false;
+    }
+    return obj instanceof StepConstruct; // This check can be expanded
+  }
+
+  createMatchingScopeUpper(targetScope: Construct): Input {
+    if (this.scope === targetScope) {
+      return this;
+    }
+    let upperName = this.getUpperName();
+    console.log(`Creating upper ${upperName} in ${targetScope.id}`);
+    let upperScope = this.scope?.scope as StepConstruct;
+    if (this.isStepConstruct(upperScope)) {
+      let upperInput = upperScope.tryFindChild(upperName) as Input;
+      if (!upperInput) {
+        console.log(`Creating upper ${upperName} in ${upperScope.id}`);
+        upperInput = Input.fromStepInput(upperScope, this).as(upperName);
+      }
+      return upperInput.createMatchingScopeUpper(targetScope);
+    }
+    return this;
+  }
+
+  public linkTo(linkInput: ILinkable): ILinkable {
+    // if the scope of this linkable and the scope of the link input are not the same,
+    // for each of the parent scopes (up to the root) of this linkable,
+    //  check if the scope of the linkInput or the parent scopes match, up to the root.
+    console.log(`Linking ${this.id} to ${linkInput.id}`);
+    console.log(`Checking Scope ${this.scope?.scope?.id} === ${linkInput.scope?.id}`);
+    if (this.scope?.scope === linkInput.scope || this.scope?.scope === linkInput.scope?.scope) {
+      console.log(`Match found at ${this.scope?.scope?.id}`);
+      return super.linkTo(linkInput);
+    } else {
+      // Do any of the upper scopes of the linkInput match the scope of this input?
+      // If yes, we just need to create the uppers of the linkInput and link here.
+      let otherScope = linkInput.scope;
+      while (otherScope) {
+        // if (otherScope === this.scope) {
+        if (this.scope?.scope === otherScope || this.scope?.scope === otherScope.scope) {
+          console.log(`Match found in while at ${otherScope.id}`);
+          // Match found, proceed to link
+          const matchingScopeLinkable = linkInput.createMatchingScopeUpper(otherScope);
+          super.linkTo(matchingScopeLinkable);
+          return this;
+        }
+        if (otherScope.scope?.scope) {
+          otherScope = otherScope.scope;
+          console.log(`updating otherScope in while to ${otherScope?.id}`);
+        } else {
+          console.log(`upper scope scope's is undefined, set as undefined while in ${otherScope?.id}`);
+          otherScope = undefined;
+        }
+      }
+
+      // no match found, create the uppers of this input and link here.
+      let upperScope = this.scope?.scope as StepConstruct;
+      if (!upperScope) {
+        throw new Error(`Upper scope not found for ${this.id}`);
+      }
+
+      const upperName = this.getUpperName();
+
+      let upperInput = upperScope.tryFindChild(upperName) as Input;
+
+      if (!upperInput) {
+        console.log(`Creating upper input ${this.id} in ${upperScope.id}`);
+        upperInput = Input.fromStepInput(upperScope, this).as(upperName);
+        console.log(`Created upper input ${this.id} in ${upperScope.id} and changed name to ${upperName}`);
+        // this.linkTo(upperInput); // already done inside the fromStepInput once.
+        // upperInput.linkTo(linkInput);
+      }
+
+      upperInput.linkTo(linkInput);
+      return this;
+    }
+  }
 
   /**
    * Changes the ID of the input and returns the modified input instance.

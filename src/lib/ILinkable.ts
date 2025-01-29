@@ -1,4 +1,5 @@
 import { CommandInputArraySchema, CommandInputEnumSchema, CommandInputRecordSchema, CommandOutputArraySchema, CommandOutputEnumSchema, CommandOutputRecordSchema, CWLType, stderr, stdin, stdout } from 'cwl-ts-auto';
+import { Construct } from './Construct';
 import { PickValueMethod } from './LinkableConstruct';
 
 
@@ -16,6 +17,10 @@ export interface ILinkable {
    */
   get id(): string;
   set id(newID: string);
+
+  tryFindChild(id: string): Construct | undefined ;
+
+  get scope(): Construct | undefined;
 
   /**
    * @internal
@@ -61,4 +66,7 @@ export interface ILinkable {
    * @internal
    */
   _toCwlObject(): any;
+
+  createMatchingScopeUpper(targetScope: Construct): ILinkable;
+
 }

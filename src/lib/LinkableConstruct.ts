@@ -55,6 +55,11 @@ export abstract class LinkableConstruct extends Construct implements ILinkable {
   /**
    * @internal
    */
+  abstract createMatchingScopeUpper(targetScope: Construct): ILinkable;
+
+  /**
+   * @internal
+   */
   abstract get _type(): InputType | InputTypeArray;
 
   public get idAsReference(): string {

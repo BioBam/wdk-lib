@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reference Deep Parameters Link deep tool output to deep tool input 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "top-workflow",
+  "inputs": [],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "swa",
+      "in": [],
+      "out": [
+        "tool-afileOut",
+      ],
+      "run": {
+        "class": "Workflow",
+        "cwlVersion": "v1.2",
+        "id": "swa",
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "tool-afileOut",
+            "outputSource": "tool-a/fileOut",
+            "type": "File",
+          },
+        ],
+        "steps": [
+          {
+            "id": "tool-a",
+            "in": [],
+            "out": [
+              "fileOut",
+            ],
+            "run": {
+              "class": "CommandLineTool",
+              "cwlVersion": "v1.2",
+              "id": "tool-a",
+              "inputs": [],
+              "outputs": [
+                {
+                  "id": "fileOut",
+                  "type": "File",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      "id": "swb",
+      "in": [
+        {
+          "id": "tool-b-deepfileIn",
+          "source": "swa/tool-afileOut",
+        },
+      ],
+      "out": [],
+      "run": {
+        "class": "Workflow",
+        "cwlVersion": "v1.2",
+        "id": "swb",
+        "inputs": [
+          {
+            "id": "tool-b-deepfileIn",
+            "type": "File",
+          },
+        ],
+        "outputs": [],
+        "steps": [
+          {
+            "id": "tool-b-deep",
+            "in": [
+              {
+                "id": "fileIn",
+                "source": "tool-b-deepfileIn",
+              },
+            ],
+            "out": [],
+            "run": {
+              "class": "CommandLineTool",
+              "cwlVersion": "v1.2",
+              "id": "tool-b-deep",
+              "inputs": [
+                {
+                  "id": "fileIn",
+                  "type": "File",
+                },
+              ],
+              "outputs": [],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Reference Deep Parameters Link top tool output to deep tool input 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "my-simple-workflow",
+  "inputs": [],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "tool-a-top",
+      "in": [],
+      "out": [
+        "fileOut",
+      ],
+      "run": {
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "tool-a-top",
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "fileOut",
+            "type": "File",
+          },
+        ],
+      },
+    },
+    {
+      "id": "my-simple-workflow-b",
+      "in": [
+        {
+          "id": "tool-b-deepfileIn",
+          "source": "tool-a-top/fileOut",
+        },
+      ],
+      "out": [],
+      "run": {
+        "class": "Workflow",
+        "cwlVersion": "v1.2",
+        "id": "my-simple-workflow-b",
+        "inputs": [
+          {
+            "id": "tool-b-deepfileIn",
+            "type": "File",
+          },
+        ],
+        "outputs": [],
+        "steps": [
+          {
+            "id": "tool-b-deep",
+            "in": [
+              {
+                "id": "fileIn",
+                "source": "tool-b-deepfileIn",
+              },
+            ],
+            "out": [],
+            "run": {
+              "class": "CommandLineTool",
+              "cwlVersion": "v1.2",
+              "id": "tool-b-deep",
+              "inputs": [
+                {
+                  "id": "fileIn",
+                  "type": "File",
+                },
+              ],
+              "outputs": [],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`Reference Deep Parameters Link top workflow input all the way into a deep Tool input, creating intermediate workflow input. 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "my-simple-workflow",
+  "inputs": [
+    {
+      "id": "workflowInputFile",
+      "type": "File",
+    },
+  ],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "my-simple-workflow-b",
+      "in": [
+        {
+          "id": "tool-bfileIn",
+          "source": "workflowInputFile",
+        },
+      ],
+      "out": [],
+      "run": {
+        "class": "Workflow",
+        "cwlVersion": "v1.2",
+        "id": "my-simple-workflow-b",
+        "inputs": [
+          {
+            "id": "tool-bfileIn",
+            "type": "File",
+          },
+        ],
+        "outputs": [],
+        "steps": [
+          {
+            "id": "tool-b",
+            "in": [
+              {
+                "id": "fileIn",
+                "source": "tool-bfileIn",
+              },
+            ],
+            "out": [],
+            "run": {
+              "class": "CommandLineTool",
+              "cwlVersion": "v1.2",
+              "id": "tool-b",
+              "inputs": [
+                {
+                  "id": "fileIn",
+                  "type": "File",
+                },
+              ],
+              "outputs": [],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

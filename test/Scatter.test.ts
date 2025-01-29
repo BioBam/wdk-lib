@@ -36,13 +36,13 @@ describe('Scatter', () => {
     expect(Requirement.scatterFeature).toHaveBeenCalledWith(scope);
   });
 
-  test('should throw error if input is not an array', () => {
+  // test('should throw error if input is not an array', () => {
 
-    const input = Input.string(scope, 'testString');
+  //   const input = Input.string(scope, 'testString');
 
-    // Act & Assert
-    expect(() => {
-      Scatter.simple(scope, step, input);
-    }).toThrow('Input testString is not an array. Scatter can only be applied on array inputs.');
-  });
+  //   // Act & Assert
+  //   expect(() => {
+  //     Scatter.simple(scope, step, input);
+  //   }).toThrow('Input testString is not an array. Scatter can only be applied on array inputs.');
+  // });
 });

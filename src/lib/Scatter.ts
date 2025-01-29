@@ -67,12 +67,12 @@ export class Scatter extends Construct {
 
 
   private static workflowStepInputs(scope: Workflow, step: IStep, input: Input[], method: cwl.ScatterMethod = cwl.ScatterMethod.DOTPRODUCT) {
-    // Throw exception if input is not an array
-    for (const i of input) {
-      if (!i.isArray()) {
-        throw new Error(`Input ${i.id} is not an array. Scatter can only be applied on array inputs.`);
-      }
-    }
+    // Throw exception if input is not an array.. This does not apply as the scatter must be done on the tool inputs that are elements, not to the array that is scattered.
+    // for (const i of input) {
+    //   if (!i.isArray()) {
+    //     throw new Error(`Input ${i.id} is not an array. Scatter can only be applied on array inputs.`);
+    //   }
+    // }
 
     // throw exception if step is not a Construct
     if (!(step instanceof Construct)) {

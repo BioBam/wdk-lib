@@ -99,6 +99,87 @@ exports[`Reference Deep Parameters Link deep tool output to deep tool input 1`] 
 }
 `;
 
+exports[`Reference Deep Parameters Link deep tool output to other upper tool and workflow output. 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "top-workflow",
+  "inputs": [],
+  "outputs": [
+    {
+      "id": "workflowOutputFile",
+      "outputSource": "swa/tool-afileOut",
+      "type": "File",
+    },
+  ],
+  "steps": [
+    {
+      "id": "swa",
+      "in": [],
+      "out": [
+        "tool-afileOut",
+      ],
+      "run": {
+        "class": "Workflow",
+        "cwlVersion": "v1.2",
+        "id": "swa",
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "tool-afileOut",
+            "outputSource": "tool-a/fileOut",
+            "type": "File",
+          },
+        ],
+        "steps": [
+          {
+            "id": "tool-a",
+            "in": [],
+            "out": [
+              "fileOut",
+            ],
+            "run": {
+              "class": "CommandLineTool",
+              "cwlVersion": "v1.2",
+              "id": "tool-a",
+              "inputs": [],
+              "outputs": [
+                {
+                  "id": "fileOut",
+                  "type": "File",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      "id": "tb",
+      "in": [
+        {
+          "id": "fileIn",
+          "source": "swa/tool-afileOut",
+        },
+      ],
+      "out": [],
+      "run": {
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "tb",
+        "inputs": [
+          {
+            "id": "fileIn",
+            "type": "File",
+          },
+        ],
+        "outputs": [],
+      },
+    },
+  ],
+}
+`;
+
 exports[`Reference Deep Parameters Link top tool output to deep tool input 1`] = `
 {
   "class": "Workflow",

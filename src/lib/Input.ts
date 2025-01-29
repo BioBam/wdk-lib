@@ -247,7 +247,7 @@ export class Input extends LinkableConstruct {
     console.log(`createMatchingScopeUpper ${upperName} in ${targetScope.id}`);
     let upperScope = this.scope?.scope as StepConstruct;
     if (this.isStepConstruct(upperScope)) {
-      let upperInput = upperScope.tryFindChild(upperName) as Input;
+      let upperInput = upperScope._tryFindChild(upperName) as Input;
       if (!upperInput) {
         upperInput = Input.fromStepInput(upperScope, this).as(upperName);
       }
@@ -286,7 +286,7 @@ export class Input extends LinkableConstruct {
       throw new Error(`Upper scope not found for ${this.id}`);
     }
     const upperName = this.getUpperName();
-    let upperInput = upperScope.tryFindChild(upperName) as Input;
+    let upperInput = upperScope._tryFindChild(upperName) as Input;
     if (!upperInput) {
       upperInput = Input.fromStepInput(upperScope, this).as(upperName);
     }

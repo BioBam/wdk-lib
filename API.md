@@ -1435,7 +1435,7 @@ const input = Input.string(root, 'myInput')
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
+| <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | Links the input to another input or output. |
 | <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Input.allowNullElements">allowNullElements</a></code> | Sets the type of the input elements of an array to be nullable. |
 | <code><a href="#wdk-lib.Input.as">as</a></code> | Changes the ID of the input and returns the modified input instance. |
@@ -1454,14 +1454,16 @@ const input = Input.string(root, 'myInput')
 ##### `linkTo` <a name="linkTo" id="wdk-lib.Input.linkTo"></a>
 
 ```typescript
-public linkTo(linkInput: ILinkable): ILinkable
+public linkTo(linkable: ILinkable): ILinkable
 ```
 
-Link this linkable construct to another one.
+Links the input to another input or output.
 
-###### `linkInput`<sup>Required</sup> <a name="linkInput" id="wdk-lib.Input.linkTo.parameter.linkInput"></a>
+###### `linkable`<sup>Required</sup> <a name="linkable" id="wdk-lib.Input.linkTo.parameter.linkable"></a>
 
 - *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
+
+The input or output to link to.
 
 ---
 
@@ -2440,7 +2442,7 @@ const output = Output.file(root, 'myOutput')
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
+| <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | Links this output to another output. |
 | <code><a href="#wdk-lib.Output.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Output.as">as</a></code> | Sets a new identifier for this output. |
 | <code><a href="#wdk-lib.Output.globFromInputString">globFromInputString</a></code> | Sets a glob pattern based on an input string identifier. |
@@ -2455,14 +2457,16 @@ const output = Output.file(root, 'myOutput')
 ##### `linkTo` <a name="linkTo" id="wdk-lib.Output.linkTo"></a>
 
 ```typescript
-public linkTo(linkInput: ILinkable): ILinkable
+public linkTo(linkable: ILinkable): ILinkable
 ```
 
-Link this linkable construct to another one.
+Links this output to another output.
 
-###### `linkInput`<sup>Required</sup> <a name="linkInput" id="wdk-lib.Output.linkTo.parameter.linkInput"></a>
+###### `linkable`<sup>Required</sup> <a name="linkable" id="wdk-lib.Output.linkTo.parameter.linkable"></a>
 
 - *Type:* <a href="#wdk-lib.ILinkable">ILinkable</a>
+
+The output to link to.
 
 ---
 
@@ -5535,6 +5539,7 @@ myStepTool.input
 | <code><a href="#wdk-lib.ILinkable.property.links">links</a></code> | <code><a href="#wdk-lib.ILinkable">ILinkable</a>[]</code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.multiLinked">multiLinked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.ILinkable.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ILinkable.property.id">id</a></code> | <code>string</code> | Access the identified of this construct. |
 
 ---
@@ -5586,6 +5591,16 @@ public readonly referenced: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.ILinkable.property.scope"></a>
+
+```typescript
+public readonly scope: Construct;
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
 
 ---
 

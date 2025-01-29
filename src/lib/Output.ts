@@ -214,7 +214,7 @@ export class Output extends LinkableConstruct implements IMappable {
 
     let upperName = this.getUpperName();
     let upperScope = this.scope?.scope as StepConstruct;
-    let upperOutput = upperScope.tryFindChild(upperName) as Output;
+    let upperOutput = upperScope._tryFindChild(upperName) as Output;
     if (!upperOutput) {
       upperOutput = Output.fromStepOutput(upperScope, this).as(upperName);
     }

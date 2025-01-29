@@ -53,11 +53,11 @@ export class Construct {
 
   /**
    * Return a direct child by id, or undefined
-   *
+   * @internal
    * @param id Identifier of direct child
    * @returns the child if found, or undefined
    */
-  public tryFindChild(id: string): Construct | undefined {
+  public _tryFindChild(id: string): Construct | undefined {
     return this._nodes.filter(node => node.id == id)[0];
   }
 

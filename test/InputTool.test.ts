@@ -1,4 +1,4 @@
-import { Tool, Workflow } from '../src/lib';
+import { Tool, Type, Workflow } from '../src/lib';
 import { Constructs } from '../src/lib/Constructs';
 import { Input } from '../src/lib/Input';
 
@@ -9,6 +9,81 @@ describe('Input Class', () => {
   beforeEach(() => {
     workflow = Constructs.rootWorkflow();
     tool = new Tool(workflow, 'test-tool');
+  });
+
+  describe('Array Method', () => {
+
+    it('should create a boolean array input correctly', () => {
+      const input = Input.array(tool, 'testBooleanArrayId', Type.BOOLEAN);
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: 'boolean',
+        },
+      });
+    });
+
+    it('should create an integer array input correctly', () => {
+      const input = Input.array(tool, 'testIntArrayId', Type.INT);
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: 'int',
+        },
+      });
+    });
+
+    it('should handle invalid type gracefully', () => {
+      expect(() => {
+        Input.array(tool, 'testInvalidTypeId', Type.STDOUT);
+      }).toThrow(new Error('Unknown type: stdout. Please use one of the basic types from the Type class: BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY'));
+    });
+
+    it('should create a file array input with additional configurations', () => {
+      const input = Input.array(tool, 'testFileArrayId', Type.FILE);
+      input.withPrefix('--files').withDefaultValue(['file1.txt', 'file2.txt']);
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: 'File',
+        },
+        default: ['file1.txt', 'file2.txt'],
+        inputBinding: {
+          prefix: '--files',
+        },
+      });
+    });
+
+    // Add more cases to cover FLOAT, DOUBLE, STRING, and DIRECTORY types if necessary
+
+    it('should create a string array input with additional configurations', () => {
+      const input = Input.array(tool, 'testStringArrayId', Type.STRING);
+      input.withPrefix('--strings').withItemSeparator(',');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: 'string',
+        },
+        inputBinding: {
+          prefix: '--strings',
+          itemSeparator: ',',
+          separate: true,
+        },
+      });
+    });
+
   });
 
 

@@ -1626,6 +1626,7 @@ The prefix to set.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Input.array">array</a></code> | Creates an array input of a type passed by parameter. |
 | <code><a href="#wdk-lib.Input.bool">bool</a></code> | Creates a boolean type input. |
 | <code><a href="#wdk-lib.Input.directory">directory</a></code> | Creates a directory type input. |
 | <code><a href="#wdk-lib.Input.double">double</a></code> | Creates a double type input. |
@@ -1636,6 +1637,42 @@ The prefix to set.
 | <code><a href="#wdk-lib.Input.integer">integer</a></code> | Creates an integer type input. |
 | <code><a href="#wdk-lib.Input.string">string</a></code> | Creates a string type input. |
 | <code><a href="#wdk-lib.Input.stringArray">stringArray</a></code> | Creates a string array type input. |
+
+---
+
+##### `array` <a name="array" id="wdk-lib.Input.array"></a>
+
+```typescript
+import { Input } from 'wdk-lib'
+
+Input.array(scope: StepConstruct, id: string, type: Type)
+```
+
+Creates an array input of a type passed by parameter.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.array.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The construct within which this input is defined.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.array.parameter.id"></a>
+
+- *Type:* string
+
+The identifier for this input.
+
+---
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Input.array.parameter.type"></a>
+
+- *Type:* <a href="#wdk-lib.Type">Type</a>
+
+The type of the array from the Type class.
+
+It can be BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY.
 
 ---
 

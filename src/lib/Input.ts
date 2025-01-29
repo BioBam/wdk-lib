@@ -3,6 +3,7 @@ import { InputType, InputTypeArray } from './ILinkable';
 import { LinkableConstruct } from './LinkableConstruct';
 import { StepConstruct } from './StepConstruct';
 import { StepClass } from './ToolClass';
+import { Type } from './Type';
 
 
 /**
@@ -105,6 +106,48 @@ export class Input extends LinkableConstruct {
     );
     return input;
   }
+
+  /**
+   * Creates an array input of a type passed by parameter.
+   *
+   * @param scope The construct within which this input is defined.
+   * @param id The identifier for this input.
+   * @param type The type of the array from the Type class. It can be BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY.
+   * @returns A new instance of Input configured as a file array.
+   */
+  static array(scope: StepConstruct, id: string, type: Type): Input {
+    let typeObject;
+    switch (type) {
+      case Type.BOOLEAN:
+        typeObject = cwl.PrimitiveType.BOOLEAN;
+        break;
+      case Type.INT:
+        typeObject = cwl.PrimitiveType.INT;
+        break;
+      case Type.DOUBLE:
+        typeObject = cwl.PrimitiveType.DOUBLE;
+        break;
+      case Type.FLOAT:
+        typeObject = cwl.PrimitiveType.FLOAT;
+        break;
+      case Type.STRING:
+        typeObject = cwl.PrimitiveType.STRING;
+        break;
+      case Type.FILE:
+        typeObject = cwl.CWLType.FILE;
+        break;
+      case Type.DIRECTORY:
+        typeObject = cwl.CWLType.DIRECTORY;
+        break;
+      default:
+        throw new Error(`Unknown type: ${type}. Please use one of the basic types from the Type class: BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY`);
+    }
+    const input = new Input(scope, id,
+      new cwl.CommandInputArraySchema({ items: typeObject, type: cwl.enum_d062602be0b4b8fd33e69e29a841317b6ab665bc.ARRAY }),
+    );
+    return input;
+  }
+
 
   /**
    * Creates an integer type input.

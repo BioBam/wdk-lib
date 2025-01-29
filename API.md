@@ -2573,6 +2573,7 @@ The glob pattern.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Output.array">array</a></code> | Creates an array output of a type specified by a parameter. |
 | <code><a href="#wdk-lib.Output.bool">bool</a></code> | Creates a boolean type output. |
 | <code><a href="#wdk-lib.Output.directory">directory</a></code> | Creates a directory type output. |
 | <code><a href="#wdk-lib.Output.file">file</a></code> | Creates a file type output. |
@@ -2582,6 +2583,42 @@ The glob pattern.
 | <code><a href="#wdk-lib.Output.integer">integer</a></code> | Creates an integer type output. |
 | <code><a href="#wdk-lib.Output.string">string</a></code> | Creates a string type output. |
 | <code><a href="#wdk-lib.Output.stringArray">stringArray</a></code> | Creates a string array type output. |
+
+---
+
+##### `array` <a name="array" id="wdk-lib.Output.array"></a>
+
+```typescript
+import { Output } from 'wdk-lib'
+
+Output.array(scope: StepConstruct, id: string, type: Type)
+```
+
+Creates an array output of a type specified by a parameter.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.array.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The construct within which this output is defined.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.array.parameter.id"></a>
+
+- *Type:* string
+
+The identifier for this output.
+
+---
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Output.array.parameter.type"></a>
+
+- *Type:* <a href="#wdk-lib.Type">Type</a>
+
+The type of the output.
+
+Use one of the basic types from the Type class: BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY.
 
 ---
 

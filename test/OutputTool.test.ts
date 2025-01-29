@@ -1,4 +1,4 @@
-import { Output, Tool, Workflow } from '../src/lib';
+import { Output, Tool, Type, Workflow } from '../src/lib';
 import { Constructs } from '../src/lib/Constructs';
 
 describe('Output Class', () => {
@@ -8,6 +8,56 @@ describe('Output Class', () => {
   beforeEach(() => {
     root = Constructs.rootWorkflow();
     tool = new Tool(root, 'test-tool');
+  });
+
+  describe('array Method', () => {
+    it('should create an Output configured as a file array for BOOLEAN type', () => {
+      const output = Output.array(tool, 'outputBoolean', Type.BOOLEAN);
+      const map = output._toCwlObject().save();
+
+      expect(map).toEqual({
+        id: 'outputBoolean',
+        type: {
+          items: 'boolean',
+          type: 'array',
+        },
+      });
+    });
+
+    it('should create an Output configured as a file array for STRING type', () => {
+      const output = Output.array(tool, 'outputString', Type.STRING);
+      const map = output._toCwlObject().save();
+
+      expect(map).toEqual({
+        id: 'outputString',
+        type: {
+          items: 'string',
+          type: 'array',
+        },
+      });
+    });
+
+    it('should throw an error for an unknown type', () => {
+      expect(() => {
+        Output.array(tool, 'outputUnknown', Type.STDERR);
+      }).toThrow('Unknown type: stderr. Please use one of the basic types from the Type class: BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY');
+    });
+
+    // Add additional tests for other types
+    it('should create an Output configured as a file array for INT type', () => {
+      const output = Output.array(tool, 'outputInt', Type.INT);
+      const map = output._toCwlObject().save();
+
+      expect(map).toEqual({
+        id: 'outputInt',
+        type: {
+          items: 'int',
+          type: 'array',
+        },
+      });
+    });
+
+    // Repeat for DOUBLE, FLOAT, FILE, DIRECTORY
   });
 
 

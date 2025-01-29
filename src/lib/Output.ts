@@ -5,6 +5,7 @@ import { Input } from './Input';
 import { LinkableConstruct } from './LinkableConstruct';
 import { StepConstruct } from './StepConstruct';
 import { StepClass } from './ToolClass';
+import { Type } from './Type';
 
 /**
  * Represents an output parameter of a workflow, tool, or step.
@@ -121,6 +122,47 @@ export class Output extends LinkableConstruct implements IMappable {
   static fileArray(scope: StepConstruct, id: string): Output {
     const output = new Output(scope, id,
       new cwl.CommandOutputArraySchema({ items: cwl.CWLType.FILE, type: cwl.enum_d062602be0b4b8fd33e69e29a841317b6ab665bc.ARRAY }),
+    );
+    return output;
+  }
+
+  /**
+   * Creates an array output of a type specified by a parameter.
+   *
+   * @param scope The construct within which this output is defined.
+   * @param id The identifier for this output.
+   * @param type The type of the output. Use one of the basic types from the Type class: BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY.
+   * @returns A new instance of Output configured as a file array.
+   */
+  static array(scope: StepConstruct, id: string, type: Type): Output {
+    let typeObject;
+    switch (type) {
+      case Type.BOOLEAN:
+        typeObject = cwl.PrimitiveType.BOOLEAN;
+        break;
+      case Type.INT:
+        typeObject = cwl.PrimitiveType.INT;
+        break;
+      case Type.DOUBLE:
+        typeObject = cwl.PrimitiveType.DOUBLE;
+        break;
+      case Type.FLOAT:
+        typeObject = cwl.PrimitiveType.FLOAT;
+        break;
+      case Type.STRING:
+        typeObject = cwl.PrimitiveType.STRING;
+        break;
+      case Type.FILE:
+        typeObject = cwl.CWLType.FILE;
+        break;
+      case Type.DIRECTORY:
+        typeObject = cwl.CWLType.DIRECTORY;
+        break;
+      default:
+        throw new Error(`Unknown type: ${type}. Please use one of the basic types from the Type class: BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY`);
+    }
+    const output = new Output(scope, id,
+      new cwl.CommandOutputArraySchema({ items: typeObject, type: cwl.enum_d062602be0b4b8fd33e69e29a841317b6ab665bc.ARRAY }),
     );
     return output;
   }

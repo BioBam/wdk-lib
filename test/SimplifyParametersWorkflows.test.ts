@@ -1,4 +1,4 @@
-import { Input, Output, Tool, Workflow } from '../src/lib';
+import { Input, Output, PickValueMethod, Tool, Workflow } from '../src/lib';
 import { Constructs } from '../src/lib/Constructs';
 
 describe('Reference Deep Parameters', () => {
@@ -190,6 +190,61 @@ describe('Reference Deep Parameters', () => {
 
     const tb = new ToolB(w, 'tb');
     tb.fileIn.linkTo(wa.ta.fileOut);
+
+    // Assert there are no differences
+    expect(w.toMap()).toMatchSnapshot();
+  });
+
+
+  it('Link tool input to pick the first available value between deep tool output and workflow input', () => {
+
+    const root = Constructs.rootWorkflow();
+
+    class ToolA extends Tool {
+      public fileOut: Output;
+      constructor(scope: Workflow, id: string) {
+        super(scope, id);
+        this.fileOut = Output.file(this, 'fileOut');
+      }
+    }
+
+    class MyWorkflowA extends Workflow {
+      public ta: ToolA;
+      constructor(scope: Workflow, id: string) {
+        super(scope, id);
+        this.ta = new ToolA(this, 'tool-a');
+      }
+    }
+
+    class ToolB extends Tool {
+      public fileIn: Input;
+      constructor(scope: Workflow, id: string) {
+        super(scope, id);
+        this.fileIn = Input.file(this, 'fileIn');
+      }
+    }
+
+    // class MyWorkflowB extends Workflow {
+    //   public tb: ToolB;
+    //   constructor(scope: Workflow, id: string) {
+    //     super(scope, id);
+    //     this.tb = new ToolB(this, 'tool-b-deep');
+    //   }
+    // }
+
+
+    const w = new Workflow(root, 'top-workflow');
+    let workflowInputFile = Input.file(w, 'workflowInputFile');
+
+    const wa = new MyWorkflowA(w, 'swa');
+    // const wb = new MyWorkflowB(w, 'swb');
+    const tb = new ToolB(w, 'tb');
+    // works with top tool but not with deep tool B
+    // wb.
+    tb.fileIn
+      .linkTo(wa.ta.fileOut)
+      .linkTo(workflowInputFile)
+      .pickValue(PickValueMethod.FIRST_NON_NULL);
 
     // Assert there are no differences
     expect(w.toMap()).toMatchSnapshot();

@@ -18,8 +18,6 @@ export interface ILinkable {
   get id(): string;
   set id(newID: string);
 
-  tryFindChild(id: string): Construct | undefined ;
-
   get scope(): Construct | undefined;
 
   /**
@@ -67,6 +65,9 @@ export interface ILinkable {
    */
   _toCwlObject(): any;
 
-  createMatchingScopeUpper(targetScope: Construct): ILinkable;
+  /**
+   * @internal
+   */
+  _createMatchingScopeUpper(targetScope: Construct): ILinkable;
 
 }

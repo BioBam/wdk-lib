@@ -55,7 +55,7 @@ export abstract class LinkableConstruct extends Construct implements ILinkable {
   /**
    * @internal
    */
-  abstract createMatchingScopeUpper(targetScope: Construct): ILinkable;
+  abstract _createMatchingScopeUpper(targetScope: Construct): ILinkable;
 
   /**
    * @internal

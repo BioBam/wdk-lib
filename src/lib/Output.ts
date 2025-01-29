@@ -204,7 +204,10 @@ export class Output extends LinkableConstruct implements IMappable {
     return this.scope?.id + this.id;
   }
 
-  createMatchingScopeUpper(targetScope: StepConstruct): ILinkable {
+  /**
+   * @internal
+   */
+  _createMatchingScopeUpper(targetScope: StepConstruct): ILinkable {
     if (this.scope === targetScope) {
       return this;
     }
@@ -215,7 +218,7 @@ export class Output extends LinkableConstruct implements IMappable {
     if (!upperOutput) {
       upperOutput = Output.fromStepOutput(upperScope, this).as(upperName);
     }
-    return upperOutput.createMatchingScopeUpper(targetScope);
+    return upperOutput._createMatchingScopeUpper(targetScope);
   }
 
   /**
@@ -235,7 +238,7 @@ export class Output extends LinkableConstruct implements IMappable {
     // Traverse through linkInput's scope chain to find a match with currentScope
     for (let otherScope = linkable.scope; otherScope; otherScope = otherScope.scope) {
       if (currentScope === otherScope.scope) {
-        const matchingScopeLinkable = linkable.createMatchingScopeUpper(otherScope);
+        const matchingScopeLinkable = linkable._createMatchingScopeUpper(otherScope);
         super.linkTo(matchingScopeLinkable);
         return this;
       }

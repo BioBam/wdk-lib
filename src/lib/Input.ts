@@ -236,7 +236,10 @@ export class Input extends LinkableConstruct {
     return obj instanceof StepConstruct; // This check can be expanded
   }
 
-  createMatchingScopeUpper(targetScope: Construct): Input {
+  /**
+   * @internal
+   */
+  _createMatchingScopeUpper(targetScope: Construct): Input {
     if (this.scope === targetScope) {
       return this;
     }
@@ -248,7 +251,7 @@ export class Input extends LinkableConstruct {
       if (!upperInput) {
         upperInput = Input.fromStepInput(upperScope, this).as(upperName);
       }
-      return upperInput.createMatchingScopeUpper(targetScope);
+      return upperInput._createMatchingScopeUpper(targetScope);
     }
     return this;
   }
@@ -270,7 +273,7 @@ export class Input extends LinkableConstruct {
     // Traverse through linkInput's scope chain to find a match with currentScope
     for (let otherScope = linkable.scope; otherScope; otherScope = otherScope.scope) {
       if (currentScope === otherScope.scope) {
-        const matchingScopeLinkable = linkable.createMatchingScopeUpper(otherScope);
+        const matchingScopeLinkable = linkable._createMatchingScopeUpper(otherScope);
         super.linkTo(matchingScopeLinkable);
         return this;
       }

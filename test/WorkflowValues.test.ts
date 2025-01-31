@@ -67,4 +67,31 @@ describe('WorkflowValues', () => {
 
     expect(workflow.filePaths).toEqual(['/path/to/file1']);
   });
+
+  it('should correctly handle parameters containing paths and null entries', () => {
+    const input1 = Input.file(w0, 'input1');
+    const input2 = Input.file(w0, 'input2');
+    const inputReference1 = InputReference.file('/path/to/file1');
+    const inputReferenceWithNull = null; // Null reference
+
+    const workflow = WorkflowValues.create();
+    workflow.addInput(input1, inputReference1);
+    workflow.addInput(input2, inputReferenceWithNull);
+
+    expect(workflow.filePaths).toEqual(['/path/to/file1']);
+  });
+
+  it('should correctly handle lists containing paths and null entries', () => {
+    const input1 = Input.file(w0, 'input1');
+    const input2 = Input.file(w0, 'input2');
+    const inputReference1 = InputReference.file('/path/to/file1');
+    const inputReferenceWithNull = [null, InputReference.file('/path/to/file2'), InputReference.file('/path/to/file3')]; // Null reference
+
+    const workflow = WorkflowValues.create();
+    workflow.addInput(input1, inputReference1);
+    workflow.addInput(input2, inputReferenceWithNull);
+
+    expect(workflow.filePaths).toEqual(['/path/to/file1', '/path/to/file2', '/path/to/file3']);
+  });
+
 });

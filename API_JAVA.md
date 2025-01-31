@@ -3617,15 +3617,17 @@ public java.lang.String getRequirementType();
 
 ### Scatter <a name="Scatter" id="wdk-lib.Scatter"></a>
 
+A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
+
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Scatter.dotProduct">dotProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
-| <code><a href="#wdk-lib.Scatter.flatCrossProduct">flatCrossProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
-| <code><a href="#wdk-lib.Scatter.nestedCrossProduct">nestedCrossProduct</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
-| <code><a href="#wdk-lib.Scatter.simple">simple</a></code> | A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements. |
+| <code><a href="#wdk-lib.Scatter.dotProduct">dotProduct</a></code> | Each of the input arrays is aligned, and one element is taken from each array to construct each job. |
+| <code><a href="#wdk-lib.Scatter.flatCrossProduct">flatCrossProduct</a></code> | This method performs a Cartesian product of the inputs, producing a job for every combination of the scattered inputs. |
+| <code><a href="#wdk-lib.Scatter.nestedCrossProduct">nestedCrossProduct</a></code> | This method performs a Cartesian product of the inputs, producing a job for every combination of the scattered inputs. |
+| <code><a href="#wdk-lib.Scatter.simple">simple</a></code> | Each element of the array linked to the input makes a separate job, independent from the others, and which may be executed concurrently. |
 
 ---
 
@@ -3637,14 +3639,15 @@ import com.biobam.wdk.lib.Scatter;
 Scatter.dotProduct(Workflow scope, IStep step, java.util.List<Input> inputs)
 ```
 
-A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
+Each of the input arrays is aligned, and one element is taken from each array to construct each job.
 
-Each of the input arrays are aligned and one element taken from each array to construct each job.
-It is an error if all input arrays are not the same length.
+It is an error if all input arrays do not have the same length.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Scatter.dotProduct.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+A `Workflow` instance representing the workflow to which the scatter belongs.
 
 ---
 
@@ -3652,11 +3655,17 @@ It is an error if all input arrays are not the same length.
 
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>
 
+An `IStep` instance representing the specific step to scatter.
+
 ---
 
 ###### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.Scatter.dotProduct.parameter.inputs"></a>
 
 - *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+An array of `Input` instances.
+
+These represent multiple input variables belonging to the scattered step, each linked to an array. All arrays must be of equal length.
 
 ---
 
@@ -3668,14 +3677,15 @@ import com.biobam.wdk.lib.Scatter;
 Scatter.flatCrossProduct(Workflow scope, IStep step, java.util.List<Input> inputs)
 ```
 
-A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
+This method performs a Cartesian product of the inputs, producing a job for every combination of the scattered inputs.
 
-Cartesian product of the inputs, producing a job for every combination of the scattered inputs.
-The output arrays are flattened to a single level, but otherwise listed in the order that the input arrays are listed in the scatter field.
+Unlike nested cross-product, the output arrays are flattened to a single level but maintain the order of the input arrays.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Scatter.flatCrossProduct.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+A `Workflow` instance representing the workflow to which the scatter belongs.
 
 ---
 
@@ -3683,11 +3693,17 @@ The output arrays are flattened to a single level, but otherwise listed in the o
 
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>
 
+An `IStep` instance representing the specific step to scatter.
+
 ---
 
 ###### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.Scatter.flatCrossProduct.parameter.inputs"></a>
 
 - *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+An array of `Input` instances representing multiple input variables belonging to the scattered step, each linked to an array.
+
+All combinations of these inputs are flattened and executed.
 
 ---
 
@@ -3699,14 +3715,15 @@ import com.biobam.wdk.lib.Scatter;
 Scatter.nestedCrossProduct(Workflow scope, IStep step, java.util.List<Input> inputs)
 ```
 
-A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
+This method performs a Cartesian product of the inputs, producing a job for every combination of the scattered inputs.
 
-Cartesian product of the inputs, producing a job for every combination of the scattered inputs.
-The output is nested arrays for each level of scattering, in the order that the input arrays are listed in the scatter field.
+The output consists of nested arrays for each level of scattering, ordered according to how the input arrays are listed.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Scatter.nestedCrossProduct.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+A `Workflow` instance representing the workflow to which the scatter belongs.
 
 ---
 
@@ -3714,11 +3731,17 @@ The output is nested arrays for each level of scattering, in the order that the 
 
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>
 
+An `IStep` instance representing the specific step to scatter.
+
 ---
 
 ###### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.Scatter.nestedCrossProduct.parameter.inputs"></a>
 
 - *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+An array of `Input` instances representing multiple input variables belonging to the scattered step, each linked to an array.
+
+All possible combinations of these inputs are executed.
 
 ---
 
@@ -3730,15 +3753,15 @@ import com.biobam.wdk.lib.Scatter;
 Scatter.simple(Workflow scope, IStep step, Input input)
 ```
 
-A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
-
-Each job making up a scatter operation is independent and may be executed concurrently.
+Each element of the array linked to the input makes a separate job, independent from the others, and which may be executed concurrently.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Scatter.simple.parameter.scope"></a>
 
 - *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
 
-The Workflow to which the scatter belongs.
+A `Workflow` instance representing the workflow to which the scatter belongs.
+
+This defines the context and boundaries within which the scatter operation will occur.
 
 ---
 
@@ -3746,7 +3769,9 @@ The Workflow to which the scatter belongs.
 
 - *Type:* <a href="#wdk-lib.IStep">IStep</a>
 
-The step to scatter.
+An `IStep` instance representing the specific step to scatter.
+
+This can be either a Tool or a Workflow that needs to be processed in parallel over the provided inputs.
 
 ---
 
@@ -3754,7 +3779,9 @@ The step to scatter.
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
 
-The input to scatter.
+An `Input` instance that belongs to the step.
+
+This must be linked to an array whose elements are of the same type. It identifies the input variable to be scattered over.
 
 ---
 

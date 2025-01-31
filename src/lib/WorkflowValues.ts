@@ -97,12 +97,14 @@ export class WorkflowValues implements IMappable {
         if (onePath) {
           pathsList.push(onePath);
         }
-      } else if (Array.isArray(value) && value.length > 0 && value[0] instanceof InputReference) {
+      } else if (Array.isArray(value) && value.length > 0) {
         const paths = value as InputReference[];
         paths.forEach((path) => {
-          const onePath = path.path;
-          if (onePath) {
-            pathsList.push(onePath);
+          if (path && path instanceof InputReference) {
+            const onePath = path.path;
+            if (onePath) {
+              pathsList.push(onePath);
+            }
           }
         });
       }
@@ -122,16 +124,27 @@ export class WorkflowValues implements IMappable {
    */
   toMap(): { [key: string]: any } {
     const obj: { [key: string]: any } = {};
+
+    // Assuming `this._inputs` is a Map or similar structure
     this._inputs.forEach((value, key) => {
+
+      // Check if the individual value is an instance of InputReference
       if (value instanceof InputReference) {
-        obj[key] = (value as InputReference).toMap();
-      } else if (Array.isArray(value) && value.length > 0 && value[0] instanceof InputReference) {
-        const paths = value as InputReference[];
-        obj[key] = paths.map(path => path.toMap());
+        obj[key] = value.toMap();
+      } else if (Array.isArray(value) && value.length > 0) {
+        // If it's an array, check each item inside the array
+        obj[key] = value.map(item => {
+          if (item instanceof InputReference) {
+            return item.toMap();
+          }
+          return item; // In case the item is not an InputReference
+        });
       } else {
+        // Directly assign value if it's neither an InputReference nor an array of them
         obj[key] = value;
       }
     });
+
     return obj;
   }
 }

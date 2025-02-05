@@ -201,7 +201,7 @@ export class Output extends LinkableConstruct implements IMappable {
   }
 
   private getUpperName(): string {
-    return this.scope?.id + this.id;
+    return `${this.scope?.id}.${this.id}`;
   }
 
   /**

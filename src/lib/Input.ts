@@ -226,7 +226,7 @@ export class Input extends LinkableConstruct {
   // API Instance methods while building
 
   private getUpperName(): string {
-    return `${this.scope?.id}${this.id}`;
+    return `${this.scope?.id}.${this.id}`;
   }
 
   // private isStepConstruct(obj: any): obj is StepConstruct {
@@ -240,7 +240,20 @@ export class Input extends LinkableConstruct {
    * @internal
    */
   _createMatchingScopeUpper(targetScope: Construct): Input {
-    throw new Error(`The Input create matching scope should not be needed. Target scope: ${targetScope.id}`);
+    if (this.scope === targetScope) {
+      return this;
+    }
+
+    let upperName = this.getUpperName();
+    let upperScope = this.scope?.scope as StepConstruct;
+    let upperOutput = upperScope._tryFindChild(upperName) as Input;
+    if (!upperOutput) {
+      upperOutput = Input.fromStepInput(upperScope, this).as(upperName);
+    }
+    return upperOutput._createMatchingScopeUpper(targetScope);
+
+    // throw new Error(`The Input create matching scope should not be needed. Target scope: ${targetScope.id}`);
+
     // if (this.scope === targetScope) {
     //   return this;
     // }

@@ -13,7 +13,7 @@ describe('WorkflowValues', () => {
   });
 
   it('should return an empty object if no input references are added', () => {
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     expect(workflow.filePaths).toEqual([]);
   });
 
@@ -23,7 +23,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const s3InputReference = InputReference.s3File('s3://my-bucket/path/to/input2');
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(s3Input2, s3InputReference);
     expect(workflow.filePaths).toEqual(['/path/to/file1']);
@@ -35,7 +35,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const stringValue = 'Some string value';
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(input2, stringValue);
 
@@ -48,7 +48,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const inputReference2 = InputReference.file('/path/to/file2');
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(input2, inputReference2);
 
@@ -61,7 +61,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const inputReferenceWithoutPath = new InputReference(); // No path provided
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(input2, inputReferenceWithoutPath);
 
@@ -74,7 +74,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const inputReferenceWithNull = null; // Null reference
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(input2, inputReferenceWithNull);
 
@@ -87,7 +87,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const inputReferenceWithNull = [null, InputReference.file('/path/to/file2'), InputReference.file('/path/to/file3')]; // Null reference
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(input2, inputReferenceWithNull);
 

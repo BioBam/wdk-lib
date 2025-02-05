@@ -12,7 +12,7 @@ exports[`Reference Deep Parameters Link deep tool output to deep tool input 1`] 
       "id": "swa",
       "in": [],
       "out": [
-        "tool-afileOut",
+        "tool-a.fileOut",
       ],
       "run": {
         "class": "Workflow",
@@ -21,7 +21,7 @@ exports[`Reference Deep Parameters Link deep tool output to deep tool input 1`] 
         "inputs": [],
         "outputs": [
           {
-            "id": "tool-afileOut",
+            "id": "tool-a.fileOut",
             "outputSource": "tool-a/fileOut",
             "type": "File",
           },
@@ -53,8 +53,8 @@ exports[`Reference Deep Parameters Link deep tool output to deep tool input 1`] 
       "id": "swb",
       "in": [
         {
-          "id": "tool-b-deepfileIn",
-          "source": "swa/tool-afileOut",
+          "id": "tool-b-deep.fileIn",
+          "source": "swa/tool-a.fileOut",
         },
       ],
       "out": [],
@@ -64,7 +64,7 @@ exports[`Reference Deep Parameters Link deep tool output to deep tool input 1`] 
         "id": "swb",
         "inputs": [
           {
-            "id": "tool-b-deepfileIn",
+            "id": "tool-b-deep.fileIn",
             "type": "File",
           },
         ],
@@ -75,7 +75,7 @@ exports[`Reference Deep Parameters Link deep tool output to deep tool input 1`] 
             "in": [
               {
                 "id": "fileIn",
-                "source": "tool-b-deepfileIn",
+                "source": "tool-b-deep.fileIn",
               },
             ],
             "out": [],
@@ -108,7 +108,7 @@ exports[`Reference Deep Parameters Link deep tool output to other upper tool and
   "outputs": [
     {
       "id": "workflowOutputFile",
-      "outputSource": "swa/tool-afileOut",
+      "outputSource": "swa/tool-a.fileOut",
       "type": "File",
     },
   ],
@@ -117,7 +117,7 @@ exports[`Reference Deep Parameters Link deep tool output to other upper tool and
       "id": "swa",
       "in": [],
       "out": [
-        "tool-afileOut",
+        "tool-a.fileOut",
       ],
       "run": {
         "class": "Workflow",
@@ -126,7 +126,7 @@ exports[`Reference Deep Parameters Link deep tool output to other upper tool and
         "inputs": [],
         "outputs": [
           {
-            "id": "tool-afileOut",
+            "id": "tool-a.fileOut",
             "outputSource": "tool-a/fileOut",
             "type": "File",
           },
@@ -159,7 +159,7 @@ exports[`Reference Deep Parameters Link deep tool output to other upper tool and
       "in": [
         {
           "id": "fileIn",
-          "source": "swa/tool-afileOut",
+          "source": "swa/tool-a.fileOut",
         },
       ],
       "out": [],
@@ -197,7 +197,7 @@ exports[`Reference Deep Parameters Link tool input to pick the first available v
       "id": "swa",
       "in": [],
       "out": [
-        "tool-afileOut",
+        "tool-a.fileOut",
       ],
       "run": {
         "class": "Workflow",
@@ -206,7 +206,7 @@ exports[`Reference Deep Parameters Link tool input to pick the first available v
         "inputs": [],
         "outputs": [
           {
-            "id": "tool-afileOut",
+            "id": "tool-a.fileOut",
             "outputSource": "tool-a/fileOut",
             "type": "File",
           },
@@ -241,7 +241,7 @@ exports[`Reference Deep Parameters Link tool input to pick the first available v
           "id": "fileIn",
           "pickValue": "first_non_null",
           "source": [
-            "swa/tool-afileOut",
+            "swa/tool-a.fileOut",
             "workflowInputFile",
           ],
         },
@@ -295,7 +295,7 @@ exports[`Reference Deep Parameters Link top tool output to deep tool input 1`] =
       "id": "my-simple-workflow-b",
       "in": [
         {
-          "id": "tool-b-deepfileIn",
+          "id": "tool-b-deep.fileIn",
           "source": "tool-a-top/fileOut",
         },
       ],
@@ -306,7 +306,7 @@ exports[`Reference Deep Parameters Link top tool output to deep tool input 1`] =
         "id": "my-simple-workflow-b",
         "inputs": [
           {
-            "id": "tool-b-deepfileIn",
+            "id": "tool-b-deep.fileIn",
             "type": "File",
           },
         ],
@@ -317,7 +317,7 @@ exports[`Reference Deep Parameters Link top tool output to deep tool input 1`] =
             "in": [
               {
                 "id": "fileIn",
-                "source": "tool-b-deepfileIn",
+                "source": "tool-b-deep.fileIn",
               },
             ],
             "out": [],
@@ -358,7 +358,7 @@ exports[`Reference Deep Parameters Link top workflow input all the way into a de
       "id": "my-simple-workflow-b",
       "in": [
         {
-          "id": "tool-bfileIn",
+          "id": "tool-b.fileIn",
           "source": "workflowInputFile",
         },
       ],
@@ -369,7 +369,7 @@ exports[`Reference Deep Parameters Link top workflow input all the way into a de
         "id": "my-simple-workflow-b",
         "inputs": [
           {
-            "id": "tool-bfileIn",
+            "id": "tool-b.fileIn",
             "type": "File",
           },
         ],
@@ -380,7 +380,7 @@ exports[`Reference Deep Parameters Link top workflow input all the way into a de
             "in": [
               {
                 "id": "fileIn",
-                "source": "tool-bfileIn",
+                "source": "tool-b.fileIn",
               },
             ],
             "out": [],
@@ -413,7 +413,7 @@ exports[`Reference Deep Parameters Link workflow output from deep tool output 1`
   "outputs": [
     {
       "id": "workflowOutputFile",
-      "outputSource": "swa/tool-afileOut",
+      "outputSource": "swa/tool-a.fileOut",
       "type": "File",
     },
   ],
@@ -422,7 +422,7 @@ exports[`Reference Deep Parameters Link workflow output from deep tool output 1`
       "id": "swa",
       "in": [],
       "out": [
-        "tool-afileOut",
+        "tool-a.fileOut",
       ],
       "run": {
         "class": "Workflow",
@@ -431,7 +431,7 @@ exports[`Reference Deep Parameters Link workflow output from deep tool output 1`
         "inputs": [],
         "outputs": [
           {
-            "id": "tool-afileOut",
+            "id": "tool-a.fileOut",
             "outputSource": "tool-a/fileOut",
             "type": "File",
           },

@@ -12,7 +12,7 @@ describe('WorkflowValues', () => {
   });
 
   it('should return an empty object if no inputs are added', () => {
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     expect(workflow.toMap()).toEqual({});
   });
 
@@ -20,7 +20,7 @@ describe('WorkflowValues', () => {
     const input1 = Input.string(w0, 'input1');
     const stringValue = 'Some string value';
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, stringValue);
 
     expect(workflow.toMap()).toEqual({
@@ -32,7 +32,7 @@ describe('WorkflowValues', () => {
     const input1 = Input.string(w0, 'input1');
     const booleanValue = true;
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, booleanValue);
 
     expect(workflow.toMap()).toEqual({
@@ -44,7 +44,7 @@ describe('WorkflowValues', () => {
     const input1 = Input.string(w0, 'input1');
     const numberValue = 42;
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, numberValue);
 
     expect(workflow.toMap()).toEqual({
@@ -56,7 +56,7 @@ describe('WorkflowValues', () => {
     const input1 = Input.string(w0, 'input1');
     const arrayValue = ['value1', 'value2'];
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, arrayValue);
 
     expect(workflow.toMap()).toEqual({
@@ -68,7 +68,7 @@ describe('WorkflowValues', () => {
     const input1 = Input.file(w0, 'input1');
     const inputReference1 = InputReference.file('/path/to/file1');
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
 
     expect(workflow.toMap()).toEqual({
@@ -84,7 +84,7 @@ describe('WorkflowValues', () => {
     const stringValue = 'Some string value';
     const numberValue = 123;
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(input2, stringValue);
     workflow.addInput(input3, numberValue);

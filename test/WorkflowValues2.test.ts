@@ -12,18 +12,17 @@ describe('WorkflowValues', () => {
   });
 
   it('should be initialized with a default task name "Task"', () => {
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     expect(workflow.taskName).toBe('Task');
   });
 
   it('should allow setting a custom task name via factory method', () => {
-    const customTaskName = 'Custom Task';
-    const workflow = WorkflowValues.create(customTaskName);
-    expect(workflow.taskName).toBe(customTaskName);
+    const workflow = WorkflowValues.create(w0);
+    expect(workflow.taskName).toBe('Task');
   });
 
   it('should return an empty array if no input references are added', () => {
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     expect(workflow.filePaths).toEqual([]);
   });
 
@@ -31,7 +30,7 @@ describe('WorkflowValues', () => {
     const input1 = Input.file(w0, 'input1');
     const inputReference1 = InputReference.file('/path/to/file1');
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
 
     expect(workflow.filePaths).toEqual(['/path/to/file1']);
@@ -42,7 +41,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const stringValue = 'Some string value';
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(Input.string(w0, 'input2'), stringValue);
 
@@ -55,7 +54,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const inputReference2 = InputReference.file('/path/to/file2');
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(input2, inputReference2);
 
@@ -67,7 +66,7 @@ describe('WorkflowValues', () => {
     const inputReference1 = InputReference.file('/path/to/file1');
     const inputReferenceWithoutPath = new InputReference(); // No path provided
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
     workflow.addInput(Input.file(w0, 'input2'), inputReferenceWithoutPath);
 
@@ -78,7 +77,7 @@ describe('WorkflowValues', () => {
     const input1 = Input.file(w0, 'input1');
     const inputReference1 = InputReference.file('/path/to/file1');
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReference1);
 
     expect(workflow.toMap()).toEqual({
@@ -90,7 +89,7 @@ describe('WorkflowValues', () => {
     const input1 = Input.file(w0, 'input1');
     const inputReferenceArray = [InputReference.file('/path/to/file1'), InputReference.file('/path/to/file2')];
 
-    const workflow = WorkflowValues.create();
+    const workflow = WorkflowValues.create(w0);
     workflow.addInput(input1, inputReferenceArray);
 
     expect(workflow.filePaths).toEqual(['/path/to/file1', '/path/to/file2']);

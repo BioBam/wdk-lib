@@ -5311,19 +5311,6 @@ const workflowValues = WorkflowValues.create('MyTask')
 ```
 
 
-#### Initializers <a name="Initializers" id="wdk-lib.WorkflowValues.Initializer"></a>
-
-```typescript
-import { WorkflowValues } from 'wdk-lib'
-
-new WorkflowValues()
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-
----
-
 #### Methods <a name="Methods" id="Methods"></a>
 
 | **Name** | **Description** |
@@ -5381,18 +5368,18 @@ if it is an instance of `InputReference`.
 ```typescript
 import { WorkflowValues } from 'wdk-lib'
 
-WorkflowValues.create(taskName?: string)
+WorkflowValues.create(scope: StepConstruct)
 ```
 
 Creates a new instance of WorkflowValues with an optional task name.
 
-###### `taskName`<sup>Optional</sup> <a name="taskName" id="wdk-lib.WorkflowValues.create.parameter.taskName"></a>
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.WorkflowValues.create.parameter.scope"></a>
 
-- *Type:* string
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
 
-An optional name for the workflow task.
+The scope where the values are applied.
 
-Defaults to "Task" if none is provided.
+This can be a workflow or a Tool.
 
 ---
 

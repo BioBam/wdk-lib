@@ -1,6 +1,7 @@
 import { IMappable } from './IMappable';
 import { Input } from './Input';
 import { InputReference } from './InputReference';
+import { StepConstruct } from './StepConstruct';
 
 type InputValue = string | boolean | number | string[] | InputReference | InputReference[];
 
@@ -24,27 +25,40 @@ export class WorkflowValues implements IMappable {
 
   // Static factory method
 
+  // /**
+  //  * Creates a new instance of WorkflowValues with an optional task name.
+  //  *
+  //  * @param taskName An optional name for the workflow task. Defaults to "Task" if none is provided.
+  //  * @returns A new instance of WorkflowValues configured with the specified task name.
+  //  */
+  // static create(taskName?: string): WorkflowValues {
+  //   const w = new WorkflowValues();
+  //   w._taskName = taskName ? taskName : 'Task';
+  //   return w;
+  // }
+
   /**
    * Creates a new instance of WorkflowValues with an optional task name.
    *
-   * @param taskName An optional name for the workflow task. Defaults to "Task" if none is provided.
-   * @returns A new instance of WorkflowValues configured with the specified task name.
+   * @param scope The scope where the values are applied. This can be a workflow or a Tool.
+   * @returns A new instance of WorkflowValues where to set input values using #addInput.
    */
-  static create(taskName?: string): WorkflowValues {
-    const w = new WorkflowValues();
-    w._taskName = taskName ? taskName : 'Task';
+  static create(scope: StepConstruct): WorkflowValues {
+    const w = new WorkflowValues(scope);
     return w;
   }
 
   private _taskName: string = 'Task';
   private _inputs: Map<string, InputValue>;
+  private scope: StepConstruct;
 
   // Constructor
 
   /**
    * Initializes a new instance of WorkflowValues.
    */
-  constructor() {
+  private constructor(scope: StepConstruct) {
+    this.scope = scope;
     this._inputs = new Map<string, InputValue>();
   }
 
@@ -56,7 +70,9 @@ export class WorkflowValues implements IMappable {
    * @returns This instance to allow method chaining.
    */
   public addInput(input: Input, value: any): this {
-    this._inputs.set(input.id, value);
+    // Bring the input to the workflow level if necessary
+    let topInput = input._createMatchingScopeUpper(this.scope);
+    this._inputs.set(topInput.id, value);
     return this;
   }
 

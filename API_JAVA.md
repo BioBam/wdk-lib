@@ -2144,10 +2144,50 @@ Convert the object to a map representation following the CWL specification.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.InputReference.directory">directory</a></code> | Create a local directory reference. |
+| <code><a href="#wdk-lib.InputReference.directoryArray">directoryArray</a></code> | Create a reference to a list of local directories. |
 | <code><a href="#wdk-lib.InputReference.file">file</a></code> | Create a local file reference. |
 | <code><a href="#wdk-lib.InputReference.fileArray">fileArray</a></code> | Create a reference to a list of local files. |
+| <code><a href="#wdk-lib.InputReference.s3Directory">s3Directory</a></code> | Create a s3 directory reference. |
+| <code><a href="#wdk-lib.InputReference.s3DirectoryArray">s3DirectoryArray</a></code> | Create a reference to a list of s3 directories. |
 | <code><a href="#wdk-lib.InputReference.s3File">s3File</a></code> | Create a s3 file reference. |
 | <code><a href="#wdk-lib.InputReference.s3FileArray">s3FileArray</a></code> | Create a reference to a list of s3 files. |
+
+---
+
+##### `directory` <a name="directory" id="wdk-lib.InputReference.directory"></a>
+
+```java
+import com.biobam.wdk.lib.InputReference;
+
+InputReference.directory(java.lang.String relativePath)
+```
+
+Create a local directory reference.
+
+###### `relativePath`<sup>Required</sup> <a name="relativePath" id="wdk-lib.InputReference.directory.parameter.relativePath"></a>
+
+- *Type:* java.lang.String
+
+path to a local directory like `/Users/username/project/`.
+
+---
+
+##### `directoryArray` <a name="directoryArray" id="wdk-lib.InputReference.directoryArray"></a>
+
+```java
+import com.biobam.wdk.lib.InputReference;
+
+InputReference.directoryArray(java.util.List<java.lang.String> relativePaths)
+```
+
+Create a reference to a list of local directories.
+
+###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.InputReference.directoryArray.parameter.relativePaths"></a>
+
+- *Type:* java.util.List<java.lang.String>
+
+path to local directories like `["/home/proj1/", "/home/proj2/"]`.
 
 ---
 
@@ -2184,6 +2224,42 @@ Create a reference to a list of local files.
 - *Type:* java.util.List<java.lang.String>
 
 path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
+
+---
+
+##### `s3Directory` <a name="s3Directory" id="wdk-lib.InputReference.s3Directory"></a>
+
+```java
+import com.biobam.wdk.lib.InputReference;
+
+InputReference.s3Directory(java.lang.String s3FileReference)
+```
+
+Create a s3 directory reference.
+
+###### `s3FileReference`<sup>Required</sup> <a name="s3FileReference" id="wdk-lib.InputReference.s3Directory.parameter.s3FileReference"></a>
+
+- *Type:* java.lang.String
+
+Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/`.
+
+---
+
+##### `s3DirectoryArray` <a name="s3DirectoryArray" id="wdk-lib.InputReference.s3DirectoryArray"></a>
+
+```java
+import com.biobam.wdk.lib.InputReference;
+
+InputReference.s3DirectoryArray(java.util.List<java.lang.String> s3FileReferences)
+```
+
+Create a reference to a list of s3 directories.
+
+###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.InputReference.s3DirectoryArray.parameter.s3FileReferences"></a>
+
+- *Type:* java.util.List<java.lang.String>
+
+Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/path/to/dir2"]`.
 
 ---
 

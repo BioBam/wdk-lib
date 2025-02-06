@@ -48,7 +48,7 @@ export class WorkflowValues implements IMappable {
     return w;
   }
 
-  private _taskName: string = 'Task'; 
+  private _taskName: string = 'Task';
   private _inputs: Map<string, InputValue>;
   private scope: StepConstruct;
 

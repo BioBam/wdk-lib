@@ -2134,10 +2134,50 @@ Convert the object to a map representation following the CWL specification.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.InputReference.directory">directory</a></code> | Create a local directory reference. |
+| <code><a href="#wdk-lib.InputReference.directoryArray">directoryArray</a></code> | Create a reference to a list of local directories. |
 | <code><a href="#wdk-lib.InputReference.file">file</a></code> | Create a local file reference. |
 | <code><a href="#wdk-lib.InputReference.fileArray">fileArray</a></code> | Create a reference to a list of local files. |
+| <code><a href="#wdk-lib.InputReference.s3Directory">s3Directory</a></code> | Create a s3 directory reference. |
+| <code><a href="#wdk-lib.InputReference.s3DirectoryArray">s3DirectoryArray</a></code> | Create a reference to a list of s3 directories. |
 | <code><a href="#wdk-lib.InputReference.s3File">s3File</a></code> | Create a s3 file reference. |
 | <code><a href="#wdk-lib.InputReference.s3FileArray">s3FileArray</a></code> | Create a reference to a list of s3 files. |
+
+---
+
+##### `directory` <a name="directory" id="wdk-lib.InputReference.directory"></a>
+
+```typescript
+import { InputReference } from 'wdk-lib'
+
+InputReference.directory(relativePath: string)
+```
+
+Create a local directory reference.
+
+###### `relativePath`<sup>Required</sup> <a name="relativePath" id="wdk-lib.InputReference.directory.parameter.relativePath"></a>
+
+- *Type:* string
+
+path to a local directory like `/Users/username/project/`.
+
+---
+
+##### `directoryArray` <a name="directoryArray" id="wdk-lib.InputReference.directoryArray"></a>
+
+```typescript
+import { InputReference } from 'wdk-lib'
+
+InputReference.directoryArray(relativePaths: string[])
+```
+
+Create a reference to a list of local directories.
+
+###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.InputReference.directoryArray.parameter.relativePaths"></a>
+
+- *Type:* string[]
+
+path to local directories like `["/home/proj1/", "/home/proj2/"]`.
 
 ---
 
@@ -2174,6 +2214,42 @@ Create a reference to a list of local files.
 - *Type:* string[]
 
 path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
+
+---
+
+##### `s3Directory` <a name="s3Directory" id="wdk-lib.InputReference.s3Directory"></a>
+
+```typescript
+import { InputReference } from 'wdk-lib'
+
+InputReference.s3Directory(s3FileReference: string)
+```
+
+Create a s3 directory reference.
+
+###### `s3FileReference`<sup>Required</sup> <a name="s3FileReference" id="wdk-lib.InputReference.s3Directory.parameter.s3FileReference"></a>
+
+- *Type:* string
+
+Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/`.
+
+---
+
+##### `s3DirectoryArray` <a name="s3DirectoryArray" id="wdk-lib.InputReference.s3DirectoryArray"></a>
+
+```typescript
+import { InputReference } from 'wdk-lib'
+
+InputReference.s3DirectoryArray(s3FileReferences: string[])
+```
+
+Create a reference to a list of s3 directories.
+
+###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.InputReference.s3DirectoryArray.parameter.s3FileReferences"></a>
+
+- *Type:* string[]
+
+Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/path/to/dir2"]`.
 
 ---
 

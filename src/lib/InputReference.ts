@@ -17,6 +17,20 @@ export class InputReference implements IMappable {
     return inputReference;
   }
 
+
+  /**
+   * Create a local directory reference.
+   *
+   * @param relativePath path to a local directory like `/Users/username/project/`
+   * @returns
+   */
+  static directory(relativePath: string): InputReference {
+    const inputReference = new InputReference();
+    inputReference.type = Type.DIRECTORY.toString();
+    inputReference._path = relativePath;
+    return inputReference;
+  }
+
   /**
    * Create a reference to a list of local files.
    *
@@ -27,6 +41,20 @@ export class InputReference implements IMappable {
     const refArray: InputReference[] = [];
     for (const filePath of relativePaths) {
       refArray.push(this.file(filePath));
+    }
+    return refArray;
+  }
+
+  /**
+   * Create a reference to a list of local directories.
+   *
+   * @param relativePaths path to local directories like `["/home/proj1/", "/home/proj2/"]`
+   * @returns
+   */
+  static directoryArray(relativePaths: string[]): InputReference[] {
+    const refArray: InputReference[] = [];
+    for (const filePath of relativePaths) {
+      refArray.push(this.directory(filePath));
     }
     return refArray;
   }
@@ -54,6 +82,33 @@ export class InputReference implements IMappable {
     const refArray: InputReference[] = [];
     for (const filePath of s3FileReferences) {
       refArray.push(this.s3File(filePath));
+    }
+    return refArray;
+  }
+
+  /**
+   * Create a s3 directory reference.
+   *
+   * @param s3FileReference Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/`
+   * @returns
+   */
+  static s3Directory(s3FileReference: string): InputReference {
+    const inputReference = new InputReference();
+    inputReference.type = Type.DIRECTORY.toString();
+    inputReference._location = s3FileReference;
+    return inputReference;
+  }
+
+  /**
+   * Create a reference to a list of s3 directories.
+   *
+   * @param s3FileReferences Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/path/to/dir2"]`
+   * @returns
+   */
+  static s3DirectoryArray(s3FileReferences: string[]): InputReference[] {
+    const refArray: InputReference[] = [];
+    for (const filePath of s3FileReferences) {
+      refArray.push(this.s3Directory(filePath));
     }
     return refArray;
   }

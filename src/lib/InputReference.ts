@@ -1,6 +1,6 @@
 import * as path from 'path';
+import * as cwl from 'cwl-ts-auto';
 import { IMappable } from './IMappable';
-import { Type } from './Type';
 
 export class InputReference implements IMappable {
 
@@ -12,7 +12,7 @@ export class InputReference implements IMappable {
    */
   static file(relativePath: string): InputReference {
     const inputReference = new InputReference();
-    inputReference.type = Type.FILE.toString();
+    inputReference.type = cwl.CWLType.FILE.toString();
     inputReference._path = relativePath;
     return inputReference;
   }
@@ -26,7 +26,7 @@ export class InputReference implements IMappable {
    */
   static directory(relativePath: string): InputReference {
     const inputReference = new InputReference();
-    inputReference.type = Type.DIRECTORY.toString();
+    inputReference.type = cwl.CWLType.DIRECTORY.toString();
     inputReference._path = relativePath;
     return inputReference;
   }
@@ -67,7 +67,7 @@ export class InputReference implements IMappable {
    */
   static s3File(s3FileReference: string): InputReference {
     const inputReference = new InputReference();
-    inputReference.type = Type.FILE.toString();
+    inputReference.type = cwl.CWLType.FILE.toString();
     inputReference._location = s3FileReference;
     return inputReference;
   }
@@ -94,7 +94,7 @@ export class InputReference implements IMappable {
    */
   static s3Directory(s3FileReference: string): InputReference {
     const inputReference = new InputReference();
-    inputReference.type = Type.DIRECTORY.toString();
+    inputReference.type = cwl.CWLType.DIRECTORY.toString();
     inputReference._location = s3FileReference;
     return inputReference;
   }

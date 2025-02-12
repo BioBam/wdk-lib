@@ -1639,6 +1639,7 @@ The prefix to set.
 | --- | --- |
 | <code><a href="#wdk-lib.Input.array">array</a></code> | Creates an array input of a type passed by parameter. |
 | <code><a href="#wdk-lib.Input.bool">bool</a></code> | Creates a boolean type input. |
+| <code><a href="#wdk-lib.Input.custom">custom</a></code> | Creates a custom type input. |
 | <code><a href="#wdk-lib.Input.directory">directory</a></code> | Creates a directory type input. |
 | <code><a href="#wdk-lib.Input.double">double</a></code> | Creates a double type input. |
 | <code><a href="#wdk-lib.Input.file">file</a></code> | Creates a file type input. |
@@ -1656,10 +1657,14 @@ The prefix to set.
 ```typescript
 import { Input } from 'wdk-lib'
 
-Input.array(scope: StepConstruct, id: string, type: Type)
+Input.array(scope: StepConstruct, id: string, itemsType: TypeIn)
 ```
 
 Creates an array input of a type passed by parameter.
+
+<pre>
+Input.array(root, 'myArray', TypeIn.string())
+</pre>
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.array.parameter.scope"></a>
 
@@ -1677,9 +1682,9 @@ The identifier for this input.
 
 ---
 
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Input.array.parameter.type"></a>
+###### `itemsType`<sup>Required</sup> <a name="itemsType" id="wdk-lib.Input.array.parameter.itemsType"></a>
 
-- *Type:* <a href="#wdk-lib.Type">Type</a>
+- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
 
 The type of the array from the Type class.
 
@@ -1710,6 +1715,47 @@ The construct within which this input is defined.
 - *Type:* string
 
 The identifier for this input.
+
+---
+
+##### `custom` <a name="custom" id="wdk-lib.Input.custom"></a>
+
+```typescript
+import { Input } from 'wdk-lib'
+
+Input.custom(scope: StepConstruct, id: string, typeIn: TypeIn)
+```
+
+Creates a custom type input.
+
+<pre>
+// Example creating an array of file arrays
+Input.custom(root, 'myCustom', TypeIn.arrayOf(TypeIn.arrayOfTypeIn.int())))
+</pre>
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.custom.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The construct within which this input is defined.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Input.custom.parameter.id"></a>
+
+- *Type:* string
+
+The identifier for this input.
+
+---
+
+###### `typeIn`<sup>Required</sup> <a name="typeIn" id="wdk-lib.Input.custom.parameter.typeIn"></a>
+
+- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
+
+The type of the input.
+
+Use the TypeIn class to create a custom input.
 
 ---
 
@@ -2664,6 +2710,7 @@ The glob pattern.
 | --- | --- |
 | <code><a href="#wdk-lib.Output.array">array</a></code> | Creates an array output of a type specified by a parameter. |
 | <code><a href="#wdk-lib.Output.bool">bool</a></code> | Creates a boolean type output. |
+| <code><a href="#wdk-lib.Output.custom">custom</a></code> | Creates a custom type output. |
 | <code><a href="#wdk-lib.Output.directory">directory</a></code> | Creates a directory type output. |
 | <code><a href="#wdk-lib.Output.file">file</a></code> | Creates a file type output. |
 | <code><a href="#wdk-lib.Output.fileArray">fileArray</a></code> | Creates a file array type output. |
@@ -2680,7 +2727,7 @@ The glob pattern.
 ```typescript
 import { Output } from 'wdk-lib'
 
-Output.array(scope: StepConstruct, id: string, type: Type)
+Output.array(scope: StepConstruct, id: string, itemsType: TypeOut)
 ```
 
 Creates an array output of a type specified by a parameter.
@@ -2701,9 +2748,9 @@ The identifier for this output.
 
 ---
 
-###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Output.array.parameter.type"></a>
+###### `itemsType`<sup>Required</sup> <a name="itemsType" id="wdk-lib.Output.array.parameter.itemsType"></a>
 
-- *Type:* <a href="#wdk-lib.Type">Type</a>
+- *Type:* <a href="#wdk-lib.TypeOut">TypeOut</a>
 
 The type of the output.
 
@@ -2734,6 +2781,42 @@ The construct within which this output is defined.
 - *Type:* string
 
 The identifier for this output.
+
+---
+
+##### `custom` <a name="custom" id="wdk-lib.Output.custom"></a>
+
+```typescript
+import { Output } from 'wdk-lib'
+
+Output.custom(scope: StepConstruct, id: string, type: TypeOut)
+```
+
+Creates a custom type output.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Output.custom.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The construct within which this output is defined.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Output.custom.parameter.id"></a>
+
+- *Type:* string
+
+The identifier for this output.
+
+---
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.Output.custom.parameter.type"></a>
+
+- *Type:* <a href="#wdk-lib.TypeOut">TypeOut</a>
+
+The type of the output.
+
+Use the TypeOut to create a custom type.
 
 ---
 
@@ -4697,6 +4780,285 @@ public readonly label: string;
 ---
 
 
+### TypeIn <a name="TypeIn" id="wdk-lib.TypeIn"></a>
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.TypeIn.toMap">toMap</a></code> | Converts the input to a CWL-compatible JSON object. |
+
+---
+
+##### `toMap` <a name="toMap" id="wdk-lib.TypeIn.toMap"></a>
+
+```typescript
+public toMap(): {[ key: string ]: any}
+```
+
+Converts the input to a CWL-compatible JSON object.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.TypeIn.arrayOf">arrayOf</a></code> | Specify the type array with elements of the given custom type. |
+| <code><a href="#wdk-lib.TypeIn.boolean">boolean</a></code> | Creates a new `TypeIn` instance representing a Boolean type. |
+| <code><a href="#wdk-lib.TypeIn.directory">directory</a></code> | Creates a new `TypeIn` instance representing a Directory type. |
+| <code><a href="#wdk-lib.TypeIn.double">double</a></code> | Creates a new `TypeIn` instance representing a Double type. |
+| <code><a href="#wdk-lib.TypeIn.file">file</a></code> | Creates a new `TypeIn` instance representing a File type. |
+| <code><a href="#wdk-lib.TypeIn.float">float</a></code> | Creates a new `TypeIn` instance representing a Float type. |
+| <code><a href="#wdk-lib.TypeIn.int">int</a></code> | Creates a new `TypeIn` instance representing an Integer type. |
+| <code><a href="#wdk-lib.TypeIn.stdin">stdin</a></code> | Creates a new `TypeIn` instance representing input from Stdin. |
+| <code><a href="#wdk-lib.TypeIn.string">string</a></code> | Creates a new `TypeIn` instance representing a String type. |
+
+---
+
+##### `arrayOf` <a name="arrayOf" id="wdk-lib.TypeIn.arrayOf"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.arrayOf(contentType: TypeIn)
+```
+
+Specify the type array with elements of the given custom type.
+
+###### `contentType`<sup>Required</sup> <a name="contentType" id="wdk-lib.TypeIn.arrayOf.parameter.contentType"></a>
+
+- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
+
+The type of the elements in the array.
+
+---
+
+##### `boolean` <a name="boolean" id="wdk-lib.TypeIn.boolean"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.boolean()
+```
+
+Creates a new `TypeIn` instance representing a Boolean type.
+
+##### `directory` <a name="directory" id="wdk-lib.TypeIn.directory"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.directory()
+```
+
+Creates a new `TypeIn` instance representing a Directory type.
+
+##### `double` <a name="double" id="wdk-lib.TypeIn.double"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.double()
+```
+
+Creates a new `TypeIn` instance representing a Double type.
+
+##### `file` <a name="file" id="wdk-lib.TypeIn.file"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.file()
+```
+
+Creates a new `TypeIn` instance representing a File type.
+
+##### `float` <a name="float" id="wdk-lib.TypeIn.float"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.float()
+```
+
+Creates a new `TypeIn` instance representing a Float type.
+
+##### `int` <a name="int" id="wdk-lib.TypeIn.int"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.int()
+```
+
+Creates a new `TypeIn` instance representing an Integer type.
+
+##### `stdin` <a name="stdin" id="wdk-lib.TypeIn.stdin"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.stdin()
+```
+
+Creates a new `TypeIn` instance representing input from Stdin.
+
+##### `string` <a name="string" id="wdk-lib.TypeIn.string"></a>
+
+```typescript
+import { TypeIn } from 'wdk-lib'
+
+TypeIn.string()
+```
+
+Creates a new `TypeIn` instance representing a String type.
+
+
+
+### TypeOut <a name="TypeOut" id="wdk-lib.TypeOut"></a>
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.TypeOut.toMap">toMap</a></code> | Converts the input to a CWL-compatible JSON object. |
+
+---
+
+##### `toMap` <a name="toMap" id="wdk-lib.TypeOut.toMap"></a>
+
+```typescript
+public toMap(): {[ key: string ]: any}
+```
+
+Converts the input to a CWL-compatible JSON object.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.TypeOut.arrayOf">arrayOf</a></code> | Specify the type array with elements of the given custom type. |
+| <code><a href="#wdk-lib.TypeOut.boolean">boolean</a></code> | Creates a new `TypeOut` instance representing a Boolean type. |
+| <code><a href="#wdk-lib.TypeOut.directory">directory</a></code> | Creates a new `TypeOut` instance representing a Directory type. |
+| <code><a href="#wdk-lib.TypeOut.double">double</a></code> | Creates a new `TypeOut` instance representing a Double type. |
+| <code><a href="#wdk-lib.TypeOut.file">file</a></code> | Creates a new `TypeOut` instance representing a File type. |
+| <code><a href="#wdk-lib.TypeOut.float">float</a></code> | Creates a new `TypeOut` instance representing a Float type. |
+| <code><a href="#wdk-lib.TypeOut.int">int</a></code> | Creates a new `TypeOut` instance representing an Integer type. |
+| <code><a href="#wdk-lib.TypeOut.stderr">stderr</a></code> | Creates a new `TypeOut` instance representing standard error (stderr). |
+| <code><a href="#wdk-lib.TypeOut.stdout">stdout</a></code> | Creates a new `TypeOut` instance representing standard output (stdout). |
+| <code><a href="#wdk-lib.TypeOut.string">string</a></code> | Creates a new `TypeOut` instance representing a String type. |
+
+---
+
+##### `arrayOf` <a name="arrayOf" id="wdk-lib.TypeOut.arrayOf"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.arrayOf(contentType: TypeOut)
+```
+
+Specify the type array with elements of the given custom type.
+
+###### `contentType`<sup>Required</sup> <a name="contentType" id="wdk-lib.TypeOut.arrayOf.parameter.contentType"></a>
+
+- *Type:* <a href="#wdk-lib.TypeOut">TypeOut</a>
+
+The type of the elements in the array.
+
+---
+
+##### `boolean` <a name="boolean" id="wdk-lib.TypeOut.boolean"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.boolean()
+```
+
+Creates a new `TypeOut` instance representing a Boolean type.
+
+##### `directory` <a name="directory" id="wdk-lib.TypeOut.directory"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.directory()
+```
+
+Creates a new `TypeOut` instance representing a Directory type.
+
+##### `double` <a name="double" id="wdk-lib.TypeOut.double"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.double()
+```
+
+Creates a new `TypeOut` instance representing a Double type.
+
+##### `file` <a name="file" id="wdk-lib.TypeOut.file"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.file()
+```
+
+Creates a new `TypeOut` instance representing a File type.
+
+##### `float` <a name="float" id="wdk-lib.TypeOut.float"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.float()
+```
+
+Creates a new `TypeOut` instance representing a Float type.
+
+##### `int` <a name="int" id="wdk-lib.TypeOut.int"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.int()
+```
+
+Creates a new `TypeOut` instance representing an Integer type.
+
+##### `stderr` <a name="stderr" id="wdk-lib.TypeOut.stderr"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.stderr()
+```
+
+Creates a new `TypeOut` instance representing standard error (stderr).
+
+##### `stdout` <a name="stdout" id="wdk-lib.TypeOut.stdout"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.stdout()
+```
+
+Creates a new `TypeOut` instance representing standard output (stdout).
+
+##### `string` <a name="string" id="wdk-lib.TypeOut.string"></a>
+
+```typescript
+import { TypeOut } from 'wdk-lib'
+
+TypeOut.string()
+```
+
+Creates a new `TypeOut` instance representing a String type.
+
+
+
 ### Value <a name="Value" id="wdk-lib.Value"></a>
 
 Helper class for generating CWL valueFrom expressions.
@@ -6209,81 +6571,6 @@ Intended use case: It is valid to have more than one source, but sources are con
 
 
 ##### `MULTIPLE_INPUT_FEATURE` <a name="MULTIPLE_INPUT_FEATURE" id="wdk-lib.ToolRequirementType.MULTIPLE_INPUT_FEATURE"></a>
-
----
-
-
-### Type <a name="Type" id="wdk-lib.Type"></a>
-
-#### Members <a name="Members" id="Members"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#wdk-lib.Type.FILE">FILE</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.DIRECTORY">DIRECTORY</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.STRING">STRING</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.BOOLEAN">BOOLEAN</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.INT">INT</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.DOUBLE">DOUBLE</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.STRING_ARRAY">STRING_ARRAY</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.FLOAT">FLOAT</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.STDERR">STDERR</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.STDOUT">STDOUT</a></code> | *No description.* |
-| <code><a href="#wdk-lib.Type.FILE_ARRAY">FILE_ARRAY</a></code> | *No description.* |
-
----
-
-##### `FILE` <a name="FILE" id="wdk-lib.Type.FILE"></a>
-
----
-
-
-##### `DIRECTORY` <a name="DIRECTORY" id="wdk-lib.Type.DIRECTORY"></a>
-
----
-
-
-##### `STRING` <a name="STRING" id="wdk-lib.Type.STRING"></a>
-
----
-
-
-##### `BOOLEAN` <a name="BOOLEAN" id="wdk-lib.Type.BOOLEAN"></a>
-
----
-
-
-##### `INT` <a name="INT" id="wdk-lib.Type.INT"></a>
-
----
-
-
-##### `DOUBLE` <a name="DOUBLE" id="wdk-lib.Type.DOUBLE"></a>
-
----
-
-
-##### `STRING_ARRAY` <a name="STRING_ARRAY" id="wdk-lib.Type.STRING_ARRAY"></a>
-
----
-
-
-##### `FLOAT` <a name="FLOAT" id="wdk-lib.Type.FLOAT"></a>
-
----
-
-
-##### `STDERR` <a name="STDERR" id="wdk-lib.Type.STDERR"></a>
-
----
-
-
-##### `STDOUT` <a name="STDOUT" id="wdk-lib.Type.STDOUT"></a>
-
----
-
-
-##### `FILE_ARRAY` <a name="FILE_ARRAY" id="wdk-lib.Type.FILE_ARRAY"></a>
 
 ---
 

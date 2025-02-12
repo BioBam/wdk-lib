@@ -1,6 +1,5 @@
+import * as cwl from 'cwl-ts-auto';
 import { InputReference } from '../src/lib/InputReference';
-import { Type } from '../src/lib/Type';
-
 
 describe('InputReference', () => {
 
@@ -11,7 +10,7 @@ describe('InputReference', () => {
 
       expect(inputReference.path).toBe(relativePath);
       expect(inputReference.location).toBeUndefined();
-      expect((inputReference as any).type).toBe(Type.FILE.toString());
+      expect((inputReference as any).type).toBe(cwl.CWLType.FILE.toString());
     });
   });
 
@@ -22,7 +21,7 @@ describe('InputReference', () => {
 
       expect(inputReference.location).toBe(s3FileReference);
       expect(inputReference.path).toBeUndefined();
-      expect((inputReference as any).type).toBe(Type.FILE.toString());
+      expect((inputReference as any).type).toBe(cwl.CWLType.FILE.toString());
     });
   });
 
@@ -32,7 +31,7 @@ describe('InputReference', () => {
       const inputReference = InputReference.file(relativePath);
       const yamlMap = inputReference.toMap();
 
-      expect(yamlMap.class).toBe(Type.FILE.toString());
+      expect(yamlMap.class).toBe(cwl.CWLType.FILE.toString());
       expect(yamlMap.path).toBe('file.txt'); // Extracting filename from path
       expect(yamlMap.location).toBeUndefined();
     });
@@ -42,7 +41,7 @@ describe('InputReference', () => {
       const inputReference = InputReference.s3File(s3FileReference);
       const yamlMap = inputReference.toMap();
 
-      expect(yamlMap.class).toBe(Type.FILE.toString());
+      expect(yamlMap.class).toBe(cwl.CWLType.FILE.toString());
       expect(yamlMap.path).toBeUndefined();
       expect(yamlMap.location).toBe(s3FileReference);
     });

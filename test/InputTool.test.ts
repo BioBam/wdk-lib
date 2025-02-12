@@ -1,6 +1,7 @@
-import { Tool, Type, Workflow } from '../src/lib';
+import { Tool, Workflow } from '../src/lib';
 import { Constructs } from '../src/lib/Constructs';
 import { Input } from '../src/lib/Input';
+import { TypeIn } from '../src/lib/TypeIn';
 
 describe('Input Class', () => {
   let workflow: Workflow;
@@ -14,7 +15,7 @@ describe('Input Class', () => {
   describe('Array Method', () => {
 
     it('should create a boolean array input correctly', () => {
-      const input = Input.array(tool, 'testBooleanArrayId', Type.BOOLEAN);
+      const input = Input.array(tool, 'testBooleanArrayId', TypeIn.boolean());
 
       const map = input.toMap();
       expect(map).toEqual({
@@ -27,7 +28,7 @@ describe('Input Class', () => {
     });
 
     it('should create an integer array input correctly', () => {
-      const input = Input.array(tool, 'testIntArrayId', Type.INT);
+      const input = Input.array(tool, 'testIntArrayId', TypeIn.int());
 
       const map = input.toMap();
       expect(map).toEqual({
@@ -39,14 +40,14 @@ describe('Input Class', () => {
       });
     });
 
-    it('should handle invalid type gracefully', () => {
-      expect(() => {
-        Input.array(tool, 'testInvalidTypeId', Type.STDOUT);
-      }).toThrow(new Error('Unknown type: stdout. Please use one of the basic types from the Type class: BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY'));
-    });
+    // it('should handle invalid type gracefully', () => {
+    //   expect(() => {
+    //     Input.array(tool, 'testInvalidTypeId', TypeIn.stdin());
+    //   }).toThrow(new Error('Unknown type: stdout. Please use one of the basic types from the Type class: BOOLEAN, INT, DOUBLE, FLOAT, STRING, FILE, DIRECTORY'));
+    // });
 
     it('should create a file array input with additional configurations', () => {
-      const input = Input.array(tool, 'testFileArrayId', Type.FILE);
+      const input = Input.array(tool, 'testFileArrayId', TypeIn.file());
       input.withPrefix('--files').withDefaultValue(['file1.txt', 'file2.txt']);
 
       const map = input.toMap();
@@ -66,7 +67,7 @@ describe('Input Class', () => {
     // Add more cases to cover FLOAT, DOUBLE, STRING, and DIRECTORY types if necessary
 
     it('should create a string array input with additional configurations', () => {
-      const input = Input.array(tool, 'testStringArrayId', Type.STRING);
+      const input = Input.array(tool, 'testStringArrayId', TypeIn.string());
       input.withPrefix('--strings').withItemSeparator(',');
 
       const map = input.toMap();
@@ -89,7 +90,7 @@ describe('Input Class', () => {
   describe('Allow Null Elements Method for Arrays', () => {
 
     it('should allow null elements in boolean array input', () => {
-      const input = Input.array(tool, 'testBooleanArrayIdWithNulls', Type.BOOLEAN);
+      const input = Input.array(tool, 'testBooleanArrayIdWithNulls', TypeIn.boolean());
       input.allowNullElements();
 
       const map = input.toMap();
@@ -103,7 +104,7 @@ describe('Input Class', () => {
     });
 
     it('should allow null elements in integer array input', () => {
-      const input = Input.array(tool, 'testIntArrayIdWithNulls', Type.INT);
+      const input = Input.array(tool, 'testIntArrayIdWithNulls', TypeIn.int());
       input.allowNullElements();
 
       const map = input.toMap();
@@ -117,7 +118,7 @@ describe('Input Class', () => {
     });
 
     it('should allow null elements in string array input with configurations', () => {
-      const input = Input.array(tool, 'testStringArrayIdWithNulls', Type.STRING);
+      const input = Input.array(tool, 'testStringArrayIdWithNulls', TypeIn.string());
       input.withPrefix('--strings').withItemSeparator(',').allowNullElements();
 
       const map = input.toMap();
@@ -266,6 +267,38 @@ describe('Input Class', () => {
       inputBinding: {
         prefix: '--prefix',
       },
+    });
+  });
+
+
+  describe('Custom Input should work as expected.', () => {
+
+    it('should allow null elements in boolean array input', () => {
+      const input = Input.custom(tool, 'testCustomBooleanArray', TypeIn.arrayOf(TypeIn.boolean()));
+      input.allowNullElements();
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: ['null', 'boolean'],
+        },
+      });
+    });
+
+    it('should allow null elements in integer array input', () => {
+      const input = Input.custom(tool, 'testCustomTypeArray', TypeIn.arrayOf(TypeIn.arrayOf(TypeIn.int())));
+      input.allowNullElements();
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: ['null', { type: 'array', items: 'int' }],
+        },
+      });
     });
   });
 

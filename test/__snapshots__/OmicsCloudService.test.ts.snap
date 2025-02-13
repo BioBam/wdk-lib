@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Simple Workflow cwl export test should generate valid YAML and match snapshot 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "trimmomatic",
+  "inputs": [
+    {
+      "id": "trimmomatic-pe.fastaFile",
+      "type": "File",
+    },
+  ],
+  "outputs": [],
+  "requirements": [
+    {
+      "class": "SubworkflowFeatureRequirement",
+    },
+    {
+      "class": "InlineJavascriptRequirement",
+    },
+    {
+      "class": "DockerRequirement",
+      "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/trimmomatic:1",
+    },
+    {
+      "class": "ResourceRequirement",
+      "coresMin": 1,
+      "ramMin": 1000,
+      "tmpdirMin": 1000,
+    },
+    {
+      "class": "EnvVarRequirement",
+      "envDef": {
+        "AWS_BATCH_JOB_ID": "carlos",
+        "BATCH_CPU": "1",
+        "BATCH_MEMORY": "1000",
+        "BUCKET_JOB_FOLDER": "roberto/emapper",
+        "BUCKET_NAME": "toil-workspace-20240920",
+        "BUCKET_SESSION_SHARED_FOLDER": "roberto/emapper",
+        "DEV_COMPRESSED_SHARED_DIR": "/data/compressedShared",
+        "DEV_COMPRESSED_SHARED_TAR_ZST": "/data/compressedShared.tar.zst",
+        "DEV_DATA_DIR": "/data",
+        "DEV_INPUT_DIR": "/data/input",
+        "DEV_OUTPUT_DIR": "/data/output",
+        "DEV_PARAMETERS_FILE": "/data/parameters.txt",
+        "DEV_PROGRESS_STREAM": "carlos",
+        "DEV_SHARED_DIR": "/data/shared",
+      },
+    },
+  ],
+  "steps": [
+    {
+      "id": "trimmomatic-pe",
+      "in": [
+        {
+          "id": "fastaFile",
+          "source": "trimmomatic-pe.fastaFile",
+        },
+      ],
+      "out": [
+        "parameters_file",
+      ],
+      "run": {
+        "class": "ExpressionTool",
+        "cwlVersion": "v1.2",
+        "expression": "\${
+      var params = {};
+        for (var key in inputs) {
+          if (inputs[key] !== undefined && inputs[key] !== null) { // Check if inputs[key] is set
+            if (Array.isArray(inputs[key]) && inputs[key][0].class === 'File') {
+              params[key] = inputs[key].map(file => file.basename);
+            } else if (typeof inputs[key] === 'object' && inputs[key].class === 'File') {
+              params[key] = inputs[key].basename;
+            } else {
+              params[key] = inputs[key];
+            }
+          }
+        }
+
+        return {
+          "parameters_file": {
+            "class": "File",
+            "basename": "parameters.txt",
+            "contents": JSON.stringify(params, null, 2)
+          }
+        };
+    }",
+        "id": "trimmomatic-pe",
+        "inputs": [
+          {
+            "id": "fastaFile",
+            "type": "File",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "parameters_file",
+            "type": "File",
+          },
+        ],
+      },
+    },
+    {
+      "id": "trimmomatic-st",
+      "in": [
+        {
+          "id": "parametersFile",
+          "source": "trimmomatic-pe/parameters_file",
+        },
+        {
+          "id": "fastaFile",
+          "source": "trimmomatic-pe.fastaFile",
+        },
+      ],
+      "out": [],
+      "run": {
+        "baseCommand": [
+          "python3",
+          "/start/start.py",
+        ],
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "trimmomatic-st",
+        "inputs": [
+          {
+            "id": "parametersFile",
+            "inputBinding": {
+              "prefix": "--parameters",
+            },
+            "type": "File",
+          },
+          {
+            "id": "fastaFile",
+            "inputBinding": {
+              "prefix": "--fastaFile",
+            },
+            "type": "File",
+          },
+        ],
+        "label": "Trimmomatic",
+        "outputs": [
+          {
+            "id": "trimmedFasta",
+            "outputBinding": {
+              "glob": "*.trimmed.fasta",
+            },
+            "type": "File",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

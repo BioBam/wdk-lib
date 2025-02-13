@@ -1439,6 +1439,7 @@ const input = Input.string(root, 'myInput')
 | <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Input.allowNullElements">allowNullElements</a></code> | Sets the type of the input elements of an array to be nullable. |
 | <code><a href="#wdk-lib.Input.as">as</a></code> | Changes the ID of the input and returns the modified input instance. |
+| <code><a href="#wdk-lib.Input.containsFileOrDirectory">containsFileOrDirectory</a></code> | Check if this input can link to at least a File or Directory. |
 | <code><a href="#wdk-lib.Input.isArray">isArray</a></code> | Checks if the input is an array type. |
 | <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | Sets the optionality of the input. |
 | <code><a href="#wdk-lib.Input.makeSeparate">makeSeparate</a></code> | Sets whether the input items should be separated. |
@@ -1504,6 +1505,14 @@ Changes the ID of the input and returns the modified input instance.
 The new identifier for this input.
 
 ---
+
+##### `containsFileOrDirectory` <a name="containsFileOrDirectory" id="wdk-lib.Input.containsFileOrDirectory"></a>
+
+```typescript
+public containsFileOrDirectory(): boolean
+```
+
+Check if this input can link to at least a File or Directory.
 
 ##### `isArray` <a name="isArray" id="wdk-lib.Input.isArray"></a>
 
@@ -1639,6 +1648,7 @@ The prefix to set.
 | --- | --- |
 | <code><a href="#wdk-lib.Input.array">array</a></code> | Creates an array input of a type passed by parameter. |
 | <code><a href="#wdk-lib.Input.bool">bool</a></code> | Creates a boolean type input. |
+| <code><a href="#wdk-lib.Input.copyInContext">copyInContext</a></code> | Copy the same input in the context of another scope. |
 | <code><a href="#wdk-lib.Input.custom">custom</a></code> | Creates a custom type input. |
 | <code><a href="#wdk-lib.Input.directory">directory</a></code> | Creates a directory type input. |
 | <code><a href="#wdk-lib.Input.double">double</a></code> | Creates a double type input. |
@@ -1715,6 +1725,32 @@ The construct within which this input is defined.
 - *Type:* string
 
 The identifier for this input.
+
+---
+
+##### `copyInContext` <a name="copyInContext" id="wdk-lib.Input.copyInContext"></a>
+
+```typescript
+import { Input } from 'wdk-lib'
+
+Input.copyInContext(scope: StepConstruct, input: Input)
+```
+
+Copy the same input in the context of another scope.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Input.copyInContext.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The construct within which this input is defined.
+
+---
+
+###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.Input.copyInContext.parameter.input"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+The existing input to copy.
 
 ---
 

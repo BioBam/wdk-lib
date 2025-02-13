@@ -19,6 +19,27 @@ import { TypeIn } from './TypeIn';
 export class Input extends LinkableConstruct {
 
   /**
+   * Copy the same input in the context of another scope.
+   *
+   * @param scope The construct within which this input is defined.
+   * @param input The existing input to copy.
+   * @returns A new instance of Input configured as the same input, in the context of the new scope.
+   */
+  static copyInContext(scope: StepConstruct, input: Input) {
+    const newInput = new Input(scope, input.id, input._type);
+    // copy all the properties
+    newInput._optional = input.optional;
+    newInput._defaultValue = input._defaultValue;
+    newInput._doc = input._doc;
+    newInput._prefix = input._prefix;
+    newInput._position = input._position;
+    newInput._separate = input._separate;
+    newInput._separator = input._separator;
+    newInput._valueFrom = input._valueFrom;
+    return newInput;
+  }
+
+  /**
    * Create an input from a step input, using the same ID and type.
    * It also copies the default value, the optional flag, and the doc.
    */
@@ -271,6 +292,24 @@ export class Input extends LinkableConstruct {
     //   return upperInput._createMatchingScopeUpper(targetScope);
     // }
     // return this;
+  }
+
+  /**
+   * Looks for a File or Directory type in the input type.
+   * @param type The internal type to check.
+   * @returns `true` if the input type is either a direct or container of File or Directory; otherwise, `false`.
+   */
+  private typeLinksFileOrDirectory(type: InputType | InputTypeArray): boolean {
+    return type === 'File' || type === 'Directory' || (type instanceof cwl.CommandInputArraySchema && this.typeLinksFileOrDirectory(type.items))
+      || (Array.isArray(type) && type.some(t => this.typeLinksFileOrDirectory(t)));
+  }
+
+  /**
+   * Check if this input can link to at least a File or Directory.
+   * @returns `true` if the input type is either a direct or container of File or Directory; otherwise, `false`.
+   */
+  public containsFileOrDirectory(): boolean {
+    return this.typeLinksFileOrDirectory(this._type);
   }
 
   /**

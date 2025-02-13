@@ -113,16 +113,18 @@ export class CloudService extends Workflow {
     // Define requirements such as subworkflow feature, JavaScript, network access, and Docker pull image.
     Requirement.subworkflowFeature(this);
     Requirement.inlineJavascript(this);
+    Requirement.inlineJavascript(this.parameters);
+    Requirement.inlineJavascript(this.service);
     Requirement.networkAccess(this.service);
 
     const containerRepository = props.containerRepository || '188164850845.dkr.ecr.us-east-1.amazonaws.com';
-    Requirement.docker(this, `${containerRepository}/${props.serviceId}:${props.serviceVersion}`);
+    Requirement.docker(this.service, `${containerRepository}/${props.serviceId}:${props.serviceVersion}`);
 
     const propsCores = props.assignedCores || 1;
     const propsMemory = props.assignedMemoryMb || 2048;
     const propsTempDir = props.assignedTempDirMb || 2048;
 
-    Requirement.resource(this, {
+    Requirement.resource(this.service, {
       coresMin: propsCores,
       ramMin: propsMemory,
       tmpdirMin: propsTempDir,
@@ -131,7 +133,7 @@ export class CloudService extends Workflow {
     const progressStream = props.progressStream || 'carlos';
 
     // Set up environment variables necessary for batch job execution.
-    Requirement.envVar(this, {
+    Requirement.envVar(this.service, {
       AWS_BATCH_JOB_ID: 'carlos', // just to activate logs streaming. Should be replaced to the actual job id.
       DEV_PROGRESS_STREAM: progressStream,
       BUCKET_NAME: 'toil-workspace-20240920',
@@ -140,7 +142,7 @@ export class CloudService extends Workflow {
       DEV_DATA_DIR: '/data',
       DEV_INPUT_DIR: '/data/input',
       DEV_OUTPUT_DIR: '/data/output',
-      DEV_PARAMETERS_FILE: '/data/parameters.txt',
+      DEV_PARAMETERS_FILE: '$(inputs.parametersFile.path)',
       DEV_SHARED_DIR: '/data/shared',
       DEV_COMPRESSED_SHARED_DIR: '/data/compressedShared',
       DEV_COMPRESSED_SHARED_TAR_ZST: '/data/compressedShared.tar.zst',
@@ -153,7 +155,6 @@ export class CloudService extends Workflow {
 
     Input.file(this.service, 'parametersFile')
       .withDoc('Required: The parameters file that contains a json with all the parameters passed to the tool.')
-      .withPrefix('--parameters')
       .linkTo(outputParametersFile);
 
     // Optionally link database path and mounting point if provided.

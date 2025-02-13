@@ -3,6 +3,7 @@ import { Input } from '../src/lib/Input';
 import { IStep } from '../src/lib/IStep';
 import { Requirement } from '../src/lib/Requirement';
 import { Scatter } from '../src/lib/Scatter';
+import { StepConstruct } from '../src/lib/StepConstruct';
 import { Tool } from '../src/lib/Tool';
 import { Workflow } from '../src/lib/Workflow';
 
@@ -26,7 +27,7 @@ describe('Scatter', () => {
 
   test('should set step.scatter to input.id if input is an array', () => {
     // Arrange
-    const mockInput = Input.stringArray(scope, 'testStringArray');
+    const mockInput = Input.stringArray(step as StepConstruct, 'testStringArray');
 
     // Act
     Scatter.simple(scope, step, mockInput);
@@ -45,4 +46,19 @@ describe('Scatter', () => {
   //     Scatter.simple(scope, step, input);
   //   }).toThrow('Input testString is not an array. Scatter can only be applied on array inputs.');
   // });
+
+  test('should set step.scatter to upper input.id if input is an array', () => {
+    // Arrange
+    const w2 = new Workflow(scope, 'testWorkflow2', Workflow.basicProps());
+    const step2 = new Tool(w2, 'testStep2');
+    const mockInput = Input.stringArray(step2, 'testStringArray').withPrefix('--testStep2');
+
+    // Act
+    Scatter.simple(scope, w2, mockInput);
+
+    // Assert
+    expect(w2.scatter?.ids).toStrictEqual(['testStep2.testStringArray']);
+    expect(Requirement.scatterFeature).toHaveBeenCalledWith(scope);
+  });
+
 });

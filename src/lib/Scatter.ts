@@ -66,7 +66,8 @@ export class Scatter extends Construct {
     Requirement.scatterFeature(scope);
 
     // Create an array of input IDs for identification and processing
-    const inputIds = input.map(i => i.id);
+    // const inputIds = input.map(i => i.id);
+    const inputIds = input.map(i => i._createMatchingScopeUpper(step).id);
 
     // Return a new Scatter operation
     return new Scatter((step as unknown as Construct), inputIds, method);

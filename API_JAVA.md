@@ -133,6 +133,190 @@ Minimum reserved filesystem based storage for the designated temporary directory
 
 ---
 
+### ServiceProps <a name="ServiceProps" id="wdk-lib.ServiceProps"></a>
+
+Interface defining the properties of a Service, including attributes such as label, ID, and resources.
+
+#### Initializer <a name="Initializer" id="wdk-lib.ServiceProps.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.ServiceProps;
+
+ServiceProps.builder()
+    .label(java.lang.String)
+    .serviceId(java.lang.String)
+    .serviceVersion(java.lang.String)
+//  .assignedCores(java.lang.Number)
+//  .assignedMemoryMb(java.lang.Number)
+//  .assignedTempDirMb(java.lang.Number)
+//  .containerRepository(java.lang.String)
+//  .mountPoint(java.lang.String)
+//  .parameterValuesAsStrings(java.lang.Boolean)
+//  .progressStream(java.lang.String)
+//  .serviceDatabasePath(java.lang.String)
+    .build();
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.ServiceProps.property.label">label</a></code> | <code>java.lang.String</code> | A descriptive label for the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.serviceId">serviceId</a></code> | <code>java.lang.String</code> | Unique identifier for the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.serviceVersion">serviceVersion</a></code> | <code>java.lang.String</code> | Version number of the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.assignedCores">assignedCores</a></code> | <code>java.lang.Number</code> | Optional: Number of CPU cores assigned to the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.assignedMemoryMb">assignedMemoryMb</a></code> | <code>java.lang.Number</code> | Optional: Amount of memory in MB assigned to the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.assignedTempDirMb">assignedTempDirMb</a></code> | <code>java.lang.Number</code> | Optional: Size of the temporary directory in MB. |
+| <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Optional: Repository where the container image is stored. |
+| <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
+| <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
+| <code><a href="#wdk-lib.ServiceProps.property.progressStream">progressStream</a></code> | <code>java.lang.String</code> | Optional: Name of the progress stream. |
+| <code><a href="#wdk-lib.ServiceProps.property.serviceDatabasePath">serviceDatabasePath</a></code> | <code>java.lang.String</code> | Optional: Path to the service's database. |
+
+---
+
+##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.ServiceProps.property.label"></a>
+
+```java
+public java.lang.String getLabel();
+```
+
+- *Type:* java.lang.String
+
+A descriptive label for the service.
+
+---
+
+##### `serviceId`<sup>Required</sup> <a name="serviceId" id="wdk-lib.ServiceProps.property.serviceId"></a>
+
+```java
+public java.lang.String getServiceId();
+```
+
+- *Type:* java.lang.String
+
+Unique identifier for the service.
+
+---
+
+##### `serviceVersion`<sup>Required</sup> <a name="serviceVersion" id="wdk-lib.ServiceProps.property.serviceVersion"></a>
+
+```java
+public java.lang.String getServiceVersion();
+```
+
+- *Type:* java.lang.String
+
+Version number of the service.
+
+---
+
+##### `assignedCores`<sup>Optional</sup> <a name="assignedCores" id="wdk-lib.ServiceProps.property.assignedCores"></a>
+
+```java
+public java.lang.Number getAssignedCores();
+```
+
+- *Type:* java.lang.Number
+
+Optional: Number of CPU cores assigned to the service.
+
+Defaults to 1 if not specified.
+
+---
+
+##### `assignedMemoryMb`<sup>Optional</sup> <a name="assignedMemoryMb" id="wdk-lib.ServiceProps.property.assignedMemoryMb"></a>
+
+```java
+public java.lang.Number getAssignedMemoryMb();
+```
+
+- *Type:* java.lang.Number
+
+Optional: Amount of memory in MB assigned to the service.
+
+Defaults to 2048 MB if not specified.
+
+---
+
+##### `assignedTempDirMb`<sup>Optional</sup> <a name="assignedTempDirMb" id="wdk-lib.ServiceProps.property.assignedTempDirMb"></a>
+
+```java
+public java.lang.Number getAssignedTempDirMb();
+```
+
+- *Type:* java.lang.Number
+
+Optional: Size of the temporary directory in MB.
+
+Defaults to 2048 MB if not specified.
+
+---
+
+##### `containerRepository`<sup>Optional</sup> <a name="containerRepository" id="wdk-lib.ServiceProps.property.containerRepository"></a>
+
+```java
+public java.lang.String getContainerRepository();
+```
+
+- *Type:* java.lang.String
+
+Optional: Repository where the container image is stored.
+
+This is only the base repository, not the full image path.
+
+---
+
+##### `mountPoint`<sup>Optional</sup> <a name="mountPoint" id="wdk-lib.ServiceProps.property.mountPoint"></a>
+
+```java
+public java.lang.String getMountPoint();
+```
+
+- *Type:* java.lang.String
+
+Optional: Mount point for the database.
+
+---
+
+##### `parameterValuesAsStrings`<sup>Optional</sup> <a name="parameterValuesAsStrings" id="wdk-lib.ServiceProps.property.parameterValuesAsStrings"></a>
+
+```java
+public java.lang.Boolean getParameterValuesAsStrings();
+```
+
+- *Type:* java.lang.Boolean
+
+Optional: Whether to create all parameter values as strings.
+
+Look at how they are used currently.
+
+---
+
+##### `progressStream`<sup>Optional</sup> <a name="progressStream" id="wdk-lib.ServiceProps.property.progressStream"></a>
+
+```java
+public java.lang.String getProgressStream();
+```
+
+- *Type:* java.lang.String
+
+Optional: Name of the progress stream.
+
+---
+
+##### `serviceDatabasePath`<sup>Optional</sup> <a name="serviceDatabasePath" id="wdk-lib.ServiceProps.property.serviceDatabasePath"></a>
+
+```java
+public java.lang.String getServiceDatabasePath();
+```
+
+- *Type:* java.lang.String
+
+Optional: Path to the service's database.
+
+---
+
 ## Classes <a name="Classes" id="Classes"></a>
 
 ### App <a name="App" id="wdk-lib.App"></a>
@@ -779,6 +963,461 @@ public Input getF1();
 ```
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
+
+---
+
+
+### CloudService <a name="CloudService" id="wdk-lib.CloudService"></a>
+
+Class representing a Cloud Service, which is a type of Workflow with two steps, one that creates the parameters and one the service.
+
+Everything should already be linked correctly internally between the two.
+<br>
+Note: Add the inputs to the parameters and outputs to the service. Inputs must have a prefix. e.g.:
+
+<pre><code>
+Input.file(this.parameters, 'fastaFile').withPrefix('--fastaFile');
+Output.file(this.service, 'trimmedFasta').withGlob('*.trimmed.fasta');
+</code></pre>
+
+#### Initializers <a name="Initializers" id="wdk-lib.CloudService.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.CloudService;
+
+CloudService.Builder.create(Workflow scope, java.lang.String id)
+    .label(java.lang.String)
+    .serviceId(java.lang.String)
+    .serviceVersion(java.lang.String)
+//  .assignedCores(java.lang.Number)
+//  .assignedMemoryMb(java.lang.Number)
+//  .assignedTempDirMb(java.lang.Number)
+//  .containerRepository(java.lang.String)
+//  .mountPoint(java.lang.String)
+//  .parameterValuesAsStrings(java.lang.Boolean)
+//  .progressStream(java.lang.String)
+//  .serviceDatabasePath(java.lang.String)
+    .build();
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | - The workflow this service belongs to. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.id">id</a></code> | <code>java.lang.String</code> | - A unique identifier for the service within its workflow. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.label">label</a></code> | <code>java.lang.String</code> | A descriptive label for the service. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.serviceId">serviceId</a></code> | <code>java.lang.String</code> | Unique identifier for the service. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.serviceVersion">serviceVersion</a></code> | <code>java.lang.String</code> | Version number of the service. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedCores">assignedCores</a></code> | <code>java.lang.Number</code> | Optional: Number of CPU cores assigned to the service. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedMemoryMb">assignedMemoryMb</a></code> | <code>java.lang.Number</code> | Optional: Amount of memory in MB assigned to the service. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedTempDirMb">assignedTempDirMb</a></code> | <code>java.lang.Number</code> | Optional: Size of the temporary directory in MB. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Optional: Repository where the container image is stored. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.progressStream">progressStream</a></code> | <code>java.lang.String</code> | Optional: Name of the progress stream. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.serviceDatabasePath">serviceDatabasePath</a></code> | <code>java.lang.String</code> | Optional: Path to the service's database. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.CloudService.Initializer.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+The workflow this service belongs to.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CloudService.Initializer.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+A unique identifier for the service within its workflow.
+
+---
+
+##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.CloudService.Initializer.parameter.label"></a>
+
+- *Type:* java.lang.String
+
+A descriptive label for the service.
+
+---
+
+##### `serviceId`<sup>Required</sup> <a name="serviceId" id="wdk-lib.CloudService.Initializer.parameter.serviceId"></a>
+
+- *Type:* java.lang.String
+
+Unique identifier for the service.
+
+---
+
+##### `serviceVersion`<sup>Required</sup> <a name="serviceVersion" id="wdk-lib.CloudService.Initializer.parameter.serviceVersion"></a>
+
+- *Type:* java.lang.String
+
+Version number of the service.
+
+---
+
+##### `assignedCores`<sup>Optional</sup> <a name="assignedCores" id="wdk-lib.CloudService.Initializer.parameter.assignedCores"></a>
+
+- *Type:* java.lang.Number
+
+Optional: Number of CPU cores assigned to the service.
+
+Defaults to 1 if not specified.
+
+---
+
+##### `assignedMemoryMb`<sup>Optional</sup> <a name="assignedMemoryMb" id="wdk-lib.CloudService.Initializer.parameter.assignedMemoryMb"></a>
+
+- *Type:* java.lang.Number
+
+Optional: Amount of memory in MB assigned to the service.
+
+Defaults to 2048 MB if not specified.
+
+---
+
+##### `assignedTempDirMb`<sup>Optional</sup> <a name="assignedTempDirMb" id="wdk-lib.CloudService.Initializer.parameter.assignedTempDirMb"></a>
+
+- *Type:* java.lang.Number
+
+Optional: Size of the temporary directory in MB.
+
+Defaults to 2048 MB if not specified.
+
+---
+
+##### `containerRepository`<sup>Optional</sup> <a name="containerRepository" id="wdk-lib.CloudService.Initializer.parameter.containerRepository"></a>
+
+- *Type:* java.lang.String
+
+Optional: Repository where the container image is stored.
+
+This is only the base repository, not the full image path.
+
+---
+
+##### `mountPoint`<sup>Optional</sup> <a name="mountPoint" id="wdk-lib.CloudService.Initializer.parameter.mountPoint"></a>
+
+- *Type:* java.lang.String
+
+Optional: Mount point for the database.
+
+---
+
+##### `parameterValuesAsStrings`<sup>Optional</sup> <a name="parameterValuesAsStrings" id="wdk-lib.CloudService.Initializer.parameter.parameterValuesAsStrings"></a>
+
+- *Type:* java.lang.Boolean
+
+Optional: Whether to create all parameter values as strings.
+
+Look at how they are used currently.
+
+---
+
+##### `progressStream`<sup>Optional</sup> <a name="progressStream" id="wdk-lib.CloudService.Initializer.parameter.progressStream"></a>
+
+- *Type:* java.lang.String
+
+Optional: Name of the progress stream.
+
+---
+
+##### `serviceDatabasePath`<sup>Optional</sup> <a name="serviceDatabasePath" id="wdk-lib.CloudService.Initializer.parameter.serviceDatabasePath"></a>
+
+- *Type:* java.lang.String
+
+Optional: Path to the service's database.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.CloudService.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.CloudService.serialize">serialize</a></code> | Serialize the step to a directory. |
+| <code><a href="#wdk-lib.CloudService.addStep">addStep</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
+
+---
+
+##### `hasSteps` <a name="hasSteps" id="wdk-lib.CloudService.hasSteps"></a>
+
+```java
+public java.lang.Boolean hasSteps()
+```
+
+Whether the step has sub steps like in case of a workflow step.
+
+##### `serialize` <a name="serialize" id="wdk-lib.CloudService.serialize"></a>
+
+```java
+public SynthFiles serialize(java.lang.String dirPath)
+```
+
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
+
+###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.CloudService.serialize.parameter.dirPath"></a>
+
+- *Type:* java.lang.String
+
+---
+
+##### `addStep` <a name="addStep" id="wdk-lib.CloudService.addStep"></a>
+
+```java
+public void addStep(IStep step)
+```
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.CloudService.addStep.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+
+---
+
+##### `toMap` <a name="toMap" id="wdk-lib.CloudService.toMap"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.Object> toMap()
+```
+
+Convert the object to a map representation following the CWL specification.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.CloudService.basicProps">basicProps</a></code> | *No description.* |
+
+---
+
+##### `basicProps` <a name="basicProps" id="wdk-lib.CloudService.basicProps"></a>
+
+```java
+import com.biobam.wdk.lib.CloudService;
+
+CloudService.basicProps()
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.CloudService.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.CloudService.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.CloudService.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
+| <code><a href="#wdk-lib.CloudService.property.label">label</a></code> | <code>java.lang.Object</code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.CloudService.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.CloudService.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
+| <code><a href="#wdk-lib.CloudService.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.CloudService.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.CloudService.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.CloudService.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
+| <code><a href="#wdk-lib.CloudService.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.props">props</a></code> | <code><a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.parameters">parameters</a></code> | <code><a href="#wdk-lib.ExpressionTool">ExpressionTool</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.service">service</a></code> | <code><a href="#wdk-lib.Tool">Tool</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.CloudService.property.scope"></a>
+
+```java
+public Construct getScope();
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CloudService.property.id"></a>
+
+```java
+public java.lang.String getId();
+```
+
+- *Type:* java.lang.String
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
+---
+
+##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.CloudService.property.inputs"></a>
+
+```java
+public java.util.List<Input> getInputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+All inputs of the step.
+
+---
+
+##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.CloudService.property.label"></a>
+
+```java
+public java.lang.Object getLabel();
+```
+
+- *Type:* java.lang.Object
+
+---
+
+##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.CloudService.property.linkedInputs"></a>
+
+```java
+public java.util.List<Input> getLinkedInputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+Inputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `linkedOutputs`<sup>Required</sup> <a name="linkedOutputs" id="wdk-lib.CloudService.property.linkedOutputs"></a>
+
+```java
+public java.util.List<Output> getLinkedOutputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Output">Output</a>>
+
+Outputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `outputs`<sup>Required</sup> <a name="outputs" id="wdk-lib.CloudService.property.outputs"></a>
+
+```java
+public java.util.List<Output> getOutputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Output">Output</a>>
+
+All outputs of the step.
+
+---
+
+##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.CloudService.property.steps"></a>
+
+```java
+public java.util.List<IStep> getSteps();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.IStep">IStep</a>>
+
+All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.CloudService.property.conditional"></a>
+
+```java
+public Conditional getConditional();
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
+
+---
+
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.CloudService.property.scatter"></a>
+
+```java
+public Scatter getScatter();
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
+##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.CloudService.property.config"></a>
+
+```java
+public ToolConfig getConfig();
+```
+
+- *Type:* <a href="#wdk-lib.ToolConfig">ToolConfig</a>
+
+---
+
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.CloudService.property.fileName"></a>
+
+```java
+public java.lang.String getFileName();
+```
+
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
+
+---
+
+##### `stepClass`<sup>Required</sup> <a name="stepClass" id="wdk-lib.CloudService.property.stepClass"></a>
+
+```java
+public StepClass getStepClass();
+```
+
+- *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.CloudService.property.props"></a>
+
+```java
+public IWorkflowProps getProps();
+```
+
+- *Type:* <a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a>
+
+---
+
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.CloudService.property.requirements"></a>
+
+```java
+public java.util.List<Requirement> getRequirements();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
+
+---
+
+##### `parameters`<sup>Required</sup> <a name="parameters" id="wdk-lib.CloudService.property.parameters"></a>
+
+```java
+public ExpressionTool getParameters();
+```
+
+- *Type:* <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>
+
+---
+
+##### `service`<sup>Required</sup> <a name="service" id="wdk-lib.CloudService.property.service"></a>
+
+```java
+public Tool getService();
+```
+
+- *Type:* <a href="#wdk-lib.Tool">Tool</a>
 
 ---
 
@@ -6122,7 +6761,7 @@ Access the identified of this construct.
 
 ### IMappable <a name="IMappable" id="wdk-lib.IMappable"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
 
 #### Methods <a name="Methods" id="Methods"></a>
 
@@ -6201,7 +6840,7 @@ public java.lang.String getOutFilePropId();
 
 ### IStep <a name="IStep" id="wdk-lib.IStep"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
 
 Represents a step in a workflow.
 
@@ -6437,7 +7076,7 @@ public IToolMetadata getMetadata();
 
 ### IWorkflow <a name="IWorkflow" id="wdk-lib.IWorkflow"></a>
 
-- *Implemented By:* <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IWorkflow">IWorkflow</a>
+- *Implemented By:* <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IWorkflow">IWorkflow</a>
 
 
 

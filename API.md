@@ -124,6 +124,178 @@ Minimum reserved filesystem based storage for the designated temporary directory
 
 ---
 
+### ServiceProps <a name="ServiceProps" id="wdk-lib.ServiceProps"></a>
+
+Interface defining the properties of a Service, including attributes such as label, ID, and resources.
+
+#### Initializer <a name="Initializer" id="wdk-lib.ServiceProps.Initializer"></a>
+
+```typescript
+import { ServiceProps } from 'wdk-lib'
+
+const serviceProps: ServiceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.ServiceProps.property.label">label</a></code> | <code>string</code> | A descriptive label for the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.serviceId">serviceId</a></code> | <code>string</code> | Unique identifier for the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.serviceVersion">serviceVersion</a></code> | <code>string</code> | Version number of the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.assignedCores">assignedCores</a></code> | <code>number</code> | Optional: Number of CPU cores assigned to the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.assignedMemoryMb">assignedMemoryMb</a></code> | <code>number</code> | Optional: Amount of memory in MB assigned to the service. |
+| <code><a href="#wdk-lib.ServiceProps.property.assignedTempDirMb">assignedTempDirMb</a></code> | <code>number</code> | Optional: Size of the temporary directory in MB. |
+| <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>string</code> | Optional: Repository where the container image is stored. |
+| <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>string</code> | Optional: Mount point for the database. |
+| <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>boolean</code> | Optional: Whether to create all parameter values as strings. |
+| <code><a href="#wdk-lib.ServiceProps.property.progressStream">progressStream</a></code> | <code>string</code> | Optional: Name of the progress stream. |
+| <code><a href="#wdk-lib.ServiceProps.property.serviceDatabasePath">serviceDatabasePath</a></code> | <code>string</code> | Optional: Path to the service's database. |
+
+---
+
+##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.ServiceProps.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
+
+A descriptive label for the service.
+
+---
+
+##### `serviceId`<sup>Required</sup> <a name="serviceId" id="wdk-lib.ServiceProps.property.serviceId"></a>
+
+```typescript
+public readonly serviceId: string;
+```
+
+- *Type:* string
+
+Unique identifier for the service.
+
+---
+
+##### `serviceVersion`<sup>Required</sup> <a name="serviceVersion" id="wdk-lib.ServiceProps.property.serviceVersion"></a>
+
+```typescript
+public readonly serviceVersion: string;
+```
+
+- *Type:* string
+
+Version number of the service.
+
+---
+
+##### `assignedCores`<sup>Optional</sup> <a name="assignedCores" id="wdk-lib.ServiceProps.property.assignedCores"></a>
+
+```typescript
+public readonly assignedCores: number;
+```
+
+- *Type:* number
+
+Optional: Number of CPU cores assigned to the service.
+
+Defaults to 1 if not specified.
+
+---
+
+##### `assignedMemoryMb`<sup>Optional</sup> <a name="assignedMemoryMb" id="wdk-lib.ServiceProps.property.assignedMemoryMb"></a>
+
+```typescript
+public readonly assignedMemoryMb: number;
+```
+
+- *Type:* number
+
+Optional: Amount of memory in MB assigned to the service.
+
+Defaults to 2048 MB if not specified.
+
+---
+
+##### `assignedTempDirMb`<sup>Optional</sup> <a name="assignedTempDirMb" id="wdk-lib.ServiceProps.property.assignedTempDirMb"></a>
+
+```typescript
+public readonly assignedTempDirMb: number;
+```
+
+- *Type:* number
+
+Optional: Size of the temporary directory in MB.
+
+Defaults to 2048 MB if not specified.
+
+---
+
+##### `containerRepository`<sup>Optional</sup> <a name="containerRepository" id="wdk-lib.ServiceProps.property.containerRepository"></a>
+
+```typescript
+public readonly containerRepository: string;
+```
+
+- *Type:* string
+
+Optional: Repository where the container image is stored.
+
+This is only the base repository, not the full image path.
+
+---
+
+##### `mountPoint`<sup>Optional</sup> <a name="mountPoint" id="wdk-lib.ServiceProps.property.mountPoint"></a>
+
+```typescript
+public readonly mountPoint: string;
+```
+
+- *Type:* string
+
+Optional: Mount point for the database.
+
+---
+
+##### `parameterValuesAsStrings`<sup>Optional</sup> <a name="parameterValuesAsStrings" id="wdk-lib.ServiceProps.property.parameterValuesAsStrings"></a>
+
+```typescript
+public readonly parameterValuesAsStrings: boolean;
+```
+
+- *Type:* boolean
+
+Optional: Whether to create all parameter values as strings.
+
+Look at how they are used currently.
+
+---
+
+##### `progressStream`<sup>Optional</sup> <a name="progressStream" id="wdk-lib.ServiceProps.property.progressStream"></a>
+
+```typescript
+public readonly progressStream: string;
+```
+
+- *Type:* string
+
+Optional: Name of the progress stream.
+
+---
+
+##### `serviceDatabasePath`<sup>Optional</sup> <a name="serviceDatabasePath" id="wdk-lib.ServiceProps.property.serviceDatabasePath"></a>
+
+```typescript
+public readonly serviceDatabasePath: string;
+```
+
+- *Type:* string
+
+Optional: Path to the service's database.
+
+---
+
 ## Classes <a name="Classes" id="Classes"></a>
 
 ### App <a name="App" id="wdk-lib.App"></a>
@@ -770,6 +942,348 @@ public readonly f1: Input;
 ```
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
+
+---
+
+
+### CloudService <a name="CloudService" id="wdk-lib.CloudService"></a>
+
+Class representing a Cloud Service, which is a type of Workflow with two steps, one that creates the parameters and one the service.
+
+Everything should already be linked correctly internally between the two.
+<br>
+Note: Add the inputs to the parameters and outputs to the service. Inputs must have a prefix. e.g.:
+<pre><code>
+Input.file(this.parameters, 'fastaFile').withPrefix('--fastaFile');
+Output.file(this.service, 'trimmedFasta').withGlob('*.trimmed.fasta');
+</code></pre>
+
+#### Initializers <a name="Initializers" id="wdk-lib.CloudService.Initializer"></a>
+
+```typescript
+import { CloudService } from 'wdk-lib'
+
+new CloudService(scope: Workflow, id: string, props: ServiceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | - The workflow this service belongs to. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.id">id</a></code> | <code>string</code> | - A unique identifier for the service within its workflow. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.ServiceProps">ServiceProps</a></code> | - Configuration properties for the service. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.CloudService.Initializer.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+The workflow this service belongs to.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CloudService.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+A unique identifier for the service within its workflow.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.CloudService.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#wdk-lib.ServiceProps">ServiceProps</a>
+
+Configuration properties for the service.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.CloudService.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.CloudService.serialize">serialize</a></code> | Serialize the step to a directory. |
+| <code><a href="#wdk-lib.CloudService.addStep">addStep</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
+
+---
+
+##### `hasSteps` <a name="hasSteps" id="wdk-lib.CloudService.hasSteps"></a>
+
+```typescript
+public hasSteps(): boolean
+```
+
+Whether the step has sub steps like in case of a workflow step.
+
+##### `serialize` <a name="serialize" id="wdk-lib.CloudService.serialize"></a>
+
+```typescript
+public serialize(dirPath: string): SynthFiles
+```
+
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
+
+###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.CloudService.serialize.parameter.dirPath"></a>
+
+- *Type:* string
+
+---
+
+##### `addStep` <a name="addStep" id="wdk-lib.CloudService.addStep"></a>
+
+```typescript
+public addStep(step: IStep): void
+```
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.CloudService.addStep.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+
+---
+
+##### `toMap` <a name="toMap" id="wdk-lib.CloudService.toMap"></a>
+
+```typescript
+public toMap(): {[ key: string ]: any}
+```
+
+Convert the object to a map representation following the CWL specification.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.CloudService.basicProps">basicProps</a></code> | *No description.* |
+
+---
+
+##### `basicProps` <a name="basicProps" id="wdk-lib.CloudService.basicProps"></a>
+
+```typescript
+import { CloudService } from 'wdk-lib'
+
+CloudService.basicProps()
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.CloudService.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.CloudService.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.CloudService.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
+| <code><a href="#wdk-lib.CloudService.property.label">label</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.CloudService.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.CloudService.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
+| <code><a href="#wdk-lib.CloudService.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.CloudService.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.CloudService.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.CloudService.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
+| <code><a href="#wdk-lib.CloudService.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.props">props</a></code> | <code><a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.parameters">parameters</a></code> | <code><a href="#wdk-lib.ExpressionTool">ExpressionTool</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.property.service">service</a></code> | <code><a href="#wdk-lib.Tool">Tool</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.CloudService.property.scope"></a>
+
+```typescript
+public readonly scope: Construct;
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CloudService.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
+---
+
+##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.CloudService.property.inputs"></a>
+
+```typescript
+public readonly inputs: Input[];
+```
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>[]
+
+All inputs of the step.
+
+---
+
+##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.CloudService.property.label"></a>
+
+```typescript
+public readonly label: any;
+```
+
+- *Type:* any
+
+---
+
+##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.CloudService.property.linkedInputs"></a>
+
+```typescript
+public readonly linkedInputs: Input[];
+```
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>[]
+
+Inputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `linkedOutputs`<sup>Required</sup> <a name="linkedOutputs" id="wdk-lib.CloudService.property.linkedOutputs"></a>
+
+```typescript
+public readonly linkedOutputs: Output[];
+```
+
+- *Type:* <a href="#wdk-lib.Output">Output</a>[]
+
+Outputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `outputs`<sup>Required</sup> <a name="outputs" id="wdk-lib.CloudService.property.outputs"></a>
+
+```typescript
+public readonly outputs: Output[];
+```
+
+- *Type:* <a href="#wdk-lib.Output">Output</a>[]
+
+All outputs of the step.
+
+---
+
+##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.CloudService.property.steps"></a>
+
+```typescript
+public readonly steps: IStep[];
+```
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
+
+All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.CloudService.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
+
+---
+
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.CloudService.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
+##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.CloudService.property.config"></a>
+
+```typescript
+public readonly config: ToolConfig;
+```
+
+- *Type:* <a href="#wdk-lib.ToolConfig">ToolConfig</a>
+
+---
+
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.CloudService.property.fileName"></a>
+
+```typescript
+public readonly fileName: string;
+```
+
+- *Type:* string
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
+
+---
+
+##### `stepClass`<sup>Required</sup> <a name="stepClass" id="wdk-lib.CloudService.property.stepClass"></a>
+
+```typescript
+public readonly stepClass: StepClass;
+```
+
+- *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="wdk-lib.CloudService.property.props"></a>
+
+```typescript
+public readonly props: IWorkflowProps;
+```
+
+- *Type:* <a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a>
+
+---
+
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.CloudService.property.requirements"></a>
+
+```typescript
+public readonly requirements: Requirement[];
+```
+
+- *Type:* <a href="#wdk-lib.Requirement">Requirement</a>[]
+
+---
+
+##### `parameters`<sup>Required</sup> <a name="parameters" id="wdk-lib.CloudService.property.parameters"></a>
+
+```typescript
+public readonly parameters: ExpressionTool;
+```
+
+- *Type:* <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>
+
+---
+
+##### `service`<sup>Required</sup> <a name="service" id="wdk-lib.CloudService.property.service"></a>
+
+```typescript
+public readonly service: Tool;
+```
+
+- *Type:* <a href="#wdk-lib.Tool">Tool</a>
 
 ---
 
@@ -6106,7 +6620,7 @@ Access the identified of this construct.
 
 ### IMappable <a name="IMappable" id="wdk-lib.IMappable"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
 
 #### Methods <a name="Methods" id="Methods"></a>
 
@@ -6185,7 +6699,7 @@ public readonly outFilePropId: string;
 
 ### IStep <a name="IStep" id="wdk-lib.IStep"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
 
 Represents a step in a workflow.
 
@@ -6421,7 +6935,7 @@ public readonly metadata: IToolMetadata;
 
 ### IWorkflow <a name="IWorkflow" id="wdk-lib.IWorkflow"></a>
 
-- *Implemented By:* <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IWorkflow">IWorkflow</a>
+- *Implemented By:* <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IWorkflow">IWorkflow</a>
 
 
 

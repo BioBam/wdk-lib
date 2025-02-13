@@ -1,9 +1,9 @@
 import { Input, Output, Workflow } from '../src/lib';
 import { Constructs } from '../src/lib/Constructs';
-import { Service } from '../src/lib/l2/OmicsCloudService';
+import { CloudService } from '../src/lib/l2/CloudService';
 
 
-class TrimmomaticService extends Service {
+class TrimmomaticService extends CloudService {
   constructor(scope: Workflow) {
     super(scope, 'trimmomatic', {
       label: 'Trimmomatic',
@@ -26,7 +26,7 @@ describe('Simple Workflow cwl export test', () => {
     // Create the root construct instance with null as its scope.
     const root = Constructs.rootWorkflow();
     const tsw = new TrimmomaticService(root);
-    console.log(JSON.stringify(tsw._toCwlObject().save()));
+    // console.log(JSON.stringify(tsw._toCwlObject().save()));
     expect(tsw.toMap()).toMatchSnapshot();
   });
 });

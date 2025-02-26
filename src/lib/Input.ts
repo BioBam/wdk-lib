@@ -261,6 +261,17 @@ export class Input extends LinkableConstruct {
   // }
 
   /**
+   * Get the linked input corresponding to the target scope.
+   * If the target scope is the same as the current scope, return the current instance.
+   * Note: The scope must be in one of the upper hierarchies of the current scope.
+   * @param targetScope The target scope to find the linked input.
+   * @returns The linked input corresponding to the target scope.
+   */
+  public inScope(targetScope: StepConstruct): Input {
+    return this._createMatchingScopeUpper(targetScope);
+  }
+
+  /**
    * @internal
    */
   _createMatchingScopeUpper(targetScope: Construct): Input {

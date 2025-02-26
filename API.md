@@ -1954,6 +1954,7 @@ const input = Input.string(root, 'myInput')
 | <code><a href="#wdk-lib.Input.allowNullElements">allowNullElements</a></code> | Sets the type of the input elements of an array to be nullable. |
 | <code><a href="#wdk-lib.Input.as">as</a></code> | Changes the ID of the input and returns the modified input instance. |
 | <code><a href="#wdk-lib.Input.containsFileOrDirectory">containsFileOrDirectory</a></code> | Check if this input can link to at least a File or Directory. |
+| <code><a href="#wdk-lib.Input.inScope">inScope</a></code> | Get the linked input corresponding to the target scope. |
 | <code><a href="#wdk-lib.Input.isArray">isArray</a></code> | Checks if the input is an array type. |
 | <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | Sets the optionality of the input. |
 | <code><a href="#wdk-lib.Input.makeSeparate">makeSeparate</a></code> | Sets whether the input items should be separated. |
@@ -2027,6 +2028,25 @@ public containsFileOrDirectory(): boolean
 ```
 
 Check if this input can link to at least a File or Directory.
+
+##### `inScope` <a name="inScope" id="wdk-lib.Input.inScope"></a>
+
+```typescript
+public inScope(targetScope: StepConstruct): Input
+```
+
+Get the linked input corresponding to the target scope.
+
+If the target scope is the same as the current scope, return the current instance.
+Note: The scope must be in one of the upper hierarchies of the current scope.
+
+###### `targetScope`<sup>Required</sup> <a name="targetScope" id="wdk-lib.Input.inScope.parameter.targetScope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The target scope to find the linked input.
+
+---
 
 ##### `isArray` <a name="isArray" id="wdk-lib.Input.isArray"></a>
 
@@ -3118,6 +3138,7 @@ const output = Output.file(root, 'myOutput')
 | <code><a href="#wdk-lib.Output.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Output.as">as</a></code> | Sets a new identifier for this output. |
 | <code><a href="#wdk-lib.Output.globFromInputString">globFromInputString</a></code> | Sets a glob pattern based on an input string identifier. |
+| <code><a href="#wdk-lib.Output.inScope">inScope</a></code> | Get the linked output corresponding to the target scope. |
 | <code><a href="#wdk-lib.Output.loadContents">loadContents</a></code> | Enables loading contents of the output files. |
 | <code><a href="#wdk-lib.Output.makeOptional">makeOptional</a></code> | Sets the optionality of the output. |
 | <code><a href="#wdk-lib.Output.outputEval">outputEval</a></code> | Specifies an expression to evaluate the output. |
@@ -3185,6 +3206,25 @@ Sets a glob pattern based on an input string identifier.
 - *Type:* <a href="#wdk-lib.Input">Input</a>
 
 An Input instance whose ID forms the basis of the glob pattern.
+
+---
+
+##### `inScope` <a name="inScope" id="wdk-lib.Output.inScope"></a>
+
+```typescript
+public inScope(targetScope: StepConstruct): ILinkable
+```
+
+Get the linked output corresponding to the target scope.
+
+If the target scope is the same as the current scope, return the current instance.
+Note: The scope must be in one of the upper hierarchies of the current scope.
+
+###### `targetScope`<sup>Required</sup> <a name="targetScope" id="wdk-lib.Output.inScope.parameter.targetScope"></a>
+
+- *Type:* <a href="#wdk-lib.StepConstruct">StepConstruct</a>
+
+The target scope to find the linked output.
 
 ---
 

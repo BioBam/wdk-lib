@@ -196,6 +196,18 @@ export class Output extends LinkableConstruct implements IMappable {
     return `${this.scope?.id}.${this.id}`;
   }
 
+
+  /**
+   *  Get the linked output corresponding to the target scope.
+   * If the target scope is the same as the current scope, return the current instance.
+   * Note: The scope must be in one of the upper hierarchies of the current scope.
+   * @param targetScope The target scope to find the linked output.
+   * @returns The linked parameter corresponding to the target scope.
+   */
+  public inScope(targetScope: StepConstruct): ILinkable {
+    return this._createMatchingScopeUpper(targetScope);
+  }
+
   /**
    * @internal
    */

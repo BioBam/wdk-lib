@@ -88,10 +88,6 @@ exports[`Simple Workflow cwl export test should generate valid YAML and match sn
           "id": "fastaFile",
           "source": "trimmomatic-pe.fastaFile",
         },
-        {
-          "id": "fastaFile",
-          "source": "trimmomatic-pe.fastaFile",
-        },
       ],
       "out": [],
       "run": {
@@ -105,13 +101,6 @@ exports[`Simple Workflow cwl export test should generate valid YAML and match sn
         "inputs": [
           {
             "id": "parametersFile",
-            "type": "File",
-          },
-          {
-            "id": "fastaFile",
-            "inputBinding": {
-              "prefix": "--fastaFile",
-            },
             "type": "File",
           },
           {

@@ -23,6 +23,8 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
     };
   }
 
+  private initialized: boolean = false;
+
   private _props: IWorkflowProps;
   private _steps: IStep[] = [];
 
@@ -100,7 +102,9 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
   /**
    * Initialize the construct, where needed.
    */
-  protected initialize(): void { }
+  protected initialize(): void {
+    this.initialized = true;
+  }
 
   /**
    *
@@ -108,7 +112,9 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
    * @returns A CWL Workflow object
    */
   _toCwlObject(): cwl.Workflow {
-    this.initialize();
+    if (!this.initialized) {
+      this.initialize();
+    }
     let w = new cwl.Workflow({
       id: this.id,
       inputs: [],

@@ -185,5 +185,6 @@ export class CloudService extends Workflow {
         serviceInput.linkTo(workflowInput);
       }
     });
+    super.initialize();
   }
 }

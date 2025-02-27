@@ -143,6 +143,7 @@ export class CloudService extends Workflow {
       DEV_INPUT_DIR: '/data/input',
       DEV_OUTPUT_DIR: '/data/output',
       DEV_PARAMETERS_FILE: '$(inputs.parametersFile.path)',
+      BLASTDB: '$(runtime.tmpdir)/blastdb',
       DEV_SHARED_DIR: '/data/shared',
       DEV_COMPRESSED_SHARED_DIR: '/data/compressedShared',
       DEV_COMPRESSED_SHARED_TAR_ZST: '/data/compressedShared.tar.zst',

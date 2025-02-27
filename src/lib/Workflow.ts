@@ -151,6 +151,20 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
             }
           } else {
             cwlStepInput.source = stepInput.links[0].idAsReference;
+            if (stepInput.pickValueMethod) {
+              // set the pickValueMethod to the parameter in the parent step.
+              let upperInput;
+              while (stepInput.scope?.scope) {
+                upperInput = stepInput._findInUpperScope(stepInput.scope?.scope!);
+                if (!upperInput) {
+                  break;
+                }
+                if (upperInput.multiLinked) {
+                  upperInput.pickValue(stepInput.pickValueMethod);
+                  break;
+                }
+              }
+            }
           }
         }
         cwlStepInput.linkMerge;

@@ -274,6 +274,23 @@ export class Input extends LinkableConstruct {
   /**
    * @internal
    */
+  _findInUpperScope(targetScope: Construct): Input | undefined {
+    if (this.scope === targetScope) {
+      return this;
+    }
+
+    let upperName = this.getUpperName();
+    let upperScope = this.scope?.scope as StepConstruct;
+    let upperOutput = upperScope._tryFindChild(upperName) as Input;
+    if (!upperOutput) {
+      return undefined;
+    }
+    return upperOutput._findInUpperScope(targetScope);
+  }
+
+  /**
+   * @internal
+   */
   _createMatchingScopeUpper(targetScope: Construct): Input {
     if (this.scope === targetScope) {
       return this;

@@ -98,11 +98,17 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
   }
 
   /**
+   * Initialize the construct, where needed.
+   */
+  protected initialize(): void { }
+
+  /**
    *
    * @@internal
    * @returns A CWL Workflow object
    */
   _toCwlObject(): cwl.Workflow {
+    this.initialize();
     let w = new cwl.Workflow({
       id: this.id,
       inputs: [],

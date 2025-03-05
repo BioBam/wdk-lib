@@ -128,6 +128,27 @@ export class WorkflowValues implements IMappable {
     return pathsList;
   }
 
+  /**
+   * Retrieves all local InputReferences that have a path defined.
+   *
+   * @returns An array of InputReference objects with a defined local path.
+   */
+  public get localInputReferences(): InputReference[] {
+    const references: InputReference[] = [];
+    this._inputs.forEach((value) => {
+      if (value instanceof InputReference && value.path) {
+        references.push(value);
+      } else if (Array.isArray(value)) {
+        value.forEach(item => {
+          if (item instanceof InputReference && item.path) {
+            references.push(item);
+          }
+        });
+      }
+    });
+    return references;
+  }
+
   // Method to convert the inputs map to an object for easier serialization
 
   /**

@@ -2869,9 +2869,35 @@ new InputReference();
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.InputReference.convertToS3Reference">convertToS3Reference</a></code> | Convert the local path reference to an S3 reference. |
+| <code><a href="#wdk-lib.InputReference.isDirectory">isDirectory</a></code> | Checks if the InputReference is a directory. |
 | <code><a href="#wdk-lib.InputReference.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
 
 ---
+
+##### `convertToS3Reference` <a name="convertToS3Reference" id="wdk-lib.InputReference.convertToS3Reference"></a>
+
+```java
+public void convertToS3Reference(java.lang.String s3UriLocation)
+```
+
+Convert the local path reference to an S3 reference.
+
+###### `s3UriLocation`<sup>Required</sup> <a name="s3UriLocation" id="wdk-lib.InputReference.convertToS3Reference.parameter.s3UriLocation"></a>
+
+- *Type:* java.lang.String
+
+The S3 URI location to convert to.
+
+---
+
+##### `isDirectory` <a name="isDirectory" id="wdk-lib.InputReference.isDirectory"></a>
+
+```java
+public java.lang.Boolean isDirectory()
+```
+
+Checks if the InputReference is a directory.
 
 ##### `toMap` <a name="toMap" id="wdk-lib.InputReference.toMap"></a>
 
@@ -6560,6 +6586,7 @@ This can be a workflow or a Tool.
 | --- | --- | --- |
 | <code><a href="#wdk-lib.WorkflowValues.property.filePaths">filePaths</a></code> | <code>java.util.List<java.lang.String></code> | Retrieves the file paths for all inputs that are files. |
 | <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>></code> | Returns a map of input IDs to their associated values. |
+| <code><a href="#wdk-lib.WorkflowValues.property.localInputReferences">localInputReferences</a></code> | <code>java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>></code> | Retrieves all local InputReferences that have a path defined. |
 | <code><a href="#wdk-lib.WorkflowValues.property.taskName">taskName</a></code> | <code>java.lang.String</code> | Retrieves the task name associated with these workflow values. |
 
 ---
@@ -6585,6 +6612,18 @@ public java.lang.Object getInputs();
 - *Type:* java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>>
 
 Returns a map of input IDs to their associated values.
+
+---
+
+##### `localInputReferences`<sup>Required</sup> <a name="localInputReferences" id="wdk-lib.WorkflowValues.property.localInputReferences"></a>
+
+```java
+public java.util.List<InputReference> getLocalInputReferences();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>
+
+Retrieves all local InputReferences that have a path defined.
 
 ---
 

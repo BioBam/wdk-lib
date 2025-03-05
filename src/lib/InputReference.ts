@@ -126,6 +126,29 @@ export class InputReference implements IMappable {
     return this._location;
   }
 
+  /**
+   * Checks if the InputReference is a directory.
+   *
+   * @returns True if it is a directory; false otherwise.
+   */
+  public isDirectory(): boolean {
+    return this.type === cwl.CWLType.DIRECTORY.toString();
+  }
+
+
+  /**
+   * Convert the local path reference to an S3 reference.
+   *
+   * @param s3UriLocation The S3 URI location to convert to.
+   */
+  convertToS3Reference(s3UriLocation: string): void {
+    if (this._path) {
+      this._location = s3UriLocation;
+      this._path = undefined; // Remove local path reference after conversion
+    }
+  }
+
+
   // Method to convert to a YAML map equivalent
   toMap(): { [key: string]: any } {
     let yamlMap: { [key: string]: any } = {};

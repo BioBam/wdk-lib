@@ -47,4 +47,17 @@ describe('InputReference', () => {
     });
   });
 
+  describe('convertToS3Reference', () => {
+    it('should convert local path to S3 reference', () => {
+      const localPath = '/Users/username/file.txt';
+      const s3UriLocation = 's3://bucket-name/path/to/file';
+      const inputReference = InputReference.file(localPath);
+
+      inputReference.convertToS3Reference(s3UriLocation);
+
+      expect(inputReference.location).toBe(s3UriLocation);
+      expect(inputReference.path).toBeUndefined();
+    });
+  });
+
 });

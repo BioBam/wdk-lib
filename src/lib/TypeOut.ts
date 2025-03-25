@@ -106,6 +106,32 @@ export class TypeOut {
     this.cwlType = type;
   }
 
+  allowNull(): TypeOut {
+    if (this.cwlType instanceof Array) {
+      this.cwlType.push(cwl.PrimitiveType.NULL);
+    } else {
+      this.cwlType = [this.cwlType, cwl.PrimitiveType.NULL];
+    }
+    return this;
+  }
+
+  combineWith(type: TypeOut): TypeOut {
+    if (this.cwlType instanceof Array) {
+      if (type.cwlType instanceof Array) {
+        this.cwlType.push(...type.cwlType);
+      } else {
+        this.cwlType.push(type.cwlType);
+      }
+    } else {
+      if (type.cwlType instanceof Array) {
+        this.cwlType = [this.cwlType, ...type.cwlType];
+      } else {
+        this.cwlType = [this.cwlType, type.cwlType];
+      }
+    }
+    return this;
+  }
+
   /**
    * Converts the input to a CWL-compatible object.
    * @returns A CWL object representing the output type.

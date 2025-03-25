@@ -73,4 +73,25 @@ describe('Requirement Class', () => {
     req.addListing('entryName', 'entryValue');
     expect(req.toMap().listing).toEqual([{ entryname: 'entryName', entry: 'entryValue', writable: true }]);
   });
+
+  // New test for addEntry method
+  it('should add an entry to the initial work directory requirement', () => {
+    const req = Requirement.initialWorkDir(scope);
+    req.addEntry('entryContent', true, 'entryName');
+
+    expect(req.toMap().listing).toEqual([
+      {
+        entryname: 'entryName',
+        entry: 'entryContent',
+        writable: true,
+      },
+    ]);
+  });
+
+  it('should add an entry as a string when no entryName and writable are provided', () => {
+    const req = Requirement.initialWorkDir(scope);
+    req.addEntry('entryContent');
+
+    expect(req.toMap().listing).toEqual(['entryContent']);
+  });
 });

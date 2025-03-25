@@ -105,6 +105,13 @@ export class Requirement extends Construct {
     return this._requirementType;
   }
 
+  /**
+   *
+   * @param entryName
+   * @param entry
+   * @returns
+   * @deprecated
+   */
   public addListing(entryName: string, entry: string): Requirement {
     const wde = { entryname: entryName, entry: entry, writable: true };
     if (!this._data.listing) {
@@ -113,6 +120,32 @@ export class Requirement extends Construct {
     this._data.listing.push(wde);
     return this;
   }
+
+
+  public addEntry(entry: string, writable?: boolean, entryName?: string): Requirement {
+    // Define wde as a union type of either an object or a string
+    let wde: { entryname: string | undefined; entry: string; writable: boolean | undefined } | string = {
+      entryname: entryName,
+      entry: entry,
+      writable: writable,
+    };
+
+    // Initialize _data.listing if it is undefined
+    if (!this._data.listing) {
+      this._data.listing = [];
+    }
+
+    // If both entryname and writable are undefined, assign the entry directly as a string to wde
+    if (wde.entryname === undefined && wde.writable === undefined) {
+      wde = entry;
+    }
+
+    // Add wde to the listing array
+    this._data.listing.push(wde);
+
+    return this;
+  }
+
 
   public toMap(): { [key: string]: any } {
     return this._toCwlObject().save();
@@ -123,15 +156,15 @@ export class Requirement extends Construct {
    * @returns
    */
   _toCwlObject(): cwl.SubworkflowFeatureRequirement
-  | cwl.ScatterFeatureRequirement
-  | cwl.MultipleInputFeatureRequirement
-  | cwl.EnvVarRequirement
-  | cwl.ResourceRequirement
-  | cwl.InlineJavascriptRequirement
-  | cwl.StepInputExpressionRequirement
-  | cwl.InitialWorkDirRequirement
-  | cwl.NetworkAccess
-  | cwl.DockerRequirement {
+    | cwl.ScatterFeatureRequirement
+    | cwl.MultipleInputFeatureRequirement
+    | cwl.EnvVarRequirement
+    | cwl.ResourceRequirement
+    | cwl.InlineJavascriptRequirement
+    | cwl.StepInputExpressionRequirement
+    | cwl.InitialWorkDirRequirement
+    | cwl.NetworkAccess
+    | cwl.DockerRequirement {
 
     switch (this._requirementType) {
       case ToolRequirementType.SUBWORKFLOW_FEATURE:

@@ -4264,12 +4264,39 @@ public Output getOut();
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Requirement.addEntry">addEntry</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.addListing">addListing</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.toMap">toMap</a></code> | *No description.* |
 
 ---
 
-##### `addListing` <a name="addListing" id="wdk-lib.Requirement.addListing"></a>
+##### `addEntry` <a name="addEntry" id="wdk-lib.Requirement.addEntry"></a>
+
+```java
+public Requirement addEntry(java.lang.String entry)
+public Requirement addEntry(java.lang.String entry, java.lang.Boolean writable)
+public Requirement addEntry(java.lang.String entry, java.lang.Boolean writable, java.lang.String entryName)
+```
+
+###### `entry`<sup>Required</sup> <a name="entry" id="wdk-lib.Requirement.addEntry.parameter.entry"></a>
+
+- *Type:* java.lang.String
+
+---
+
+###### `writable`<sup>Optional</sup> <a name="writable" id="wdk-lib.Requirement.addEntry.parameter.writable"></a>
+
+- *Type:* java.lang.Boolean
+
+---
+
+###### `entryName`<sup>Optional</sup> <a name="entryName" id="wdk-lib.Requirement.addEntry.parameter.entryName"></a>
+
+- *Type:* java.lang.String
+
+---
+
+##### ~~`addListing`~~ <a name="addListing" id="wdk-lib.Requirement.addListing"></a>
 
 ```java
 public Requirement addListing(java.lang.String entryName, java.lang.String entry)
@@ -5670,7 +5697,27 @@ Creates a new `TypeIn` instance representing a String type.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.TypeOut.allowNull">allowNull</a></code> | *No description.* |
+| <code><a href="#wdk-lib.TypeOut.combineWith">combineWith</a></code> | *No description.* |
 | <code><a href="#wdk-lib.TypeOut.toMap">toMap</a></code> | Converts the input to a CWL-compatible JSON object. |
+
+---
+
+##### `allowNull` <a name="allowNull" id="wdk-lib.TypeOut.allowNull"></a>
+
+```java
+public TypeOut allowNull()
+```
+
+##### `combineWith` <a name="combineWith" id="wdk-lib.TypeOut.combineWith"></a>
+
+```java
+public TypeOut combineWith(TypeOut type)
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.TypeOut.combineWith.parameter.type"></a>
+
+- *Type:* <a href="#wdk-lib.TypeOut">TypeOut</a>
 
 ---
 

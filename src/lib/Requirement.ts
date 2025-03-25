@@ -110,7 +110,7 @@ export class Requirement extends Construct {
    * @param entryName
    * @param entry
    * @returns
-   * @deprecated
+   * @deprecated Use addEntry instead
    */
   public addListing(entryName: string, entry: string): Requirement {
     const wde = { entryname: entryName, entry: entry, writable: true };

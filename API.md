@@ -4130,12 +4130,37 @@ public readonly out: Output;
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Requirement.addEntry">addEntry</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.addListing">addListing</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.toMap">toMap</a></code> | *No description.* |
 
 ---
 
-##### `addListing` <a name="addListing" id="wdk-lib.Requirement.addListing"></a>
+##### `addEntry` <a name="addEntry" id="wdk-lib.Requirement.addEntry"></a>
+
+```typescript
+public addEntry(entry: string, writable?: boolean, entryName?: string): Requirement
+```
+
+###### `entry`<sup>Required</sup> <a name="entry" id="wdk-lib.Requirement.addEntry.parameter.entry"></a>
+
+- *Type:* string
+
+---
+
+###### `writable`<sup>Optional</sup> <a name="writable" id="wdk-lib.Requirement.addEntry.parameter.writable"></a>
+
+- *Type:* boolean
+
+---
+
+###### `entryName`<sup>Optional</sup> <a name="entryName" id="wdk-lib.Requirement.addEntry.parameter.entryName"></a>
+
+- *Type:* string
+
+---
+
+##### ~~`addListing`~~ <a name="addListing" id="wdk-lib.Requirement.addListing"></a>
 
 ```typescript
 public addListing(entryName: string, entry: string): Requirement
@@ -5536,7 +5561,27 @@ Creates a new `TypeIn` instance representing a String type.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.TypeOut.allowNull">allowNull</a></code> | *No description.* |
+| <code><a href="#wdk-lib.TypeOut.combineWith">combineWith</a></code> | *No description.* |
 | <code><a href="#wdk-lib.TypeOut.toMap">toMap</a></code> | Converts the input to a CWL-compatible JSON object. |
+
+---
+
+##### `allowNull` <a name="allowNull" id="wdk-lib.TypeOut.allowNull"></a>
+
+```typescript
+public allowNull(): TypeOut
+```
+
+##### `combineWith` <a name="combineWith" id="wdk-lib.TypeOut.combineWith"></a>
+
+```typescript
+public combineWith(type: TypeOut): TypeOut
+```
+
+###### `type`<sup>Required</sup> <a name="type" id="wdk-lib.TypeOut.combineWith.parameter.type"></a>
+
+- *Type:* <a href="#wdk-lib.TypeOut">TypeOut</a>
 
 ---
 

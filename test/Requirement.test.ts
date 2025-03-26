@@ -94,4 +94,15 @@ describe('Requirement Class', () => {
 
     expect(req.toMap().listing).toEqual(['entryContent']);
   });
+
+  it('should add an environment variable using addEnvVar', () => {
+    const envVarRequirement = Requirement.envVar(scope, {});
+
+    const key = 'NODE_ENV';
+    const value = 'production';
+
+    envVarRequirement.addEnvVar(key, value);
+
+    expect(envVarRequirement.toMap().envDef[key]).toBe(value);
+  });
 });

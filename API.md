@@ -4130,7 +4130,8 @@ public readonly out: Output;
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.Requirement.addEntry">addEntry</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Requirement.addEntry">addEntry</a></code> | Add a listing entry to the initial work directory requirement. |
+| <code><a href="#wdk-lib.Requirement.addEnvVar">addEnvVar</a></code> | Add an environment variable to the EnvVar requirement. |
 | <code><a href="#wdk-lib.Requirement.addListing">addListing</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.toMap">toMap</a></code> | *No description.* |
 
@@ -4142,9 +4143,13 @@ public readonly out: Output;
 public addEntry(entry: string, writable?: boolean, entryName?: string): Requirement
 ```
 
+Add a listing entry to the initial work directory requirement.
+
 ###### `entry`<sup>Required</sup> <a name="entry" id="wdk-lib.Requirement.addEntry.parameter.entry"></a>
 
 - *Type:* string
+
+a listing entry.
 
 ---
 
@@ -4152,9 +4157,33 @@ public addEntry(entry: string, writable?: boolean, entryName?: string): Requirem
 
 - *Type:* boolean
 
+allow the entry to be writable.
+
 ---
 
 ###### `entryName`<sup>Optional</sup> <a name="entryName" id="wdk-lib.Requirement.addEntry.parameter.entryName"></a>
+
+- *Type:* string
+
+the name of the entry.
+
+---
+
+##### `addEnvVar` <a name="addEnvVar" id="wdk-lib.Requirement.addEnvVar"></a>
+
+```typescript
+public addEnvVar(entryName: string, entry: string): Requirement
+```
+
+Add an environment variable to the EnvVar requirement.
+
+###### `entryName`<sup>Required</sup> <a name="entryName" id="wdk-lib.Requirement.addEnvVar.parameter.entryName"></a>
+
+- *Type:* string
+
+---
+
+###### `entry`<sup>Required</sup> <a name="entry" id="wdk-lib.Requirement.addEnvVar.parameter.entry"></a>
 
 - *Type:* string
 

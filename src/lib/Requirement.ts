@@ -121,8 +121,33 @@ export class Requirement extends Construct {
     return this;
   }
 
+  /**
+   * Add an environment variable to the EnvVar requirement.
+   * @param entryName
+   * @param entry
+   * @returns
+   */
+  public addEnvVar(entryName: string, entry: string): Requirement {
+    if (this._requirementType !== ToolRequirementType.ENV_VAR) {
+      throw new Error('Cannot add environment variable to a requirement that is not of type ENV_VAR');
+    }
+    this._data.envDef[entryName] = entry;
+    return this;
+  }
 
+
+  /**
+   * Add a listing entry to the initial work directory requirement.
+   * @param entry a listing entry
+   * @param writable allow the entry to be writable
+   * @param entryName the name of the entry
+   * @returns the Requirement object
+   */
   public addEntry(entry: string, writable?: boolean, entryName?: string): Requirement {
+    // Check the type of requirement and throw an error if it is not INITIAL_WORK_DIR
+    if (this._requirementType !== ToolRequirementType.INITIAL_WORK_DIR) {
+      throw new Error('Cannot add entry to a requirement that is not of type INITIAL_WORK_DIR');
+    }
     // Define wde as a union type of either an object or a string
     let wde: { entryname: string | undefined; entry: string; writable: boolean | undefined } | string = {
       entryname: entryName,

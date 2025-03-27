@@ -77,4 +77,17 @@ describe('Scatter', () => {
     }).toThrow(`Input ${workflowInput.id} is not part of the step ${step.id} inputs.`);
   });
 
+  test('should create conditional _expression when all inputs are not null', () => {
+    // Arrange
+    const input1 = Input.string(step, 'input1');
+    const input2 = Input.string(step, 'input2');
+
+    // Act
+    Conditional.step(step).whenInputsNotNull([input1, input2]);
+
+    // Assert
+    expect(step.conditional?._expression).toBe('$(inputs.input1 !== null && inputs.input2 !== null)');
+  });
+
+
 });

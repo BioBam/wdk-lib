@@ -1296,6 +1296,7 @@ public readonly service: Tool;
 | --- | --- |
 | <code><a href="#wdk-lib.Conditional.whenBooleanInputIs">whenBooleanInputIs</a></code> | Skip this step if the boolean input associated to this condition does not match the specified value. |
 | <code><a href="#wdk-lib.Conditional.whenInputNotNull">whenInputNotNull</a></code> | Skip this step if the specified input is null. |
+| <code><a href="#wdk-lib.Conditional.whenInputsNotNull">whenInputsNotNull</a></code> | Skip this step if all specified inputs are not null. |
 
 ---
 
@@ -1338,6 +1339,22 @@ Skip this step if the specified input is null.
 One of the step input parameters.
 
 e.g. `step.inputFile`
+
+---
+
+##### `whenInputsNotNull` <a name="whenInputsNotNull" id="wdk-lib.Conditional.whenInputsNotNull"></a>
+
+```typescript
+public whenInputsNotNull(inputs: Input[]): void
+```
+
+Skip this step if all specified inputs are not null.
+
+###### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.Conditional.whenInputsNotNull.parameter.inputs"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>[]
+
+A list of step input parameters.
 
 ---
 

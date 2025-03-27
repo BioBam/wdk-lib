@@ -65,4 +65,16 @@ export class Conditional extends Construct {
     this.__expression = `$(inputs.${input.id} !== null)`;
   }
 
+  /**
+   * Skip this step if all specified inputs are not null.
+   *
+   * @param inputs A list of step input parameters.
+   */
+  whenInputsNotNull(inputs: Input[]) {
+    inputs.forEach(input => this.failIfInputDoesNotBelongToStep(input));
+    const conditions = inputs.map(input => `inputs.${input.id} !== null`).join(' && ');
+    this.__expression = `$(${conditions})`;
+  }
+
+
 }

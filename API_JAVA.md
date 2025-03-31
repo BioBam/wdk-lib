@@ -2065,8 +2065,8 @@ Represents an input parameter of a workflow or a tool.
 
 ```java
 // Example automatically generated from non-compiling source. May contain errors.
-Construct root = Constructs.createRoot("root");
-Input input = Input.string(root, "myInput").withDefaultValue("default").withDoc("This is my input");
+Object root = Constructs.createRoot("root");
+Object input = Input.string(root, "myInput").withDefaultValue("default").withDoc("This is my input");
 ```
 
 
@@ -3276,7 +3276,6 @@ Represents an output parameter of a workflow, tool, or step.
 // Example automatically generated from non-compiling source. May contain errors.
 import com.biobam.wdk.lib.Output;
 import com.biobam.wdk.lib.Constructs;
-
 Construct root = Constructs.createRoot("root");
 Output output = Output.file(root, "myOutput").withGlob("*.txt").loadContents().outputEval("$(self[0].contents)");
 ```
@@ -6569,7 +6568,6 @@ inputs to serializable formats.
 import com.biobam.wdk.lib.WorkflowValues;
 import com.biobam.wdk.lib.Input;
 import com.biobam.wdk.lib.Constructs;
-
 Construct root = Constructs.createRoot("root");
 Input input1 = Input.string(root, "firstInput").withDefaultValue("defaultValue");
 Input input2 = Input.file(root, "fileInput");

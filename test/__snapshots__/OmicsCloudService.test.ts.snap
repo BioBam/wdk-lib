@@ -155,7 +155,6 @@ exports[`Simple Workflow cwl export test should generate valid YAML and match sn
               "DEV_INPUT_DIR": "/data/input",
               "DEV_OUTPUT_DIR": "/data/output",
               "DEV_PARAMETERS_FILE": "$(inputs.parametersFile.path)",
-              "DEV_PROGRESS_STREAM": "carlos",
               "DEV_SHARED_DIR": "/data/shared",
             },
           },

@@ -149,7 +149,6 @@ const serviceProps: ServiceProps = { ... }
 | <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>string</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>string</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>boolean</code> | Optional: Whether to create all parameter values as strings. |
-| <code><a href="#wdk-lib.ServiceProps.property.progressStream">progressStream</a></code> | <code>string</code> | Optional: Name of the progress stream. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceDatabasePath">serviceDatabasePath</a></code> | <code>string</code> | Optional: Path to the service's database. |
 
 ---
@@ -269,18 +268,6 @@ public readonly parameterValuesAsStrings: boolean;
 Optional: Whether to create all parameter values as strings.
 
 Look at how they are used currently.
-
----
-
-##### `progressStream`<sup>Optional</sup> <a name="progressStream" id="wdk-lib.ServiceProps.property.progressStream"></a>
-
-```typescript
-public readonly progressStream: string;
-```
-
-- *Type:* string
-
-Optional: Name of the progress stream.
 
 ---
 
@@ -1954,7 +1941,6 @@ Represents an input parameter of a workflow or a tool.
 *Example*
 
 ```typescript
-import { Input, Constructs } from 'wdk-lib';
 const root = Constructs.createRoot('root');
 const input = Input.string(root, 'myInput')
                    .withDefaultValue('default')

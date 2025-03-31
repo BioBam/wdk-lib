@@ -63,10 +63,10 @@ export interface ServiceProps {
    */
   readonly containerRepository?: string;
 
-  /**
-   * Optional: Name of the progress stream.
-   */
-  readonly progressStream?: string;
+  // /**
+  //  * Optional: Name of the progress stream.
+  //  */
+  // readonly progressStream?: string;
 }
 
 /**
@@ -130,12 +130,12 @@ export class CloudService extends Workflow {
       tmpdirMin: propsTempDir,
     });
 
-    const progressStream = props.progressStream || 'carlos';
+    // const progressStream = props.progressStream || 'carlos';
 
     // Set up environment variables necessary for batch job execution.
     Requirement.envVar(this.service, {
       AWS_BATCH_JOB_ID: 'carlos', // just to activate logs streaming. Should be replaced to the actual job id.
-      DEV_PROGRESS_STREAM: progressStream,
+      // DEV_PROGRESS_STREAM: progressStream,
       BUCKET_NAME: 'toil-workspace-20240920',
       BUCKET_JOB_FOLDER: 'roberto/carlos',
       BUCKET_SESSION_SHARED_FOLDER: 'roberto/shared',

@@ -152,7 +152,6 @@ ServiceProps.builder()
 //  .containerRepository(java.lang.String)
 //  .mountPoint(java.lang.String)
 //  .parameterValuesAsStrings(java.lang.Boolean)
-//  .progressStream(java.lang.String)
 //  .serviceDatabasePath(java.lang.String)
     .build();
 ```
@@ -170,7 +169,6 @@ ServiceProps.builder()
 | <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
-| <code><a href="#wdk-lib.ServiceProps.property.progressStream">progressStream</a></code> | <code>java.lang.String</code> | Optional: Name of the progress stream. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceDatabasePath">serviceDatabasePath</a></code> | <code>java.lang.String</code> | Optional: Path to the service's database. |
 
 ---
@@ -290,18 +288,6 @@ public java.lang.Boolean getParameterValuesAsStrings();
 Optional: Whether to create all parameter values as strings.
 
 Look at how they are used currently.
-
----
-
-##### `progressStream`<sup>Optional</sup> <a name="progressStream" id="wdk-lib.ServiceProps.property.progressStream"></a>
-
-```java
-public java.lang.String getProgressStream();
-```
-
-- *Type:* java.lang.String
-
-Optional: Name of the progress stream.
 
 ---
 
@@ -995,7 +981,6 @@ CloudService.Builder.create(Workflow scope, java.lang.String id)
 //  .containerRepository(java.lang.String)
 //  .mountPoint(java.lang.String)
 //  .parameterValuesAsStrings(java.lang.Boolean)
-//  .progressStream(java.lang.String)
 //  .serviceDatabasePath(java.lang.String)
     .build();
 ```
@@ -1013,7 +998,6 @@ CloudService.Builder.create(Workflow scope, java.lang.String id)
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
-| <code><a href="#wdk-lib.CloudService.Initializer.parameter.progressStream">progressStream</a></code> | <code>java.lang.String</code> | Optional: Name of the progress stream. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.serviceDatabasePath">serviceDatabasePath</a></code> | <code>java.lang.String</code> | Optional: Path to the service's database. |
 
 ---
@@ -1113,14 +1097,6 @@ Optional: Mount point for the database.
 Optional: Whether to create all parameter values as strings.
 
 Look at how they are used currently.
-
----
-
-##### `progressStream`<sup>Optional</sup> <a name="progressStream" id="wdk-lib.CloudService.Initializer.parameter.progressStream"></a>
-
-- *Type:* java.lang.String
-
-Optional: Name of the progress stream.
 
 ---
 
@@ -2089,8 +2065,6 @@ Represents an input parameter of a workflow or a tool.
 
 ```java
 // Example automatically generated from non-compiling source. May contain errors.
-import com.biobam.wdk.lib.Input;
-import com.biobam.wdk.lib.Constructs;
 Construct root = Constructs.createRoot("root");
 Input input = Input.string(root, "myInput").withDefaultValue("default").withDoc("This is my input");
 ```
@@ -3302,6 +3276,7 @@ Represents an output parameter of a workflow, tool, or step.
 // Example automatically generated from non-compiling source. May contain errors.
 import com.biobam.wdk.lib.Output;
 import com.biobam.wdk.lib.Constructs;
+
 Construct root = Constructs.createRoot("root");
 Output output = Output.file(root, "myOutput").withGlob("*.txt").loadContents().outputEval("$(self[0].contents)");
 ```
@@ -6594,6 +6569,7 @@ inputs to serializable formats.
 import com.biobam.wdk.lib.WorkflowValues;
 import com.biobam.wdk.lib.Input;
 import com.biobam.wdk.lib.Constructs;
+
 Construct root = Constructs.createRoot("root");
 Input input1 = Input.string(root, "firstInput").withDefaultValue("defaultValue");
 Input input2 = Input.file(root, "fileInput");

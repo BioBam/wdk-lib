@@ -10,7 +10,6 @@ import { TypeIn } from './TypeIn';
 /**
  * Represents an input parameter of a workflow or a tool.
  * @example
- * import { Input, Constructs } from 'wdk-lib';
  * const root = Constructs.createRoot('root');
  * const input = Input.string(root, 'myInput')
  *                    .withDefaultValue('default')

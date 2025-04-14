@@ -2,6 +2,22 @@ import * as cwl from 'cwl-ts-auto';
 import { Saveable } from 'cwl-ts-auto/dist/util/Saveable';
 import { InputType, InputTypeArray } from './ILinkable';
 
+
+export interface InputBinding {
+  readonly shellQuote?: boolean;
+  readonly position?: string | number;
+  readonly prefix?: string;
+  readonly separate?: boolean;
+  readonly itemSeparator?: string;
+}
+
+export interface InputProps {
+  readonly inputBinding?: InputBinding;
+  readonly doc?: string;
+  readonly label?: string;
+  readonly name?: string;
+}
+
 export type InputTypes = InputType | InputTypeArray;
 
 export class TypeIn {
@@ -88,13 +104,38 @@ export class TypeIn {
    * @param contentType The type of the elements in the array.
    * @returns
    */
-  static arrayOf(contentType: TypeIn): TypeIn {
+  static arrayOf(contentType: TypeIn, props?: InputProps): TypeIn {
     const cwlContentType = contentType._toCwlObject();
     const type = new cwl.CommandInputArraySchema({
       items: cwlContentType,
       type: cwl.enum_d062602be0b4b8fd33e69e29a841317b6ab665bc.ARRAY,
     });
+    if (props) {
+      type.doc = props.doc;
+      type.label = props.label;
+      type.name = props.name;
+      if (props.inputBinding) {
+        type.inputBinding = this.createInputBinding(props.inputBinding);
+      }
+    }
     return new TypeIn(type);
+  }
+
+  /**
+   * Creates a CWL CommandLineBinding object based on the provided input binding properties.
+   *
+   * @param inputBinding The input binding properties to convert.
+   * @returns A CWL CommandLineBinding object if the path property is provided, otherwise undefined.
+   */
+  private static createInputBinding(bindingProps: InputBinding): cwl.CommandLineBinding | undefined {
+    return new cwl.CommandLineBinding({
+      prefix: bindingProps.prefix,
+      separate: bindingProps.separate,
+      itemSeparator: bindingProps.itemSeparator,
+      position: bindingProps.position,
+      shellQuote: bindingProps.shellQuote,
+    });
+    return undefined;
   }
 
   private cwlType: InputTypes;
@@ -133,3 +174,5 @@ export class TypeIn {
     }
   }
 }
+
+

@@ -3,6 +3,139 @@
 
 ## Structs <a name="Structs" id="Structs"></a>
 
+### InputBinding <a name="InputBinding" id="wdk-lib.InputBinding"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.InputBinding.Initializer"></a>
+
+```typescript
+import { InputBinding } from 'wdk-lib'
+
+const inputBinding: InputBinding = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.InputBinding.property.itemSeparator">itemSeparator</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.position">position</a></code> | <code>string \| number</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.prefix">prefix</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.separate">separate</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.shellQuote">shellQuote</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `itemSeparator`<sup>Optional</sup> <a name="itemSeparator" id="wdk-lib.InputBinding.property.itemSeparator"></a>
+
+```typescript
+public readonly itemSeparator: string;
+```
+
+- *Type:* string
+
+---
+
+##### `position`<sup>Optional</sup> <a name="position" id="wdk-lib.InputBinding.property.position"></a>
+
+```typescript
+public readonly position: string | number;
+```
+
+- *Type:* string | number
+
+---
+
+##### `prefix`<sup>Optional</sup> <a name="prefix" id="wdk-lib.InputBinding.property.prefix"></a>
+
+```typescript
+public readonly prefix: string;
+```
+
+- *Type:* string
+
+---
+
+##### `separate`<sup>Optional</sup> <a name="separate" id="wdk-lib.InputBinding.property.separate"></a>
+
+```typescript
+public readonly separate: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `shellQuote`<sup>Optional</sup> <a name="shellQuote" id="wdk-lib.InputBinding.property.shellQuote"></a>
+
+```typescript
+public readonly shellQuote: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### InputProps <a name="InputProps" id="wdk-lib.InputProps"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.InputProps.Initializer"></a>
+
+```typescript
+import { InputProps } from 'wdk-lib'
+
+const inputProps: InputProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.InputProps.property.doc">doc</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.InputProps.property.inputBinding">inputBinding</a></code> | <code><a href="#wdk-lib.InputBinding">InputBinding</a></code> | *No description.* |
+| <code><a href="#wdk-lib.InputProps.property.label">label</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.InputProps.property.name">name</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `doc`<sup>Optional</sup> <a name="doc" id="wdk-lib.InputProps.property.doc"></a>
+
+```typescript
+public readonly doc: string;
+```
+
+- *Type:* string
+
+---
+
+##### `inputBinding`<sup>Optional</sup> <a name="inputBinding" id="wdk-lib.InputProps.property.inputBinding"></a>
+
+```typescript
+public readonly inputBinding: InputBinding;
+```
+
+- *Type:* <a href="#wdk-lib.InputBinding">InputBinding</a>
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.InputProps.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="wdk-lib.InputProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
 ### RequirementProps <a name="RequirementProps" id="wdk-lib.RequirementProps"></a>
 
 #### Initializer <a name="Initializer" id="wdk-lib.RequirementProps.Initializer"></a>
@@ -5492,7 +5625,7 @@ Converts the input to a CWL-compatible JSON object.
 ```typescript
 import { TypeIn } from 'wdk-lib'
 
-TypeIn.arrayOf(contentType: TypeIn)
+TypeIn.arrayOf(contentType: TypeIn, props?: InputProps)
 ```
 
 Specify the type array with elements of the given custom type.
@@ -5502,6 +5635,12 @@ Specify the type array with elements of the given custom type.
 - *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
 
 The type of the elements in the array.
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.TypeIn.arrayOf.parameter.props"></a>
+
+- *Type:* <a href="#wdk-lib.InputProps">InputProps</a>
 
 ---
 

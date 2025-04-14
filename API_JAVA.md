@@ -3,6 +3,151 @@
 
 ## Structs <a name="Structs" id="Structs"></a>
 
+### InputBinding <a name="InputBinding" id="wdk-lib.InputBinding"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.InputBinding.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.InputBinding;
+
+InputBinding.builder()
+//  .itemSeparator(java.lang.String)
+//  .position(java.lang.String)
+//  .position(java.lang.Number)
+//  .prefix(java.lang.String)
+//  .separate(java.lang.Boolean)
+//  .shellQuote(java.lang.Boolean)
+    .build();
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.InputBinding.property.itemSeparator">itemSeparator</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.position">position</a></code> | <code>java.lang.String OR java.lang.Number</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.prefix">prefix</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.separate">separate</a></code> | <code>java.lang.Boolean</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.shellQuote">shellQuote</a></code> | <code>java.lang.Boolean</code> | *No description.* |
+
+---
+
+##### `itemSeparator`<sup>Optional</sup> <a name="itemSeparator" id="wdk-lib.InputBinding.property.itemSeparator"></a>
+
+```java
+public java.lang.String getItemSeparator();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `position`<sup>Optional</sup> <a name="position" id="wdk-lib.InputBinding.property.position"></a>
+
+```java
+public java.lang.Object getPosition();
+```
+
+- *Type:* java.lang.String OR java.lang.Number
+
+---
+
+##### `prefix`<sup>Optional</sup> <a name="prefix" id="wdk-lib.InputBinding.property.prefix"></a>
+
+```java
+public java.lang.String getPrefix();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `separate`<sup>Optional</sup> <a name="separate" id="wdk-lib.InputBinding.property.separate"></a>
+
+```java
+public java.lang.Boolean getSeparate();
+```
+
+- *Type:* java.lang.Boolean
+
+---
+
+##### `shellQuote`<sup>Optional</sup> <a name="shellQuote" id="wdk-lib.InputBinding.property.shellQuote"></a>
+
+```java
+public java.lang.Boolean getShellQuote();
+```
+
+- *Type:* java.lang.Boolean
+
+---
+
+### InputProps <a name="InputProps" id="wdk-lib.InputProps"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.InputProps.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.InputProps;
+
+InputProps.builder()
+//  .doc(java.lang.String)
+//  .inputBinding(InputBinding)
+//  .label(java.lang.String)
+//  .name(java.lang.String)
+    .build();
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.InputProps.property.doc">doc</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.InputProps.property.inputBinding">inputBinding</a></code> | <code><a href="#wdk-lib.InputBinding">InputBinding</a></code> | *No description.* |
+| <code><a href="#wdk-lib.InputProps.property.label">label</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.InputProps.property.name">name</a></code> | <code>java.lang.String</code> | *No description.* |
+
+---
+
+##### `doc`<sup>Optional</sup> <a name="doc" id="wdk-lib.InputProps.property.doc"></a>
+
+```java
+public java.lang.String getDoc();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `inputBinding`<sup>Optional</sup> <a name="inputBinding" id="wdk-lib.InputProps.property.inputBinding"></a>
+
+```java
+public InputBinding getInputBinding();
+```
+
+- *Type:* <a href="#wdk-lib.InputBinding">InputBinding</a>
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.InputProps.property.label"></a>
+
+```java
+public java.lang.String getLabel();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="wdk-lib.InputProps.property.name"></a>
+
+```java
+public java.lang.String getName();
+```
+
+- *Type:* java.lang.String
+
+---
+
 ### RequirementProps <a name="RequirementProps" id="wdk-lib.RequirementProps"></a>
 
 #### Initializer <a name="Initializer" id="wdk-lib.RequirementProps.Initializer"></a>
@@ -5616,7 +5761,7 @@ Converts the input to a CWL-compatible JSON object.
 ```java
 import com.biobam.wdk.lib.TypeIn;
 
-TypeIn.arrayOf(TypeIn contentType)
+TypeIn.arrayOf(TypeIn contentType),TypeIn.arrayOf(TypeIn contentType, InputProps props)
 ```
 
 Specify the type array with elements of the given custom type.
@@ -5626,6 +5771,12 @@ Specify the type array with elements of the given custom type.
 - *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
 
 The type of the elements in the array.
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.TypeIn.arrayOf.parameter.props"></a>
+
+- *Type:* <a href="#wdk-lib.InputProps">InputProps</a>
 
 ---
 

@@ -58,5 +58,96 @@ describe('Types Class', () => {
     });
 
   });
+
+  describe('array types with input binding', () => {
+
+    it('should create an array type with input binding properties', () => {
+      const myType = TypeIn.arrayOf(TypeIn.string(), {
+        inputBinding: {
+          shellQuote: true,
+          position: 1,
+          prefix: '--input',
+          separate: true,
+          itemSeparator: ',',
+        },
+      }).toMap();
+
+      expect(myType).toEqual({
+        type: 'array',
+        items: 'string',
+        inputBinding: {
+          shellQuote: true,
+          position: 1,
+          prefix: '--input',
+          separate: true,
+          itemSeparator: ',',
+        },
+      });
+    });
+
+    it('should create an array type with partial input binding properties', () => {
+      const myType = TypeIn.arrayOf(TypeIn.string(), {
+        inputBinding: {
+          position: 2,
+          prefix: '--files',
+        },
+      }).toMap();
+
+      expect(myType).toEqual({
+        type: 'array',
+        items: 'string',
+        inputBinding: {
+          position: 2,
+          prefix: '--files',
+        },
+      });
+    });
+
+    it('should create an array type with documentation and label', () => {
+      const myType = TypeIn.arrayOf(TypeIn.string(), {
+        doc: 'Input files to process',
+        label: 'Input Files',
+        name: 'input_files',
+      }).toMap();
+
+      expect(myType).toEqual({
+        type: 'array',
+        items: 'string',
+        doc: 'Input files to process',
+        label: 'Input Files',
+        name: 'input_files',
+      });
+    });
+
+    it('should create a nested array with input binding', () => {
+      const myType = TypeIn.arrayOf(TypeIn.arrayOf(TypeIn.file(), {
+        inputBinding: {
+          position: 1,
+          prefix: '--group',
+        },
+      }), {
+        inputBinding: {
+          position: 0,
+          prefix: '--groups',
+        },
+      }).toMap();
+
+      expect(myType).toEqual({
+        type: 'array',
+        items: {
+          type: 'array',
+          items: 'File',
+          inputBinding: {
+            position: 1,
+            prefix: '--group',
+          },
+        },
+        inputBinding: {
+          position: 0,
+          prefix: '--groups',
+        },
+      });
+    });
+  });
 });
 

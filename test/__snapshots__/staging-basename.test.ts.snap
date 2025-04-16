@@ -68,7 +68,10 @@ exports[`Output File Comparison with Test Set should generate correct YAML and h
   "id": "wf_ren",
   "inputs": [
     {
-      "default": "whale.txt",
+      "default": {
+        "class": "File",
+        "path": "whale.txt",
+      },
       "id": "f1",
       "type": "File",
     },

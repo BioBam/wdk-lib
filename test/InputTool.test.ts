@@ -230,6 +230,21 @@ describe('Input Class', () => {
       });
     });
 
+    it('should convert directory input to map correctly', () => {
+      const input = Input.directory(tool, 'testDirectoryId');
+      input.withDefaultValue('/path/to/directory');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: 'Directory',
+        default: {
+          class: 'Directory',
+          path: '/path/to/directory',
+        },
+      });
+    });
+
     // Add more tests for toMap with different types and configurations, covering all possible configurations
   });
 

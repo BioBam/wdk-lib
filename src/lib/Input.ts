@@ -429,7 +429,15 @@ export class Input extends LinkableConstruct {
    * @returns The current instance for chaining method calls.
    */
   withDefaultValue(defaultValue: any): this {
-    this._defaultValue = defaultValue;
+    // if the _type is a File or Directory, then the defaultValue should be an object with class and path
+    if (typeof this._type === 'string' && ['File', 'Directory'].includes(this._type)) {
+      this._defaultValue = {
+        class: this._type,
+        path: defaultValue,
+      };
+    } else {
+      this._defaultValue = defaultValue;
+    }
     // this.makeOptional(true);
     return this;
   }

@@ -2,6 +2,7 @@ import { Constructs } from '../src/lib/Constructs';
 import { Input } from '../src/lib/Input';
 import { Output } from '../src/lib/Output';
 import { StepClass } from '../src/lib/ToolClass';
+import { ToolConfig } from '../src/lib/ToolConfig';
 import { Workflow } from '../src/lib/Workflow';
 
 describe('Workflow', () => {
@@ -24,7 +25,9 @@ describe('Workflow', () => {
       const customWorkflow = new Workflow(root, 'custom-workflow', {
         cwlVersion: 'v1.2',
       });
+      ToolConfig.basic(customWorkflow).withLabel('Custom Workflow');
       expect(customWorkflow.props.cwlVersion).toBe('v1.2');
+      expect(customWorkflow.label).toBe('Custom Workflow');
     });
   });
 
@@ -89,7 +92,7 @@ describe('Workflow', () => {
       // Create some workflow elements to test mapping
       Input.string(workflow, 'input1');
       Output.string(workflow, 'output1');
-
+      ToolConfig.basic(workflow).withLabel('Test Workflow');
       const map = workflow.toMap();
 
       expect(map.class).toBe(StepClass.WORKFLOW.toString());
@@ -98,6 +101,7 @@ describe('Workflow', () => {
       expect(map.outputs).toBeDefined();
       // expect(map.requirements).toBeDefined();
       expect(map.steps).toBeDefined();
+      expect(map.label).toBe('Test Workflow');
     });
   });
 });

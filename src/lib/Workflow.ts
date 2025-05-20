@@ -122,6 +122,10 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
       steps: [],
     });
 
+    if (this.label) {
+      w.label = this.label;
+    }
+
     // Adding inputs
     for (const input of this.inputs) {
       let inputObject = input._toCwlObject();

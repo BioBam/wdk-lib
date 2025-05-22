@@ -13,6 +13,7 @@ exports[`Command-line Tool CWL output should generate correct CWL for the echo t
   "id": "echo",
   "inputs": [
     {
+      "doc": "The message to echo",
       "id": "message",
       "type": [
         "null",

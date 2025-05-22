@@ -245,6 +245,92 @@ describe('Input Class', () => {
       });
     });
 
+    it('should include label in the map output', () => {
+      const input = Input.string(tool, 'testLabelId');
+      input.withLabel('Test Label');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: 'string',
+        label: 'Test Label',
+      });
+    });
+
+    it('should include label with other properties in the map output', () => {
+      const input = Input.string(tool, 'testLabelWithPropsId');
+      input.withLabel('Test Label')
+        .withPrefix('--prefix')
+        .withDefaultValue('default')
+        .withDoc('Test documentation');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: 'string',
+        label: 'Test Label',
+        default: 'default',
+        doc: 'Test documentation',
+        inputBinding: {
+          prefix: '--prefix',
+        },
+      });
+    });
+
+    it('should include label in array input map output', () => {
+      const input = Input.stringArray(tool, 'testLabelArrayId');
+      input.withLabel('Test Array Label')
+        .withPrefix('--prefix')
+        .withItemSeparator(',');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: {
+          type: 'array',
+          items: 'string',
+        },
+        label: 'Test Array Label',
+        inputBinding: {
+          prefix: '--prefix',
+          itemSeparator: ',',
+          separate: true,
+        },
+      });
+    });
+
+    it('should include doc in the map output', () => {
+      const input = Input.string(tool, 'testDocId');
+      input.withDoc('Test documentation');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: 'string',
+        doc: 'Test documentation',
+      });
+    });
+
+    it('should include doc with other properties in the map output', () => {
+      const input = Input.string(tool, 'testDocWithPropsId');
+      input.withDoc('Test documentation')
+        .withLabel('Test Label')
+        .withPrefix('--prefix')
+        .withDefaultValue('default');
+
+      const map = input.toMap();
+      expect(map).toEqual({
+        id: `${input.id}`,
+        type: 'string',
+        doc: 'Test documentation',
+        label: 'Test Label',
+        default: 'default',
+        inputBinding: {
+          prefix: '--prefix',
+        },
+      });
+    });
+
     // Add more tests for toMap with different types and configurations, covering all possible configurations
   });
 

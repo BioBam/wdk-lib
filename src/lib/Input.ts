@@ -236,6 +236,7 @@ export class Input extends LinkableConstruct {
   private _valueFrom: string | undefined;
 
   private _doc?: string;
+  private _label?: string;
 
   // Private constructor
   private constructor(scope: StepConstruct, id: string,
@@ -482,6 +483,16 @@ export class Input extends LinkableConstruct {
     return this;
   }
 
+  /**
+   * Sets a label for the input.
+   * @param label The label to set.
+   * @returns The current instance for chaining method calls.
+   */
+  withLabel(label: string): this {
+    this._label = label;
+    return this;
+  }
+
 
   // Other getters and setters
 
@@ -495,11 +506,35 @@ export class Input extends LinkableConstruct {
   }
 
   /**
+   * Retrieves the prefix associated with the input.
+   * @returns The prefix string, if available.
+   */
+  get prefix(): string | undefined {
+    return this._prefix;
+  }
+
+  /**
+   * Retrieves the label associated with the input.
+   * @returns The label string, if available.
+   */
+  get label(): string | undefined {
+    return this._label;
+  }
+
+  /**
    * Indicates whether the input is optional.
    * @returns A boolean representing the optionality of the input.
    */
   get optional(): boolean {
     return this._optional;
+  }
+
+  /**
+   * Retrieves the type of the input.
+   * @returns The type of the input.
+   */
+  get type(): InputType | InputTypeArray {
+    return this._parameterType;
   }
 
   /**
@@ -568,7 +603,6 @@ export class Input extends LinkableConstruct {
   }
 
   private createWorkflowInputParameter(): cwl.WorkflowInputParameter {
-
     // Prepare the type to assign to the input parameter
     // if optional is true, then the type should be an array of the type(s) and 'null'
     let typeToAssign: InputType | InputTypeArray;
@@ -586,6 +620,8 @@ export class Input extends LinkableConstruct {
     let wip = new cwl.WorkflowInputParameter({
       type: typeToAssign,
       id: this.id,
+      label: this._label,
+      doc: this._doc,
     });
 
     if (this._defaultValue !== undefined) {
@@ -613,6 +649,8 @@ export class Input extends LinkableConstruct {
     let cip = new cwl.CommandInputParameter({
       type: typeToAssign,
       id: this.id,
+      label: this._label,
+      doc: this._doc,
     });
 
     if (this._prefix !== undefined || this._position !== undefined) {
@@ -633,7 +671,6 @@ export class Input extends LinkableConstruct {
         cip.inputBinding.itemSeparator = this._separator;
         cip.inputBinding.separate = this._separate;
       }
-
     }
 
     return cip;

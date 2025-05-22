@@ -530,11 +530,17 @@ export class Input extends LinkableConstruct {
   }
 
   /**
-   * Retrieves the type of the input.
-   * @returns The type of the input.
+   * Retrieves the type of the input as a string representation.
+   * @returns A string representing the type of the input.
    */
-  get type(): InputType | InputTypeArray {
-    return this._parameterType;
+  get type(): string {
+    if (this._parameterType instanceof cwl.CommandInputArraySchema) {
+      return `${this._parameterType.items}[]`;
+    }
+    if (Array.isArray(this._parameterType)) {
+      return this._parameterType.join(' | ');
+    }
+    return this._parameterType.toString();
   }
 
   /**

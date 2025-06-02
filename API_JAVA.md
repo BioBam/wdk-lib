@@ -2860,6 +2860,7 @@ The identifier for this input.
 | <code><a href="#wdk-lib.Input.property.multiLinked">multiLinked</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.referenced">referenced</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.defaultValue">defaultValue</a></code> | <code>java.lang.Object</code> | Retrieves the default value of the input. |
 | <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>java.lang.Boolean</code> | Indicates whether the input is optional. |
 | <code><a href="#wdk-lib.Input.property.type">type</a></code> | <code>java.lang.String</code> | Retrieves the type of the input as a string representation. |
 | <code><a href="#wdk-lib.Input.property.doc">doc</a></code> | <code>java.lang.String</code> | Retrieves the documentation associated with the input. |
@@ -2952,6 +2953,18 @@ public PickValueMethod getPickValueMethod();
 ```
 
 - *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
+
+---
+
+##### `defaultValue`<sup>Required</sup> <a name="defaultValue" id="wdk-lib.Input.property.defaultValue"></a>
+
+```java
+public java.lang.Object getDefaultValue();
+```
+
+- *Type:* java.lang.Object
+
+Retrieves the default value of the input.
 
 ---
 

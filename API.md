@@ -2726,6 +2726,7 @@ The identifier for this input.
 | <code><a href="#wdk-lib.Input.property.multiLinked">multiLinked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Input.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Input.property.defaultValue">defaultValue</a></code> | <code>any</code> | Retrieves the default value of the input. |
 | <code><a href="#wdk-lib.Input.property.optional">optional</a></code> | <code>boolean</code> | Indicates whether the input is optional. |
 | <code><a href="#wdk-lib.Input.property.type">type</a></code> | <code>string</code> | Retrieves the type of the input as a string representation. |
 | <code><a href="#wdk-lib.Input.property.doc">doc</a></code> | <code>string</code> | Retrieves the documentation associated with the input. |
@@ -2818,6 +2819,18 @@ public readonly pickValueMethod: PickValueMethod;
 ```
 
 - *Type:* <a href="#wdk-lib.PickValueMethod">PickValueMethod</a>
+
+---
+
+##### `defaultValue`<sup>Required</sup> <a name="defaultValue" id="wdk-lib.Input.property.defaultValue"></a>
+
+```typescript
+public readonly defaultValue: any;
+```
+
+- *Type:* any
+
+Retrieves the default value of the input.
 
 ---
 

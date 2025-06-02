@@ -530,6 +530,14 @@ export class Input extends LinkableConstruct {
   }
 
   /**
+   * Retrieves the default value of the input.
+   * @returns The default value of the input, if set.
+   */
+  get defaultValue(): any | undefined {
+    return this._defaultValue;
+  }
+
+  /**
    * Retrieves the type of the input as a string representation.
    * @returns A string representing the type of the input.
    */

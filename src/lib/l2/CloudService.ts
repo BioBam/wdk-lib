@@ -160,8 +160,10 @@ export class CloudService extends Workflow {
 
     // Optionally link database path and mounting point if provided.
     if (props.serviceDatabasePath && props.mountPoint) {
+      // We set the mount entry as read-only so that the WMS mounts the path,
+      // otherwise it would copy it fully to have it writable for this step.
       Requirement.initialWorkDir(this.service)
-        .addListing(props.mountPoint, '$(inputs.inputDatabase)');
+        .addEntry('$(inputs.inputDatabase)', false, props.mountPoint);
 
       Input.string(this.service, 'mountPoint')
         .withPrefix('--mountPoint')

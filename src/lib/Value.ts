@@ -80,6 +80,18 @@ export class Value {
   }
 
   /**
+   * Generates a CWL string array expression.
+   *
+   * @param values - An array of strings.
+   * @returns A CWL-compatible expression for a string array.
+   * @example
+   * Value.stringArray(["hello", "world"]); // "$( [ "hello", "world" ] )"
+   */
+  public static stringArray(values: string[]): string {
+    return `$( [${values.map(value => `"${value}"`).join(', ')}] )`;
+  }
+
+  /**
    * Generates a CWL null expression to represent no value.
    *
    * @returns A CWL-compatible expression for null.
@@ -105,5 +117,5 @@ export class Value {
 
 
   // This class is not meant to be instantiated.
-  private constructor() {}
+  private constructor() { }
 }

@@ -6113,6 +6113,7 @@ Helper class for generating CWL valueFrom expressions.
 | <code><a href="#wdk-lib.Value.long">long</a></code> | Generates a CWL long integer expression. |
 | <code><a href="#wdk-lib.Value.null">null</a></code> | Generates a CWL null expression to represent no value. |
 | <code><a href="#wdk-lib.Value.string">string</a></code> | Generates a CWL string expression. |
+| <code><a href="#wdk-lib.Value.stringArray">stringArray</a></code> | Generates a CWL string array expression. |
 
 ---
 
@@ -6313,6 +6314,32 @@ Value.string("hello world");
 - *Type:* java.lang.String
 
 A Unicode character sequence.
+
+---
+
+##### `stringArray` <a name="stringArray" id="wdk-lib.Value.stringArray"></a>
+
+```java
+import com.biobam.wdk.lib.Value;
+
+Value.stringArray(java.util.List<java.lang.String> values)
+```
+
+Generates a CWL string array expression.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+Value.stringArray(List.of("hello", "world"));
+```
+
+
+###### `values`<sup>Required</sup> <a name="values" id="wdk-lib.Value.stringArray.parameter.values"></a>
+
+- *Type:* java.util.List<java.lang.String>
+
+An array of strings.
 
 ---
 

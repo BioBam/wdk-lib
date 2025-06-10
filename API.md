@@ -5977,6 +5977,7 @@ Helper class for generating CWL valueFrom expressions.
 | <code><a href="#wdk-lib.Value.long">long</a></code> | Generates a CWL long integer expression. |
 | <code><a href="#wdk-lib.Value.null">null</a></code> | Generates a CWL null expression to represent no value. |
 | <code><a href="#wdk-lib.Value.string">string</a></code> | Generates a CWL string expression. |
+| <code><a href="#wdk-lib.Value.stringArray">stringArray</a></code> | Generates a CWL string array expression. |
 
 ---
 
@@ -6169,6 +6170,31 @@ Value.string("hello world"); // "$( "hello world" )"
 - *Type:* string
 
 A Unicode character sequence.
+
+---
+
+##### `stringArray` <a name="stringArray" id="wdk-lib.Value.stringArray"></a>
+
+```typescript
+import { Value } from 'wdk-lib'
+
+Value.stringArray(values: string[])
+```
+
+Generates a CWL string array expression.
+
+*Example*
+
+```typescript
+Value.stringArray(["hello", "world"]); // "$( [ "hello", "world" ] )"
+```
+
+
+###### `values`<sup>Required</sup> <a name="values" id="wdk-lib.Value.stringArray.parameter.values"></a>
+
+- *Type:* string[]
+
+An array of strings.
 
 ---
 

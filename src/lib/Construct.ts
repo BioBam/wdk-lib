@@ -3,6 +3,7 @@ export class Construct {
   private readonly _scope: Construct | undefined;
   private _id: string;
   private _nodes: Construct[] = [];
+  private _metadata: { [key: string]: any } = {};
 
   // Overloaded constructors
   constructor(id: string);
@@ -80,6 +81,23 @@ export class Construct {
    */
   public set id(newID: string) {
     this._id = newID;
+  }
+
+  /**
+   * Add metadata to this construct
+   * @param key The key of the metadata
+   * @param value The value of the metadata
+   */
+  public addMetadata(key: string, value: any): void {
+    this._metadata[key] = value;
+  }
+
+  /**
+   * Get metadata for this construct
+   * @returns An object containing all metadata entries
+   */
+  public get metadata(): { [key: string]: any } {
+    return this._metadata;
   }
 
 }

@@ -437,7 +437,32 @@ new App()
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.App.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.App.synth">synth</a></code> | *No description.* |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.App.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.App.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.App.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -452,8 +477,21 @@ public synth(): void
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.App.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.App.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.App.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.App.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -530,9 +568,34 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.BashTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.BashTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.BashTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
 | <code><a href="#wdk-lib.BashTool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.BashTool.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.BashTool.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.BashTool.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -571,6 +634,7 @@ Create a map repsentation of the tool following the CWL specification.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.BashTool.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.BashTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.BashTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.BashTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
@@ -586,6 +650,18 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.BashTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.BashTool.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -810,9 +886,34 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.CheckFileNameTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.CheckFileNameTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
 | <code><a href="#wdk-lib.CheckFileNameTool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.CheckFileNameTool.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.CheckFileNameTool.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.CheckFileNameTool.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -851,6 +952,7 @@ Create a map repsentation of the tool following the CWL specification.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
@@ -868,6 +970,18 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.CheckFileNameTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.checkname">checkname</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.f1">f1</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.CheckFileNameTool.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -1122,10 +1236,35 @@ Configuration properties for the service.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.CloudService.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.CloudService.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.CloudService.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.CloudService.addStep">addStep</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CloudService.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.CloudService.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.CloudService.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.CloudService.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -1193,6 +1332,7 @@ CloudService.basicProps()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.CloudService.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.CloudService.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.CloudService.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.CloudService.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
@@ -1210,6 +1350,18 @@ CloudService.basicProps()
 | <code><a href="#wdk-lib.CloudService.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
 | <code><a href="#wdk-lib.CloudService.property.parameters">parameters</a></code> | <code><a href="#wdk-lib.ExpressionTool">ExpressionTool</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CloudService.property.service">service</a></code> | <code><a href="#wdk-lib.Tool">Tool</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.CloudService.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -1414,9 +1566,34 @@ public readonly service: Tool;
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Conditional.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.Conditional.whenBooleanInputIs">whenBooleanInputIs</a></code> | Skip this step if the boolean input associated to this condition does not match the specified value. |
 | <code><a href="#wdk-lib.Conditional.whenInputNotNull">whenInputNotNull</a></code> | Skip this step if the specified input is null. |
 | <code><a href="#wdk-lib.Conditional.whenInputsNotNull">whenInputsNotNull</a></code> | Skip this step if all specified inputs are not null. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.Conditional.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Conditional.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Conditional.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -1504,9 +1681,22 @@ Conditional.step(step: IStep)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.Conditional.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.Conditional.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Conditional.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Conditional.property.expression">expression</a></code> | <code>string</code> | Set a conditional expression for this step. |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.Conditional.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -1571,14 +1761,58 @@ new Construct(id: string)
 
 ---
 
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.Construct.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.Construct.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Construct.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Construct.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
+
+---
 
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.Construct.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.Construct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Construct.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.Construct.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -1718,10 +1952,35 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.ExpressionTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.ExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.ExpressionTool.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.ExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.ExpressionTool.withExpression">withExpression</a></code> | Specify a custom JavaScript expression for this ExpressionTool. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.ExpressionTool.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.ExpressionTool.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.ExpressionTool.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -1809,6 +2068,7 @@ Example: call with makeParametersJsonExpressionAllStrings()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.ExpressionTool.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.ExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.ExpressionTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.ExpressionTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
@@ -1825,6 +2085,18 @@ Example: call with makeParametersJsonExpressionAllStrings()
 | <code><a href="#wdk-lib.ExpressionTool.property.expression">expression</a></code> | <code>string</code> | Get the custom JavaScript expression for this ExpressionTool. |
 | <code><a href="#wdk-lib.ExpressionTool.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.ExpressionTool.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -2085,6 +2357,7 @@ const input = Input.string(root, 'myInput')
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Input.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | Links the input to another input or output. |
 | <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Input.allowNullElements">allowNullElements</a></code> | Sets the type of the input elements of an array to be nullable. |
@@ -2102,6 +2375,30 @@ const input = Input.string(root, 'myInput')
 | <code><a href="#wdk-lib.Input.withLabel">withLabel</a></code> | Sets a label for the input. |
 | <code><a href="#wdk-lib.Input.withPosition">withPosition</a></code> | Specifies a position for the input. |
 | <code><a href="#wdk-lib.Input.withPrefix">withPrefix</a></code> | Sets a prefix for the input. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.Input.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Input.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Input.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -2727,6 +3024,7 @@ The identifier for this input.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.Input.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.Input.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Input.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Input.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
@@ -2742,6 +3040,18 @@ The identifier for this input.
 | <code><a href="#wdk-lib.Input.property.label">label</a></code> | <code>string</code> | Retrieves the label associated with the input. |
 | <code><a href="#wdk-lib.Input.property.prefix">prefix</a></code> | <code>string</code> | Retrieves the prefix associated with the input. |
 | <code><a href="#wdk-lib.Input.property.valueFrom">valueFrom</a></code> | <code>string</code> | Retrieves the expression from which the input's value is derived. |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.Input.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -3216,8 +3526,33 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.LinkableConstruct.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.LinkableConstruct.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
 | <code><a href="#wdk-lib.LinkableConstruct.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.LinkableConstruct.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.LinkableConstruct.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.LinkableConstruct.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -3254,6 +3589,7 @@ Set the PickValueMethod for this linkable if there are multiple sources linked t
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.LinkableConstruct.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.LinkableConstruct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.LinkableConstruct.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.LinkableConstruct.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
@@ -3262,6 +3598,18 @@ Set the PickValueMethod for this linkable if there are multiple sources linked t
 | <code><a href="#wdk-lib.LinkableConstruct.property.multiLinked">multiLinked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.LinkableConstruct.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.LinkableConstruct.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -3374,6 +3722,7 @@ const output = Output.file(root, 'myOutput')
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Output.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | Links this output to another output. |
 | <code><a href="#wdk-lib.Output.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Output.as">as</a></code> | Sets a new identifier for this output. |
@@ -3384,6 +3733,30 @@ const output = Output.file(root, 'myOutput')
 | <code><a href="#wdk-lib.Output.outputEval">outputEval</a></code> | Specifies an expression to evaluate the output. |
 | <code><a href="#wdk-lib.Output.toMap">toMap</a></code> | Converts the output's properties into a map format. |
 | <code><a href="#wdk-lib.Output.withGlob">withGlob</a></code> | Specifies a glob pattern to locate output files. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.Output.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Output.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Output.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -3864,6 +4237,7 @@ The identifier for this output.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.Output.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.Output.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Output.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Output.property.idAsReference">idAsReference</a></code> | <code>string</code> | *No description.* |
@@ -3872,6 +4246,18 @@ The identifier for this output.
 | <code><a href="#wdk-lib.Output.property.multiLinked">multiLinked</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.referenced">referenced</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.Output.property.pickValueMethod">pickValueMethod</a></code> | <code><a href="#wdk-lib.PickValueMethod">PickValueMethod</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.Output.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -4008,10 +4394,35 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.RenameExpressionTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.RenameExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.RenameExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.RenameExpressionTool.withExpression">withExpression</a></code> | Specify a custom JavaScript expression for this ExpressionTool. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.RenameExpressionTool.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.RenameExpressionTool.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.RenameExpressionTool.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -4099,6 +4510,7 @@ Example: call with makeParametersJsonExpressionAllStrings()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
@@ -4118,6 +4530,18 @@ Example: call with makeParametersJsonExpressionAllStrings()
 | <code><a href="#wdk-lib.RenameExpressionTool.property.f1">f1</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.newname">newname</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.out">out</a></code> | <code><a href="#wdk-lib.Output">Output</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.RenameExpressionTool.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -4344,10 +4768,35 @@ public readonly out: Output;
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Requirement.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.Requirement.addEntry">addEntry</a></code> | Add a listing entry to the initial work directory requirement. |
 | <code><a href="#wdk-lib.Requirement.addEnvVar">addEnvVar</a></code> | Add an environment variable to the EnvVar requirement. |
 | <code><a href="#wdk-lib.Requirement.addListing">addListing</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.toMap">toMap</a></code> | *No description.* |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.Requirement.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Requirement.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Requirement.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -4606,9 +5055,22 @@ Requirement.subworkflowFeature(scope: Construct)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.Requirement.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.Requirement.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Requirement.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Requirement.property.requirementType">requirementType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.Requirement.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -4653,6 +5115,37 @@ public readonly requirementType: string;
 
 A "scatter" operation specifies that the associated workflow step or subworkflow should execute separately over a list of input elements.
 
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.Scatter.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.Scatter.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Scatter.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Scatter.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -4823,9 +5316,22 @@ This must be linked to an array whose elements are of the same type. It identifi
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.Scatter.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.Scatter.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Scatter.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Scatter.property.ids">ids</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.Scatter.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -4907,8 +5413,33 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.StepConstruct.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.StepConstruct.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.StepConstruct.serialize">serialize</a></code> | Serialize the step to a directory. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.StepConstruct.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.StepConstruct.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.StepConstruct.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -4941,6 +5472,7 @@ If the step has substeps, they will be serialized recursively.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.StepConstruct.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.StepConstruct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.StepConstruct.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.StepConstruct.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
@@ -4954,6 +5486,18 @@ If the step has substeps, they will be serialized recursively.
 | <code><a href="#wdk-lib.StepConstruct.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.StepConstruct.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.StepConstruct.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.StepConstruct.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -5260,9 +5804,34 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Tool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.Tool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.Tool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
 | <code><a href="#wdk-lib.Tool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.Tool.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Tool.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Tool.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -5301,6 +5870,7 @@ Create a map repsentation of the tool following the CWL specification.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.Tool.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.Tool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Tool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Tool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
@@ -5316,6 +5886,18 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.Tool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.Tool.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -5520,9 +6102,34 @@ new ToolConfig(id: string)
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.ToolConfig.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.ToolConfig.withArguments">withArguments</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withBaseCommand">withBaseCommand</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withLabel">withLabel</a></code> | *No description.* |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.ToolConfig.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.ToolConfig.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.ToolConfig.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -5588,12 +6195,25 @@ ToolConfig.basic(scope: StepConstruct)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.ToolConfig.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.ToolConfig.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.ToolConfig.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.ToolConfig.property.arguments">arguments</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.property.baseCommand">baseCommand</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.property.cwlVersion">cwlVersion</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.property.label">label</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.ToolConfig.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 
@@ -6398,10 +7018,35 @@ set or update the id of this construct
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Workflow.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.Workflow.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.Workflow.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.Workflow.addStep">addStep</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.Workflow.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Workflow.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.Workflow.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
 
 ---
 
@@ -6469,6 +7114,7 @@ Workflow.basicProps()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.Workflow.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.Workflow.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Workflow.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Workflow.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
@@ -6484,6 +7130,18 @@ Workflow.basicProps()
 | <code><a href="#wdk-lib.Workflow.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.props">props</a></code> | <code><a href="#wdk-lib.IWorkflowProps">IWorkflowProps</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.Workflow.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
 
 ---
 

@@ -3,7 +3,7 @@ const project = new cdk.JsiiProject({
   author: 'Robert Nica',
   authorAddress: 'rnica@biobam.com',
   defaultReleaseBranch: 'main',
-  jsiiVersion: '~5.6.1',
+  jsiiVersion: '~5.8.9',
   name: 'wdk-lib',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/biobam/wdk-lib.git',

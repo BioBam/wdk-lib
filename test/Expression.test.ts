@@ -39,7 +39,6 @@ describe('ExpressionTool', () => {
     };
 
     // Assert that the evaluated script matches the expected output
-    expect(evaluatedScript).not.toContain('nullValue');
     expect(evaluatedScript).toEqual(expectedOutput);
   });
 

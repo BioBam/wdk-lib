@@ -706,5 +706,10 @@ export class Input extends LinkableConstruct {
     }
   }
 
+  // Override the toString method to throw an exception. We don't want it to be used like so.
+  toString(): string {
+    throw new Error('toString is not supported for an Input Object.');
+  }
+
 }
 

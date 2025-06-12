@@ -2095,6 +2095,7 @@ const input = Input.string(root, 'myInput')
 | <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | Sets the optionality of the input. |
 | <code><a href="#wdk-lib.Input.makeSeparate">makeSeparate</a></code> | Sets whether the input items should be separated. |
 | <code><a href="#wdk-lib.Input.toMap">toMap</a></code> | Converts the input to a CWL-compatible JSON object. |
+| <code><a href="#wdk-lib.Input.toString">toString</a></code> | Returns a string representation of an object. |
 | <code><a href="#wdk-lib.Input.withDefaultValue">withDefaultValue</a></code> | Assigns a default value to the input. |
 | <code><a href="#wdk-lib.Input.withDoc">withDoc</a></code> | Adds documentation to the input. |
 | <code><a href="#wdk-lib.Input.withItemSeparator">withItemSeparator</a></code> | Sets an item separator for array inputs. |
@@ -2232,6 +2233,14 @@ public toMap(): {[ key: string ]: any}
 ```
 
 Converts the input to a CWL-compatible JSON object.
+
+##### `toString` <a name="toString" id="wdk-lib.Input.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of an object.
 
 ##### `withDefaultValue` <a name="withDefaultValue" id="wdk-lib.Input.withDefaultValue"></a>
 

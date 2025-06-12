@@ -2229,6 +2229,7 @@ Object input = Input.string(root, "myInput").withDefaultValue("default").withDoc
 | <code><a href="#wdk-lib.Input.makeOptional">makeOptional</a></code> | Sets the optionality of the input. |
 | <code><a href="#wdk-lib.Input.makeSeparate">makeSeparate</a></code> | Sets whether the input items should be separated. |
 | <code><a href="#wdk-lib.Input.toMap">toMap</a></code> | Converts the input to a CWL-compatible JSON object. |
+| <code><a href="#wdk-lib.Input.toString">toString</a></code> | Returns a string representation of an object. |
 | <code><a href="#wdk-lib.Input.withDefaultValue">withDefaultValue</a></code> | Assigns a default value to the input. |
 | <code><a href="#wdk-lib.Input.withDoc">withDoc</a></code> | Adds documentation to the input. |
 | <code><a href="#wdk-lib.Input.withItemSeparator">withItemSeparator</a></code> | Sets an item separator for array inputs. |
@@ -2366,6 +2367,14 @@ public java.util.Map<java.lang.String, java.lang.Object> toMap()
 ```
 
 Converts the input to a CWL-compatible JSON object.
+
+##### `toString` <a name="toString" id="wdk-lib.Input.toString"></a>
+
+```java
+public java.lang.String toString()
+```
+
+Returns a string representation of an object.
 
 ##### `withDefaultValue` <a name="withDefaultValue" id="wdk-lib.Input.withDefaultValue"></a>
 

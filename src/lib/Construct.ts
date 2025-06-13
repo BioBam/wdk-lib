@@ -100,4 +100,28 @@ export class Construct {
     return this._metadata;
   }
 
+  /**
+   * Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+   * If value is not provided, returns all constructs that have the specified metadata key.
+   * @param key The metadata key to match.
+   * @param value The metadata value to match (optional).
+   * @returns An array of constructs with matching metadata.
+   */
+  findNodesWithMetadata(key: string, value?: any): Construct[] {
+    const matches: Construct[] = [];
+    if (value === undefined) {
+      if ((this as any).metadata?.[key] !== undefined) {
+        matches.push(this);
+      }
+    } else {
+      if ((this as any).metadata?.[key] === value) {
+        matches.push(this);
+      }
+    }
+    for (const child of this._nodes) {
+      matches.push(...child.findNodesWithMetadata(key, value));
+    }
+    return matches;
+  }
+
 }

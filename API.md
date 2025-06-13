@@ -438,6 +438,7 @@ new App()
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.App.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.App.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.App.synth">synth</a></code> | *No description.* |
 
 ---
@@ -463,6 +464,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.App.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.App.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.App.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -569,6 +596,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.BashTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.BashTool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.BashTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.BashTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
 | <code><a href="#wdk-lib.BashTool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
@@ -596,6 +624,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.BashTool.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.BashTool.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.BashTool.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -887,6 +941,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.CheckFileNameTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.CheckFileNameTool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.CheckFileNameTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
 | <code><a href="#wdk-lib.CheckFileNameTool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
@@ -914,6 +969,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.CheckFileNameTool.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.CheckFileNameTool.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.CheckFileNameTool.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -1237,6 +1318,7 @@ Configuration properties for the service.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.CloudService.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.CloudService.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.CloudService.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.CloudService.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.CloudService.addStep">addStep</a></code> | *No description.* |
@@ -1265,6 +1347,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.CloudService.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.CloudService.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.CloudService.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -1567,6 +1675,7 @@ public readonly service: Tool;
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Conditional.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.Conditional.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.Conditional.whenBooleanInputIs">whenBooleanInputIs</a></code> | Skip this step if the boolean input associated to this condition does not match the specified value. |
 | <code><a href="#wdk-lib.Conditional.whenInputNotNull">whenInputNotNull</a></code> | Skip this step if the specified input is null. |
 | <code><a href="#wdk-lib.Conditional.whenInputsNotNull">whenInputsNotNull</a></code> | Skip this step if all specified inputs are not null. |
@@ -1594,6 +1703,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.Conditional.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Conditional.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.Conditional.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -1766,6 +1901,7 @@ new Construct(id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Construct.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.Construct.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 
 ---
 
@@ -1790,6 +1926,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.Construct.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Construct.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.Construct.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -1953,6 +2115,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.ExpressionTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.ExpressionTool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.ExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.ExpressionTool.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.ExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
@@ -1981,6 +2144,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.ExpressionTool.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.ExpressionTool.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.ExpressionTool.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -2358,6 +2547,7 @@ const input = Input.string(root, 'myInput')
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Input.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.Input.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.Input.linkTo">linkTo</a></code> | Links the input to another input or output. |
 | <code><a href="#wdk-lib.Input.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Input.allowNullElements">allowNullElements</a></code> | Sets the type of the input elements of an array to be nullable. |
@@ -2399,6 +2589,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.Input.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Input.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.Input.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -3527,6 +3743,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.LinkableConstruct.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.LinkableConstruct.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.LinkableConstruct.linkTo">linkTo</a></code> | Link this linkable construct to another one. |
 | <code><a href="#wdk-lib.LinkableConstruct.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 
@@ -3553,6 +3770,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.LinkableConstruct.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.LinkableConstruct.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.LinkableConstruct.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -3723,6 +3966,7 @@ const output = Output.file(root, 'myOutput')
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Output.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.Output.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.Output.linkTo">linkTo</a></code> | Links this output to another output. |
 | <code><a href="#wdk-lib.Output.pickValue">pickValue</a></code> | Set the PickValueMethod for this linkable if there are multiple sources linked to it. |
 | <code><a href="#wdk-lib.Output.as">as</a></code> | Sets a new identifier for this output. |
@@ -3757,6 +4001,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.Output.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Output.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.Output.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -4395,6 +4665,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.RenameExpressionTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.RenameExpressionTool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.RenameExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.RenameExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
@@ -4423,6 +4694,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.RenameExpressionTool.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.RenameExpressionTool.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.RenameExpressionTool.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -4769,6 +5066,7 @@ public readonly out: Output;
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Requirement.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.Requirement.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.Requirement.addEntry">addEntry</a></code> | Add a listing entry to the initial work directory requirement. |
 | <code><a href="#wdk-lib.Requirement.addEnvVar">addEnvVar</a></code> | Add an environment variable to the EnvVar requirement. |
 | <code><a href="#wdk-lib.Requirement.addListing">addListing</a></code> | *No description.* |
@@ -4797,6 +5095,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.Requirement.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Requirement.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.Requirement.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -5120,6 +5444,7 @@ A "scatter" operation specifies that the associated workflow step or subworkflow
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Scatter.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.Scatter.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 
 ---
 
@@ -5144,6 +5469,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.Scatter.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Scatter.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.Scatter.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -5414,6 +5765,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.StepConstruct.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.StepConstruct.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.StepConstruct.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.StepConstruct.serialize">serialize</a></code> | Serialize the step to a directory. |
 
@@ -5440,6 +5792,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.StepConstruct.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.StepConstruct.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.StepConstruct.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -5805,6 +6183,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Tool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.Tool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.Tool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.Tool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
 | <code><a href="#wdk-lib.Tool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
@@ -5832,6 +6211,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.Tool.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Tool.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.Tool.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -6103,6 +6508,7 @@ new ToolConfig(id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.ToolConfig.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.ToolConfig.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.ToolConfig.withArguments">withArguments</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withBaseCommand">withBaseCommand</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolConfig.withLabel">withLabel</a></code> | *No description.* |
@@ -6130,6 +6536,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.ToolConfig.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.ToolConfig.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.ToolConfig.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 
@@ -7019,6 +7451,7 @@ set or update the id of this construct
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Workflow.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.Workflow.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.Workflow.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.Workflow.serialize">serialize</a></code> | Serialize the step to a directory. |
 | <code><a href="#wdk-lib.Workflow.addStep">addStep</a></code> | *No description.* |
@@ -7047,6 +7480,32 @@ The key of the metadata.
 - *Type:* any
 
 The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.Workflow.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.Workflow.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.Workflow.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
 
 ---
 

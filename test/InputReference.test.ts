@@ -58,6 +58,20 @@ describe('InputReference', () => {
       expect(inputReference.location).toBe(s3UriLocation);
       expect(inputReference.path).toBeUndefined();
     });
+
+    it('should unassign _path after conversion to S3 reference', () => {
+      const localPath = '/Users/username/file.txt';
+      const s3UriLocation = 's3://bucket-name/path/to/file';
+      const inputReference = InputReference.file(localPath);
+
+      // Verify initial state
+      expect((inputReference as any)._path).toBe(localPath);
+
+      inputReference.convertToS3Reference(s3UriLocation);
+
+      // Verify _path is unassigned
+      expect((inputReference as any)._path).toBeUndefined();
+    });
   });
 
 });

@@ -684,6 +684,15 @@ export class Input extends LinkableConstruct {
         }
         cip.inputBinding.itemSeparator = this._separator;
         cip.inputBinding.separate = this._separate;
+      } else {
+        // if type is CommandInputArraySchema add the itemBinding to the array type and remove the binding from the command input parameter
+        if (this._type instanceof cwl.CommandInputArraySchema && this._prefix !== undefined) {
+          let itemBinding = new cwl.CommandLineBinding({
+            prefix: this._prefix,
+          });
+          (this._type as cwl.CommandInputArraySchema).inputBinding = itemBinding;
+          cip.inputBinding = undefined;
+        }
       }
     }
 

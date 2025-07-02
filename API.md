@@ -692,12 +692,12 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.BashTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.BashTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.BashTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
-| <code><a href="#wdk-lib.BashTool.property.label">label</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.BashTool.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.BashTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.BashTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.BashTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.BashTool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.BashTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
@@ -754,16 +754,6 @@ public readonly inputs: Input[];
 - *Type:* <a href="#wdk-lib.Input">Input</a>[]
 
 All inputs of the step.
-
----
-
-##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.BashTool.property.label"></a>
-
-```typescript
-public readonly label: any;
-```
-
-- *Type:* any
 
 ---
 
@@ -824,6 +814,16 @@ public readonly conditional: Conditional;
 - *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
 
 Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.BashTool.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -1037,12 +1037,12 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.CheckFileNameTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
-| <code><a href="#wdk-lib.CheckFileNameTool.property.label">label</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
@@ -1104,16 +1104,6 @@ All inputs of the step.
 
 ---
 
-##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.CheckFileNameTool.property.label"></a>
-
-```typescript
-public readonly label: any;
-```
-
-- *Type:* any
-
----
-
 ##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.CheckFileNameTool.property.linkedInputs"></a>
 
 ```typescript
@@ -1171,6 +1161,16 @@ public readonly conditional: Conditional;
 - *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
 
 Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.CheckFileNameTool.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -1444,12 +1444,12 @@ CloudService.basicProps()
 | <code><a href="#wdk-lib.CloudService.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.CloudService.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.CloudService.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
-| <code><a href="#wdk-lib.CloudService.property.label">label</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#wdk-lib.CloudService.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.CloudService.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.CloudService.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.CloudService.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.CloudService.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.CloudService.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.CloudService.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CloudService.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CloudService.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
@@ -1511,16 +1511,6 @@ All inputs of the step.
 
 ---
 
-##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.CloudService.property.label"></a>
-
-```typescript
-public readonly label: any;
-```
-
-- *Type:* any
-
----
-
 ##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.CloudService.property.linkedInputs"></a>
 
 ```typescript
@@ -1578,6 +1568,16 @@ public readonly conditional: Conditional;
 - *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
 
 Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.CloudService.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -2261,12 +2261,12 @@ Example: call with makeParametersJsonExpressionAllStrings()
 | <code><a href="#wdk-lib.ExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.ExpressionTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.ExpressionTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
-| <code><a href="#wdk-lib.ExpressionTool.property.label">label</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.ExpressionTool.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.ExpressionTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.ExpressionTool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
@@ -2327,16 +2327,6 @@ All inputs of the step.
 
 ---
 
-##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.ExpressionTool.property.label"></a>
-
-```typescript
-public readonly label: any;
-```
-
-- *Type:* any
-
----
-
 ##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.ExpressionTool.property.linkedInputs"></a>
 
 ```typescript
@@ -2394,6 +2384,16 @@ public readonly conditional: Conditional;
 - *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
 
 Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.ExpressionTool.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -4811,12 +4811,12 @@ Example: call with makeParametersJsonExpressionAllStrings()
 | <code><a href="#wdk-lib.RenameExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
-| <code><a href="#wdk-lib.RenameExpressionTool.property.label">label</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
@@ -4880,16 +4880,6 @@ All inputs of the step.
 
 ---
 
-##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.RenameExpressionTool.property.label"></a>
-
-```typescript
-public readonly label: any;
-```
-
-- *Type:* any
-
----
-
 ##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.RenameExpressionTool.property.linkedInputs"></a>
 
 ```typescript
@@ -4947,6 +4937,16 @@ public readonly conditional: Conditional;
 - *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
 
 Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.RenameExpressionTool.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -5854,12 +5854,12 @@ If the step has substeps, they will be serialized recursively.
 | <code><a href="#wdk-lib.StepConstruct.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.StepConstruct.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.StepConstruct.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
-| <code><a href="#wdk-lib.StepConstruct.property.label">label</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#wdk-lib.StepConstruct.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.StepConstruct.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.StepConstruct.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.StepConstruct.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.StepConstruct.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.StepConstruct.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.StepConstruct.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.StepConstruct.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.StepConstruct.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
@@ -5914,16 +5914,6 @@ public readonly inputs: Input[];
 - *Type:* <a href="#wdk-lib.Input">Input</a>[]
 
 All inputs of the step.
-
----
-
-##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.StepConstruct.property.label"></a>
-
-```typescript
-public readonly label: any;
-```
-
-- *Type:* any
 
 ---
 
@@ -5984,6 +5974,16 @@ public readonly conditional: Conditional;
 - *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
 
 Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.StepConstruct.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -6279,12 +6279,12 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.Tool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Tool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Tool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
-| <code><a href="#wdk-lib.Tool.property.label">label</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.Tool.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.Tool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.Tool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.Tool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.Tool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Tool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
@@ -6341,16 +6341,6 @@ public readonly inputs: Input[];
 - *Type:* <a href="#wdk-lib.Input">Input</a>[]
 
 All inputs of the step.
-
----
-
-##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.Tool.property.label"></a>
-
-```typescript
-public readonly label: any;
-```
-
-- *Type:* any
 
 ---
 
@@ -6411,6 +6401,16 @@ public readonly conditional: Conditional;
 - *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
 
 Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.Tool.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -7577,12 +7577,12 @@ Workflow.basicProps()
 | <code><a href="#wdk-lib.Workflow.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.Workflow.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
 | <code><a href="#wdk-lib.Workflow.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
-| <code><a href="#wdk-lib.Workflow.property.label">label</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.Workflow.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
 | <code><a href="#wdk-lib.Workflow.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
 | <code><a href="#wdk-lib.Workflow.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.Workflow.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.Workflow.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Workflow.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
@@ -7639,16 +7639,6 @@ public readonly inputs: Input[];
 - *Type:* <a href="#wdk-lib.Input">Input</a>[]
 
 All inputs of the step.
-
----
-
-##### `label`<sup>Required</sup> <a name="label" id="wdk-lib.Workflow.property.label"></a>
-
-```typescript
-public readonly label: any;
-```
-
-- *Type:* any
 
 ---
 
@@ -7709,6 +7699,16 @@ public readonly conditional: Conditional;
 - *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
 
 Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.Workflow.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
 
 ---
 

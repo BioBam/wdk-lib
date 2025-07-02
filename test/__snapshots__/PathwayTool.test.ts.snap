@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and have no git differences 1`] = `
 {
@@ -455,33 +455,30 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
           },
           {
             "id": "reactome_categories",
-            "inputBinding": {
-              "position": 2,
-              "prefix": "-reactomeCategories",
-            },
             "type": {
+              "inputBinding": {
+                "prefix": "-reactomeCategories",
+              },
               "items": "string",
               "type": "array",
             },
           },
           {
             "id": "gramene_categories",
-            "inputBinding": {
-              "position": 3,
-              "prefix": "-grameneCategories",
-            },
             "type": {
+              "inputBinding": {
+                "prefix": "-grameneCategories",
+              },
               "items": "string",
               "type": "array",
             },
           },
           {
             "id": "kegg_categories",
-            "inputBinding": {
-              "position": 4,
-              "prefix": "-keggCategories",
-            },
             "type": {
+              "inputBinding": {
+                "prefix": "-keggCategories",
+              },
               "items": "string",
               "type": "array",
             },

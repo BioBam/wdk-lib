@@ -54,13 +54,13 @@ describe('Input Class', () => {
       expect(map).toEqual({
         id: `${input.id}`,
         type: {
+          inputBinding: {
+            prefix: '--files',
+          },
           type: 'array',
           items: 'File',
         },
         default: ['file1.txt', 'file2.txt'],
-        inputBinding: {
-          prefix: '--files',
-        },
       });
     });
 
@@ -363,11 +363,11 @@ describe('Input Class', () => {
         {
           type: 'array',
           items: 'File',
+          inputBinding: {
+            prefix: '--prefix',
+          },
         },
       ],
-      inputBinding: {
-        prefix: '--prefix',
-      },
     });
   });
 

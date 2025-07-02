@@ -55,7 +55,7 @@ export abstract class StepConstruct extends Construct implements IStep {
     return nodes.filter(node => node.referenced);
   }
 
-  get label(): any {
+  get label(): string | undefined {
     return this._config.label;
   }
 

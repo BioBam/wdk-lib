@@ -14,9 +14,12 @@ describe('Input Class', () => {
 
   describe('fromStepInput Method', () => {
     it('should remove inputBinding from array type when creating input from step input', () => {
+      // Create a workflow scope for the new input
+      const childWorkflow = new Workflow(workflow, 'child-workflow');
+      const innerTool = new Tool(workflow, 'test-tool');
       // Create a string array input with binding in the tool
-      const originalInput = Input.stringArray(tool, 'testStringArrayId');
-      originalInput.withPrefix('--strings').withItemSeparator(',');
+      const originalInput = Input.stringArray(innerTool, 'testStringArrayId');
+      originalInput.withPrefix('--strings');
 
       // Verify original input has binding in the array type
       const originalMap = originalInput.toMap();
@@ -25,16 +28,12 @@ describe('Input Class', () => {
         type: {
           type: 'array',
           items: 'string',
-        },
-        inputBinding: {
-          prefix: '--strings',
-          itemSeparator: ',',
-          separate: true,
+          inputBinding: {
+            prefix: '--strings',
+          },
         },
       });
 
-      // Create a workflow scope for the new input
-      const childWorkflow = new Workflow(workflow, 'child-workflow');
 
       // Create input from step input
       const newInput = Input.fromStepInput(childWorkflow, originalInput);

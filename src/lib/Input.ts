@@ -44,10 +44,6 @@ export class Input extends LinkableConstruct {
    */
   static fromStepInput(scope: StepConstruct, input: Input): Input {
     const newInput = new Input(scope, input.id, input._type);
-    // if the input is an array and the separator is not ser, then remove the binding from the array type as we might be in a workflow.
-    if (input._type instanceof cwl.CommandInputArraySchema) {
-      (newInput._type as cwl.CommandInputArraySchema).inputBinding = undefined;
-    }
     newInput._optional = input.optional;
     newInput._defaultValue = input._defaultValue;
     newInput._doc = input._doc;
@@ -620,6 +616,15 @@ export class Input extends LinkableConstruct {
     return this._toCwlObject().save();
   }
 
+  private cleanParameterTypeBinding(type: InputType): InputType {
+    // if the input is an array and the separator is not ser, then remove the binding from the array type as we might be in a workflow.
+    if (type instanceof cwl.CommandInputArraySchema) {
+      (type as cwl.CommandInputArraySchema).inputBinding = undefined;
+    }
+    return type;
+    //TODO: what about array of arrays?
+  }
+
   private createWorkflowInputParameter(): cwl.WorkflowInputParameter {
     // Prepare the type to assign to the input parameter
     // if optional is true, then the type should be an array of the type(s) and 'null'
@@ -627,12 +632,20 @@ export class Input extends LinkableConstruct {
     if (this.optional) {
       if (Array.isArray(this._parameterType)) {
         typeToAssign = this._parameterType;
+        // for each element in the array, clean the binding
+        typeToAssign = typeToAssign.map(this.cleanParameterTypeBinding);
         typeToAssign.push('null');
       } else {
+        typeToAssign = this.cleanParameterTypeBinding(this._parameterType);
         typeToAssign = ['null', this._parameterType];
       }
     } else {
-      typeToAssign = this._parameterType;
+      // also clean the binding when it's not optional.
+      if (Array.isArray(this._parameterType)) {
+        typeToAssign = this._parameterType.map(this.cleanParameterTypeBinding);
+      } else {
+        typeToAssign = this.cleanParameterTypeBinding(this._parameterType);
+      }
     }
 
     let wip = new cwl.WorkflowInputParameter({

@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`EmapperWorkflowCloud cwl export test should generate valid YAML and match snapshot 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "emapper-workflow-cloud",
+  "inputs": [
+    {
+      "doc": "FastQ Files",
+      "id": "fastqFiles",
+      "type": {
+        "items": "File",
+        "type": "array",
+      },
+    },
+    {
+      "doc": "Serialized Parameters File",
+      "id": "paramsDataFile",
+      "type": "File",
+    },
+  ],
+  "label": "Functional Annotation with EggNOG Mapper",
+  "outputs": [
+    {
+      "id": "eggnogAnnotations",
+      "outputSource": "emapper-workflow/eggnogAnnotations",
+      "type": "File",
+    },
+    {
+      "id": "eggnogReport",
+      "outputSource": "emapper-workflow/eggnogReport",
+      "type": "File",
+    },
+    {
+      "id": "destinationFolder",
+      "type": "Directory",
+    },
+    {
+      "id": "destinationFolderUnpaired",
+      "type": "Directory",
+    },
+  ],
+  "requirements": [
+    {
+      "class": "SubworkflowFeatureRequirement",
+    },
+    {
+      "class": "InlineJavascriptRequirement",
+    },
+  ],
+  "steps": [
+    {
+      "id": "emapper-workflow",
+      "in": [
+        {
+          "id": "sequences",
+          "source": "emapper-pre-workflow/sequences",
+        },
+        {
+          "id": "zipFiles",
+          "source": "emapper-pre-workflow/zipFiles",
+        },
+      ],
+      "out": [],
+      "run": {
+        "class": "Workflow",
+        "id": "emapper-workflow",
+        "inputs": [
+          {
+            "default": true,
+            "id": "input_conditional_enabled",
+            "type": "boolean",
+          },
+          {
+            "id": "sequences",
+            "type": {
+              "items": [
+                "null",
+                "string",
+              ],
+              "type": "array",
+            },
+          },
+          {
+            "id": "zipFiles",
+            "type": {
+              "items": [
+                "null",
+                "File",
+              ],
+              "type": "array",
+            },
+          },
+        ],
+        "outputs": [
+          {
+            "id": "eggnogAnnotations",
+            "type": "File",
+          },
+          {
+            "id": "eggnogReport",
+            "type": "File",
+          },
+        ],
+        "requirements": [
+          {
+            "class": "SubworkflowFeatureRequirement",
+          },
+          {
+            "class": "InlineJavascriptRequirement",
+          },
+          {
+            "class": "StepInputExpressionRequirement",
+          },
+        ],
+        "steps": [],
+      },
+    },
+    {
+      "id": "emapper-pre-workflow",
+      "in": [
+        {
+          "id": "paramsDataFile",
+          "source": "paramsDataFile",
+        },
+        {
+          "id": "fastqFiles",
+          "source": "fastqFiles",
+        },
+      ],
+      "out": [
+        "sequences",
+        "zipFiles",
+      ],
+      "run": {
+        "arguments": [
+          "emapper-pre",
+        ],
+        "baseCommand": [
+          "java",
+          "@/opt/app/custom.vmoptions",
+          "-Dapp.custom.vmoptions=/opt/app/custom.vmoptions",
+          "-jar",
+          "/opt/app/omicsbox.jar",
+        ],
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "emapper-pre-workflow",
+        "inputs": [
+          {
+            "doc": "Serialized Parameters File",
+            "id": "paramsDataFile",
+            "inputBinding": {
+              "prefix": "--paramsDataFile",
+            },
+            "type": "File",
+          },
+          {
+            "doc": "Values Json File",
+            "id": "outputFile",
+            "inputBinding": {
+              "prefix": "--outputFile",
+            },
+            "type": "string",
+          },
+          {
+            "doc": "FastQ Files",
+            "id": "fastqFiles",
+            "type": {
+              "inputBinding": {
+                "prefix": "--fastqFiles",
+              },
+              "items": "File",
+              "type": "array",
+            },
+          },
+        ],
+        "label": "OmicsBox Emapper Pre Tool",
+        "outputs": [
+          {
+            "id": "output-wf-values",
+            "outputBinding": {
+              "glob": "$(inputs.outputFile)",
+            },
+            "type": "File",
+          },
+          {
+            "id": "sequences",
+            "outputBinding": {
+              "glob": "$(inputs.outputFile)",
+              "loadContents": true,
+              "outputEval": "$(JSON.parse(self[0].contents)["sequences"])",
+            },
+            "type": {
+              "items": [
+                "string",
+                "null",
+              ],
+              "type": "array",
+            },
+          },
+          {
+            "id": "zipFiles",
+            "outputBinding": {
+              "glob": "$(inputs.outputFile)",
+              "loadContents": true,
+              "outputEval": "$(JSON.parse(self[0].contents)["zipFiles"])",
+            },
+            "type": {
+              "items": [
+                "File",
+                "null",
+              ],
+              "type": "array",
+            },
+          },
+        ],
+        "requirements": [
+          {
+            "class": "DockerRequirement",
+            "dockerPull": "biobam/omicsbox:latest",
+          },
+          {
+            "class": "InlineJavascriptRequirement",
+          },
+          {
+            "class": "NetworkAccess",
+            "networkAccess": true,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

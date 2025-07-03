@@ -616,12 +616,28 @@ export class Input extends LinkableConstruct {
     return this._toCwlObject().save();
   }
 
-  private cleanParameterTypeBinding(type: InputType): InputType {
-    // if the input is an array and the separator is not ser, then remove the binding from the array type as we might be in a workflow.
+  private deepCopyInputType(type: InputType): InputType {
     if (type instanceof cwl.CommandInputArraySchema) {
-      (type as cwl.CommandInputArraySchema).inputBinding = undefined;
+      // Create a deep copy of the array schema
+      return new cwl.CommandInputArraySchema({
+        type: type.type,
+        items: this.deepCopyInputType(type.items as InputType),
+        inputBinding: type.inputBinding ? new cwl.CommandLineBinding(type.inputBinding) : undefined,
+      });
     }
+    // For primitive types and other types, return as-is since they are immutable
     return type;
+  }
+
+  private cleanParameterTypeBinding(type: InputType): InputType {
+    // Create a deep copy first to avoid mutating the original
+    const typeCopy = this.deepCopyInputType(type);
+
+    // if the input is an array and the separator is not ser, then remove the binding from the array type as we might be in a workflow.
+    if (typeCopy instanceof cwl.CommandInputArraySchema) {
+      (typeCopy as cwl.CommandInputArraySchema).inputBinding = undefined;
+    }
+    return typeCopy;
     //TODO: what about array of arrays?
   }
 
@@ -637,7 +653,7 @@ export class Input extends LinkableConstruct {
         typeToAssign.push('null');
       } else {
         typeToAssign = this.cleanParameterTypeBinding(this._parameterType);
-        typeToAssign = ['null', this._parameterType];
+        typeToAssign = ['null', typeToAssign];
       }
     } else {
       // also clean the binding when it's not optional.

@@ -12,6 +12,90 @@ describe('Input Class', () => {
     tool = new Tool(workflow, 'test-tool');
   });
 
+  describe('fromStepInput Method', () => {
+    it('should remove inputBinding from array type when creating input from step input', () => {
+      // Create a string array input with binding in the tool
+      const originalInput = Input.stringArray(tool, 'testStringArrayId');
+      originalInput.withPrefix('--strings').withItemSeparator(',');
+
+      // Verify original input has binding in the array type
+      const originalMap = originalInput.toMap();
+      expect(originalMap).toEqual({
+        id: `${originalInput.id}`,
+        type: {
+          type: 'array',
+          items: 'string',
+        },
+        inputBinding: {
+          prefix: '--strings',
+          itemSeparator: ',',
+          separate: true,
+        },
+      });
+
+      // Create a workflow scope for the new input
+      const childWorkflow = new Workflow(workflow, 'child-workflow');
+
+      // Create input from step input
+      const newInput = Input.fromStepInput(childWorkflow, originalInput);
+
+      // Verify the new input doesn't have inputBinding in the array type
+      const newMap = newInput.toMap();
+      expect(newMap).toEqual({
+        id: `${newInput.id}`,
+        type: {
+          type: 'array',
+          items: 'string',
+        },
+      });
+
+      // Verify the original input's properties are preserved
+      expect(newInput.optional).toBe(originalInput.optional);
+      expect(newInput.defaultValue).toBe(originalInput.defaultValue);
+      expect(newInput.doc).toBe(originalInput.doc);
+    });
+
+    it('should preserve inputBinding for non-array types when creating input from step input', () => {
+      // Create a string input with binding in the tool
+      const originalInput = Input.string(tool, 'testStringId');
+      originalInput.withPrefix('--string').withDefaultValue('default').withDoc('Test string input');
+
+      // Verify original input has binding
+      const originalMap = originalInput.toMap();
+      expect(originalMap).toEqual({
+        id: `${originalInput.id}`,
+        type: 'string',
+        default: 'default',
+        doc: 'Test string input',
+        inputBinding: {
+          prefix: '--string',
+        },
+      });
+
+      // Create a workflow scope for the new input
+      const childWorkflow = new Workflow(workflow, 'child-workflow');
+
+      // Create input from step input
+      const newInput = Input.fromStepInput(childWorkflow, originalInput);
+
+      // Verify the new input preserves the type but has no binding at the parameter level
+      const newMap = newInput.toMap();
+      expect(newMap).toEqual({
+        id: `${newInput.id}`,
+        type: 'string',
+        default: 'default',
+        doc: 'Test string input',
+      });
+
+      // Verify the original input's properties are preserved
+      expect(newInput.optional).toBe(originalInput.optional);
+      expect(newInput.defaultValue).toBe(originalInput.defaultValue);
+      expect(newInput.doc).toBe(originalInput.doc);
+    });
+
+
+  });
+
   describe('Array Method', () => {
 
     it('should create a boolean array input correctly', () => {

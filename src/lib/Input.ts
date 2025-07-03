@@ -44,6 +44,10 @@ export class Input extends LinkableConstruct {
    */
   static fromStepInput(scope: StepConstruct, input: Input): Input {
     const newInput = new Input(scope, input.id, input._type);
+    // if the input is an array and the separator is not ser, then remove the binding from the array type as we might be in a workflow.
+    if (input._type instanceof cwl.CommandInputArraySchema) {
+      (newInput._type as cwl.CommandInputArraySchema).inputBinding = undefined;
+    }
     newInput._optional = input.optional;
     newInput._defaultValue = input._defaultValue;
     newInput._doc = input._doc;

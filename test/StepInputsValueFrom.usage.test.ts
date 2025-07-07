@@ -30,8 +30,8 @@ describe('StepInputsValueFrom Usage Examples', () => {
     // 1. Convert single file to array if needed
     stepInputsValueFrom.valueToOneElementArray(inputFiles);
 
-    // 2. Convert empty array to null for optional processing
-    stepInputsValueFrom.emptyArrayToNull(inputFiles);
+    // 2. Get first element or null for optional processing
+    stepInputsValueFrom.firstElementOrNull(inputFiles);
 
     // 3. Apply custom transformation for output format
     stepInputsValueFrom.addCustomExpression(outputFormat, 'self.toLowerCase()');
@@ -88,15 +88,15 @@ describe('StepInputsValueFrom Usage Examples', () => {
 
     // Apply valueFrom transformations to each step
 
-    // Validation step: handle empty arrays
+    // Validation step: get first element or null
     const validationValueFrom = StepInputsValue.for(workflow, validationTool);
-    validationValueFrom.emptyArrayToNull(validationInput);
+    validationValueFrom.firstElementOrNull(validationInput);
 
     // Transform step: convert single files to arrays and handle empty parameters
     const transformValueFrom = StepInputsValue.for(workflow, transformTool);
     transformValueFrom
       .valueToOneElementArray(transformInput)
-      .emptyArrayToNull(transformParams);
+      .firstElementOrNull(transformParams);
 
     // Aggregation step: custom expression for file handling
     const aggregationValueFrom = StepInputsValue.for(workflow, aggregationTool);
@@ -117,9 +117,9 @@ describe('StepInputsValueFrom Usage Examples', () => {
     expect(aggregationTool.stepInputsValueFrom).toBeDefined();
 
     // Verify each step has the correct expressions
-    expect(validationTool.stepInputsValueFrom!.getExpressionForInput('files_to_validate')).toBe('$(self.length === 0 ? null : self)');
+    expect(validationTool.stepInputsValueFrom!.getExpressionForInput('files_to_validate')).toBe('$(self.length === 0 ? null : self[0])');
     expect(transformTool.stepInputsValueFrom!.getExpressionForInput('input_files')).toBe('$([self])');
-    expect(transformTool.stepInputsValueFrom!.getExpressionForInput('transform_params')).toBe('$(self.length === 0 ? null : self)');
+    expect(transformTool.stepInputsValueFrom!.getExpressionForInput('transform_params')).toBe('$(self.length === 0 ? null : self[0])');
     expect(aggregationTool.stepInputsValueFrom!.getExpressionForInput('files_to_aggregate')).toBe('$(self.filter(f => f !== null))');
 
     // Verify the workflow structure

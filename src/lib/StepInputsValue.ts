@@ -11,11 +11,11 @@ import { Workflow } from './Workflow';
 export class StepInputsValue extends Construct {
 
   /**
-   * Create a new StepInputsValueFrom instance for the given step.
+   * Create a new StepInputsValue instance for the given step.
    *
    * @param workflow The workflow in which to apply the requirements and customize step inputs.
    * @param step The step to create valueFrom expressions for.
-   * @returns A new StepInputsValueFrom instance.
+   * @returns A new StepInputsValue instance.
    */
   public static for(workflow: Workflow, step: IStep): StepInputsValue {
     return new StepInputsValue(step as unknown as Construct, step, workflow);
@@ -28,7 +28,7 @@ export class StepInputsValue extends Construct {
   private readonly _inputExpressions: Map<string, string> = new Map();
 
   /**
-   * The step this StepValueFrom belongs to
+   * The step this StepInputsValue belongs to
    * @internal
    */
   private readonly _step: IStep;
@@ -56,12 +56,12 @@ export class StepInputsValue extends Construct {
   }
 
   /**
-   * If the input is an empty array, set the value of the input to null.
+   * If the input is an empty array, set the value to null. Otherwise, return the first element of the array.
    *
    * @param input The input to modify.
    */
-  public emptyArrayToNull(input: Input): this {
-    const valueFromExpression = '$(self.length === 0 ? null : self)';
+  public firstElementOrNull(input: Input): this {
+    const valueFromExpression = '$(self.length === 0 ? null : self[0])';
     return this.addValueFromExpression(input, valueFromExpression);
   }
 

@@ -67,17 +67,17 @@ describe('StepInputsValueFrom', () => {
     });
   });
 
-  describe('emptyArrayToNull', () => {
-    test('should add correct expression for converting empty array to null', () => {
+  describe('firstElementOrNull', () => {
+    test('should add correct expression for getting first element or null', () => {
       // Arrange
       const input = Input.stringArray(step, 'testArrayInput');
 
       // Act
-      stepInputsValueFrom.emptyArrayToNull(input);
+      stepInputsValueFrom.firstElementOrNull(input);
 
       // Assert
       expect(stepInputsValueFrom.hasExpressionForInput('testArrayInput')).toBe(true);
-      expect(stepInputsValueFrom.getExpressionForInput('testArrayInput')).toBe('$(self.length === 0 ? null : self)');
+      expect(stepInputsValueFrom.getExpressionForInput('testArrayInput')).toBe('$(self.length === 0 ? null : self[0])');
       expect(Requirement.inlineJavascript).toHaveBeenCalledWith(scope);
     });
 
@@ -86,7 +86,7 @@ describe('StepInputsValueFrom', () => {
       const input = Input.stringArray(step, 'testArrayInput');
 
       // Act
-      const result = stepInputsValueFrom.emptyArrayToNull(input);
+      const result = stepInputsValueFrom.firstElementOrNull(input);
 
       // Assert
       expect(result).toBe(stepInputsValueFrom);
@@ -131,7 +131,7 @@ describe('StepInputsValueFrom', () => {
       // Act
       stepInputsValueFrom
         .valueToOneElementArray(input1)
-        .emptyArrayToNull(input2)
+        .firstElementOrNull(input2)
         .addCustomExpression(input3, 'self.trim()');
 
       // Assert
@@ -140,7 +140,7 @@ describe('StepInputsValueFrom', () => {
       expect(stepInputsValueFrom.hasExpressionForInput('input3')).toBe(true);
 
       expect(stepInputsValueFrom.getExpressionForInput('input1')).toBe('$([self])');
-      expect(stepInputsValueFrom.getExpressionForInput('input2')).toBe('$(self.length === 0 ? null : self)');
+      expect(stepInputsValueFrom.getExpressionForInput('input2')).toBe('$(self.length === 0 ? null : self[0])');
       expect(stepInputsValueFrom.getExpressionForInput('input3')).toBe('$(self.trim())');
     });
 
@@ -169,7 +169,7 @@ describe('StepInputsValueFrom', () => {
       // Act
       stepInputsValueFrom
         .valueToOneElementArray(input1)
-        .emptyArrayToNull(input2)
+        .firstElementOrNull(input2)
         .addCustomExpression(input3, 'self.trim()');
 
       // Assert
@@ -198,7 +198,7 @@ describe('StepInputsValueFrom', () => {
       // Create step inputs value from
       stepInputsValueFrom
         .valueToOneElementArray(input1)
-        .emptyArrayToNull(input2);
+        .firstElementOrNull(input2);
 
       // Create workflow inputs and link them
       Input.fromStepInput(scope, input1);
@@ -210,7 +210,7 @@ describe('StepInputsValueFrom', () => {
       expect(step.stepInputsValueFrom!.hasExpressionForInput('input1')).toBe(true);
       expect(step.stepInputsValueFrom!.hasExpressionForInput('input2')).toBe(true);
       expect(step.stepInputsValueFrom!.getExpressionForInput('input1')).toBe('$([self])');
-      expect(step.stepInputsValueFrom!.getExpressionForInput('input2')).toBe('$(self.length === 0 ? null : self)');
+      expect(step.stepInputsValueFrom!.getExpressionForInput('input2')).toBe('$(self.length === 0 ? null : self[0])');
     });
   });
 

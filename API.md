@@ -6125,7 +6125,7 @@ This class manages multiple valueFrom expressions for different inputs on a sing
 | <code><a href="#wdk-lib.StepInputsValue.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.StepInputsValue.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.StepInputsValue.addCustomExpression">addCustomExpression</a></code> | Add a custom valueFrom expression for a specific input. |
-| <code><a href="#wdk-lib.StepInputsValue.emptyArrayToNull">emptyArrayToNull</a></code> | If the input is an empty array, set the value of the input to null. |
+| <code><a href="#wdk-lib.StepInputsValue.firstElementOrNull">firstElementOrNull</a></code> | If the input is an empty array, set the value to null. |
 | <code><a href="#wdk-lib.StepInputsValue.getExpressionForInput">getExpressionForInput</a></code> | Get the valueFrom expression for a specific input ID. |
 | <code><a href="#wdk-lib.StepInputsValue.hasExpressionForInput">hasExpressionForInput</a></code> | Check if there's a valueFrom expression for a specific input ID. |
 | <code><a href="#wdk-lib.StepInputsValue.inputIdsWithExpressions">inputIdsWithExpressions</a></code> | Get all input IDs that have valueFrom expressions. |
@@ -6207,15 +6207,17 @@ The JavaScript expression to use.
 
 ---
 
-##### `emptyArrayToNull` <a name="emptyArrayToNull" id="wdk-lib.StepInputsValue.emptyArrayToNull"></a>
+##### `firstElementOrNull` <a name="firstElementOrNull" id="wdk-lib.StepInputsValue.firstElementOrNull"></a>
 
 ```typescript
-public emptyArrayToNull(input: Input): StepInputsValue
+public firstElementOrNull(input: Input): StepInputsValue
 ```
 
-If the input is an empty array, set the value of the input to null.
+If the input is an empty array, set the value to null.
 
-###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.StepInputsValue.emptyArrayToNull.parameter.input"></a>
+Otherwise, return the first element of the array.
+
+###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.StepInputsValue.firstElementOrNull.parameter.input"></a>
 
 - *Type:* <a href="#wdk-lib.Input">Input</a>
 
@@ -6279,7 +6281,7 @@ The input to modify.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.StepInputsValue.for">for</a></code> | Create a new StepInputsValueFrom instance for the given step. |
+| <code><a href="#wdk-lib.StepInputsValue.for">for</a></code> | Create a new StepInputsValue instance for the given step. |
 
 ---
 
@@ -6291,7 +6293,7 @@ import { StepInputsValue } from 'wdk-lib'
 StepInputsValue.for(workflow: Workflow, step: IStep)
 ```
 
-Create a new StepInputsValueFrom instance for the given step.
+Create a new StepInputsValue instance for the given step.
 
 ###### `workflow`<sup>Required</sup> <a name="workflow" id="wdk-lib.StepInputsValue.for.parameter.workflow"></a>
 

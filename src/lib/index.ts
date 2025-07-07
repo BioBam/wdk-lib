@@ -18,6 +18,7 @@ export * from './Output';
 export * from './Requirement';
 export * from './Scatter';
 export * from './StepConstruct';
+export * from './StepInputsValue';
 export * from './SynthFiles';
 export * from './Tool';
 export * from './ToolClass';

@@ -699,6 +699,7 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.BashTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.BashTool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.BashTool.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.BashTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.BashTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.BashTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -836,6 +837,18 @@ public readonly scatter: Scatter;
 - *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
 
 Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.BashTool.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
 
 ---
 
@@ -1044,6 +1057,7 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.CheckFileNameTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.CheckFileNameTool.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.CheckFileNameTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -1183,6 +1197,18 @@ public readonly scatter: Scatter;
 - *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
 
 Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.CheckFileNameTool.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
 
 ---
 
@@ -1451,6 +1477,7 @@ CloudService.basicProps()
 | <code><a href="#wdk-lib.CloudService.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.CloudService.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.CloudService.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.CloudService.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.CloudService.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.CloudService.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.CloudService.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -1590,6 +1617,18 @@ public readonly scatter: Scatter;
 - *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
 
 Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.CloudService.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
 
 ---
 
@@ -2268,6 +2307,7 @@ Example: call with makeParametersJsonExpressionAllStrings()
 | <code><a href="#wdk-lib.ExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.ExpressionTool.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.ExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ExpressionTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.ExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -2406,6 +2446,18 @@ public readonly scatter: Scatter;
 - *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
 
 Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.ExpressionTool.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
 
 ---
 
@@ -4818,6 +4870,7 @@ Example: call with makeParametersJsonExpressionAllStrings()
 | <code><a href="#wdk-lib.RenameExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.RenameExpressionTool.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.RenameExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -4959,6 +5012,18 @@ public readonly scatter: Scatter;
 - *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
 
 Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.RenameExpressionTool.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
 
 ---
 
@@ -5861,6 +5926,7 @@ If the step has substeps, they will be serialized recursively.
 | <code><a href="#wdk-lib.StepConstruct.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.StepConstruct.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.StepConstruct.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.StepConstruct.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.StepConstruct.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.StepConstruct.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.StepConstruct.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -5999,6 +6065,18 @@ Get the scatter object if the step is a scatter step.
 
 ---
 
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.StepConstruct.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
+
+---
+
 ##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.StepConstruct.property.config"></a>
 
 ```typescript
@@ -6030,6 +6108,252 @@ public readonly stepClass: StepClass;
 ```
 
 - *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+
+### StepInputsValue <a name="StepInputsValue" id="wdk-lib.StepInputsValue"></a>
+
+A "stepInput" specifies that the associated workflow step should modify the input according to the stepInput.
+
+This class manages multiple valueFrom expressions for different inputs on a single step.
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.StepInputsValue.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.StepInputsValue.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
+| <code><a href="#wdk-lib.StepInputsValue.addCustomExpression">addCustomExpression</a></code> | Add a custom valueFrom expression for a specific input. |
+| <code><a href="#wdk-lib.StepInputsValue.emptyArrayToNull">emptyArrayToNull</a></code> | If the input is an empty array, set the value of the input to null. |
+| <code><a href="#wdk-lib.StepInputsValue.getExpressionForInput">getExpressionForInput</a></code> | Get the valueFrom expression for a specific input ID. |
+| <code><a href="#wdk-lib.StepInputsValue.hasExpressionForInput">hasExpressionForInput</a></code> | Check if there's a valueFrom expression for a specific input ID. |
+| <code><a href="#wdk-lib.StepInputsValue.inputIdsWithExpressions">inputIdsWithExpressions</a></code> | Get all input IDs that have valueFrom expressions. |
+| <code><a href="#wdk-lib.StepInputsValue.valueToOneElementArray">valueToOneElementArray</a></code> | Set the value of the input to an array with one element being the value passed to the step. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.StepInputsValue.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.StepInputsValue.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.StepInputsValue.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.StepInputsValue.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.StepInputsValue.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.StepInputsValue.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
+
+---
+
+##### `addCustomExpression` <a name="addCustomExpression" id="wdk-lib.StepInputsValue.addCustomExpression"></a>
+
+```typescript
+public addCustomExpression(input: Input, expression: string): StepInputsValue
+```
+
+Add a custom valueFrom expression for a specific input.
+
+###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.StepInputsValue.addCustomExpression.parameter.input"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+The input to modify.
+
+---
+
+###### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.StepInputsValue.addCustomExpression.parameter.expression"></a>
+
+- *Type:* string
+
+The JavaScript expression to use.
+
+---
+
+##### `emptyArrayToNull` <a name="emptyArrayToNull" id="wdk-lib.StepInputsValue.emptyArrayToNull"></a>
+
+```typescript
+public emptyArrayToNull(input: Input): StepInputsValue
+```
+
+If the input is an empty array, set the value of the input to null.
+
+###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.StepInputsValue.emptyArrayToNull.parameter.input"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+The input to modify.
+
+---
+
+##### `getExpressionForInput` <a name="getExpressionForInput" id="wdk-lib.StepInputsValue.getExpressionForInput"></a>
+
+```typescript
+public getExpressionForInput(inputId: string): string
+```
+
+Get the valueFrom expression for a specific input ID.
+
+###### `inputId`<sup>Required</sup> <a name="inputId" id="wdk-lib.StepInputsValue.getExpressionForInput.parameter.inputId"></a>
+
+- *Type:* string
+
+---
+
+##### `hasExpressionForInput` <a name="hasExpressionForInput" id="wdk-lib.StepInputsValue.hasExpressionForInput"></a>
+
+```typescript
+public hasExpressionForInput(inputId: string): boolean
+```
+
+Check if there's a valueFrom expression for a specific input ID.
+
+###### `inputId`<sup>Required</sup> <a name="inputId" id="wdk-lib.StepInputsValue.hasExpressionForInput.parameter.inputId"></a>
+
+- *Type:* string
+
+---
+
+##### `inputIdsWithExpressions` <a name="inputIdsWithExpressions" id="wdk-lib.StepInputsValue.inputIdsWithExpressions"></a>
+
+```typescript
+public inputIdsWithExpressions(): string[]
+```
+
+Get all input IDs that have valueFrom expressions.
+
+##### `valueToOneElementArray` <a name="valueToOneElementArray" id="wdk-lib.StepInputsValue.valueToOneElementArray"></a>
+
+```typescript
+public valueToOneElementArray(input: Input): StepInputsValue
+```
+
+Set the value of the input to an array with one element being the value passed to the step.
+
+###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.StepInputsValue.valueToOneElementArray.parameter.input"></a>
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+The input to modify.
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.StepInputsValue.for">for</a></code> | Create a new StepInputsValueFrom instance for the given step. |
+
+---
+
+##### `for` <a name="for" id="wdk-lib.StepInputsValue.for"></a>
+
+```typescript
+import { StepInputsValue } from 'wdk-lib'
+
+StepInputsValue.for(workflow: Workflow, step: IStep)
+```
+
+Create a new StepInputsValueFrom instance for the given step.
+
+###### `workflow`<sup>Required</sup> <a name="workflow" id="wdk-lib.StepInputsValue.for.parameter.workflow"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+The workflow in which to apply the requirements and customize step inputs.
+
+---
+
+###### `step`<sup>Required</sup> <a name="step" id="wdk-lib.StepInputsValue.for.parameter.step"></a>
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>
+
+The step to create valueFrom expressions for.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.StepInputsValue.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
+| <code><a href="#wdk-lib.StepInputsValue.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.StepInputsValue.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.StepInputsValue.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.StepInputsValue.property.scope"></a>
+
+```typescript
+public readonly scope: Construct;
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.StepInputsValue.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
 
 ---
 
@@ -6286,6 +6610,7 @@ Create a map repsentation of the tool following the CWL specification.
 | <code><a href="#wdk-lib.Tool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Tool.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.Tool.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.Tool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Tool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Tool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -6423,6 +6748,18 @@ public readonly scatter: Scatter;
 - *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
 
 Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.Tool.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
 
 ---
 
@@ -7584,6 +7921,7 @@ Workflow.basicProps()
 | <code><a href="#wdk-lib.Workflow.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.Workflow.property.label">label</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.Workflow.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.Workflow.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Workflow.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.Workflow.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
@@ -7721,6 +8059,18 @@ public readonly scatter: Scatter;
 - *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
 
 Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.Workflow.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
 
 ---
 
@@ -8263,6 +8613,7 @@ If the step has substeps, they will be serialized recursively.
 | <code><a href="#wdk-lib.IStep.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
 | <code><a href="#wdk-lib.IStep.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
 | <code><a href="#wdk-lib.IStep.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.IStep.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
 | <code><a href="#wdk-lib.IStep.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
 | <code><a href="#wdk-lib.IStep.property.id">id</a></code> | <code>string</code> | Unique identifier for the step in the workflow. |
 
@@ -8349,6 +8700,18 @@ public readonly scatter: Scatter;
 - *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
 
 Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.IStep.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
 
 ---
 

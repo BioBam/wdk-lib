@@ -5,6 +5,7 @@ import { Input } from './Input';
 import { IStep } from './IStep';
 import { Output } from './Output';
 import { Scatter } from './Scatter';
+import { StepInputsValue } from './StepInputsValue';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
 import { ToolConfig } from './ToolConfig';
@@ -70,6 +71,10 @@ export abstract class StepConstruct extends Construct implements IStep {
   // Step-related methods
   get scatter(): Scatter | undefined {
     return this._nodeOf(Scatter) as Scatter;
+  }
+
+  get stepInputsValueFrom(): StepInputsValue | undefined {
+    return this._nodeOf(StepInputsValue) as StepInputsValue;
   }
 
   get conditional(): Conditional | undefined {

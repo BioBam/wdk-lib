@@ -9,7 +9,6 @@ import { IStep } from './IStep';
 import { IWorkflowProps } from './IWorkflowProps';
 import { Output } from './Output';
 import { Requirement } from './Requirement';
-import { Scatter } from './Scatter';
 import { StepConstruct } from './StepConstruct';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
@@ -54,10 +53,6 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
 
   public get inputs(): Input[] {
     return this._nodesOf(Input) as Input[];
-  }
-
-  get scatter(): Scatter | undefined {
-    return this._nodeOf(Scatter) as Scatter;
   }
 
   public get steps(): IStep[] {
@@ -184,6 +179,9 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
           }
         }
         cwlStepInput.linkMerge;
+        if (step.stepInputsValueFrom && step.stepInputsValueFrom.hasExpressionForInput(stepInput.id)) {
+          cwlStepInput.valueFrom = step.stepInputsValueFrom.getExpressionForInput(stepInput.id);
+        }
         wStep.in_.push(cwlStepInput);
       }
 

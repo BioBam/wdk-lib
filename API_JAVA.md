@@ -6367,6 +6367,7 @@ public StepInputsValue firstElementOrNull(Input input)
 If the input is an empty array, set the value to null.
 
 Otherwise, return the first element of the array.
+Also returns null if the input is null, undefined, or not an array.
 
 ###### `input`<sup>Required</sup> <a name="input" id="wdk-lib.StepInputsValue.firstElementOrNull.parameter.input"></a>
 

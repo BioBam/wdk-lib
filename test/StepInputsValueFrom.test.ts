@@ -77,7 +77,7 @@ describe('StepInputsValueFrom', () => {
 
       // Assert
       expect(stepInputsValueFrom.hasExpressionForInput('testArrayInput')).toBe(true);
-      expect(stepInputsValueFrom.getExpressionForInput('testArrayInput')).toBe('$(self.length === 0 ? null : self[0])');
+      expect(stepInputsValueFrom.getExpressionForInput('testArrayInput')).toBe('$(self == null || !Array.isArray(self) || self.length === 0 ? null : self[0])');
       expect(Requirement.inlineJavascript).toHaveBeenCalledWith(scope);
     });
 
@@ -140,7 +140,7 @@ describe('StepInputsValueFrom', () => {
       expect(stepInputsValueFrom.hasExpressionForInput('input3')).toBe(true);
 
       expect(stepInputsValueFrom.getExpressionForInput('input1')).toBe('$([self])');
-      expect(stepInputsValueFrom.getExpressionForInput('input2')).toBe('$(self.length === 0 ? null : self[0])');
+      expect(stepInputsValueFrom.getExpressionForInput('input2')).toBe('$(self == null || !Array.isArray(self) || self.length === 0 ? null : self[0])');
       expect(stepInputsValueFrom.getExpressionForInput('input3')).toBe('$(self.trim())');
     });
 
@@ -210,7 +210,7 @@ describe('StepInputsValueFrom', () => {
       expect(step.stepInputsValueFrom!.hasExpressionForInput('input1')).toBe(true);
       expect(step.stepInputsValueFrom!.hasExpressionForInput('input2')).toBe(true);
       expect(step.stepInputsValueFrom!.getExpressionForInput('input1')).toBe('$([self])');
-      expect(step.stepInputsValueFrom!.getExpressionForInput('input2')).toBe('$(self.length === 0 ? null : self[0])');
+      expect(step.stepInputsValueFrom!.getExpressionForInput('input2')).toBe('$(self == null || !Array.isArray(self) || self.length === 0 ? null : self[0])');
     });
   });
 

@@ -57,11 +57,12 @@ export class StepInputsValue extends Construct {
 
   /**
    * If the input is an empty array, set the value to null. Otherwise, return the first element of the array.
+   * Also returns null if the input is null, undefined, or not an array.
    *
    * @param input The input to modify.
    */
   public firstElementOrNull(input: Input): this {
-    const valueFromExpression = '$(self.length === 0 ? null : self[0])';
+    const valueFromExpression = '$(self == null || !Array.isArray(self) || self.length === 0 ? null : self[0])';
     return this.addValueFromExpression(input, valueFromExpression);
   }
 

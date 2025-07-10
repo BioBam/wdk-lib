@@ -117,9 +117,9 @@ describe('StepInputsValueFrom Usage Examples', () => {
     expect(aggregationTool.stepInputsValueFrom).toBeDefined();
 
     // Verify each step has the correct expressions
-    expect(validationTool.stepInputsValueFrom!.getExpressionForInput('files_to_validate')).toBe('$(self.length === 0 ? null : self[0])');
+    expect(validationTool.stepInputsValueFrom!.getExpressionForInput('files_to_validate')).toBe('$(self == null || !Array.isArray(self) || self.length === 0 ? null : self[0])');
     expect(transformTool.stepInputsValueFrom!.getExpressionForInput('input_files')).toBe('$([self])');
-    expect(transformTool.stepInputsValueFrom!.getExpressionForInput('transform_params')).toBe('$(self.length === 0 ? null : self[0])');
+    expect(transformTool.stepInputsValueFrom!.getExpressionForInput('transform_params')).toBe('$(self == null || !Array.isArray(self) || self.length === 0 ? null : self[0])');
     expect(aggregationTool.stepInputsValueFrom!.getExpressionForInput('files_to_aggregate')).toBe('$(self.filter(f => f !== null))');
 
     // Verify the workflow structure

@@ -7587,7 +7587,7 @@ Generates a CWL string array expression.
 *Example*
 
 ```typescript
-Value.stringArray(["hello", "world"]); // ["hello", "world"]
+Value.stringArray(["hello", "world"]); // "$( [\"hello\", \"world\"] )"
 ```
 
 

@@ -85,10 +85,10 @@ export class Value {
    * @param values - An array of strings.
    * @returns A CWL-compatible expression for a string array.
    * @example
-   * Value.stringArray(["hello", "world"]); // ["hello", "world"]
+   * Value.stringArray(["hello", "world"]); // "$( [\"hello\", \"world\"] )"
    */
   public static stringArray(values: string[]): string {
-    return JSON.stringify(values);
+    return `$( ${JSON.stringify(values)} )`;
   }
 
   /**

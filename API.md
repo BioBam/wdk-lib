@@ -7395,7 +7395,7 @@ Generates a CWL boolean expression.
 *Example*
 
 ```typescript
-Value.boolean(true); // "$( true )"
+Value.boolean(true); // "true"
 ```
 
 
@@ -7420,7 +7420,7 @@ Generates a CWL double expression.
 *Example*
 
 ```typescript
-Value.double(3.14159); // "$( 3.14159 )"
+Value.double(3.14159); // "3.14159"
 ```
 
 
@@ -7470,7 +7470,7 @@ Generates a CWL float expression.
 *Example*
 
 ```typescript
-Value.float(3.14); // "$( 3.14 )"
+Value.float(3.14); // "3.14"
 ```
 
 
@@ -7495,7 +7495,7 @@ Generates a CWL integer expression.
 *Example*
 
 ```typescript
-Value.int(42); // "$( 42 )"
+Value.int(42); // "42"
 ```
 
 
@@ -7520,7 +7520,7 @@ Generates a CWL long integer expression.
 *Example*
 
 ```typescript
-Value.long(1000000000); // "$( 1000000000 )"
+Value.long(1000000000); // "1000000000"
 ```
 
 
@@ -7545,7 +7545,7 @@ Generates a CWL null expression to represent no value.
 *Example*
 
 ```typescript
-Value.null(); // "$(null)"
+Value.null(); // null
 ```
 
 
@@ -7562,7 +7562,7 @@ Generates a CWL string expression.
 *Example*
 
 ```typescript
-Value.string("hello world"); // "$( "hello world" )"
+Value.string("hello world"); // "hello world"
 ```
 
 
@@ -7587,7 +7587,7 @@ Generates a CWL string array expression.
 *Example*
 
 ```typescript
-Value.stringArray(["hello", "world"]); // "$( [ "hello", "world" ] )"
+Value.stringArray(["hello", "world"]); // ["hello", "world"]
 ```
 
 

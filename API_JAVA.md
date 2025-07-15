@@ -7530,7 +7530,7 @@ Helper class for generating CWL valueFrom expressions.
 | <code><a href="#wdk-lib.Value.int">int</a></code> | Generates a CWL integer expression. |
 | <code><a href="#wdk-lib.Value.long">long</a></code> | Generates a CWL long integer expression. |
 | <code><a href="#wdk-lib.Value.null">null</a></code> | Generates a CWL null expression to represent no value. |
-| <code><a href="#wdk-lib.Value.string">string</a></code> | Generates a CWL string expression. |
+| <code><a href="#wdk-lib.Value.string">string</a></code> | Generates a CWL string value. |
 | <code><a href="#wdk-lib.Value.stringArray">stringArray</a></code> | Generates a CWL string array expression. |
 
 ---
@@ -7717,7 +7717,7 @@ import com.biobam.wdk.lib.Value;
 Value.string(java.lang.String value)
 ```
 
-Generates a CWL string expression.
+Generates a CWL string value.
 
 *Example*
 

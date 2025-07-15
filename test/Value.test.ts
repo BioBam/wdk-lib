@@ -8,7 +8,7 @@ describe('Value', () => {
       const result = Value.boolean(true);
 
       // Assert
-      expect(result).toBe('$( true )');
+      expect(result).toBe('$(true)');
     });
 
     test('should return expression for false', () => {
@@ -16,7 +16,7 @@ describe('Value', () => {
       const result = Value.boolean(false);
 
       // Assert
-      expect(result).toBe('$( false )');
+      expect(result).toBe('$(false)');
     });
   });
 
@@ -26,7 +26,7 @@ describe('Value', () => {
       const result = Value.int(42);
 
       // Assert
-      expect(result).toBe('$( 42 )');
+      expect(result).toBe('$(42)');
     });
 
     test('should return expression for negative integer', () => {
@@ -34,7 +34,7 @@ describe('Value', () => {
       const result = Value.int(-123);
 
       // Assert
-      expect(result).toBe('$( -123 )');
+      expect(result).toBe('$(-123)');
     });
 
     test('should return expression for zero', () => {
@@ -42,7 +42,7 @@ describe('Value', () => {
       const result = Value.int(0);
 
       // Assert
-      expect(result).toBe('$( 0 )');
+      expect(result).toBe('$(0)');
     });
 
     test('should throw error for non-integer values', () => {
@@ -59,7 +59,7 @@ describe('Value', () => {
       const result = Value.long(1000000000);
 
       // Assert
-      expect(result).toBe('$( 1000000000 )');
+      expect(result).toBe('$(1000000000)');
     });
 
     test('should return expression for negative large integer', () => {
@@ -67,7 +67,7 @@ describe('Value', () => {
       const result = Value.long(-1000000000);
 
       // Assert
-      expect(result).toBe('$( -1000000000 )');
+      expect(result).toBe('$(-1000000000)');
     });
 
     test('should throw error for non-integer values', () => {
@@ -83,7 +83,7 @@ describe('Value', () => {
       const result = Value.float(3.14);
 
       // Assert
-      expect(result).toBe('$( 3.14 )');
+      expect(result).toBe('$(3.14)');
     });
 
     test('should return expression for negative float', () => {
@@ -91,15 +91,15 @@ describe('Value', () => {
       const result = Value.float(-2.718);
 
       // Assert
-      expect(result).toBe('$( -2.718 )');
+      expect(result).toBe('$(-2.718)');
     });
 
     test('should handle special float values', () => {
       // Act & Assert
-      expect(Value.float(0.0)).toBe('$( 0 )');
-      expect(Value.float(-0.0)).toBe('$( 0 )'); // JavaScript converts -0.0 to "0"
-      expect(Value.float(Infinity)).toBe('$( Infinity )');
-      expect(Value.float(-Infinity)).toBe('$( -Infinity )');
+      expect(Value.float(0.0)).toBe('$(0)');
+      expect(Value.float(-0.0)).toBe('$(0)'); // JavaScript converts -0.0 to "0"
+      expect(Value.float(Infinity)).toBe('$(Infinity)');
+      expect(Value.float(-Infinity)).toBe('$(-Infinity)');
     });
 
     test('should handle integer as float', () => {
@@ -107,7 +107,7 @@ describe('Value', () => {
       const result = Value.float(42);
 
       // Assert
-      expect(result).toBe('$( 42 )');
+      expect(result).toBe('$(42)');
     });
   });
 
@@ -117,7 +117,7 @@ describe('Value', () => {
       const result = Value.double(3.14159265359);
 
       // Assert
-      expect(result).toBe('$( 3.14159265359 )');
+      expect(result).toBe('$(3.14159265359)');
     });
 
     test('should return expression for negative double', () => {
@@ -125,15 +125,15 @@ describe('Value', () => {
       const result = Value.double(-2.71828182846);
 
       // Assert
-      expect(result).toBe('$( -2.71828182846 )');
+      expect(result).toBe('$(-2.71828182846)');
     });
 
     test('should handle special double values', () => {
       // Act & Assert
-      expect(Value.double(0.0)).toBe('$( 0 )');
-      expect(Value.double(-0.0)).toBe('$( 0 )'); // JavaScript converts -0.0 to "0"
-      expect(Value.double(Infinity)).toBe('$( Infinity )');
-      expect(Value.double(-Infinity)).toBe('$( -Infinity )');
+      expect(Value.double(0.0)).toBe('$(0)');
+      expect(Value.double(-0.0)).toBe('$(0)'); // JavaScript converts -0.0 to "0"
+      expect(Value.double(Infinity)).toBe('$(Infinity)');
+      expect(Value.double(-Infinity)).toBe('$(-Infinity)');
     });
   });
 
@@ -177,7 +177,7 @@ describe('Value', () => {
       const result = Value.stringArray(['hello', 'world']);
 
       // Assert
-      expect(result).toBe('$( ["hello","world"] )');
+      expect(result).toBe('$(["hello","world"])');
     });
 
     test('should return expression for empty array', () => {
@@ -185,7 +185,7 @@ describe('Value', () => {
       const result = Value.stringArray([]);
 
       // Assert
-      expect(result).toBe('$( [] )');
+      expect(result).toBe('$([])');
     });
 
     test('should return expression for single element array', () => {
@@ -193,7 +193,7 @@ describe('Value', () => {
       const result = Value.stringArray(['single']);
 
       // Assert
-      expect(result).toBe('$( ["single"] )');
+      expect(result).toBe('$(["single"])');
     });
 
     test('should properly escape strings in array', () => {
@@ -201,7 +201,7 @@ describe('Value', () => {
       const result = Value.stringArray(['hello "world"', 'line1\nline2']);
 
       // Assert
-      expect(result).toBe('$( ["hello \\"world\\"","line1\\nline2"] )');
+      expect(result).toBe('$(["hello \\"world\\"","line1\\nline2"])');
     });
   });
 
@@ -211,7 +211,7 @@ describe('Value', () => {
       const result = Value.null();
 
       // Assert
-      expect(result).toBe('$( null )');
+      expect(result).toBe('$(null)');
     });
   });
 
@@ -221,14 +221,14 @@ describe('Value', () => {
       const result = Value.expression('inputs.my_input * 2');
 
       // Assert
-      expect(result).toBe('$( inputs.my_input * 2 )');
+      expect(result).toBe('$(inputs.my_input * 2)');
     });
 
     test('should handle complex expressions', () => {
       // Act & Assert
-      expect(Value.expression('inputs.files.length')).toBe('$( inputs.files.length )');
-      expect(Value.expression('inputs.prefix + "_" + inputs.suffix')).toBe('$( inputs.prefix + "_" + inputs.suffix )');
-      expect(Value.expression('inputs.value > 0 ? "positive" : "negative"')).toBe('$( inputs.value > 0 ? "positive" : "negative" )');
+      expect(Value.expression('inputs.files.length')).toBe('$(inputs.files.length)');
+      expect(Value.expression('inputs.prefix + "_" + inputs.suffix')).toBe('$(inputs.prefix + "_" + inputs.suffix)');
+      expect(Value.expression('inputs.value > 0 ? "positive" : "negative"')).toBe('$(inputs.value > 0 ? "positive" : "negative")');
     });
 
     test('should handle empty expression', () => {
@@ -236,7 +236,7 @@ describe('Value', () => {
       const result = Value.expression('');
 
       // Assert
-      expect(result).toBe('$(  )');
+      expect(result).toBe('$()');
     });
   });
 

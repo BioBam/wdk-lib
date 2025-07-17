@@ -2404,8 +2404,71 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.ExpressionTool.createPickFirstExpressionTool">createPickFirstExpressionTool</a></code> | Create a CWL ExpressionTool that picks the first non-null element from an array input. |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `createPickFirstExpressionTool` <a name="createPickFirstExpressionTool" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool"></a>
+
+```java
+import com.biobam.wdk.lib.ExpressionTool;
+
+ExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType),ExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, java.lang.String inputId),ExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, java.lang.String inputId, java.lang.String outputId)
+```
+
+Create a CWL ExpressionTool that picks the first non-null element from an array input.
+
+This is useful for merging multiple optional outputs into a single output where only the first available value is needed.
+The output is always a File type that can be null.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+// Create a tool that picks the first string from an array of strings with custom IDs
+Object pickFirstString = ExpressionTool.createPickFirstExpressionTool(workflow, "pick_first_string", TypeIn.string(), "string_array", "selected_string");
+```
+
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+The workflow or parent construct within which this tool is defined.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+The identifier for this expression tool.
+
+---
+
+###### `inputType`<sup>Required</sup> <a name="inputType" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.inputType"></a>
+
+- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
+
+The TypeIn object defining the type of array elements (e.g., TypeIn.file(), TypeIn.string(), etc.).
+
+---
+
+###### `inputId`<sup>Optional</sup> <a name="inputId" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.inputId"></a>
+
+- *Type:* java.lang.String
+
+The identifier for the array input parameter (defaults to 'items').
+
+---
+
+###### `outputId`<sup>Optional</sup> <a name="outputId" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.outputId"></a>
+
+- *Type:* java.lang.String
+
+The identifier for the output parameter (defaults to 'first').
 
 ---
 
@@ -4970,8 +5033,71 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.RenameExpressionTool.createPickFirstExpressionTool">createPickFirstExpressionTool</a></code> | Create a CWL ExpressionTool that picks the first non-null element from an array input. |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `createPickFirstExpressionTool` <a name="createPickFirstExpressionTool" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool"></a>
+
+```java
+import com.biobam.wdk.lib.RenameExpressionTool;
+
+RenameExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType),RenameExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, java.lang.String inputId),RenameExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, java.lang.String inputId, java.lang.String outputId)
+```
+
+Create a CWL ExpressionTool that picks the first non-null element from an array input.
+
+This is useful for merging multiple optional outputs into a single output where only the first available value is needed.
+The output is always a File type that can be null.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+// Create a tool that picks the first string from an array of strings with custom IDs
+Object pickFirstString = ExpressionTool.createPickFirstExpressionTool(workflow, "pick_first_string", TypeIn.string(), "string_array", "selected_string");
+```
+
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+The workflow or parent construct within which this tool is defined.
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+The identifier for this expression tool.
+
+---
+
+###### `inputType`<sup>Required</sup> <a name="inputType" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.inputType"></a>
+
+- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
+
+The TypeIn object defining the type of array elements (e.g., TypeIn.file(), TypeIn.string(), etc.).
+
+---
+
+###### `inputId`<sup>Optional</sup> <a name="inputId" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.inputId"></a>
+
+- *Type:* java.lang.String
+
+The identifier for the array input parameter (defaults to 'items').
+
+---
+
+###### `outputId`<sup>Optional</sup> <a name="outputId" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.outputId"></a>
+
+- *Type:* java.lang.String
+
+The identifier for the output parameter (defaults to 'first').
 
 ---
 

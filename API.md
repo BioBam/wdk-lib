@@ -2262,76 +2262,8 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ExpressionTool.createPickFirstExpressionTool">createPickFirstExpressionTool</a></code> | Create a CWL ExpressionTool that picks the first non-null element from an array input. |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
-
----
-
-##### `createPickFirstExpressionTool` <a name="createPickFirstExpressionTool" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool"></a>
-
-```typescript
-import { ExpressionTool } from 'wdk-lib'
-
-ExpressionTool.createPickFirstExpressionTool(scope: Workflow, id: string, inputType: TypeIn, inputId?: string, outputId?: string)
-```
-
-Create a CWL ExpressionTool that picks the first non-null element from an array input.
-
-This is useful for merging multiple optional outputs into a single output where only the first available value is needed.
-The output is always a File type that can be null.
-
-*Example*
-
-```typescript
-// Create a tool that picks the first string from an array of strings with custom IDs
-const pickFirstString = ExpressionTool.createPickFirstExpressionTool(
-  workflow,
-  'pick_first_string',
-  TypeIn.string(),
-  'string_array',
-  'selected_string'
-);
-```
-
-
-###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.scope"></a>
-
-- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
-
-The workflow or parent construct within which this tool is defined.
-
----
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.id"></a>
-
-- *Type:* string
-
-The identifier for this expression tool.
-
----
-
-###### `inputType`<sup>Required</sup> <a name="inputType" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.inputType"></a>
-
-- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
-
-The TypeIn object defining the type of array elements (e.g., TypeIn.file(), TypeIn.string(), etc.).
-
----
-
-###### `inputId`<sup>Optional</sup> <a name="inputId" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.inputId"></a>
-
-- *Type:* string
-
-The identifier for the array input parameter (defaults to 'items').
-
----
-
-###### `outputId`<sup>Optional</sup> <a name="outputId" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.outputId"></a>
-
-- *Type:* string
-
-The identifier for the output parameter (defaults to 'first').
 
 ---
 
@@ -2646,6 +2578,473 @@ Utility to write (or overwrite) the YAML content into the file.
 
 ---
 
+
+
+### FirstOrNullExpressionTool <a name="FirstOrNullExpressionTool" id="wdk-lib.FirstOrNullExpressionTool"></a>
+
+FirstOrNullExpressionTool picks the first non-null element from an array input.
+
+This is useful for merging multiple optional outputs into a single output where only the first available value is needed.
+
+*Example*
+
+```typescript
+// Custom input and output IDs with different data type
+const pickFirstString = new FirstOrNullExpressionTool(
+  workflow,
+  'pick_first_string',
+  TypeIn.string(),
+  { inputId: 'string_array', outputId: 'selected_string' }
+);
+```
+
+
+#### Initializers <a name="Initializers" id="wdk-lib.FirstOrNullExpressionTool.Initializer"></a>
+
+```typescript
+import { FirstOrNullExpressionTool } from 'wdk-lib'
+
+new FirstOrNullExpressionTool(scope: Workflow, id: string, inputType: TypeIn, props?: IFirstOrNullExpressionToolProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.inputType">inputType</a></code> | <code><a href="#wdk-lib.TypeIn">TypeIn</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.IFirstOrNullExpressionToolProps">IFirstOrNullExpressionToolProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
+---
+
+##### `inputType`<sup>Required</sup> <a name="inputType" id="wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.inputType"></a>
+
+- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#wdk-lib.IFirstOrNullExpressionToolProps">IFirstOrNullExpressionToolProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.serialize">serialize</a></code> | Serialize the step to a directory. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.withExpression">withExpression</a></code> | Specify a custom JavaScript expression for this ExpressionTool. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.FirstOrNullExpressionTool.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.FirstOrNullExpressionTool.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.FirstOrNullExpressionTool.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.FirstOrNullExpressionTool.findNodesWithMetadata"></a>
+
+```typescript
+public findNodesWithMetadata(key: string, value?: any): Construct[]
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.FirstOrNullExpressionTool.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* string
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.FirstOrNullExpressionTool.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* any
+
+The metadata value to match (optional).
+
+---
+
+##### `hasSteps` <a name="hasSteps" id="wdk-lib.FirstOrNullExpressionTool.hasSteps"></a>
+
+```typescript
+public hasSteps(): boolean
+```
+
+Whether the step has sub steps like in case of a workflow step.
+
+##### `serialize` <a name="serialize" id="wdk-lib.FirstOrNullExpressionTool.serialize"></a>
+
+```typescript
+public serialize(dirPath: string): SynthFiles
+```
+
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
+
+###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.FirstOrNullExpressionTool.serialize.parameter.dirPath"></a>
+
+- *Type:* string
+
+---
+
+##### `toMap` <a name="toMap" id="wdk-lib.FirstOrNullExpressionTool.toMap"></a>
+
+```typescript
+public toMap(): {[ key: string ]: any}
+```
+
+Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool.
+
+##### `withExpression` <a name="withExpression" id="wdk-lib.FirstOrNullExpressionTool.withExpression"></a>
+
+```typescript
+public withExpression(expression: string): ExpressionTool
+```
+
+Specify a custom JavaScript expression for this ExpressionTool.
+
+###### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.FirstOrNullExpressionTool.withExpression.parameter.expression"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `makeParametersJsonExpression` <a name="makeParametersJsonExpression" id="wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpression"></a>
+
+```typescript
+import { FirstOrNullExpressionTool } from 'wdk-lib'
+
+FirstOrNullExpressionTool.makeParametersJsonExpression()
+```
+
+Create a CWL expression script that generates a JSON file with the parameters of the tool.
+
+Example: call with makeParametersJsonExpression()
+
+##### `makeParametersJsonExpressionAllStrings` <a name="makeParametersJsonExpressionAllStrings" id="wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpressionAllStrings"></a>
+
+```typescript
+import { FirstOrNullExpressionTool } from 'wdk-lib'
+
+FirstOrNullExpressionTool.makeParametersJsonExpressionAllStrings()
+```
+
+Create a CWL expression script that generates a JSON file with the parameters of the tool.
+
+All parameters are converted to strings.
+Example: call with makeParametersJsonExpressionAllStrings()
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.inputs">inputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | All inputs of the step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.linkedInputs">linkedInputs</a></code> | <code><a href="#wdk-lib.Input">Input</a>[]</code> | Inputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.linkedOutputs">linkedOutputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | Outputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.outputs">outputs</a></code> | <code><a href="#wdk-lib.Output">Output</a>[]</code> | All outputs of the step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.steps">steps</a></code> | <code><a href="#wdk-lib.IStep">IStep</a>[]</code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.label">label</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.fileName">fileName</a></code> | <code>string</code> | The name of the step file. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.expression">expression</a></code> | <code>string</code> | Get the custom JavaScript expression for this ExpressionTool. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.requirements">requirements</a></code> | <code><a href="#wdk-lib.Requirement">Requirement</a>[]</code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.input">input</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.output">output</a></code> | <code><a href="#wdk-lib.Output">Output</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.FirstOrNullExpressionTool.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Get metadata for this construct.
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.FirstOrNullExpressionTool.property.scope"></a>
+
+```typescript
+public readonly scope: Construct;
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.FirstOrNullExpressionTool.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
+---
+
+##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.FirstOrNullExpressionTool.property.inputs"></a>
+
+```typescript
+public readonly inputs: Input[];
+```
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>[]
+
+All inputs of the step.
+
+---
+
+##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.FirstOrNullExpressionTool.property.linkedInputs"></a>
+
+```typescript
+public readonly linkedInputs: Input[];
+```
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>[]
+
+Inputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `linkedOutputs`<sup>Required</sup> <a name="linkedOutputs" id="wdk-lib.FirstOrNullExpressionTool.property.linkedOutputs"></a>
+
+```typescript
+public readonly linkedOutputs: Output[];
+```
+
+- *Type:* <a href="#wdk-lib.Output">Output</a>[]
+
+Outputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `outputs`<sup>Required</sup> <a name="outputs" id="wdk-lib.FirstOrNullExpressionTool.property.outputs"></a>
+
+```typescript
+public readonly outputs: Output[];
+```
+
+- *Type:* <a href="#wdk-lib.Output">Output</a>[]
+
+All outputs of the step.
+
+---
+
+##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.FirstOrNullExpressionTool.property.steps"></a>
+
+```typescript
+public readonly steps: IStep[];
+```
+
+- *Type:* <a href="#wdk-lib.IStep">IStep</a>[]
+
+All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.FirstOrNullExpressionTool.property.conditional"></a>
+
+```typescript
+public readonly conditional: Conditional;
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.FirstOrNullExpressionTool.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.FirstOrNullExpressionTool.property.scatter"></a>
+
+```typescript
+public readonly scatter: Scatter;
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.FirstOrNullExpressionTool.property.stepInputsValueFrom"></a>
+
+```typescript
+public readonly stepInputsValueFrom: StepInputsValue;
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
+
+---
+
+##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.FirstOrNullExpressionTool.property.config"></a>
+
+```typescript
+public readonly config: ToolConfig;
+```
+
+- *Type:* <a href="#wdk-lib.ToolConfig">ToolConfig</a>
+
+---
+
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.FirstOrNullExpressionTool.property.fileName"></a>
+
+```typescript
+public readonly fileName: string;
+```
+
+- *Type:* string
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
+
+---
+
+##### `stepClass`<sup>Required</sup> <a name="stepClass" id="wdk-lib.FirstOrNullExpressionTool.property.stepClass"></a>
+
+```typescript
+public readonly stepClass: StepClass;
+```
+
+- *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+##### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.FirstOrNullExpressionTool.property.expression"></a>
+
+```typescript
+public readonly expression: string;
+```
+
+- *Type:* string
+
+Get the custom JavaScript expression for this ExpressionTool.
+
+---
+
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.FirstOrNullExpressionTool.property.requirements"></a>
+
+```typescript
+public readonly requirements: Requirement[];
+```
+
+- *Type:* <a href="#wdk-lib.Requirement">Requirement</a>[]
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.FirstOrNullExpressionTool.property.props"></a>
+
+```typescript
+public readonly props: IToolProps;
+```
+
+- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
+
+---
+
+##### `input`<sup>Required</sup> <a name="input" id="wdk-lib.FirstOrNullExpressionTool.property.input"></a>
+
+```typescript
+public readonly input: Input;
+```
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="wdk-lib.FirstOrNullExpressionTool.property.output"></a>
+
+```typescript
+public readonly output: Output;
+```
+
+- *Type:* <a href="#wdk-lib.Output">Output</a>
+
+---
 
 
 ### Input <a name="Input" id="wdk-lib.Input"></a>
@@ -4893,76 +5292,8 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.RenameExpressionTool.createPickFirstExpressionTool">createPickFirstExpressionTool</a></code> | Create a CWL ExpressionTool that picks the first non-null element from an array input. |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
-
----
-
-##### `createPickFirstExpressionTool` <a name="createPickFirstExpressionTool" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool"></a>
-
-```typescript
-import { RenameExpressionTool } from 'wdk-lib'
-
-RenameExpressionTool.createPickFirstExpressionTool(scope: Workflow, id: string, inputType: TypeIn, inputId?: string, outputId?: string)
-```
-
-Create a CWL ExpressionTool that picks the first non-null element from an array input.
-
-This is useful for merging multiple optional outputs into a single output where only the first available value is needed.
-The output is always a File type that can be null.
-
-*Example*
-
-```typescript
-// Create a tool that picks the first string from an array of strings with custom IDs
-const pickFirstString = ExpressionTool.createPickFirstExpressionTool(
-  workflow,
-  'pick_first_string',
-  TypeIn.string(),
-  'string_array',
-  'selected_string'
-);
-```
-
-
-###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.scope"></a>
-
-- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
-
-The workflow or parent construct within which this tool is defined.
-
----
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.id"></a>
-
-- *Type:* string
-
-The identifier for this expression tool.
-
----
-
-###### `inputType`<sup>Required</sup> <a name="inputType" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.inputType"></a>
-
-- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
-
-The TypeIn object defining the type of array elements (e.g., TypeIn.file(), TypeIn.string(), etc.).
-
----
-
-###### `inputId`<sup>Optional</sup> <a name="inputId" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.inputId"></a>
-
-- *Type:* string
-
-The identifier for the array input parameter (defaults to 'items').
-
----
-
-###### `outputId`<sup>Optional</sup> <a name="outputId" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.outputId"></a>
-
-- *Type:* string
-
-The identifier for the output parameter (defaults to 'first').
 
 ---
 
@@ -8486,6 +8817,46 @@ Provide either this or `inlineScript`.
 
 
 
+### IFirstOrNullExpressionToolProps <a name="IFirstOrNullExpressionToolProps" id="wdk-lib.IFirstOrNullExpressionToolProps"></a>
+
+- *Implemented By:* <a href="#wdk-lib.IFirstOrNullExpressionToolProps">IFirstOrNullExpressionToolProps</a>
+
+Properties for configuring the FirstOrNullExpressionTool.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.IFirstOrNullExpressionToolProps.property.inputId">inputId</a></code> | <code>string</code> | The identifier for the array input parameter (defaults to 'items'). |
+| <code><a href="#wdk-lib.IFirstOrNullExpressionToolProps.property.outputId">outputId</a></code> | <code>string</code> | The identifier for the output parameter (defaults to 'first'). |
+
+---
+
+##### `inputId`<sup>Optional</sup> <a name="inputId" id="wdk-lib.IFirstOrNullExpressionToolProps.property.inputId"></a>
+
+```typescript
+public readonly inputId: string;
+```
+
+- *Type:* string
+
+The identifier for the array input parameter (defaults to 'items').
+
+---
+
+##### `outputId`<sup>Optional</sup> <a name="outputId" id="wdk-lib.IFirstOrNullExpressionToolProps.property.outputId"></a>
+
+```typescript
+public readonly outputId: string;
+```
+
+- *Type:* string
+
+The identifier for the output parameter (defaults to 'first').
+
+---
+
 ### ILinkable <a name="ILinkable" id="wdk-lib.ILinkable"></a>
 
 - *Implemented By:* <a href="#wdk-lib.Input">Input</a>, <a href="#wdk-lib.LinkableConstruct">LinkableConstruct</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.ILinkable">ILinkable</a>
@@ -8625,7 +8996,7 @@ Access the identified of this construct.
 
 ### IMappable <a name="IMappable" id="wdk-lib.IMappable"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.FirstOrNullExpressionTool">FirstOrNullExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
 
 #### Methods <a name="Methods" id="Methods"></a>
 
@@ -8704,7 +9075,7 @@ public readonly outFilePropId: string;
 
 ### IStep <a name="IStep" id="wdk-lib.IStep"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.FirstOrNullExpressionTool">FirstOrNullExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
 
 Represents a step in a workflow.
 

@@ -1,9 +1,9 @@
 import { Constructs } from '../src/lib/Constructs';
-import { ExpressionTool } from '../src/lib/ExpressionTool';
+import { FirstOrNullExpressionTool } from '../src/lib/l3/FirstOrNullExpressionTool';
 import { TypeIn } from '../src/lib/TypeIn';
 import { Workflow } from '../src/lib/Workflow';
 
-describe('PickFirstExpressionTool Integration', () => {
+describe('FirstOrNullExpressionTool Integration', () => {
   let workflow: Workflow;
 
   beforeEach(() => {
@@ -12,12 +12,11 @@ describe('PickFirstExpressionTool Integration', () => {
   });
 
   it('should generate CWL structure matching the original user example', () => {
-    const pickFirst = ExpressionTool.createPickFirstExpressionTool(
+    const pickFirst = new FirstOrNullExpressionTool(
       workflow,
       'pick_first',
       TypeIn.file(),
-      'files',
-      'first_file',
+      { inputId: 'files', outputId: 'first_file' },
     );
 
     const cwlMap = pickFirst.toMap();
@@ -52,12 +51,11 @@ describe('PickFirstExpressionTool Integration', () => {
   });
 
   it('should generate the exact expression format from user example', () => {
-    const pickFirst = ExpressionTool.createPickFirstExpressionTool(
+    const pickFirst = new FirstOrNullExpressionTool(
       workflow,
       'pick_first',
       TypeIn.file(),
-      'files',
-      'first_file',
+      { inputId: 'files', outputId: 'first_file' },
     );
 
     const expectedExpression = `\${
@@ -70,12 +68,11 @@ describe('PickFirstExpressionTool Integration', () => {
   });
 
   it('should support custom input and output names like in user example', () => {
-    const pickFirst = ExpressionTool.createPickFirstExpressionTool(
+    const pickFirst = new FirstOrNullExpressionTool(
       workflow,
       'pick_first',
       TypeIn.file(),
-      'files', // Custom input name
-      'first_file', // Custom output name
+      { inputId: 'files', outputId: 'first_file' }, // Custom input and output names
     );
 
     const cwlMap = pickFirst.toMap();
@@ -87,12 +84,11 @@ describe('PickFirstExpressionTool Integration', () => {
   });
 
   it('should work with different data types while maintaining File output', () => {
-    const stringPickFirst = ExpressionTool.createPickFirstExpressionTool(
+    const stringPickFirst = new FirstOrNullExpressionTool(
       workflow,
       'pick_string',
       TypeIn.string(),
-      'string_items',
-      'selected_string',
+      { inputId: 'string_items', outputId: 'selected_string' },
     );
 
     const cwlMap = stringPickFirst.toMap();
@@ -115,12 +111,11 @@ describe('PickFirstExpressionTool Integration', () => {
 
   it('should handle complex types like array of files', () => {
     const nestedArrayType = TypeIn.arrayOf(TypeIn.file());
-    const pickFirst = ExpressionTool.createPickFirstExpressionTool(
+    const pickFirst = new FirstOrNullExpressionTool(
       workflow,
       'pick_nested',
       nestedArrayType,
-      'nested_arrays',
-      'first_array',
+      { inputId: 'nested_arrays', outputId: 'first_array' },
     );
 
     const cwlMap = pickFirst.toMap();
@@ -145,7 +140,7 @@ describe('PickFirstExpressionTool Integration', () => {
   });
 
   it('should produce serializable YAML that matches CWL spec format', () => {
-    const pickFirst = ExpressionTool.createPickFirstExpressionTool(
+    const pickFirst = new FirstOrNullExpressionTool(
       workflow,
       'pick_first',
       TypeIn.file(),

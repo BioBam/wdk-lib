@@ -2404,71 +2404,8 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.ExpressionTool.createPickFirstExpressionTool">createPickFirstExpressionTool</a></code> | Create a CWL ExpressionTool that picks the first non-null element from an array input. |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
-
----
-
-##### `createPickFirstExpressionTool` <a name="createPickFirstExpressionTool" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool"></a>
-
-```java
-import com.biobam.wdk.lib.ExpressionTool;
-
-ExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType),ExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, java.lang.String inputId),ExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, java.lang.String inputId, java.lang.String outputId)
-```
-
-Create a CWL ExpressionTool that picks the first non-null element from an array input.
-
-This is useful for merging multiple optional outputs into a single output where only the first available value is needed.
-The output is always a File type that can be null.
-
-*Example*
-
-```java
-// Example automatically generated from non-compiling source. May contain errors.
-// Create a tool that picks the first string from an array of strings with custom IDs
-Object pickFirstString = ExpressionTool.createPickFirstExpressionTool(workflow, "pick_first_string", TypeIn.string(), "string_array", "selected_string");
-```
-
-
-###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.scope"></a>
-
-- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
-
-The workflow or parent construct within which this tool is defined.
-
----
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.id"></a>
-
-- *Type:* java.lang.String
-
-The identifier for this expression tool.
-
----
-
-###### `inputType`<sup>Required</sup> <a name="inputType" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.inputType"></a>
-
-- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
-
-The TypeIn object defining the type of array elements (e.g., TypeIn.file(), TypeIn.string(), etc.).
-
----
-
-###### `inputId`<sup>Optional</sup> <a name="inputId" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.inputId"></a>
-
-- *Type:* java.lang.String
-
-The identifier for the array input parameter (defaults to 'items').
-
----
-
-###### `outputId`<sup>Optional</sup> <a name="outputId" id="wdk-lib.ExpressionTool.createPickFirstExpressionTool.parameter.outputId"></a>
-
-- *Type:* java.lang.String
-
-The identifier for the output parameter (defaults to 'first').
 
 ---
 
@@ -2783,6 +2720,470 @@ Utility to write (or overwrite) the YAML content into the file.
 
 ---
 
+
+
+### FirstOrNullExpressionTool <a name="FirstOrNullExpressionTool" id="wdk-lib.FirstOrNullExpressionTool"></a>
+
+FirstOrNullExpressionTool picks the first non-null element from an array input.
+
+This is useful for merging multiple optional outputs into a single output where only the first available value is needed.
+
+*Example*
+
+```java
+// Example automatically generated from non-compiling source. May contain errors.
+// Custom input and output IDs with different data type
+Object pickFirstString = FirstOrNullExpressionTool.Builder.create(workflow, "pick_first_string", TypeIn.string()).inputId("string_array").outputId("selected_string").build();
+```
+
+
+#### Initializers <a name="Initializers" id="wdk-lib.FirstOrNullExpressionTool.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.FirstOrNullExpressionTool;
+
+new FirstOrNullExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType);,new FirstOrNullExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, IFirstOrNullExpressionToolProps props);
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.inputType">inputType</a></code> | <code><a href="#wdk-lib.TypeIn">TypeIn</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.props">props</a></code> | <code><a href="#wdk-lib.IFirstOrNullExpressionToolProps">IFirstOrNullExpressionToolProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
+---
+
+##### `inputType`<sup>Required</sup> <a name="inputType" id="wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.inputType"></a>
+
+- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.FirstOrNullExpressionTool.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#wdk-lib.IFirstOrNullExpressionToolProps">IFirstOrNullExpressionToolProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.serialize">serialize</a></code> | Serialize the step to a directory. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.toMap">toMap</a></code> | Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.withExpression">withExpression</a></code> | Specify a custom JavaScript expression for this ExpressionTool. |
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="wdk-lib.FirstOrNullExpressionTool.addMetadata"></a>
+
+```java
+public void addMetadata(java.lang.String key, java.lang.Object value)
+```
+
+Add metadata to this construct.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.FirstOrNullExpressionTool.addMetadata.parameter.key"></a>
+
+- *Type:* java.lang.String
+
+The key of the metadata.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.FirstOrNullExpressionTool.addMetadata.parameter.value"></a>
+
+- *Type:* java.lang.Object
+
+The value of the metadata.
+
+---
+
+##### `findNodesWithMetadata` <a name="findNodesWithMetadata" id="wdk-lib.FirstOrNullExpressionTool.findNodesWithMetadata"></a>
+
+```java
+public java.util.List<Construct> findNodesWithMetadata(java.lang.String key)
+public java.util.List<Construct> findNodesWithMetadata(java.lang.String key, java.lang.Object value)
+```
+
+Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair.
+
+If value is not provided, returns all constructs that have the specified metadata key.
+
+###### `key`<sup>Required</sup> <a name="key" id="wdk-lib.FirstOrNullExpressionTool.findNodesWithMetadata.parameter.key"></a>
+
+- *Type:* java.lang.String
+
+The metadata key to match.
+
+---
+
+###### `value`<sup>Optional</sup> <a name="value" id="wdk-lib.FirstOrNullExpressionTool.findNodesWithMetadata.parameter.value"></a>
+
+- *Type:* java.lang.Object
+
+The metadata value to match (optional).
+
+---
+
+##### `hasSteps` <a name="hasSteps" id="wdk-lib.FirstOrNullExpressionTool.hasSteps"></a>
+
+```java
+public java.lang.Boolean hasSteps()
+```
+
+Whether the step has sub steps like in case of a workflow step.
+
+##### `serialize` <a name="serialize" id="wdk-lib.FirstOrNullExpressionTool.serialize"></a>
+
+```java
+public SynthFiles serialize(java.lang.String dirPath)
+```
+
+Serialize the step to a directory.
+
+If the step has substeps, they will be serialized recursively.
+
+###### `dirPath`<sup>Required</sup> <a name="dirPath" id="wdk-lib.FirstOrNullExpressionTool.serialize.parameter.dirPath"></a>
+
+- *Type:* java.lang.String
+
+---
+
+##### `toMap` <a name="toMap" id="wdk-lib.FirstOrNullExpressionTool.toMap"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.Object> toMap()
+```
+
+Create a CWL representation of this expression script that generates a JSON file with the parameters of the tool.
+
+##### `withExpression` <a name="withExpression" id="wdk-lib.FirstOrNullExpressionTool.withExpression"></a>
+
+```java
+public ExpressionTool withExpression(java.lang.String expression)
+```
+
+Specify a custom JavaScript expression for this ExpressionTool.
+
+###### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.FirstOrNullExpressionTool.withExpression.parameter.expression"></a>
+
+- *Type:* java.lang.String
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `makeParametersJsonExpression` <a name="makeParametersJsonExpression" id="wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpression"></a>
+
+```java
+import com.biobam.wdk.lib.FirstOrNullExpressionTool;
+
+FirstOrNullExpressionTool.makeParametersJsonExpression()
+```
+
+Create a CWL expression script that generates a JSON file with the parameters of the tool.
+
+Example: call with makeParametersJsonExpression()
+
+##### `makeParametersJsonExpressionAllStrings` <a name="makeParametersJsonExpressionAllStrings" id="wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpressionAllStrings"></a>
+
+```java
+import com.biobam.wdk.lib.FirstOrNullExpressionTool;
+
+FirstOrNullExpressionTool.makeParametersJsonExpressionAllStrings()
+```
+
+Create a CWL expression script that generates a JSON file with the parameters of the tool.
+
+All parameters are converted to strings.
+Example: call with makeParametersJsonExpressionAllStrings()
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.metadata">metadata</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | Get metadata for this construct. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.inputs">inputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | All inputs of the step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.linkedInputs">linkedInputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Input">Input</a>></code> | Inputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.linkedOutputs">linkedOutputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | Outputs of the step that are actually being used (linked) in parent workflow. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.outputs">outputs</a></code> | <code>java.util.List<<a href="#wdk-lib.Output">Output</a>></code> | All outputs of the step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.steps">steps</a></code> | <code>java.util.List<<a href="#wdk-lib.IStep">IStep</a>></code> | All steps nested within this step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.conditional">conditional</a></code> | <code><a href="#wdk-lib.Conditional">Conditional</a></code> | Get the conditional object if the step is a scatter step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.label">label</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.scatter">scatter</a></code> | <code><a href="#wdk-lib.Scatter">Scatter</a></code> | Get the scatter object if the step is a scatter step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.stepInputsValueFrom">stepInputsValueFrom</a></code> | <code><a href="#wdk-lib.StepInputsValue">StepInputsValue</a></code> | Get the stepValueFrom object if the step is a stepValueFrom step. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.config">config</a></code> | <code><a href="#wdk-lib.ToolConfig">ToolConfig</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.fileName">fileName</a></code> | <code>java.lang.String</code> | The name of the step file. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.stepClass">stepClass</a></code> | <code><a href="#wdk-lib.StepClass">StepClass</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.expression">expression</a></code> | <code>java.lang.String</code> | Get the custom JavaScript expression for this ExpressionTool. |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.requirements">requirements</a></code> | <code>java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.props">props</a></code> | <code><a href="#wdk-lib.IToolProps">IToolProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.input">input</a></code> | <code><a href="#wdk-lib.Input">Input</a></code> | *No description.* |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.property.output">output</a></code> | <code><a href="#wdk-lib.Output">Output</a></code> | *No description.* |
+
+---
+
+##### `metadata`<sup>Required</sup> <a name="metadata" id="wdk-lib.FirstOrNullExpressionTool.property.metadata"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.Object> getMetadata();
+```
+
+- *Type:* java.util.Map<java.lang.String, java.lang.Object>
+
+Get metadata for this construct.
+
+---
+
+##### `scope`<sup>Optional</sup> <a name="scope" id="wdk-lib.FirstOrNullExpressionTool.property.scope"></a>
+
+```java
+public Construct getScope();
+```
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+The scope in which this construct is defined.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.FirstOrNullExpressionTool.property.id"></a>
+
+```java
+public java.lang.String getId();
+```
+
+- *Type:* java.lang.String
+
+Unique identifier for the construct in it's scope.
+
+set or update the id of this construct
+
+---
+
+##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.FirstOrNullExpressionTool.property.inputs"></a>
+
+```java
+public java.util.List<Input> getInputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+All inputs of the step.
+
+---
+
+##### `linkedInputs`<sup>Required</sup> <a name="linkedInputs" id="wdk-lib.FirstOrNullExpressionTool.property.linkedInputs"></a>
+
+```java
+public java.util.List<Input> getLinkedInputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Input">Input</a>>
+
+Inputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `linkedOutputs`<sup>Required</sup> <a name="linkedOutputs" id="wdk-lib.FirstOrNullExpressionTool.property.linkedOutputs"></a>
+
+```java
+public java.util.List<Output> getLinkedOutputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Output">Output</a>>
+
+Outputs of the step that are actually being used (linked) in parent workflow.
+
+---
+
+##### `outputs`<sup>Required</sup> <a name="outputs" id="wdk-lib.FirstOrNullExpressionTool.property.outputs"></a>
+
+```java
+public java.util.List<Output> getOutputs();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Output">Output</a>>
+
+All outputs of the step.
+
+---
+
+##### `steps`<sup>Required</sup> <a name="steps" id="wdk-lib.FirstOrNullExpressionTool.property.steps"></a>
+
+```java
+public java.util.List<IStep> getSteps();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.IStep">IStep</a>>
+
+All steps nested within this step.
+
+---
+
+##### `conditional`<sup>Optional</sup> <a name="conditional" id="wdk-lib.FirstOrNullExpressionTool.property.conditional"></a>
+
+```java
+public Conditional getConditional();
+```
+
+- *Type:* <a href="#wdk-lib.Conditional">Conditional</a>
+
+Get the conditional object if the step is a scatter step.
+
+---
+
+##### `label`<sup>Optional</sup> <a name="label" id="wdk-lib.FirstOrNullExpressionTool.property.label"></a>
+
+```java
+public java.lang.String getLabel();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `scatter`<sup>Optional</sup> <a name="scatter" id="wdk-lib.FirstOrNullExpressionTool.property.scatter"></a>
+
+```java
+public Scatter getScatter();
+```
+
+- *Type:* <a href="#wdk-lib.Scatter">Scatter</a>
+
+Get the scatter object if the step is a scatter step.
+
+---
+
+##### `stepInputsValueFrom`<sup>Optional</sup> <a name="stepInputsValueFrom" id="wdk-lib.FirstOrNullExpressionTool.property.stepInputsValueFrom"></a>
+
+```java
+public StepInputsValue getStepInputsValueFrom();
+```
+
+- *Type:* <a href="#wdk-lib.StepInputsValue">StepInputsValue</a>
+
+Get the stepValueFrom object if the step is a stepValueFrom step.
+
+---
+
+##### `config`<sup>Required</sup> <a name="config" id="wdk-lib.FirstOrNullExpressionTool.property.config"></a>
+
+```java
+public ToolConfig getConfig();
+```
+
+- *Type:* <a href="#wdk-lib.ToolConfig">ToolConfig</a>
+
+---
+
+##### `fileName`<sup>Required</sup> <a name="fileName" id="wdk-lib.FirstOrNullExpressionTool.property.fileName"></a>
+
+```java
+public java.lang.String getFileName();
+```
+
+- *Type:* java.lang.String
+
+The name of the step file.
+
+It defaults to the `step id` + '.cwl'. It can be set using the metadata.fileName property.
+
+---
+
+##### `stepClass`<sup>Required</sup> <a name="stepClass" id="wdk-lib.FirstOrNullExpressionTool.property.stepClass"></a>
+
+```java
+public StepClass getStepClass();
+```
+
+- *Type:* <a href="#wdk-lib.StepClass">StepClass</a>
+
+---
+
+##### `expression`<sup>Required</sup> <a name="expression" id="wdk-lib.FirstOrNullExpressionTool.property.expression"></a>
+
+```java
+public java.lang.String getExpression();
+```
+
+- *Type:* java.lang.String
+
+Get the custom JavaScript expression for this ExpressionTool.
+
+---
+
+##### `requirements`<sup>Required</sup> <a name="requirements" id="wdk-lib.FirstOrNullExpressionTool.property.requirements"></a>
+
+```java
+public java.util.List<Requirement> getRequirements();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.Requirement">Requirement</a>>
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.FirstOrNullExpressionTool.property.props"></a>
+
+```java
+public IToolProps getProps();
+```
+
+- *Type:* <a href="#wdk-lib.IToolProps">IToolProps</a>
+
+---
+
+##### `input`<sup>Required</sup> <a name="input" id="wdk-lib.FirstOrNullExpressionTool.property.input"></a>
+
+```java
+public Input getInput();
+```
+
+- *Type:* <a href="#wdk-lib.Input">Input</a>
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="wdk-lib.FirstOrNullExpressionTool.property.output"></a>
+
+```java
+public Output getOutput();
+```
+
+- *Type:* <a href="#wdk-lib.Output">Output</a>
+
+---
 
 
 ### Input <a name="Input" id="wdk-lib.Input"></a>
@@ -5033,71 +5434,8 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#wdk-lib.RenameExpressionTool.createPickFirstExpressionTool">createPickFirstExpressionTool</a></code> | Create a CWL ExpressionTool that picks the first non-null element from an array input. |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
-
----
-
-##### `createPickFirstExpressionTool` <a name="createPickFirstExpressionTool" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool"></a>
-
-```java
-import com.biobam.wdk.lib.RenameExpressionTool;
-
-RenameExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType),RenameExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, java.lang.String inputId),RenameExpressionTool.createPickFirstExpressionTool(Workflow scope, java.lang.String id, TypeIn inputType, java.lang.String inputId, java.lang.String outputId)
-```
-
-Create a CWL ExpressionTool that picks the first non-null element from an array input.
-
-This is useful for merging multiple optional outputs into a single output where only the first available value is needed.
-The output is always a File type that can be null.
-
-*Example*
-
-```java
-// Example automatically generated from non-compiling source. May contain errors.
-// Create a tool that picks the first string from an array of strings with custom IDs
-Object pickFirstString = ExpressionTool.createPickFirstExpressionTool(workflow, "pick_first_string", TypeIn.string(), "string_array", "selected_string");
-```
-
-
-###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.scope"></a>
-
-- *Type:* <a href="#wdk-lib.Workflow">Workflow</a>
-
-The workflow or parent construct within which this tool is defined.
-
----
-
-###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.id"></a>
-
-- *Type:* java.lang.String
-
-The identifier for this expression tool.
-
----
-
-###### `inputType`<sup>Required</sup> <a name="inputType" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.inputType"></a>
-
-- *Type:* <a href="#wdk-lib.TypeIn">TypeIn</a>
-
-The TypeIn object defining the type of array elements (e.g., TypeIn.file(), TypeIn.string(), etc.).
-
----
-
-###### `inputId`<sup>Optional</sup> <a name="inputId" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.inputId"></a>
-
-- *Type:* java.lang.String
-
-The identifier for the array input parameter (defaults to 'items').
-
----
-
-###### `outputId`<sup>Optional</sup> <a name="outputId" id="wdk-lib.RenameExpressionTool.createPickFirstExpressionTool.parameter.outputId"></a>
-
-- *Type:* java.lang.String
-
-The identifier for the output parameter (defaults to 'first').
 
 ---
 
@@ -8640,6 +8978,46 @@ Provide either this or `inlineScript`.
 
 
 
+### IFirstOrNullExpressionToolProps <a name="IFirstOrNullExpressionToolProps" id="wdk-lib.IFirstOrNullExpressionToolProps"></a>
+
+- *Implemented By:* <a href="#wdk-lib.IFirstOrNullExpressionToolProps">IFirstOrNullExpressionToolProps</a>
+
+Properties for configuring the FirstOrNullExpressionTool.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.IFirstOrNullExpressionToolProps.property.inputId">inputId</a></code> | <code>java.lang.String</code> | The identifier for the array input parameter (defaults to 'items'). |
+| <code><a href="#wdk-lib.IFirstOrNullExpressionToolProps.property.outputId">outputId</a></code> | <code>java.lang.String</code> | The identifier for the output parameter (defaults to 'first'). |
+
+---
+
+##### `inputId`<sup>Optional</sup> <a name="inputId" id="wdk-lib.IFirstOrNullExpressionToolProps.property.inputId"></a>
+
+```java
+public java.lang.String getInputId();
+```
+
+- *Type:* java.lang.String
+
+The identifier for the array input parameter (defaults to 'items').
+
+---
+
+##### `outputId`<sup>Optional</sup> <a name="outputId" id="wdk-lib.IFirstOrNullExpressionToolProps.property.outputId"></a>
+
+```java
+public java.lang.String getOutputId();
+```
+
+- *Type:* java.lang.String
+
+The identifier for the output parameter (defaults to 'first').
+
+---
+
 ### ILinkable <a name="ILinkable" id="wdk-lib.ILinkable"></a>
 
 - *Implemented By:* <a href="#wdk-lib.Input">Input</a>, <a href="#wdk-lib.LinkableConstruct">LinkableConstruct</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.ILinkable">ILinkable</a>
@@ -8777,7 +9155,7 @@ Access the identified of this construct.
 
 ### IMappable <a name="IMappable" id="wdk-lib.IMappable"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.FirstOrNullExpressionTool">FirstOrNullExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
 
 #### Methods <a name="Methods" id="Methods"></a>
 
@@ -8856,7 +9234,7 @@ public java.lang.String getOutFilePropId();
 
 ### IStep <a name="IStep" id="wdk-lib.IStep"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.FirstOrNullExpressionTool">FirstOrNullExpressionTool</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.StepConstruct">StepConstruct</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.IStep">IStep</a>
 
 Represents a step in a workflow.
 

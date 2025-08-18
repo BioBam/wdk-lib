@@ -90,7 +90,7 @@ export class Tool extends StepConstruct implements IMappable {
    * @returns A ToolOutputs instance configured for this tool
    */
   createToolOutputs(): ToolOutputs {
-    return ToolOutputs.create(this);
+    return ToolOutputs.create();
   }
 
   /**

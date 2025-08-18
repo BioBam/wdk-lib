@@ -161,7 +161,7 @@ export class CustomPathTool extends Tool {
     const toolOutputs = this.createToolOutputs();
     
     // Set a custom output file path
-    toolOutputs.setOutputFilePath('/custom/path/my_tool_outputs.json');
+    toolOutputs.withOutputFilePath('/custom/path/my_tool_outputs.json');
     
     toolOutputs
       .addOutput(this.outputFile, OutputReference.file('/tmp/processed_data.txt'))

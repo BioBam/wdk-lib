@@ -6,7 +6,7 @@ describe('ToolOutputs', () => {
 
   beforeEach(() => {
     root = Constructs.createRoot('root');
-    toolOutputs = ToolOutputs.create(root);
+    toolOutputs = ToolOutputs.create();
   });
 
   describe('Basic functionality', () => {
@@ -108,12 +108,12 @@ describe('ToolOutputs', () => {
 
   describe('Output file path configuration', () => {
     it('should set custom output file path', () => {
-      toolOutputs.setOutputFilePath('/custom/path/output.json');
-      expect(toolOutputs.getOutputFilePath()).toBe('/custom/path/output.json');
+      toolOutputs.withOutputFilePath('/custom/path/output.json');
+      expect(toolOutputs.outputFilePath()).toBe('/custom/path/output.json');
     });
 
     it('should use default output file path', () => {
-      expect(toolOutputs.getOutputFilePath()).toBe('cwl.output.json');
+      expect(toolOutputs.outputFilePath()).toBe('cwl.output.json');
     });
   });
 

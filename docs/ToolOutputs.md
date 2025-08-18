@@ -156,8 +156,8 @@ const stringArray = OutputReference.stringArray(['a', 'b', 'c']);
 ### Custom Output File Paths
 
 ```typescript
-toolOutputs.setOutputFilePath('/custom/path/my_outputs.json');
-const path = toolOutputs.getOutputFilePath(); // Returns '/custom/path/my_outputs.json'
+toolOutputs.withOutputFilePath('/custom/path/my_outputs.json');
+const path = toolOutputs.outputFilePath(); // Returns '/custom/path/my_outputs.json'
 ```
 
 ### File Path Extraction

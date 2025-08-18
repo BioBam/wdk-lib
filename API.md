@@ -599,6 +599,7 @@ set or update the id of this construct
 | <code><a href="#wdk-lib.BashTool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.BashTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.BashTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.BashTool.createToolOutputs">createToolOutputs</a></code> | Creates a ToolOutputs instance for this tool. |
 | <code><a href="#wdk-lib.BashTool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
 
 ---
@@ -674,6 +675,16 @@ Serialize the tool to a CWL file.
 - *Type:* string
 
 ---
+
+##### `createToolOutputs` <a name="createToolOutputs" id="wdk-lib.BashTool.createToolOutputs"></a>
+
+```typescript
+public createToolOutputs(): ToolOutputs
+```
+
+Creates a ToolOutputs instance for this tool.
+
+This can be used during tool execution to generate cwl.output.json files.
 
 ##### `toMap` <a name="toMap" id="wdk-lib.BashTool.toMap"></a>
 
@@ -957,6 +968,7 @@ set or update the id of this construct
 | <code><a href="#wdk-lib.CheckFileNameTool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.CheckFileNameTool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.CheckFileNameTool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.CheckFileNameTool.createToolOutputs">createToolOutputs</a></code> | Creates a ToolOutputs instance for this tool. |
 | <code><a href="#wdk-lib.CheckFileNameTool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
 
 ---
@@ -1032,6 +1044,16 @@ Serialize the tool to a CWL file.
 - *Type:* string
 
 ---
+
+##### `createToolOutputs` <a name="createToolOutputs" id="wdk-lib.CheckFileNameTool.createToolOutputs"></a>
+
+```typescript
+public createToolOutputs(): ToolOutputs
+```
+
+Creates a ToolOutputs instance for this tool.
+
+This can be used during tool execution to generate cwl.output.json files.
 
 ##### `toMap` <a name="toMap" id="wdk-lib.CheckFileNameTool.toMap"></a>
 
@@ -5137,6 +5159,378 @@ public readonly pickValueMethod: PickValueMethod;
 ---
 
 
+### OutputReference <a name="OutputReference" id="wdk-lib.OutputReference"></a>
+
+- *Implements:* <a href="#wdk-lib.IMappable">IMappable</a>
+
+#### Initializers <a name="Initializers" id="wdk-lib.OutputReference.Initializer"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+new OutputReference()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.OutputReference.convertToS3Reference">convertToS3Reference</a></code> | Convert the local path reference to an S3 reference. |
+| <code><a href="#wdk-lib.OutputReference.isDirectory">isDirectory</a></code> | Checks if the OutputReference is a directory. |
+| <code><a href="#wdk-lib.OutputReference.isFile">isFile</a></code> | Checks if the OutputReference is a file. |
+| <code><a href="#wdk-lib.OutputReference.isPrimitive">isPrimitive</a></code> | Checks if the OutputReference is a primitive type (string, boolean, int, float). |
+| <code><a href="#wdk-lib.OutputReference.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
+
+---
+
+##### `convertToS3Reference` <a name="convertToS3Reference" id="wdk-lib.OutputReference.convertToS3Reference"></a>
+
+```typescript
+public convertToS3Reference(s3UriLocation: string): void
+```
+
+Convert the local path reference to an S3 reference.
+
+###### `s3UriLocation`<sup>Required</sup> <a name="s3UriLocation" id="wdk-lib.OutputReference.convertToS3Reference.parameter.s3UriLocation"></a>
+
+- *Type:* string
+
+The S3 URI location to convert to.
+
+---
+
+##### `isDirectory` <a name="isDirectory" id="wdk-lib.OutputReference.isDirectory"></a>
+
+```typescript
+public isDirectory(): boolean
+```
+
+Checks if the OutputReference is a directory.
+
+##### `isFile` <a name="isFile" id="wdk-lib.OutputReference.isFile"></a>
+
+```typescript
+public isFile(): boolean
+```
+
+Checks if the OutputReference is a file.
+
+##### `isPrimitive` <a name="isPrimitive" id="wdk-lib.OutputReference.isPrimitive"></a>
+
+```typescript
+public isPrimitive(): boolean
+```
+
+Checks if the OutputReference is a primitive type (string, boolean, int, float).
+
+##### `toMap` <a name="toMap" id="wdk-lib.OutputReference.toMap"></a>
+
+```typescript
+public toMap(): {[ key: string ]: any}
+```
+
+Convert the object to a map representation following the CWL specification.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.OutputReference.boolean">boolean</a></code> | Create a boolean output reference. |
+| <code><a href="#wdk-lib.OutputReference.directory">directory</a></code> | Create a local directory reference. |
+| <code><a href="#wdk-lib.OutputReference.directoryArray">directoryArray</a></code> | Create a reference to a list of local directories. |
+| <code><a href="#wdk-lib.OutputReference.file">file</a></code> | Create a local file reference. |
+| <code><a href="#wdk-lib.OutputReference.fileArray">fileArray</a></code> | Create a reference to a list of local files. |
+| <code><a href="#wdk-lib.OutputReference.float">float</a></code> | Create a float output reference. |
+| <code><a href="#wdk-lib.OutputReference.integer">integer</a></code> | Create an integer output reference. |
+| <code><a href="#wdk-lib.OutputReference.s3Directory">s3Directory</a></code> | Create a s3 directory reference. |
+| <code><a href="#wdk-lib.OutputReference.s3DirectoryArray">s3DirectoryArray</a></code> | Create a reference to a list of s3 directories. |
+| <code><a href="#wdk-lib.OutputReference.s3File">s3File</a></code> | Create a s3 file reference. |
+| <code><a href="#wdk-lib.OutputReference.s3FileArray">s3FileArray</a></code> | Create a reference to a list of s3 files. |
+| <code><a href="#wdk-lib.OutputReference.string">string</a></code> | Create a string output reference. |
+| <code><a href="#wdk-lib.OutputReference.stringArray">stringArray</a></code> | Create a reference to a list of strings. |
+
+---
+
+##### `boolean` <a name="boolean" id="wdk-lib.OutputReference.boolean"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.boolean(value: boolean)
+```
+
+Create a boolean output reference.
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.OutputReference.boolean.parameter.value"></a>
+
+- *Type:* boolean
+
+The boolean value.
+
+---
+
+##### `directory` <a name="directory" id="wdk-lib.OutputReference.directory"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.directory(relativePath: string)
+```
+
+Create a local directory reference.
+
+###### `relativePath`<sup>Required</sup> <a name="relativePath" id="wdk-lib.OutputReference.directory.parameter.relativePath"></a>
+
+- *Type:* string
+
+path to a local directory like `/Users/username/project/`.
+
+---
+
+##### `directoryArray` <a name="directoryArray" id="wdk-lib.OutputReference.directoryArray"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.directoryArray(relativePaths: string[])
+```
+
+Create a reference to a list of local directories.
+
+###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.OutputReference.directoryArray.parameter.relativePaths"></a>
+
+- *Type:* string[]
+
+path to local directories like `["/home/proj1/", "/home/proj2/"]`.
+
+---
+
+##### `file` <a name="file" id="wdk-lib.OutputReference.file"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.file(relativePath: string)
+```
+
+Create a local file reference.
+
+###### `relativePath`<sup>Required</sup> <a name="relativePath" id="wdk-lib.OutputReference.file.parameter.relativePath"></a>
+
+- *Type:* string
+
+path to a local file like `/Users/username/file.txt`.
+
+---
+
+##### `fileArray` <a name="fileArray" id="wdk-lib.OutputReference.fileArray"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.fileArray(relativePaths: string[])
+```
+
+Create a reference to a list of local files.
+
+###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.OutputReference.fileArray.parameter.relativePaths"></a>
+
+- *Type:* string[]
+
+path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
+
+---
+
+##### `float` <a name="float" id="wdk-lib.OutputReference.float"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.float(value: number)
+```
+
+Create a float output reference.
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.OutputReference.float.parameter.value"></a>
+
+- *Type:* number
+
+The float value.
+
+---
+
+##### `integer` <a name="integer" id="wdk-lib.OutputReference.integer"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.integer(value: number)
+```
+
+Create an integer output reference.
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.OutputReference.integer.parameter.value"></a>
+
+- *Type:* number
+
+The integer value.
+
+---
+
+##### `s3Directory` <a name="s3Directory" id="wdk-lib.OutputReference.s3Directory"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.s3Directory(s3FileReference: string)
+```
+
+Create a s3 directory reference.
+
+###### `s3FileReference`<sup>Required</sup> <a name="s3FileReference" id="wdk-lib.OutputReference.s3Directory.parameter.s3FileReference"></a>
+
+- *Type:* string
+
+Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/`.
+
+---
+
+##### `s3DirectoryArray` <a name="s3DirectoryArray" id="wdk-lib.OutputReference.s3DirectoryArray"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.s3DirectoryArray(s3FileReferences: string[])
+```
+
+Create a reference to a list of s3 directories.
+
+###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.OutputReference.s3DirectoryArray.parameter.s3FileReferences"></a>
+
+- *Type:* string[]
+
+Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/path/to/dir2"]`.
+
+---
+
+##### `s3File` <a name="s3File" id="wdk-lib.OutputReference.s3File"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.s3File(s3FileReference: string)
+```
+
+Create a s3 file reference.
+
+###### `s3FileReference`<sup>Required</sup> <a name="s3FileReference" id="wdk-lib.OutputReference.s3File.parameter.s3FileReference"></a>
+
+- *Type:* string
+
+Reference to an S3 file formatted like `s3://bucket-name/path/to/file`.
+
+---
+
+##### `s3FileArray` <a name="s3FileArray" id="wdk-lib.OutputReference.s3FileArray"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.s3FileArray(s3FileReferences: string[])
+```
+
+Create a reference to a list of s3 files.
+
+###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.OutputReference.s3FileArray.parameter.s3FileReferences"></a>
+
+- *Type:* string[]
+
+Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`.
+
+---
+
+##### `string` <a name="string" id="wdk-lib.OutputReference.string"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.string(value: string)
+```
+
+Create a string output reference.
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.OutputReference.string.parameter.value"></a>
+
+- *Type:* string
+
+The string value.
+
+---
+
+##### `stringArray` <a name="stringArray" id="wdk-lib.OutputReference.stringArray"></a>
+
+```typescript
+import { OutputReference } from 'wdk-lib'
+
+OutputReference.stringArray(values: string[])
+```
+
+Create a reference to a list of strings.
+
+###### `values`<sup>Required</sup> <a name="values" id="wdk-lib.OutputReference.stringArray.parameter.values"></a>
+
+- *Type:* string[]
+
+Array of string values.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.OutputReference.property.value">value</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#wdk-lib.OutputReference.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.OutputReference.property.path">path</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `value`<sup>Required</sup> <a name="value" id="wdk-lib.OutputReference.property.value"></a>
+
+```typescript
+public readonly value: any;
+```
+
+- *Type:* any
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="wdk-lib.OutputReference.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `path`<sup>Optional</sup> <a name="path" id="wdk-lib.OutputReference.property.path"></a>
+
+```typescript
+public readonly path: string;
+```
+
+- *Type:* string
+
+---
+
+
 ### RenameExpressionTool <a name="RenameExpressionTool" id="wdk-lib.RenameExpressionTool"></a>
 
 #### Initializers <a name="Initializers" id="wdk-lib.RenameExpressionTool.Initializer"></a>
@@ -6980,6 +7374,7 @@ set or update the id of this construct
 | <code><a href="#wdk-lib.Tool.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
 | <code><a href="#wdk-lib.Tool.hasSteps">hasSteps</a></code> | Whether the step has sub steps like in case of a workflow step. |
 | <code><a href="#wdk-lib.Tool.serialize">serialize</a></code> | Serialize the tool to a CWL file. |
+| <code><a href="#wdk-lib.Tool.createToolOutputs">createToolOutputs</a></code> | Creates a ToolOutputs instance for this tool. |
 | <code><a href="#wdk-lib.Tool.toMap">toMap</a></code> | Create a map repsentation of the tool following the CWL specification. |
 
 ---
@@ -7055,6 +7450,16 @@ Serialize the tool to a CWL file.
 - *Type:* string
 
 ---
+
+##### `createToolOutputs` <a name="createToolOutputs" id="wdk-lib.Tool.createToolOutputs"></a>
+
+```typescript
+public createToolOutputs(): ToolOutputs
+```
+
+Creates a ToolOutputs instance for this tool.
+
+This can be used during tool execution to generate cwl.output.json files.
 
 ##### `toMap` <a name="toMap" id="wdk-lib.Tool.toMap"></a>
 
@@ -7519,6 +7924,197 @@ public readonly label: string;
 ```
 
 - *Type:* string
+
+---
+
+
+### ToolOutputs <a name="ToolOutputs" id="wdk-lib.ToolOutputs"></a>
+
+- *Implements:* <a href="#wdk-lib.IMappable">IMappable</a>
+
+Represents the values associated with outputs of a workflow or tool step.
+
+This class allows for the management and retrieval of output values that are part of a workflow,
+facilitating tasks such as mapping outputs to their values, extracting file paths, and converting
+outputs to serializable formats for cwl.output.json generation.
+
+*Example*
+
+```typescript
+import { ToolOutputs, Output, Constructs } from 'wdk-lib';
+const root = Constructs.createRoot('root');
+const output1 = Output.string(root, 'firstOutput');
+const output2 = Output.file(root, 'fileOutput');
+const toolOutputs = ToolOutputs.create('MyTask')
+                         .addOutput(output1, 'outputValue')
+                         .addOutput(output2, new OutputReference('/path/to/output/file'));
+toolOutputs.writeToFile(); // Generates cwl.output.json
+```
+
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.ToolOutputs.addOutput">addOutput</a></code> | Associates a value with an output object. |
+| <code><a href="#wdk-lib.ToolOutputs.outputFilePath">outputFilePath</a></code> | Gets the current output file path. |
+| <code><a href="#wdk-lib.ToolOutputs.toMap">toMap</a></code> | Converts the internal map of outputs to an object for easier serialization. |
+| <code><a href="#wdk-lib.ToolOutputs.withOutputFilePath">withOutputFilePath</a></code> | Sets the output file path for the cwl.output.json file. |
+| <code><a href="#wdk-lib.ToolOutputs.writeToFile">writeToFile</a></code> | Writes the output values to a cwl.output.json file. |
+
+---
+
+##### `addOutput` <a name="addOutput" id="wdk-lib.ToolOutputs.addOutput"></a>
+
+```typescript
+public addOutput(output: Output, value: any): ToolOutputs
+```
+
+Associates a value with an output object.
+
+###### `output`<sup>Required</sup> <a name="output" id="wdk-lib.ToolOutputs.addOutput.parameter.output"></a>
+
+- *Type:* <a href="#wdk-lib.Output">Output</a>
+
+The output object to reference the value to.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="wdk-lib.ToolOutputs.addOutput.parameter.value"></a>
+
+- *Type:* any
+
+The value to be associated with the output.
+
+---
+
+##### `outputFilePath` <a name="outputFilePath" id="wdk-lib.ToolOutputs.outputFilePath"></a>
+
+```typescript
+public outputFilePath(): string
+```
+
+Gets the current output file path.
+
+##### `toMap` <a name="toMap" id="wdk-lib.ToolOutputs.toMap"></a>
+
+```typescript
+public toMap(): {[ key: string ]: any}
+```
+
+Converts the internal map of outputs to an object for easier serialization.
+
+Each output's value is mapped either directly or through its `toMap` method
+if it is an instance of `OutputReference`.
+
+##### `withOutputFilePath` <a name="withOutputFilePath" id="wdk-lib.ToolOutputs.withOutputFilePath"></a>
+
+```typescript
+public withOutputFilePath(filePath: string): ToolOutputs
+```
+
+Sets the output file path for the cwl.output.json file.
+
+###### `filePath`<sup>Required</sup> <a name="filePath" id="wdk-lib.ToolOutputs.withOutputFilePath.parameter.filePath"></a>
+
+- *Type:* string
+
+The path where the cwl.output.json file should be written.
+
+---
+
+##### `writeToFile` <a name="writeToFile" id="wdk-lib.ToolOutputs.writeToFile"></a>
+
+```typescript
+public writeToFile(filePath?: string): string
+```
+
+Writes the output values to a cwl.output.json file.
+
+###### `filePath`<sup>Optional</sup> <a name="filePath" id="wdk-lib.ToolOutputs.writeToFile.parameter.filePath"></a>
+
+- *Type:* string
+
+Optional custom file path.
+
+If not provided, uses the default path.
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#wdk-lib.ToolOutputs.create">create</a></code> | Creates a new instance of ToolOutputs. |
+
+---
+
+##### `create` <a name="create" id="wdk-lib.ToolOutputs.create"></a>
+
+```typescript
+import { ToolOutputs } from 'wdk-lib'
+
+ToolOutputs.create()
+```
+
+Creates a new instance of ToolOutputs.
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.ToolOutputs.property.filePaths">filePaths</a></code> | <code>string[]</code> | Retrieves the file paths for all outputs that are files. |
+| <code><a href="#wdk-lib.ToolOutputs.property.localOutputReferences">localOutputReferences</a></code> | <code><a href="#wdk-lib.OutputReference">OutputReference</a>[]</code> | Retrieves all local OutputReferences that have a path defined. |
+| <code><a href="#wdk-lib.ToolOutputs.property.outputs">outputs</a></code> | <code>{[ key: string ]: any}</code> | Returns a map of output IDs to their associated values. |
+| <code><a href="#wdk-lib.ToolOutputs.property.taskName">taskName</a></code> | <code>string</code> | Retrieves the task name associated with these workflow outputs. |
+
+---
+
+##### `filePaths`<sup>Required</sup> <a name="filePaths" id="wdk-lib.ToolOutputs.property.filePaths"></a>
+
+```typescript
+public readonly filePaths: string[];
+```
+
+- *Type:* string[]
+
+Retrieves the file paths for all outputs that are files.
+
+---
+
+##### `localOutputReferences`<sup>Required</sup> <a name="localOutputReferences" id="wdk-lib.ToolOutputs.property.localOutputReferences"></a>
+
+```typescript
+public readonly localOutputReferences: OutputReference[];
+```
+
+- *Type:* <a href="#wdk-lib.OutputReference">OutputReference</a>[]
+
+Retrieves all local OutputReferences that have a path defined.
+
+---
+
+##### `outputs`<sup>Required</sup> <a name="outputs" id="wdk-lib.ToolOutputs.property.outputs"></a>
+
+```typescript
+public readonly outputs: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Returns a map of output IDs to their associated values.
+
+---
+
+##### `taskName`<sup>Required</sup> <a name="taskName" id="wdk-lib.ToolOutputs.property.taskName"></a>
+
+```typescript
+public readonly taskName: string;
+```
+
+- *Type:* string
+
+Retrieves the task name associated with these workflow outputs.
 
 ---
 
@@ -8996,7 +9592,7 @@ Access the identified of this construct.
 
 ### IMappable <a name="IMappable" id="wdk-lib.IMappable"></a>
 
-- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.FirstOrNullExpressionTool">FirstOrNullExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
+- *Implemented By:* <a href="#wdk-lib.BashTool">BashTool</a>, <a href="#wdk-lib.CheckFileNameTool">CheckFileNameTool</a>, <a href="#wdk-lib.CloudService">CloudService</a>, <a href="#wdk-lib.ExpressionTool">ExpressionTool</a>, <a href="#wdk-lib.FirstOrNullExpressionTool">FirstOrNullExpressionTool</a>, <a href="#wdk-lib.InputReference">InputReference</a>, <a href="#wdk-lib.Output">Output</a>, <a href="#wdk-lib.OutputReference">OutputReference</a>, <a href="#wdk-lib.RenameExpressionTool">RenameExpressionTool</a>, <a href="#wdk-lib.Tool">Tool</a>, <a href="#wdk-lib.ToolOutputs">ToolOutputs</a>, <a href="#wdk-lib.Workflow">Workflow</a>, <a href="#wdk-lib.WorkflowValues">WorkflowValues</a>, <a href="#wdk-lib.IMappable">IMappable</a>
 
 #### Methods <a name="Methods" id="Methods"></a>
 

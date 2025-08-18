@@ -3,9 +3,9 @@ import * as path from 'path';
 import { IMappable } from './IMappable';
 import { Output } from './Output';
 import { OutputReference } from './OutputReference';
-import { StepConstruct } from './StepConstruct';
 
-type OutputValue = string | boolean | number | string[] | OutputReference | OutputReference[] | File | File[];
+
+type OutputValue = string | boolean | number | string[] | OutputReference | OutputReference[] | any;
 
 /**
  * Represents the values associated with outputs of a workflow or tool step.
@@ -27,26 +27,23 @@ type OutputValue = string | boolean | number | string[] | OutputReference | Outp
 export class ToolOutputs implements IMappable {
 
   /**
-   * Creates a new instance of ToolOutputs with an optional task name.
+   * Creates a new instance of ToolOutputs.
    *
-   * @param scope The scope where the outputs are applied. This can be a workflow or a Tool.
    * @returns A new instance of ToolOutputs where to set output values using #addOutput.
    */
-  static create(scope: StepConstruct): ToolOutputs {
-    const w = new ToolOutputs(scope);
+  static create(): ToolOutputs {
+    const w = new ToolOutputs();
     return w;
   }
 
   private _taskName: string = 'Task';
   private _outputs: Map<string, OutputValue>;
-  private scope: StepConstruct;
-  private outputFilePath: string = 'cwl.output.json';
+  private _outputFilePath: string = 'cwl.output.json';
 
   /**
    * Initializes a new instance of ToolOutputs.
    */
-  private constructor(scope: StepConstruct) {
-    this.scope = scope;
+  private constructor() {
     this._outputs = new Map<string, OutputValue>();
   }
 
@@ -70,8 +67,8 @@ export class ToolOutputs implements IMappable {
    * @param filePath The path where the cwl.output.json file should be written.
    * @returns This instance to allow method chaining.
    */
-  public setOutputFilePath(filePath: string): this {
-    this.outputFilePath = filePath;
+  public withOutputFilePath(filePath: string): this {
+    this._outputFilePath = filePath;
     return this;
   }
 
@@ -190,7 +187,7 @@ export class ToolOutputs implements IMappable {
    * @returns The path where the file was written.
    */
   public writeToFile(filePath?: string): string {
-    const targetPath = filePath || this.outputFilePath;
+    const targetPath = filePath || this._outputFilePath;
     const outputData = this.toMap();
 
     // Ensure the directory exists
@@ -210,7 +207,7 @@ export class ToolOutputs implements IMappable {
    *
    * @returns The current output file path.
    */
-  public getOutputFilePath(): string {
-    return this.outputFilePath;
+  public outputFilePath(): string {
+    return this._outputFilePath;
   }
 }

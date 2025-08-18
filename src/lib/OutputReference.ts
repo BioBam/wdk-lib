@@ -1,0 +1,257 @@
+import * as cwl from 'cwl-ts-auto';
+import { IMappable } from './IMappable';
+
+export class OutputReference implements IMappable {
+
+  /**
+   * Create a local file reference.
+   *
+   * @param relativePath path to a local file like `/Users/username/file.txt`
+   * @returns
+   */
+  static file(relativePath: string): OutputReference {
+    const outputReference = new OutputReference();
+    outputReference.type = cwl.CWLType.FILE.toString();
+    outputReference._path = relativePath;
+    return outputReference;
+  }
+
+  /**
+   * Create a local directory reference.
+   *
+   * @param relativePath path to a local directory like `/Users/username/project/`
+   * @returns
+   */
+  static directory(relativePath: string): OutputReference {
+    const outputReference = new OutputReference();
+    outputReference.type = cwl.CWLType.DIRECTORY.toString();
+    outputReference._path = relativePath;
+    return outputReference;
+  }
+
+  /**
+   * Create a reference to a list of local files.
+   *
+   * @param relativePaths path to local files like `["/home/file1.txt", "/home/file2.txt"]`
+   * @returns
+   */
+  static fileArray(relativePaths: string[]): OutputReference[] {
+    const refArray: OutputReference[] = [];
+    for (const filePath of relativePaths) {
+      refArray.push(this.file(filePath));
+    }
+    return refArray;
+  }
+
+  /**
+   * Create a reference to a list of local directories.
+   *
+   * @param relativePaths path to local directories like `["/home/proj1/", "/home/proj2/"]`
+   * @returns
+   */
+  static directoryArray(relativePaths: string[]): OutputReference[] {
+    const refArray: OutputReference[] = [];
+    for (const filePath of relativePaths) {
+      refArray.push(this.directory(filePath));
+    }
+    return refArray;
+  }
+
+  /**
+   * Create a s3 file reference.
+   *
+   * @param s3FileReference Reference to an S3 file formatted like `s3://bucket-name/path/to/file`
+   * @returns
+   */
+  static s3File(s3FileReference: string): OutputReference {
+    const outputReference = new OutputReference();
+    outputReference.type = cwl.CWLType.FILE.toString();
+    outputReference._location = s3FileReference;
+    return outputReference;
+  }
+
+  /**
+   * Create a reference to a list of s3 files.
+   *
+   * @param s3FileReferences Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`
+   * @returns
+   */
+  static s3FileArray(s3FileReferences: string[]): OutputReference[] {
+    const refArray: OutputReference[] = [];
+    for (const filePath of s3FileReferences) {
+      refArray.push(this.s3File(filePath));
+    }
+    return refArray;
+  }
+
+  /**
+   * Create a s3 directory reference.
+   *
+   * @param s3FileReference Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/`
+   * @returns
+   */
+  static s3Directory(s3FileReference: string): OutputReference {
+    const outputReference = new OutputReference();
+    outputReference.type = cwl.CWLType.DIRECTORY.toString();
+    outputReference._location = s3FileReference;
+    return outputReference;
+  }
+
+  /**
+   * Create a reference to a list of s3 directories.
+   *
+   * @param s3FileReferences Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/path/to/dir2"]`
+   * @returns
+   */
+  static s3DirectoryArray(s3FileReferences: string[]): OutputReference[] {
+    const refArray: OutputReference[] = [];
+    for (const filePath of s3FileReferences) {
+      refArray.push(this.s3Directory(filePath));
+    }
+    return refArray;
+  }
+
+  /**
+   * Create a string output reference.
+   *
+   * @param value The string value
+   * @returns
+   */
+  static string(value: string): OutputReference {
+    const outputReference = new OutputReference();
+    outputReference.type = cwl.PrimitiveType.STRING.toString();
+    outputReference._value = value;
+    return outputReference;
+  }
+
+  /**
+   * Create a reference to a list of strings.
+   *
+   * @param values Array of string values
+   * @returns
+   */
+  static stringArray(values: string[]): OutputReference[] {
+    const refArray: OutputReference[] = [];
+    for (const value of values) {
+      refArray.push(this.string(value));
+    }
+    return refArray;
+  }
+
+  /**
+   * Create a boolean output reference.
+   *
+   * @param value The boolean value
+   * @returns
+   */
+  static boolean(value: boolean): OutputReference {
+    const outputReference = new OutputReference();
+    outputReference.type = cwl.PrimitiveType.BOOLEAN.toString();
+    outputReference._value = value;
+    return outputReference;
+  }
+
+  /**
+   * Create an integer output reference.
+   *
+   * @param value The integer value
+   * @returns
+   */
+  static integer(value: number): OutputReference {
+    const outputReference = new OutputReference();
+    outputReference.type = cwl.PrimitiveType.INT.toString();
+    outputReference._value = value;
+    return outputReference;
+  }
+
+  /**
+   * Create a float output reference.
+   *
+   * @param value The float value
+   * @returns
+   */
+  static float(value: number): OutputReference {
+    const outputReference = new OutputReference();
+    outputReference.type = cwl.PrimitiveType.FLOAT.toString();
+    outputReference._value = value;
+    return outputReference;
+  }
+
+  private type: string | undefined;
+  private _path: string | undefined;
+  private _location: string | undefined;
+  private _value: any;
+
+  get path(): string | undefined {
+    return this._path;
+  }
+
+  get location(): string | undefined {
+    return this._location;
+  }
+
+  get value(): any {
+    return this._value;
+  }
+
+  /**
+   * Checks if the OutputReference is a directory.
+   *
+   * @returns True if it is a directory; false otherwise.
+   */
+  public isDirectory(): boolean {
+    return this.type === cwl.CWLType.DIRECTORY.toString();
+  }
+
+  /**
+   * Checks if the OutputReference is a file.
+   *
+   * @returns True if it is a file; false otherwise.
+   */
+  public isFile(): boolean {
+    return this.type === cwl.CWLType.FILE.toString();
+  }
+
+  /**
+   * Checks if the OutputReference is a primitive type (string, boolean, int, float).
+   *
+   * @returns True if it is a primitive type; false otherwise.
+   */
+  public isPrimitive(): boolean {
+    return this._value !== undefined;
+  }
+
+  /**
+   * Convert the local path reference to an S3 reference.
+   *
+   * @param s3UriLocation The S3 URI location to convert to.
+   */
+  convertToS3Reference(s3UriLocation: string): void {
+    if (this._path) {
+      this._location = s3UriLocation;
+      this._path = undefined; // Remove local path reference after conversion
+    }
+  }
+
+  // Method to convert to a YAML map equivalent
+  toMap(): { [key: string]: any } {
+    let yamlMap: { [key: string]: any } = {};
+
+    if (this.isPrimitive()) {
+      // For primitive types, just return the value
+      return this._value;
+    }
+
+    yamlMap.class = this.type;
+
+    if (this._path) {
+      yamlMap.path = this._path;
+    }
+
+    if (this._location) {
+      yamlMap.location = this._location;
+    }
+
+    return yamlMap;
+  }
+}

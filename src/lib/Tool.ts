@@ -7,6 +7,7 @@ import { Requirement } from './Requirement';
 import { StepConstruct } from './StepConstruct';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
+import { ToolOutputs } from './ToolOutputs';
 import { WdkUtils } from './WdkUtils';
 import { Workflow } from './Workflow';
 
@@ -80,6 +81,16 @@ export class Tool extends StepConstruct implements IMappable {
     const yamlString = yaml.dump(data, { noRefs: true });
     WdkUtils.writeToFile(yamlString, cwlFile);
     return synthInfo;
+  }
+
+  /**
+   * Creates a ToolOutputs instance for this tool.
+   * This can be used during tool execution to generate cwl.output.json files.
+   *
+   * @returns A ToolOutputs instance configured for this tool
+   */
+  createToolOutputs(): ToolOutputs {
+    return ToolOutputs.create(this);
   }
 
   /**

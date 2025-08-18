@@ -13,6 +13,8 @@ export * from './Input';
 export * from './InputReference';
 export * from './LinkableConstruct';
 export * from './Output';
+export * from './OutputReference';
+export * from './ToolOutputs';
 export * from './Requirement';
 export * from './Scatter';
 export * from './StepConstruct';

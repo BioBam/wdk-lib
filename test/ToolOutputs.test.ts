@@ -158,4 +158,31 @@ describe('ToolOutputs', () => {
       expect(map.arrayOutput).toEqual([['a', 'b'], ['c', 'd'], ['e', 'f']]);
     });
   });
+
+  describe('Array with null values', () => {
+    it('should handle arrays with null values correctly', () => {
+      const arrayOutput = Output.fileArray(root, 'fileArrayOutput');
+      const fileArray = OutputReference.fileArray([
+        '/path/to/file1.txt',
+        null,
+        '/path/to/file3.txt',
+      ] as any);
+
+      toolOutputs.addOutput(arrayOutput, fileArray);
+
+      const map = toolOutputs.toMap();
+
+      expect(map.fileArrayOutput).toEqual([
+        {
+          class: 'File',
+          path: '/path/to/file1.txt',
+        },
+        null,
+        {
+          class: 'File',
+          path: '/path/to/file3.txt',
+        },
+      ]);
+    });
+  });
 });

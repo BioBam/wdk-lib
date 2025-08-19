@@ -4312,7 +4312,7 @@ Create a reference to a list of s3 directories.
 
 - *Type:* java.util.List<java.lang.String>
 
-Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/path/to/dir2"]`.
+Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`.
 
 ---
 
@@ -5555,7 +5555,7 @@ Create a reference to a list of s3 directories.
 
 - *Type:* java.util.List<java.lang.String>
 
-Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/path/to/dir2"]`.
+Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`.
 
 ---
 

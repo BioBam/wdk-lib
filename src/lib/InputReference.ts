@@ -40,7 +40,12 @@ export class InputReference implements IMappable {
   static fileArray(relativePaths: string[]): InputReference[] {
     const refArray: InputReference[] = [];
     for (const filePath of relativePaths) {
-      refArray.push(this.file(filePath));
+      if (filePath != null && filePath !== undefined) {
+        refArray.push(this.file(filePath));
+      } else {
+        // Return null to preserve array structure and CWL compatibility
+        refArray.push(null as any);
+      }
     }
     return refArray;
   }
@@ -54,7 +59,12 @@ export class InputReference implements IMappable {
   static directoryArray(relativePaths: string[]): InputReference[] {
     const refArray: InputReference[] = [];
     for (const filePath of relativePaths) {
-      refArray.push(this.directory(filePath));
+      if (filePath != null && filePath !== undefined) {
+        refArray.push(this.directory(filePath));
+      } else {
+        // Return null to preserve array structure and CWL compatibility
+        refArray.push(null as any);
+      }
     }
     return refArray;
   }
@@ -81,7 +91,12 @@ export class InputReference implements IMappable {
   static s3FileArray(s3FileReferences: string[]): InputReference[] {
     const refArray: InputReference[] = [];
     for (const filePath of s3FileReferences) {
-      refArray.push(this.s3File(filePath));
+      if (filePath != null && filePath !== undefined) {
+        refArray.push(this.s3File(filePath));
+      } else {
+        // Return null to preserve array structure and CWL compatibility
+        refArray.push(null as any);
+      }
     }
     return refArray;
   }
@@ -102,13 +117,18 @@ export class InputReference implements IMappable {
   /**
    * Create a reference to a list of s3 directories.
    *
-   * @param s3FileReferences Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/path/to/dir2"]`
+   * @param s3FileReferences Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`
    * @returns
    */
   static s3DirectoryArray(s3FileReferences: string[]): InputReference[] {
     const refArray: InputReference[] = [];
     for (const filePath of s3FileReferences) {
-      refArray.push(this.s3Directory(filePath));
+      if (filePath != null && filePath !== undefined) {
+        refArray.push(this.s3Directory(filePath));
+      } else {
+        // Return null to preserve array structure and CWL compatibility
+        refArray.push(null as any);
+      }
     }
     return refArray;
   }

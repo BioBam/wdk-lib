@@ -37,7 +37,7 @@ export class InputReference implements IMappable {
    * @param relativePaths path to local files like `["/home/file1.txt", "/home/file2.txt"]`
    * @returns
    */
-  static fileArray(relativePaths: string[]): InputReference[] {
+  static fileArray(relativePaths: any): InputReference[] {
     const refArray: InputReference[] = [];
     for (const filePath of relativePaths) {
       if (filePath != null && filePath !== undefined) {
@@ -56,7 +56,7 @@ export class InputReference implements IMappable {
    * @param relativePaths path to local directories like `["/home/proj1/", "/home/proj2/"]`
    * @returns
    */
-  static directoryArray(relativePaths: string[]): InputReference[] {
+  static directoryArray(relativePaths: any): InputReference[] {
     const refArray: InputReference[] = [];
     for (const filePath of relativePaths) {
       if (filePath != null && filePath !== undefined) {
@@ -88,7 +88,7 @@ export class InputReference implements IMappable {
    * @param s3FileReferences Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`
    * @returns
    */
-  static s3FileArray(s3FileReferences: string[]): InputReference[] {
+  static s3FileArray(s3FileReferences: any): InputReference[] {
     const refArray: InputReference[] = [];
     for (const filePath of s3FileReferences) {
       if (filePath != null && filePath !== undefined) {
@@ -120,7 +120,7 @@ export class InputReference implements IMappable {
    * @param s3FileReferences Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`
    * @returns
    */
-  static s3DirectoryArray(s3FileReferences: string[]): InputReference[] {
+  static s3DirectoryArray(s3FileReferences: any): InputReference[] {
     const refArray: InputReference[] = [];
     for (const filePath of s3FileReferences) {
       if (filePath != null && filePath !== undefined) {

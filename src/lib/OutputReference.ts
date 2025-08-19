@@ -35,7 +35,7 @@ export class OutputReference implements IMappable {
    * @param relativePaths path to local files like `["/home/file1.txt", "/home/file2.txt"]`
    * @returns
    */
-  static fileArray(relativePaths: string[]): OutputReference[] {
+  static fileArray(relativePaths: any): OutputReference[] {
     const refArray: OutputReference[] = [];
     for (const filePath of relativePaths) {
       if (filePath != null && filePath !== undefined) {
@@ -54,7 +54,7 @@ export class OutputReference implements IMappable {
    * @param relativePaths path to local directories like `["/home/proj1/", "/home/proj2/"]`
    * @returns
    */
-  static directoryArray(relativePaths: string[]): OutputReference[] {
+  static directoryArray(relativePaths: any): OutputReference[] {
     const refArray: OutputReference[] = [];
     for (const filePath of relativePaths) {
       if (filePath != null && filePath !== undefined) {
@@ -86,7 +86,7 @@ export class OutputReference implements IMappable {
    * @param s3FileReferences Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`
    * @returns
    */
-  static s3FileArray(s3FileReferences: string[]): OutputReference[] {
+  static s3FileArray(s3FileReferences: any): OutputReference[] {
     const refArray: OutputReference[] = [];
     for (const filePath of s3FileReferences) {
       if (filePath != null && filePath !== undefined) {
@@ -118,7 +118,7 @@ export class OutputReference implements IMappable {
    * @param s3FileReferences Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`
    * @returns
    */
-  static s3DirectoryArray(s3FileReferences: string[]): OutputReference[] {
+  static s3DirectoryArray(s3FileReferences: any): OutputReference[] {
     const refArray: OutputReference[] = [];
     for (const filePath of s3FileReferences) {
       if (filePath != null && filePath !== undefined) {
@@ -150,7 +150,7 @@ export class OutputReference implements IMappable {
    * @param values Array of string values
    * @returns
    */
-  static stringArray(values: string[]): OutputReference[] {
+  static stringArray(values: any): OutputReference[] {
     const refArray: OutputReference[] = [];
     for (const value of values) {
       if (value != null && value !== undefined) {

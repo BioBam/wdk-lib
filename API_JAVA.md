@@ -4231,14 +4231,14 @@ path to a local directory like `/Users/username/project/`.
 ```java
 import com.biobam.wdk.lib.InputReference;
 
-InputReference.directoryArray(java.util.List<java.lang.String> relativePaths)
+InputReference.directoryArray(java.lang.Object relativePaths)
 ```
 
 Create a reference to a list of local directories.
 
 ###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.InputReference.directoryArray.parameter.relativePaths"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 path to local directories like `["/home/proj1/", "/home/proj2/"]`.
 
@@ -4267,14 +4267,14 @@ path to a local file like `/Users/username/file.txt`.
 ```java
 import com.biobam.wdk.lib.InputReference;
 
-InputReference.fileArray(java.util.List<java.lang.String> relativePaths)
+InputReference.fileArray(java.lang.Object relativePaths)
 ```
 
 Create a reference to a list of local files.
 
 ###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.InputReference.fileArray.parameter.relativePaths"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
 
@@ -4303,14 +4303,14 @@ Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/
 ```java
 import com.biobam.wdk.lib.InputReference;
 
-InputReference.s3DirectoryArray(java.util.List<java.lang.String> s3FileReferences)
+InputReference.s3DirectoryArray(java.lang.Object s3FileReferences)
 ```
 
 Create a reference to a list of s3 directories.
 
 ###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.InputReference.s3DirectoryArray.parameter.s3FileReferences"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`.
 
@@ -4339,14 +4339,14 @@ Reference to an S3 file formatted like `s3://bucket-name/path/to/file`.
 ```java
 import com.biobam.wdk.lib.InputReference;
 
-InputReference.s3FileArray(java.util.List<java.lang.String> s3FileReferences)
+InputReference.s3FileArray(java.lang.Object s3FileReferences)
 ```
 
 Create a reference to a list of s3 files.
 
 ###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.InputReference.s3FileArray.parameter.s3FileReferences"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`.
 
@@ -5438,14 +5438,14 @@ path to a local directory like `/Users/username/project/`.
 ```java
 import com.biobam.wdk.lib.OutputReference;
 
-OutputReference.directoryArray(java.util.List<java.lang.String> relativePaths)
+OutputReference.directoryArray(java.lang.Object relativePaths)
 ```
 
 Create a reference to a list of local directories.
 
 ###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.OutputReference.directoryArray.parameter.relativePaths"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 path to local directories like `["/home/proj1/", "/home/proj2/"]`.
 
@@ -5474,14 +5474,14 @@ path to a local file like `/Users/username/file.txt`.
 ```java
 import com.biobam.wdk.lib.OutputReference;
 
-OutputReference.fileArray(java.util.List<java.lang.String> relativePaths)
+OutputReference.fileArray(java.lang.Object relativePaths)
 ```
 
 Create a reference to a list of local files.
 
 ###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.OutputReference.fileArray.parameter.relativePaths"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
 
@@ -5546,14 +5546,14 @@ Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/
 ```java
 import com.biobam.wdk.lib.OutputReference;
 
-OutputReference.s3DirectoryArray(java.util.List<java.lang.String> s3FileReferences)
+OutputReference.s3DirectoryArray(java.lang.Object s3FileReferences)
 ```
 
 Create a reference to a list of s3 directories.
 
 ###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.OutputReference.s3DirectoryArray.parameter.s3FileReferences"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`.
 
@@ -5582,14 +5582,14 @@ Reference to an S3 file formatted like `s3://bucket-name/path/to/file`.
 ```java
 import com.biobam.wdk.lib.OutputReference;
 
-OutputReference.s3FileArray(java.util.List<java.lang.String> s3FileReferences)
+OutputReference.s3FileArray(java.lang.Object s3FileReferences)
 ```
 
 Create a reference to a list of s3 files.
 
 ###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.OutputReference.s3FileArray.parameter.s3FileReferences"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`.
 
@@ -5618,14 +5618,14 @@ The string value.
 ```java
 import com.biobam.wdk.lib.OutputReference;
 
-OutputReference.stringArray(java.util.List<java.lang.String> values)
+OutputReference.stringArray(java.lang.Object values)
 ```
 
 Create a reference to a list of strings.
 
 ###### `values`<sup>Required</sup> <a name="values" id="wdk-lib.OutputReference.stringArray.parameter.values"></a>
 
-- *Type:* java.util.List<java.lang.String>
+- *Type:* java.lang.Object
 
 Array of string values.
 

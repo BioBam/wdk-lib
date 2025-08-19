@@ -4091,14 +4091,14 @@ path to a local directory like `/Users/username/project/`.
 ```typescript
 import { InputReference } from 'wdk-lib'
 
-InputReference.directoryArray(relativePaths: string[])
+InputReference.directoryArray(relativePaths: any)
 ```
 
 Create a reference to a list of local directories.
 
 ###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.InputReference.directoryArray.parameter.relativePaths"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 path to local directories like `["/home/proj1/", "/home/proj2/"]`.
 
@@ -4127,14 +4127,14 @@ path to a local file like `/Users/username/file.txt`.
 ```typescript
 import { InputReference } from 'wdk-lib'
 
-InputReference.fileArray(relativePaths: string[])
+InputReference.fileArray(relativePaths: any)
 ```
 
 Create a reference to a list of local files.
 
 ###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.InputReference.fileArray.parameter.relativePaths"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
 
@@ -4163,14 +4163,14 @@ Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/
 ```typescript
 import { InputReference } from 'wdk-lib'
 
-InputReference.s3DirectoryArray(s3FileReferences: string[])
+InputReference.s3DirectoryArray(s3FileReferences: any)
 ```
 
 Create a reference to a list of s3 directories.
 
 ###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.InputReference.s3DirectoryArray.parameter.s3FileReferences"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`.
 
@@ -4199,14 +4199,14 @@ Reference to an S3 file formatted like `s3://bucket-name/path/to/file`.
 ```typescript
 import { InputReference } from 'wdk-lib'
 
-InputReference.s3FileArray(s3FileReferences: string[])
+InputReference.s3FileArray(s3FileReferences: any)
 ```
 
 Create a reference to a list of s3 files.
 
 ###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.InputReference.s3FileArray.parameter.s3FileReferences"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`.
 
@@ -5297,14 +5297,14 @@ path to a local directory like `/Users/username/project/`.
 ```typescript
 import { OutputReference } from 'wdk-lib'
 
-OutputReference.directoryArray(relativePaths: string[])
+OutputReference.directoryArray(relativePaths: any)
 ```
 
 Create a reference to a list of local directories.
 
 ###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.OutputReference.directoryArray.parameter.relativePaths"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 path to local directories like `["/home/proj1/", "/home/proj2/"]`.
 
@@ -5333,14 +5333,14 @@ path to a local file like `/Users/username/file.txt`.
 ```typescript
 import { OutputReference } from 'wdk-lib'
 
-OutputReference.fileArray(relativePaths: string[])
+OutputReference.fileArray(relativePaths: any)
 ```
 
 Create a reference to a list of local files.
 
 ###### `relativePaths`<sup>Required</sup> <a name="relativePaths" id="wdk-lib.OutputReference.fileArray.parameter.relativePaths"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
 
@@ -5405,14 +5405,14 @@ Reference to an S3 directory formatted like `s3://bucket-name/path/to/directory/
 ```typescript
 import { OutputReference } from 'wdk-lib'
 
-OutputReference.s3DirectoryArray(s3FileReferences: string[])
+OutputReference.s3DirectoryArray(s3FileReferences: any)
 ```
 
 Create a reference to a list of s3 directories.
 
 ###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.OutputReference.s3DirectoryArray.parameter.s3FileReferences"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 Reference to S3 directories formatted like `["s3://bucket-name/path/to/dir1", "s3://bucket-name/dir2"]`.
 
@@ -5441,14 +5441,14 @@ Reference to an S3 file formatted like `s3://bucket-name/path/to/file`.
 ```typescript
 import { OutputReference } from 'wdk-lib'
 
-OutputReference.s3FileArray(s3FileReferences: string[])
+OutputReference.s3FileArray(s3FileReferences: any)
 ```
 
 Create a reference to a list of s3 files.
 
 ###### `s3FileReferences`<sup>Required</sup> <a name="s3FileReferences" id="wdk-lib.OutputReference.s3FileArray.parameter.s3FileReferences"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 Reference to S3 files formatted like `["s3://bucket-name/path/to/file1", "s3://bucket-name/path/to/file2"]`.
 
@@ -5477,14 +5477,14 @@ The string value.
 ```typescript
 import { OutputReference } from 'wdk-lib'
 
-OutputReference.stringArray(values: string[])
+OutputReference.stringArray(values: any)
 ```
 
 Create a reference to a list of strings.
 
 ###### `values`<sup>Required</sup> <a name="values" id="wdk-lib.OutputReference.stringArray.parameter.values"></a>
 
-- *Type:* string[]
+- *Type:* any
 
 Array of string values.
 

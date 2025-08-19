@@ -32,20 +32,13 @@ export class OutputReference implements IMappable {
   /**
    * Create a reference to a list of local files.
    *
-   * @param relativePaths path to local files like `["/home/file1.txt", "/home/file2.txt"]`
-   * @returns
+   * @param relativePaths Array of file paths. Can contain null values which will be preserved in the output.
+   *                     Examples: `["/home/file1.txt", null, "/home/file3.txt"]`
+   * @returns Array of OutputReference objects with null values preserved for null inputs
+   * @throws Error if relativePaths is not an array
    */
   static fileArray(relativePaths: any): OutputReference[] {
-    const refArray: OutputReference[] = [];
-    for (const filePath of relativePaths) {
-      if (filePath != null && filePath !== undefined) {
-        refArray.push(this.file(filePath));
-      } else {
-        // Return null to preserve array structure and CWL compatibility
-        refArray.push(null as any);
-      }
-    }
-    return refArray;
+    return this.createArrayWithNulls(relativePaths, (filePath) => this.file(filePath));
   }
 
   /**
@@ -55,16 +48,7 @@ export class OutputReference implements IMappable {
    * @returns
    */
   static directoryArray(relativePaths: any): OutputReference[] {
-    const refArray: OutputReference[] = [];
-    for (const filePath of relativePaths) {
-      if (filePath != null && filePath !== undefined) {
-        refArray.push(this.directory(filePath));
-      } else {
-        // Return null to preserve array structure and CWL compatibility
-        refArray.push(null as any);
-      }
-    }
-    return refArray;
+    return this.createArrayWithNulls(relativePaths, (filePath) => this.directory(filePath));
   }
 
   /**
@@ -87,16 +71,7 @@ export class OutputReference implements IMappable {
    * @returns
    */
   static s3FileArray(s3FileReferences: any): OutputReference[] {
-    const refArray: OutputReference[] = [];
-    for (const filePath of s3FileReferences) {
-      if (filePath != null && filePath !== undefined) {
-        refArray.push(this.s3File(filePath));
-      } else {
-        // Return null to preserve array structure and CWL compatibility
-        refArray.push(null as any);
-      }
-    }
-    return refArray;
+    return this.createArrayWithNulls(s3FileReferences, (filePath) => this.s3File(filePath));
   }
 
   /**
@@ -119,16 +94,7 @@ export class OutputReference implements IMappable {
    * @returns
    */
   static s3DirectoryArray(s3FileReferences: any): OutputReference[] {
-    const refArray: OutputReference[] = [];
-    for (const filePath of s3FileReferences) {
-      if (filePath != null && filePath !== undefined) {
-        refArray.push(this.s3Directory(filePath));
-      } else {
-        // Return null to preserve array structure and CWL compatibility
-        refArray.push(null as any);
-      }
-    }
-    return refArray;
+    return this.createArrayWithNulls(s3FileReferences, (filePath) => this.s3Directory(filePath));
   }
 
   /**
@@ -151,16 +117,7 @@ export class OutputReference implements IMappable {
    * @returns
    */
   static stringArray(values: any): OutputReference[] {
-    const refArray: OutputReference[] = [];
-    for (const value of values) {
-      if (value != null && value !== undefined) {
-        refArray.push(this.string(value));
-      } else {
-        // Return null to preserve array structure and CWL compatibility
-        refArray.push(null as any);
-      }
-    }
-    return refArray;
+    return this.createArrayWithNulls(values, (value) => this.string(value));
   }
 
   /**
@@ -200,6 +157,32 @@ export class OutputReference implements IMappable {
     outputReference.type = cwl.PrimitiveType.FLOAT.toString();
     outputReference._value = value;
     return outputReference;
+  }
+
+  /**
+   * Helper method to create array references with null value handling.
+   * @param items Array of items that can be null
+   * @param createRef Function to create a reference for non-null items
+   * @returns Array with references and null values preserved
+   */
+  private static createArrayWithNulls<T>(
+    items: any,
+    createRef: (item: any) => T,
+  ): T[] {
+    if (!Array.isArray(items)) {
+      throw new Error(`Expected an array, got ${typeof items}: ${items}`);
+    }
+
+    const refArray: T[] = [];
+    for (const item of items) {
+      if (item != null && item !== undefined) {
+        refArray.push(createRef(item));
+      } else {
+        // Return null to preserve array structure and CWL compatibility
+        refArray.push(null as any);
+      }
+    }
+    return refArray;
   }
 
   private type: string | undefined;

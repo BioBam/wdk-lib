@@ -5483,7 +5483,10 @@ Create a reference to a list of local files.
 
 - *Type:* java.lang.Object
 
-path to local files like `["/home/file1.txt", "/home/file2.txt"]`.
+Array of file paths.
+
+Can contain null values which will be preserved in the output.
+Examples: `["/home/file1.txt", null, "/home/file3.txt"]`
 
 ---
 

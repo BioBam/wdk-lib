@@ -163,7 +163,7 @@ export class OutputReference implements IMappable {
    * Helper method to create array references with null value handling.
    * @param items Array of items that can be null
    * @param createRef Function to create a reference for non-null items
-   * @returns Array with references and null values preserved
+   * @returns Array with references and null values preserved as special OutputReference objects
    */
   private static createArrayWithNulls<T>(
     items: any,
@@ -178,8 +178,11 @@ export class OutputReference implements IMappable {
       if (item != null && item !== undefined) {
         refArray.push(createRef(item));
       } else {
-        // Return null to preserve array structure and CWL compatibility
-        refArray.push(null as any);
+        // Create a special "null" OutputReference that will be serialized as null in CWL
+        const nullRef = new OutputReference();
+        nullRef.type = cwl.CWLType.FILE.toString(); // Use FILE as default, will be overridden
+        nullRef._value = null; // This signals it should be treated as null
+        refArray.push(nullRef as any);
       }
     }
     return refArray;
@@ -230,6 +233,15 @@ export class OutputReference implements IMappable {
   }
 
   /**
+   * Checks if this OutputReference represents a null value in an array.
+   *
+   * @returns True if it represents a null value; false otherwise.
+   */
+  public isNullValue(): boolean {
+    return this._value === null;
+  }
+
+  /**
    * Convert the local path reference to an S3 reference.
    *
    * @param s3UriLocation The S3 URI location to convert to.
@@ -243,6 +255,11 @@ export class OutputReference implements IMappable {
 
   // Method to convert to a YAML map equivalent
   toMap(): { [key: string]: any } {
+    // Special case: if this represents a null value, return null
+    if (this.isNullValue()) {
+      return null as any; // Cast to satisfy interface, but this will be handled by ToolOutputs
+    }
+
     let yamlMap: { [key: string]: any } = {};
 
     if (this.isPrimitive()) {

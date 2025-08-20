@@ -170,7 +170,12 @@ export class ToolOutputs implements IMappable {
   private processValue(value: any): any {
     // Check if the individual value is an instance of OutputReference
     if (value instanceof OutputReference) {
-      return value.toMap();
+      const mappedValue = value.toMap();
+      // Special case: if toMap returns null (indicating a null value in array), return null
+      if (mappedValue === null) {
+        return null;
+      }
+      return mappedValue;
     } else if (Array.isArray(value) && value.length > 0) {
       // If it's an array, recursively process each item
       return value.map(item => this.processValue(item));

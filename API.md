@@ -5183,6 +5183,7 @@ new OutputReference()
 | <code><a href="#wdk-lib.OutputReference.convertToS3Reference">convertToS3Reference</a></code> | Convert the local path reference to an S3 reference. |
 | <code><a href="#wdk-lib.OutputReference.isDirectory">isDirectory</a></code> | Checks if the OutputReference is a directory. |
 | <code><a href="#wdk-lib.OutputReference.isFile">isFile</a></code> | Checks if the OutputReference is a file. |
+| <code><a href="#wdk-lib.OutputReference.isNullValue">isNullValue</a></code> | Checks if this OutputReference represents a null value in an array. |
 | <code><a href="#wdk-lib.OutputReference.isPrimitive">isPrimitive</a></code> | Checks if the OutputReference is a primitive type (string, boolean, int, float). |
 | <code><a href="#wdk-lib.OutputReference.toMap">toMap</a></code> | Convert the object to a map representation following the CWL specification. |
 
@@ -5219,6 +5220,14 @@ public isFile(): boolean
 ```
 
 Checks if the OutputReference is a file.
+
+##### `isNullValue` <a name="isNullValue" id="wdk-lib.OutputReference.isNullValue"></a>
+
+```typescript
+public isNullValue(): boolean
+```
+
+Checks if this OutputReference represents a null value in an array.
 
 ##### `isPrimitive` <a name="isPrimitive" id="wdk-lib.OutputReference.isPrimitive"></a>
 

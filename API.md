@@ -4499,6 +4499,11 @@ const output = Output.file(root, 'myOutput')
                    .withGlob('*.txt')
                    .loadContents()
                    .outputEval('$(self[0].contents)');
+
+// * Also supports multiple glob patterns:
+const outputFiles = Output.fileArray(root, 'outputFiles')
+                          .withGlob(['*.txt', '*.log'])
+                          .loadContents();
 ```
 
 
@@ -4705,16 +4710,18 @@ Converts the output's properties into a map format.
 ##### `withGlob` <a name="withGlob" id="wdk-lib.Output.withGlob"></a>
 
 ```typescript
-public withGlob(glob: string): Output
+public withGlob(glob: string | string[]): Output
 ```
 
 Specifies a glob pattern to locate output files.
 
 ###### `glob`<sup>Required</sup> <a name="glob" id="wdk-lib.Output.withGlob.parameter.glob"></a>
 
-- *Type:* string
+- *Type:* string | string[]
 
-The glob pattern.
+The glob pattern(s).
+
+Can be a single string or an array of strings for multiple patterns.
 
 ---
 

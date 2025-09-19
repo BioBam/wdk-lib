@@ -17,6 +17,11 @@ import { TypeOut } from './TypeOut';
  *                    .withGlob('*.txt')
  *                    .loadContents()
  *                    .outputEval('$(self[0].contents)');
+ *
+ * // * Also supports multiple glob patterns:
+ * const outputFiles = Output.fileArray(root, 'outputFiles')
+ *                           .withGlob(['*.txt', '*.log'])
+ *                           .loadContents();
  */
 export class Output extends LinkableConstruct implements IMappable {
 
@@ -177,7 +182,7 @@ export class Output extends LinkableConstruct implements IMappable {
   protected _parameterType: OutputType | OutputTypeArray;
   private _psc: StepClass;
 
-  private _glob: string | null = null;
+  private _glob: string | string[] | null = null;
   private _loadContents: boolean = false;
   private _outputEval: string | undefined;
   /**
@@ -290,10 +295,10 @@ export class Output extends LinkableConstruct implements IMappable {
   /**
    * Specifies a glob pattern to locate output files.
    *
-   * @param glob The glob pattern.
+   * @param glob The glob pattern(s). Can be a single string or an array of strings for multiple patterns.
    * @returns The current instance for chaining method calls.
    */
-  withGlob(glob: string): this {
+  withGlob(glob: string | string[]): this {
     this._glob = glob;
     return this;
   }

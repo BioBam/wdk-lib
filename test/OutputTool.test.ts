@@ -122,6 +122,34 @@ describe('Output Class', () => {
 
     });
 
+    it('should convert string input with array glob patterns to map correctly', () => {
+      const output = Output.string(tool, 'testId').withGlob(['*.txt', '*.log']).loadContents();
+      const map = output._toCwlObject().save();
+
+      expect(map).toEqual({
+        id: 'testId',
+        type: 'string',
+        outputBinding: {
+          glob: ['*.txt', '*.log'],
+          loadContents: true,
+        },
+      });
+    });
+
+    it('should convert file array input with array glob patterns to map correctly', () => {
+      const output = Output.fileArray(tool, 'testFileArrayId').withGlob(['*.txt', '*.log', '*.out']).loadContents();
+      const map = output._toCwlObject().save();
+
+      expect(map).toEqual({
+        id: 'testFileArrayId',
+        type: { type: 'array', items: 'File' },
+        outputBinding: {
+          glob: ['*.txt', '*.log', '*.out'],
+          loadContents: true,
+        },
+      });
+    });
+
     it('should convert file array input to map correctly with item separator', () => {
       const output = Output.fileArray(tool, 'testStringArrayId').makeOptional(true);
       const map = output._toCwlObject().save();

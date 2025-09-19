@@ -4639,6 +4639,9 @@ import com.biobam.wdk.lib.Output;
 import com.biobam.wdk.lib.Constructs;
 Construct root = Constructs.createRoot("root");
 Output output = Output.file(root, "myOutput").withGlob("*.txt").loadContents().outputEval("$(self[0].contents)");
+
+// * Also supports multiple glob patterns:
+Output outputFiles = Output.fileArray(root, "outputFiles").withGlob(List.of("*.txt", "*.log")).loadContents();
 ```
 
 
@@ -4846,16 +4849,18 @@ Converts the output's properties into a map format.
 ##### `withGlob` <a name="withGlob" id="wdk-lib.Output.withGlob"></a>
 
 ```java
-public Output withGlob(java.lang.String glob)
+public Output withGlob(java.lang.String OR java.util.List<java.lang.String> glob)
 ```
 
 Specifies a glob pattern to locate output files.
 
 ###### `glob`<sup>Required</sup> <a name="glob" id="wdk-lib.Output.withGlob.parameter.glob"></a>
 
-- *Type:* java.lang.String
+- *Type:* java.lang.String OR java.util.List<java.lang.String>
 
-The glob pattern.
+The glob pattern(s).
+
+Can be a single string or an array of strings for multiple patterns.
 
 ---
 

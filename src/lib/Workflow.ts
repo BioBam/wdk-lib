@@ -84,12 +84,14 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
   }
 
   toMap(): { [key: string]: any } {
-    return this._toCwlObject().save();
+    // ! Pass relativeUris=false to bypass cwl-ts-auto bug with path.relative() on Windows
+    return this._toCwlObject().save(false, '', false);
   }
 
   serialize(dirPath: string): SynthFiles {
     const synthInfo = WdkUtils.createSynthInfo(this, dirPath);
-    const yamlString = yaml.dump(this._toCwlObject().save(), { quotingType: '\"' });
+    // ! Pass relativeUris=false to bypass cwl-ts-auto bug with path.relative() on Windows
+    const yamlString = yaml.dump(this._toCwlObject().save(false, '', false), { quotingType: '\"' });
     WdkUtils.writeToFile(yamlString, synthInfo.main);
     return synthInfo;
   }

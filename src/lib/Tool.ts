@@ -62,7 +62,8 @@ export class Tool extends StepConstruct implements IMappable {
    * @returns
    */
   toMap(): { [key: string]: any } {
-    return this._toCwlObject().save();
+    // ! Pass relativeUris=false to bypass cwl-ts-auto bug with path.relative() on Windows
+    return this._toCwlObject().save(false, '', false);
   }
 
 
@@ -77,7 +78,8 @@ export class Tool extends StepConstruct implements IMappable {
     const shortClass = WdkUtils.getLowercaseInitials(this.stepClass);
     const cwlFile = WdkUtils.newFilePath(dirPath, `${this.id}.${shortClass}.cwl`);
     const synthInfo = SynthFiles.createWithMain(cwlFile);
-    const data = this._toCwlObject().save();
+    // ! Pass relativeUris=false to bypass cwl-ts-auto bug with path.relative() on Windows
+    const data = this._toCwlObject().save(false, '', false);
     const yamlString = yaml.dump(data, { noRefs: true });
     WdkUtils.writeToFile(yamlString, cwlFile);
     return synthInfo;

@@ -118,7 +118,8 @@ export class CloudService extends Workflow {
     Requirement.networkAccess(this.service);
 
     const containerRepository = props.containerRepository || '188164850845.dkr.ecr.us-east-1.amazonaws.com';
-    Requirement.docker(this.service, `${containerRepository}/${props.serviceId}:${props.serviceVersion}`);
+    const separator = props.serviceVersion.startsWith('sha256:') ? '@' : ':';
+    Requirement.docker(this.service, `${containerRepository}/${props.serviceId}${separator}${props.serviceVersion}`);
 
     const propsCores = props.assignedCores || 1;
     const propsMemory = props.assignedMemoryMb || 2048;

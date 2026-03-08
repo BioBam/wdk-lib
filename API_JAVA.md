@@ -12,8 +12,7 @@ import com.biobam.wdk.lib.InputBinding;
 
 InputBinding.builder()
 //  .itemSeparator(java.lang.String)
-//  .position(java.lang.String)
-//  .position(java.lang.Number)
+//  .position(java.lang.String|java.lang.Number)
 //  .prefix(java.lang.String)
 //  .separate(java.lang.Boolean)
 //  .shellQuote(java.lang.Boolean)
@@ -25,7 +24,7 @@ InputBinding.builder()
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#wdk-lib.InputBinding.property.itemSeparator">itemSeparator</a></code> | <code>java.lang.String</code> | *No description.* |
-| <code><a href="#wdk-lib.InputBinding.property.position">position</a></code> | <code>java.lang.String OR java.lang.Number</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.position">position</a></code> | <code>java.lang.String\|java.lang.Number</code> | *No description.* |
 | <code><a href="#wdk-lib.InputBinding.property.prefix">prefix</a></code> | <code>java.lang.String</code> | *No description.* |
 | <code><a href="#wdk-lib.InputBinding.property.separate">separate</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.InputBinding.property.shellQuote">shellQuote</a></code> | <code>java.lang.Boolean</code> | *No description.* |
@@ -45,10 +44,10 @@ public java.lang.String getItemSeparator();
 ##### `position`<sup>Optional</sup> <a name="position" id="wdk-lib.InputBinding.property.position"></a>
 
 ```java
-public java.lang.Object getPosition();
+public java.lang.String|java.lang.Number getPosition();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 ---
 
@@ -4849,14 +4848,14 @@ Converts the output's properties into a map format.
 ##### `withGlob` <a name="withGlob" id="wdk-lib.Output.withGlob"></a>
 
 ```java
-public Output withGlob(java.lang.String OR java.util.List<java.lang.String> glob)
+public Output withGlob(java.lang.String|java.util.List<java.lang.String> glob)
 ```
 
 Specifies a glob pattern to locate output files.
 
 ###### `glob`<sup>Required</sup> <a name="glob" id="wdk-lib.Output.withGlob.parameter.glob"></a>
 
-- *Type:* java.lang.String OR java.util.List<java.lang.String>
+- *Type:* java.lang.String|java.util.List<java.lang.String>
 
 The glob pattern(s).
 
@@ -9475,7 +9474,7 @@ This can be a workflow or a Tool.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#wdk-lib.WorkflowValues.property.filePaths">filePaths</a></code> | <code>java.util.List<java.lang.String></code> | Retrieves the file paths for all inputs that are files. |
-| <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>></code> | Returns a map of input IDs to their associated values. |
+| <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>java.util.Map<java.lang.String, java.lang.String\|java.lang.Number\|java.lang.Boolean\|java.util.List<java.lang.String>\|<a href="#wdk-lib.InputReference">InputReference</a>\|java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>></code> | Returns a map of input IDs to their associated values. |
 | <code><a href="#wdk-lib.WorkflowValues.property.localInputReferences">localInputReferences</a></code> | <code>java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>></code> | Retrieves all local InputReferences that have a path defined. |
 | <code><a href="#wdk-lib.WorkflowValues.property.taskName">taskName</a></code> | <code>java.lang.String</code> | Retrieves the task name associated with these workflow values. |
 
@@ -9496,10 +9495,10 @@ Retrieves the file paths for all inputs that are files.
 ##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.WorkflowValues.property.inputs"></a>
 
 ```java
-public java.lang.Object getInputs();
+public java.util.Map<java.lang.String, java.lang.String|java.lang.Number|java.lang.Boolean|java.util.List<java.lang.String>|InputReference|java.util.List<InputReference>> getInputs();
 ```
 
-- *Type:* java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>>
+- *Type:* java.util.Map<java.lang.String, java.lang.String|java.lang.Number|java.lang.Boolean|java.util.List<java.lang.String>|<a href="#wdk-lib.InputReference">InputReference</a>|java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>>
 
 Returns a map of input IDs to their associated values.
 

@@ -63,10 +63,27 @@ export interface ServiceProps {
    */
   readonly containerRepository?: string;
 
-  // /**
-  //  * Optional: Name of the progress stream.
-  //  */
-  // readonly progressStream?: string;
+  /**
+   * Optional: JavaScript function body that computes resource requirements at
+   * runtime based on the service parameter values.  The function receives a
+   * `params` object whose keys are the parameter names and should return
+   * `{cores: number, memory: number}`.
+   *
+   * When set, the CWL ResourceRequirement on the service step uses expressions
+   * that reference the computed values instead of static numbers. The
+   * parameters ExpressionTool is extended to evaluate this function and output
+   * `computed_cores` and `computed_memory` alongside the `parameters_file`.
+   *
+   * Example:
+   * ```
+   * var cores = 4; var memory = 8192;
+   * if (params.database && params.database.indexOf('nr') !== -1) {
+   *   cores = 8; memory = 16384;
+   * }
+   * return {cores: cores, memory: memory};
+   * ```
+   */
+  readonly resourceFunction?: string;
 }
 
 /**
@@ -96,9 +113,23 @@ export class CloudService extends Workflow {
   constructor(scope: Workflow, id: string, props: ServiceProps) {
     super(scope, id);
 
+    const propsCores = props.assignedCores || 1;
+    const propsMemory = props.assignedMemoryMb || 2048;
+    const propsTempDir = props.assignedTempDirMb || 2048;
+    const hasDynamicResources = !!props.resourceFunction;
+
     // Initialize parameters with either JSON expression or JSON string expression based on props.
     this.parameters = new ExpressionTool(this, id + '-pe');
-    if (props.parameterValuesAsStrings) {
+    if (hasDynamicResources) {
+      this.parameters.withExpression(
+        ExpressionTool.makeParametersAndResourcesExpression(
+          props.resourceFunction!,
+          propsCores,
+          propsMemory,
+          props.parameterValuesAsStrings,
+        ),
+      );
+    } else if (props.parameterValuesAsStrings) {
       this.parameters.withExpression(ExpressionTool.makeParametersJsonExpressionAllStrings());
     } else {
       this.parameters.withExpression(ExpressionTool.makeParametersJsonExpression());
@@ -121,22 +152,33 @@ export class CloudService extends Workflow {
     const separator = props.serviceVersion.startsWith('sha256:') ? '@' : ':';
     Requirement.docker(this.service, `${containerRepository}/${props.serviceId}${separator}${props.serviceVersion}`);
 
-    const propsCores = props.assignedCores || 1;
-    const propsMemory = props.assignedMemoryMb || 2048;
-    const propsTempDir = props.assignedTempDirMb || 2048;
+    if (hasDynamicResources) {
+      // Wire computed resource outputs from the expression tool into the
+      // service tool so the ResourceRequirement can reference them.
+      const outCores = Output.integer(this.parameters, 'computed_cores');
+      const outMemory = Output.integer(this.parameters, 'computed_memory');
 
-    Requirement.resource(this.service, {
-      coresMin: propsCores,
-      ramMin: propsMemory,
-      tmpdirMin: propsTempDir,
-    });
+      Input.integer(this.service, 'computed_cores').linkTo(outCores);
+      Input.integer(this.service, 'computed_memory').linkTo(outMemory);
 
-    // const progressStream = props.progressStream || 'carlos';
+      Requirement.resource(this.service, {
+        coresMin: '$(inputs.computed_cores)',
+        ramMin: '$(inputs.computed_memory)',
+        tmpdirMin: propsTempDir,
+      });
+    } else {
+      Requirement.resource(this.service, {
+        coresMin: propsCores,
+        ramMin: propsMemory,
+        tmpdirMin: propsTempDir,
+      });
+    }
 
     // Set up environment variables necessary for batch job execution.
+    // When dynamic, BATCH_MEMORY/BATCH_CPU use CWL expressions to match the
+    // computed resource values at runtime.
     Requirement.envVar(this.service, {
-      AWS_BATCH_JOB_ID: 'carlos', // just to activate logs streaming. Should be replaced to the actual job id.
-      // DEV_PROGRESS_STREAM: progressStream,
+      AWS_BATCH_JOB_ID: 'carlos',
       BUCKET_NAME: 'toil-workspace-20240920',
       BUCKET_JOB_FOLDER: 'roberto/carlos',
       BUCKET_SESSION_SHARED_FOLDER: 'roberto/shared',
@@ -148,8 +190,8 @@ export class CloudService extends Workflow {
       DEV_SHARED_DIR: '/data/shared',
       DEV_COMPRESSED_SHARED_DIR: '/data/compressedShared',
       DEV_COMPRESSED_SHARED_TAR_ZST: '/data/compressedShared.tar.zst',
-      BATCH_MEMORY: '' + propsMemory,
-      BATCH_CPU: '' + propsCores,
+      BATCH_MEMORY: hasDynamicResources ? '$(inputs.computed_memory)' : '' + propsMemory,
+      BATCH_CPU: hasDynamicResources ? '$(inputs.computed_cores)' : '' + propsCores,
     });
 
     // Link the output parameters file to the service input parameters.

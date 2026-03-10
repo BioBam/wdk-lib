@@ -150,24 +150,24 @@ const requirementProps: RequirementProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.RequirementProps.property.coresMax">coresMax</a></code> | <code>number</code> | Maximum reserved number of CPU cores. |
-| <code><a href="#wdk-lib.RequirementProps.property.coresMin">coresMin</a></code> | <code>number</code> | Minimum reserved number of CPU cores. |
-| <code><a href="#wdk-lib.RequirementProps.property.outdirMax">outdirMax</a></code> | <code>number</code> | Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.outdirMin">outdirMin</a></code> | <code>number</code> | Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.ramMax">ramMax</a></code> | <code>number</code> | Maximum reserved RAM in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.ramMin">ramMin</a></code> | <code>number</code> | Minimum reserved RAM in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMax">tmpdirMax</a></code> | <code>number</code> | Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMin">tmpdirMin</a></code> | <code>number</code> | Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.coresMax">coresMax</a></code> | <code>string \| number</code> | Maximum reserved number of CPU cores. |
+| <code><a href="#wdk-lib.RequirementProps.property.coresMin">coresMin</a></code> | <code>string \| number</code> | Minimum reserved number of CPU cores. |
+| <code><a href="#wdk-lib.RequirementProps.property.outdirMax">outdirMax</a></code> | <code>string \| number</code> | Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.outdirMin">outdirMin</a></code> | <code>string \| number</code> | Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.ramMax">ramMax</a></code> | <code>string \| number</code> | Maximum reserved RAM in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.ramMin">ramMin</a></code> | <code>string \| number</code> | Minimum reserved RAM in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMax">tmpdirMax</a></code> | <code>string \| number</code> | Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMin">tmpdirMin</a></code> | <code>string \| number</code> | Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
 
 ---
 
 ##### `coresMax`<sup>Optional</sup> <a name="coresMax" id="wdk-lib.RequirementProps.property.coresMax"></a>
 
 ```typescript
-public readonly coresMax: number;
+public readonly coresMax: string | number;
 ```
 
-- *Type:* number
+- *Type:* string | number
 
 Maximum reserved number of CPU cores.
 
@@ -176,22 +176,25 @@ Maximum reserved number of CPU cores.
 ##### `coresMin`<sup>Optional</sup> <a name="coresMin" id="wdk-lib.RequirementProps.property.coresMin"></a>
 
 ```typescript
-public readonly coresMin: number;
+public readonly coresMin: string | number;
 ```
 
-- *Type:* number
+- *Type:* string | number
 
 Minimum reserved number of CPU cores.
+
+Accepts a CWL expression string (e.g. `$(inputs.computed_cores)`) for
+dynamic resource allocation.
 
 ---
 
 ##### `outdirMax`<sup>Optional</sup> <a name="outdirMax" id="wdk-lib.RequirementProps.property.outdirMax"></a>
 
 ```typescript
-public readonly outdirMax: number;
+public readonly outdirMax: string | number;
 ```
 
-- *Type:* number
+- *Type:* string | number
 
 Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20).
 
@@ -200,10 +203,10 @@ Maximum reserved filesystem based storage for the designated output directory, i
 ##### `outdirMin`<sup>Optional</sup> <a name="outdirMin" id="wdk-lib.RequirementProps.property.outdirMin"></a>
 
 ```typescript
-public readonly outdirMin: number;
+public readonly outdirMin: string | number;
 ```
 
-- *Type:* number
+- *Type:* string | number
 
 Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20).
 
@@ -212,10 +215,10 @@ Minimum reserved filesystem based storage for the designated output directory, i
 ##### `ramMax`<sup>Optional</sup> <a name="ramMax" id="wdk-lib.RequirementProps.property.ramMax"></a>
 
 ```typescript
-public readonly ramMax: number;
+public readonly ramMax: string | number;
 ```
 
-- *Type:* number
+- *Type:* string | number
 
 Maximum reserved RAM in mebibytes (2**20).
 
@@ -224,22 +227,25 @@ Maximum reserved RAM in mebibytes (2**20).
 ##### `ramMin`<sup>Optional</sup> <a name="ramMin" id="wdk-lib.RequirementProps.property.ramMin"></a>
 
 ```typescript
-public readonly ramMin: number;
+public readonly ramMin: string | number;
 ```
 
-- *Type:* number
+- *Type:* string | number
 
 Minimum reserved RAM in mebibytes (2**20).
+
+Accepts a CWL expression string (e.g. `$(inputs.computed_memory)`) for
+dynamic resource allocation.
 
 ---
 
 ##### `tmpdirMax`<sup>Optional</sup> <a name="tmpdirMax" id="wdk-lib.RequirementProps.property.tmpdirMax"></a>
 
 ```typescript
-public readonly tmpdirMax: number;
+public readonly tmpdirMax: string | number;
 ```
 
-- *Type:* number
+- *Type:* string | number
 
 Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20).
 
@@ -248,10 +254,10 @@ Maximum reserved filesystem based storage for the designated temporary directory
 ##### `tmpdirMin`<sup>Optional</sup> <a name="tmpdirMin" id="wdk-lib.RequirementProps.property.tmpdirMin"></a>
 
 ```typescript
-public readonly tmpdirMin: number;
+public readonly tmpdirMin: string | number;
 ```
 
-- *Type:* number
+- *Type:* string | number
 
 Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20).
 
@@ -282,6 +288,7 @@ const serviceProps: ServiceProps = { ... }
 | <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>string</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>string</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>boolean</code> | Optional: Whether to create all parameter values as strings. |
+| <code><a href="#wdk-lib.ServiceProps.property.resourceFunction">resourceFunction</a></code> | <code>string</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceDatabasePath">serviceDatabasePath</a></code> | <code>string</code> | Optional: Path to the service's database. |
 
 ---
@@ -401,6 +408,36 @@ public readonly parameterValuesAsStrings: boolean;
 Optional: Whether to create all parameter values as strings.
 
 Look at how they are used currently.
+
+---
+
+##### `resourceFunction`<sup>Optional</sup> <a name="resourceFunction" id="wdk-lib.ServiceProps.property.resourceFunction"></a>
+
+```typescript
+public readonly resourceFunction: string;
+```
+
+- *Type:* string
+
+Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values.
+
+The function receives a
+`params` object whose keys are the parameter names and should return
+`{cores: number, memory: number}`.
+
+When set, the CWL ResourceRequirement on the service step uses expressions
+that reference the computed values instead of static numbers. The
+parameters ExpressionTool is extended to evaluate this function and output
+`computed_cores` and `computed_memory` alongside the `parameters_file`.
+
+Example:
+```
+var cores = 4; var memory = 8192;
+if (params.database && params.database.indexOf('nr') !== -1) {
+  cores = 8; memory = 16384;
+}
+return {cores: cores, memory: memory};
+```
 
 ---
 
@@ -2284,8 +2321,51 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.ExpressionTool.makeParametersAndResourcesExpression">makeParametersAndResourcesExpression</a></code> | Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}). |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `makeParametersAndResourcesExpression` <a name="makeParametersAndResourcesExpression" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression"></a>
+
+```typescript
+import { ExpressionTool } from 'wdk-lib'
+
+ExpressionTool.makeParametersAndResourcesExpression(resourceFunction: string, defaultCores: number, defaultMemory: number, allStrings?: boolean)
+```
+
+Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}).
+
+###### `resourceFunction`<sup>Required</sup> <a name="resourceFunction" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression.parameter.resourceFunction"></a>
+
+- *Type:* string
+
+JS function body that receives a `params` object and must return `{cores: number, memory: number}`.
+
+---
+
+###### `defaultCores`<sup>Required</sup> <a name="defaultCores" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression.parameter.defaultCores"></a>
+
+- *Type:* number
+
+Fallback cores if the function throws or is missing.
+
+---
+
+###### `defaultMemory`<sup>Required</sup> <a name="defaultMemory" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression.parameter.defaultMemory"></a>
+
+- *Type:* number
+
+Fallback memory (MiB) if the function throws.
+
+---
+
+###### `allStrings`<sup>Optional</sup> <a name="allStrings" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression.parameter.allStrings"></a>
+
+- *Type:* boolean
+
+Whether parameter values should be stringified (matches makeParametersJsonExpressionAllStrings behaviour).
 
 ---
 
@@ -2781,8 +2861,51 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression">makeParametersAndResourcesExpression</a></code> | Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}). |
 | <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `makeParametersAndResourcesExpression` <a name="makeParametersAndResourcesExpression" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression"></a>
+
+```typescript
+import { FirstOrNullExpressionTool } from 'wdk-lib'
+
+FirstOrNullExpressionTool.makeParametersAndResourcesExpression(resourceFunction: string, defaultCores: number, defaultMemory: number, allStrings?: boolean)
+```
+
+Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}).
+
+###### `resourceFunction`<sup>Required</sup> <a name="resourceFunction" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression.parameter.resourceFunction"></a>
+
+- *Type:* string
+
+JS function body that receives a `params` object and must return `{cores: number, memory: number}`.
+
+---
+
+###### `defaultCores`<sup>Required</sup> <a name="defaultCores" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression.parameter.defaultCores"></a>
+
+- *Type:* number
+
+Fallback cores if the function throws or is missing.
+
+---
+
+###### `defaultMemory`<sup>Required</sup> <a name="defaultMemory" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression.parameter.defaultMemory"></a>
+
+- *Type:* number
+
+Fallback memory (MiB) if the function throws.
+
+---
+
+###### `allStrings`<sup>Optional</sup> <a name="allStrings" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression.parameter.allStrings"></a>
+
+- *Type:* boolean
+
+Whether parameter values should be stringified (matches makeParametersJsonExpressionAllStrings behaviour).
 
 ---
 
@@ -5705,8 +5828,51 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression">makeParametersAndResourcesExpression</a></code> | Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}). |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `makeParametersAndResourcesExpression` <a name="makeParametersAndResourcesExpression" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression"></a>
+
+```typescript
+import { RenameExpressionTool } from 'wdk-lib'
+
+RenameExpressionTool.makeParametersAndResourcesExpression(resourceFunction: string, defaultCores: number, defaultMemory: number, allStrings?: boolean)
+```
+
+Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}).
+
+###### `resourceFunction`<sup>Required</sup> <a name="resourceFunction" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression.parameter.resourceFunction"></a>
+
+- *Type:* string
+
+JS function body that receives a `params` object and must return `{cores: number, memory: number}`.
+
+---
+
+###### `defaultCores`<sup>Required</sup> <a name="defaultCores" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression.parameter.defaultCores"></a>
+
+- *Type:* number
+
+Fallback cores if the function throws or is missing.
+
+---
+
+###### `defaultMemory`<sup>Required</sup> <a name="defaultMemory" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression.parameter.defaultMemory"></a>
+
+- *Type:* number
+
+Fallback memory (MiB) if the function throws.
+
+---
+
+###### `allStrings`<sup>Optional</sup> <a name="allStrings" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression.parameter.allStrings"></a>
+
+- *Type:* boolean
+
+Whether parameter values should be stringified (matches makeParametersJsonExpressionAllStrings behaviour).
 
 ---
 

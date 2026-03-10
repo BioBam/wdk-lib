@@ -156,13 +156,21 @@ public java.lang.String getName();
 import com.biobam.wdk.lib.RequirementProps;
 
 RequirementProps.builder()
+//  .coresMax(java.lang.String)
 //  .coresMax(java.lang.Number)
+//  .coresMin(java.lang.String)
 //  .coresMin(java.lang.Number)
+//  .outdirMax(java.lang.String)
 //  .outdirMax(java.lang.Number)
+//  .outdirMin(java.lang.String)
 //  .outdirMin(java.lang.Number)
+//  .ramMax(java.lang.String)
 //  .ramMax(java.lang.Number)
+//  .ramMin(java.lang.String)
 //  .ramMin(java.lang.Number)
+//  .tmpdirMax(java.lang.String)
 //  .tmpdirMax(java.lang.Number)
+//  .tmpdirMin(java.lang.String)
 //  .tmpdirMin(java.lang.Number)
     .build();
 ```
@@ -171,24 +179,24 @@ RequirementProps.builder()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.RequirementProps.property.coresMax">coresMax</a></code> | <code>java.lang.Number</code> | Maximum reserved number of CPU cores. |
-| <code><a href="#wdk-lib.RequirementProps.property.coresMin">coresMin</a></code> | <code>java.lang.Number</code> | Minimum reserved number of CPU cores. |
-| <code><a href="#wdk-lib.RequirementProps.property.outdirMax">outdirMax</a></code> | <code>java.lang.Number</code> | Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.outdirMin">outdirMin</a></code> | <code>java.lang.Number</code> | Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.ramMax">ramMax</a></code> | <code>java.lang.Number</code> | Maximum reserved RAM in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.ramMin">ramMin</a></code> | <code>java.lang.Number</code> | Minimum reserved RAM in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMax">tmpdirMax</a></code> | <code>java.lang.Number</code> | Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMin">tmpdirMin</a></code> | <code>java.lang.Number</code> | Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.coresMax">coresMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum reserved number of CPU cores. |
+| <code><a href="#wdk-lib.RequirementProps.property.coresMin">coresMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum reserved number of CPU cores. |
+| <code><a href="#wdk-lib.RequirementProps.property.outdirMax">outdirMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.outdirMin">outdirMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.ramMax">ramMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum reserved RAM in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.ramMin">ramMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum reserved RAM in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMax">tmpdirMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMin">tmpdirMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
 
 ---
 
 ##### `coresMax`<sup>Optional</sup> <a name="coresMax" id="wdk-lib.RequirementProps.property.coresMax"></a>
 
 ```java
-public java.lang.Number getCoresMax();
+public java.lang.Object getCoresMax();
 ```
 
-- *Type:* java.lang.Number
+- *Type:* java.lang.String OR java.lang.Number
 
 Maximum reserved number of CPU cores.
 
@@ -197,22 +205,25 @@ Maximum reserved number of CPU cores.
 ##### `coresMin`<sup>Optional</sup> <a name="coresMin" id="wdk-lib.RequirementProps.property.coresMin"></a>
 
 ```java
-public java.lang.Number getCoresMin();
+public java.lang.Object getCoresMin();
 ```
 
-- *Type:* java.lang.Number
+- *Type:* java.lang.String OR java.lang.Number
 
 Minimum reserved number of CPU cores.
+
+Accepts a CWL expression string (e.g. `$(inputs.computed_cores)`) for
+dynamic resource allocation.
 
 ---
 
 ##### `outdirMax`<sup>Optional</sup> <a name="outdirMax" id="wdk-lib.RequirementProps.property.outdirMax"></a>
 
 ```java
-public java.lang.Number getOutdirMax();
+public java.lang.Object getOutdirMax();
 ```
 
-- *Type:* java.lang.Number
+- *Type:* java.lang.String OR java.lang.Number
 
 Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20).
 
@@ -221,10 +232,10 @@ Maximum reserved filesystem based storage for the designated output directory, i
 ##### `outdirMin`<sup>Optional</sup> <a name="outdirMin" id="wdk-lib.RequirementProps.property.outdirMin"></a>
 
 ```java
-public java.lang.Number getOutdirMin();
+public java.lang.Object getOutdirMin();
 ```
 
-- *Type:* java.lang.Number
+- *Type:* java.lang.String OR java.lang.Number
 
 Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20).
 
@@ -233,10 +244,10 @@ Minimum reserved filesystem based storage for the designated output directory, i
 ##### `ramMax`<sup>Optional</sup> <a name="ramMax" id="wdk-lib.RequirementProps.property.ramMax"></a>
 
 ```java
-public java.lang.Number getRamMax();
+public java.lang.Object getRamMax();
 ```
 
-- *Type:* java.lang.Number
+- *Type:* java.lang.String OR java.lang.Number
 
 Maximum reserved RAM in mebibytes (2**20).
 
@@ -245,22 +256,25 @@ Maximum reserved RAM in mebibytes (2**20).
 ##### `ramMin`<sup>Optional</sup> <a name="ramMin" id="wdk-lib.RequirementProps.property.ramMin"></a>
 
 ```java
-public java.lang.Number getRamMin();
+public java.lang.Object getRamMin();
 ```
 
-- *Type:* java.lang.Number
+- *Type:* java.lang.String OR java.lang.Number
 
 Minimum reserved RAM in mebibytes (2**20).
+
+Accepts a CWL expression string (e.g. `$(inputs.computed_memory)`) for
+dynamic resource allocation.
 
 ---
 
 ##### `tmpdirMax`<sup>Optional</sup> <a name="tmpdirMax" id="wdk-lib.RequirementProps.property.tmpdirMax"></a>
 
 ```java
-public java.lang.Number getTmpdirMax();
+public java.lang.Object getTmpdirMax();
 ```
 
-- *Type:* java.lang.Number
+- *Type:* java.lang.String OR java.lang.Number
 
 Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20).
 
@@ -269,10 +283,10 @@ Maximum reserved filesystem based storage for the designated temporary directory
 ##### `tmpdirMin`<sup>Optional</sup> <a name="tmpdirMin" id="wdk-lib.RequirementProps.property.tmpdirMin"></a>
 
 ```java
-public java.lang.Number getTmpdirMin();
+public java.lang.Object getTmpdirMin();
 ```
 
-- *Type:* java.lang.Number
+- *Type:* java.lang.String OR java.lang.Number
 
 Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20).
 
@@ -297,6 +311,7 @@ ServiceProps.builder()
 //  .containerRepository(java.lang.String)
 //  .mountPoint(java.lang.String)
 //  .parameterValuesAsStrings(java.lang.Boolean)
+//  .resourceFunction(java.lang.String)
 //  .serviceDatabasePath(java.lang.String)
     .build();
 ```
@@ -314,6 +329,7 @@ ServiceProps.builder()
 | <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
+| <code><a href="#wdk-lib.ServiceProps.property.resourceFunction">resourceFunction</a></code> | <code>java.lang.String</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceDatabasePath">serviceDatabasePath</a></code> | <code>java.lang.String</code> | Optional: Path to the service's database. |
 
 ---
@@ -433,6 +449,37 @@ public java.lang.Boolean getParameterValuesAsStrings();
 Optional: Whether to create all parameter values as strings.
 
 Look at how they are used currently.
+
+---
+
+##### `resourceFunction`<sup>Optional</sup> <a name="resourceFunction" id="wdk-lib.ServiceProps.property.resourceFunction"></a>
+
+```java
+public java.lang.String getResourceFunction();
+```
+
+- *Type:* java.lang.String
+
+Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values.
+
+The function receives a
+`params` object whose keys are the parameter names and should return
+`{cores: number, memory: number}`.
+
+When set, the CWL ResourceRequirement on the service step uses expressions
+that reference the computed values instead of static numbers. The
+parameters ExpressionTool is extended to evaluate this function and output
+`computed_cores` and `computed_memory` alongside the `parameters_file`.
+
+Example:
+
+```
+var cores = 4; var memory = 8192;
+if (params.database && params.database.indexOf('nr') !== -1) {
+  cores = 8; memory = 16384;
+}
+return {cores: cores, memory: memory};
+```
 
 ---
 
@@ -1372,6 +1419,7 @@ CloudService.Builder.create(Workflow scope, java.lang.String id)
 //  .containerRepository(java.lang.String)
 //  .mountPoint(java.lang.String)
 //  .parameterValuesAsStrings(java.lang.Boolean)
+//  .resourceFunction(java.lang.String)
 //  .serviceDatabasePath(java.lang.String)
     .build();
 ```
@@ -1389,6 +1437,7 @@ CloudService.Builder.create(Workflow scope, java.lang.String id)
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.resourceFunction">resourceFunction</a></code> | <code>java.lang.String</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.serviceDatabasePath">serviceDatabasePath</a></code> | <code>java.lang.String</code> | Optional: Path to the service's database. |
 
 ---
@@ -1488,6 +1537,33 @@ Optional: Mount point for the database.
 Optional: Whether to create all parameter values as strings.
 
 Look at how they are used currently.
+
+---
+
+##### `resourceFunction`<sup>Optional</sup> <a name="resourceFunction" id="wdk-lib.CloudService.Initializer.parameter.resourceFunction"></a>
+
+- *Type:* java.lang.String
+
+Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values.
+
+The function receives a
+`params` object whose keys are the parameter names and should return
+`{cores: number, memory: number}`.
+
+When set, the CWL ResourceRequirement on the service step uses expressions
+that reference the computed values instead of static numbers. The
+parameters ExpressionTool is extended to evaluate this function and output
+`computed_cores` and `computed_memory` alongside the `parameters_file`.
+
+Example:
+
+```
+var cores = 4; var memory = 8192;
+if (params.database && params.database.indexOf('nr') !== -1) {
+  cores = 8; memory = 16384;
+}
+return {cores: cores, memory: memory};
+```
 
 ---
 
@@ -2426,8 +2502,51 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.ExpressionTool.makeParametersAndResourcesExpression">makeParametersAndResourcesExpression</a></code> | Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}). |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.ExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `makeParametersAndResourcesExpression` <a name="makeParametersAndResourcesExpression" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression"></a>
+
+```java
+import com.biobam.wdk.lib.ExpressionTool;
+
+ExpressionTool.makeParametersAndResourcesExpression(java.lang.String resourceFunction, java.lang.Number defaultCores, java.lang.Number defaultMemory),ExpressionTool.makeParametersAndResourcesExpression(java.lang.String resourceFunction, java.lang.Number defaultCores, java.lang.Number defaultMemory, java.lang.Boolean allStrings)
+```
+
+Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}).
+
+###### `resourceFunction`<sup>Required</sup> <a name="resourceFunction" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression.parameter.resourceFunction"></a>
+
+- *Type:* java.lang.String
+
+JS function body that receives a `params` object and must return `{cores: number, memory: number}`.
+
+---
+
+###### `defaultCores`<sup>Required</sup> <a name="defaultCores" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression.parameter.defaultCores"></a>
+
+- *Type:* java.lang.Number
+
+Fallback cores if the function throws or is missing.
+
+---
+
+###### `defaultMemory`<sup>Required</sup> <a name="defaultMemory" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression.parameter.defaultMemory"></a>
+
+- *Type:* java.lang.Number
+
+Fallback memory (MiB) if the function throws.
+
+---
+
+###### `allStrings`<sup>Optional</sup> <a name="allStrings" id="wdk-lib.ExpressionTool.makeParametersAndResourcesExpression.parameter.allStrings"></a>
+
+- *Type:* java.lang.Boolean
+
+Whether parameter values should be stringified (matches makeParametersJsonExpressionAllStrings behaviour).
 
 ---
 
@@ -2920,8 +3039,51 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression">makeParametersAndResourcesExpression</a></code> | Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}). |
 | <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.FirstOrNullExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `makeParametersAndResourcesExpression` <a name="makeParametersAndResourcesExpression" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression"></a>
+
+```java
+import com.biobam.wdk.lib.FirstOrNullExpressionTool;
+
+FirstOrNullExpressionTool.makeParametersAndResourcesExpression(java.lang.String resourceFunction, java.lang.Number defaultCores, java.lang.Number defaultMemory),FirstOrNullExpressionTool.makeParametersAndResourcesExpression(java.lang.String resourceFunction, java.lang.Number defaultCores, java.lang.Number defaultMemory, java.lang.Boolean allStrings)
+```
+
+Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}).
+
+###### `resourceFunction`<sup>Required</sup> <a name="resourceFunction" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression.parameter.resourceFunction"></a>
+
+- *Type:* java.lang.String
+
+JS function body that receives a `params` object and must return `{cores: number, memory: number}`.
+
+---
+
+###### `defaultCores`<sup>Required</sup> <a name="defaultCores" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression.parameter.defaultCores"></a>
+
+- *Type:* java.lang.Number
+
+Fallback cores if the function throws or is missing.
+
+---
+
+###### `defaultMemory`<sup>Required</sup> <a name="defaultMemory" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression.parameter.defaultMemory"></a>
+
+- *Type:* java.lang.Number
+
+Fallback memory (MiB) if the function throws.
+
+---
+
+###### `allStrings`<sup>Optional</sup> <a name="allStrings" id="wdk-lib.FirstOrNullExpressionTool.makeParametersAndResourcesExpression.parameter.allStrings"></a>
+
+- *Type:* java.lang.Boolean
+
+Whether parameter values should be stringified (matches makeParametersJsonExpressionAllStrings behaviour).
 
 ---
 
@@ -5845,8 +6007,51 @@ Specify a custom JavaScript expression for this ExpressionTool.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression">makeParametersAndResourcesExpression</a></code> | Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}). |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpression">makeParametersJsonExpression</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
 | <code><a href="#wdk-lib.RenameExpressionTool.makeParametersJsonExpressionAllStrings">makeParametersJsonExpressionAllStrings</a></code> | Create a CWL expression script that generates a JSON file with the parameters of the tool. |
+
+---
+
+##### `makeParametersAndResourcesExpression` <a name="makeParametersAndResourcesExpression" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression"></a>
+
+```java
+import com.biobam.wdk.lib.RenameExpressionTool;
+
+RenameExpressionTool.makeParametersAndResourcesExpression(java.lang.String resourceFunction, java.lang.Number defaultCores, java.lang.Number defaultMemory),RenameExpressionTool.makeParametersAndResourcesExpression(java.lang.String resourceFunction, java.lang.Number defaultCores, java.lang.Number defaultMemory, java.lang.Boolean allStrings)
+```
+
+Build a CWL expression that produces both the parameters JSON file and computed resource values ({computed_cores, computed_memory}).
+
+###### `resourceFunction`<sup>Required</sup> <a name="resourceFunction" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression.parameter.resourceFunction"></a>
+
+- *Type:* java.lang.String
+
+JS function body that receives a `params` object and must return `{cores: number, memory: number}`.
+
+---
+
+###### `defaultCores`<sup>Required</sup> <a name="defaultCores" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression.parameter.defaultCores"></a>
+
+- *Type:* java.lang.Number
+
+Fallback cores if the function throws or is missing.
+
+---
+
+###### `defaultMemory`<sup>Required</sup> <a name="defaultMemory" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression.parameter.defaultMemory"></a>
+
+- *Type:* java.lang.Number
+
+Fallback memory (MiB) if the function throws.
+
+---
+
+###### `allStrings`<sup>Optional</sup> <a name="allStrings" id="wdk-lib.RenameExpressionTool.makeParametersAndResourcesExpression.parameter.allStrings"></a>
+
+- *Type:* java.lang.Boolean
+
+Whether parameter values should be stringified (matches makeParametersJsonExpressionAllStrings behaviour).
 
 ---
 

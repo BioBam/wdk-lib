@@ -5,37 +5,41 @@ import { ToolRequirementType } from './ToolRequirementType';
 
 export interface RequirementProps {
   /**
-   * Minimum reserved RAM in mebibytes (2**20)
+   * Minimum reserved RAM in mebibytes (2**20).
+   * Accepts a CWL expression string (e.g. `$(inputs.computed_memory)`) for
+   * dynamic resource allocation.
    */
-  readonly ramMin?: number;
+  readonly ramMin?: number | string;
   /**
    * Maximum reserved RAM in mebibytes (2**20)
    */
-  readonly ramMax?: number;
+  readonly ramMax?: number | string;
   /**
-   * Minimum reserved number of CPU cores
+   * Minimum reserved number of CPU cores.
+   * Accepts a CWL expression string (e.g. `$(inputs.computed_cores)`) for
+   * dynamic resource allocation.
    */
-  readonly coresMin?: number;
+  readonly coresMin?: number | string;
   /**
    * Maximum reserved number of CPU cores
    */
-  readonly coresMax?: number;
+  readonly coresMax?: number | string;
   /**
    * Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20)
    */
-  readonly tmpdirMin?: number;
+  readonly tmpdirMin?: number | string;
   /**
    * Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20)
    */
-  readonly tmpdirMax?: number;
+  readonly tmpdirMax?: number | string;
   /**
    * Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20)
    */
-  readonly outdirMin?: number;
+  readonly outdirMin?: number | string;
   /**
    * Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20)
    */
-  readonly outdirMax?: number;
+  readonly outdirMax?: number | string;
 }
 
 export class Requirement extends Construct {

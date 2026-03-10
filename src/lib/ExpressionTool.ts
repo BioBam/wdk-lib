@@ -79,6 +79,65 @@ export class ExpressionTool extends StepConstruct implements IMappable {
   }
 
 
+  /**
+   * Build a CWL expression that produces both the parameters JSON file and
+   * computed resource values ({computed_cores, computed_memory}).
+   *
+   * @param resourceFunction  JS function body that receives a `params` object
+   *   and must return `{cores: number, memory: number}`.
+   * @param defaultCores  Fallback cores if the function throws or is missing.
+   * @param defaultMemory Fallback memory (MiB) if the function throws.
+   * @param allStrings    Whether parameter values should be stringified (matches
+   *   makeParametersJsonExpressionAllStrings behaviour).
+   */
+  public static makeParametersAndResourcesExpression(
+    resourceFunction: string,
+    defaultCores: number,
+    defaultMemory: number,
+    allStrings?: boolean,
+  ): string {
+    const valueExpr = allStrings
+      ? 'inputs[key].toString()'
+      : 'inputs[key]';
+
+    return `\${
+      var params = {};
+      for (var key in inputs) {
+        if (inputs[key] !== undefined && inputs[key] !== null) {
+          if (Array.isArray(inputs[key]) && inputs[key][0].class === 'File') {
+            params[key] = inputs[key].map(function(file) { return file.basename; });
+          } else if (typeof inputs[key] === 'object' && inputs[key].class === 'File') {
+            params[key] = inputs[key].basename;
+          } else {
+            params[key] = ${valueExpr};
+          }
+        }
+      }
+
+      var __cores = ${defaultCores};
+      var __memory = ${defaultMemory};
+      try {
+        var __computeResources = function(params) {
+          ${resourceFunction}
+        };
+        var __res = __computeResources(params);
+        if (__res && typeof __res.cores === 'number') __cores = __res.cores;
+        if (__res && typeof __res.memory === 'number') __memory = __res.memory;
+      } catch (e) { /* fallback to defaults */ }
+
+      return {
+        "parameters_file": {
+          "class": "File",
+          "basename": "parameters.txt",
+          "contents": JSON.stringify(params, null, 2)
+        },
+        "computed_cores": __cores,
+        "computed_memory": __memory
+      };
+    }`;
+  }
+
+
   private _expression: string;
   props: IToolProps | undefined;
 

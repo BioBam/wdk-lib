@@ -190,8 +190,8 @@ export class CloudService extends Workflow {
       DEV_SHARED_DIR: '/data/shared',
       DEV_COMPRESSED_SHARED_DIR: '/data/compressedShared',
       DEV_COMPRESSED_SHARED_TAR_ZST: '/data/compressedShared.tar.zst',
-      BATCH_MEMORY: hasDynamicResources ? '$(inputs.computed_memory)' : '' + propsMemory,
-      BATCH_CPU: hasDynamicResources ? '$(inputs.computed_cores)' : '' + propsCores,
+      BATCH_MEMORY: hasDynamicResources ? '$("" + inputs.computed_memory)' : '' + propsMemory,
+      BATCH_CPU: hasDynamicResources ? '$("" + inputs.computed_cores)' : '' + propsCores,
     });
 
     // Link the output parameters file to the service input parameters.

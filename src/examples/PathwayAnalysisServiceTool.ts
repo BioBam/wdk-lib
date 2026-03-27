@@ -37,7 +37,7 @@ export class PathwayAnalysisServiceTool extends Tool {
     Requirement.initialWorkDir(this)
       .addListing('input_file.box', '$(inputs.input_sequence)');
     Requirement.networkAccess(this);
-    Requirement.docker(this, '188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos');
+    Requirement.docker(this, 'your-registry.example.com/omicsbox-pathways:latest');
 
     // Inputs
     this.inputSequence = Input.file(this, 'input_sequence')

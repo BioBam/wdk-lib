@@ -132,7 +132,7 @@ exports[`Simple Workflow cwl export test should generate valid YAML and match sn
           },
           {
             "class": "DockerRequirement",
-            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/trimmomatic:1",
+            "dockerPull": "example-registry.com/trimmomatic:1",
           },
           {
             "class": "ResourceRequirement",

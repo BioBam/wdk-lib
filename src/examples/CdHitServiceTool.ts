@@ -16,7 +16,7 @@ export class CdHitServiceTool extends Tool {
 
     // Requirements
     Requirement.networkAccess(this);
-    Requirement.docker(this, '188164850845.dkr.ecr.us-east-1.amazonaws.com/cdhit:latest');
+    Requirement.docker(this, 'your-registry.example.com/cdhit:latest');
     Requirement.envVar(this, {
       BUCKET_NAME: 'scloud-test-data',
       BUCKET_JOB_FOLDER: 'robert/cdblastjob',

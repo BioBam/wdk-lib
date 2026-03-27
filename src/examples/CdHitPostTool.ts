@@ -19,7 +19,7 @@ export class CdHitPostTool extends Tool {
     ]).withArguments(['cdhitpost']);
 
     // Requirement to use Docker
-    Requirement.docker(this, '188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox');
+    Requirement.docker(this, 'your-registry.example.com/omicsbox');
 
     // Inputs
     this.clusterPath = Input.file(this, 'cluster_path')

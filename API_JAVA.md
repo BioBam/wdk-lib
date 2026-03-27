@@ -302,13 +302,13 @@ Interface defining the properties of a Service, including attributes such as lab
 import com.biobam.wdk.lib.ServiceProps;
 
 ServiceProps.builder()
+    .containerRepository(java.lang.String)
     .label(java.lang.String)
     .serviceId(java.lang.String)
     .serviceVersion(java.lang.String)
 //  .assignedCores(java.lang.Number)
 //  .assignedMemoryMb(java.lang.Number)
 //  .assignedTempDirMb(java.lang.Number)
-//  .containerRepository(java.lang.String)
 //  .mountPoint(java.lang.String)
 //  .parameterValuesAsStrings(java.lang.Boolean)
 //  .resourceFunction(java.lang.String)
@@ -320,17 +320,29 @@ ServiceProps.builder()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Repository where the container image is stored (e.g. 'your-registry.example.com'). This is only the base registry host, not the full image path. |
 | <code><a href="#wdk-lib.ServiceProps.property.label">label</a></code> | <code>java.lang.String</code> | A descriptive label for the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceId">serviceId</a></code> | <code>java.lang.String</code> | Unique identifier for the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceVersion">serviceVersion</a></code> | <code>java.lang.String</code> | Version number of the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedCores">assignedCores</a></code> | <code>java.lang.Number</code> | Optional: Number of CPU cores assigned to the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedMemoryMb">assignedMemoryMb</a></code> | <code>java.lang.Number</code> | Optional: Amount of memory in MB assigned to the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedTempDirMb">assignedTempDirMb</a></code> | <code>java.lang.Number</code> | Optional: Size of the temporary directory in MB. |
-| <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
 | <code><a href="#wdk-lib.ServiceProps.property.resourceFunction">resourceFunction</a></code> | <code>java.lang.String</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceDatabasePath">serviceDatabasePath</a></code> | <code>java.lang.String</code> | Optional: Path to the service's database. |
+
+---
+
+##### `containerRepository`<sup>Required</sup> <a name="containerRepository" id="wdk-lib.ServiceProps.property.containerRepository"></a>
+
+```java
+public java.lang.String getContainerRepository();
+```
+
+- *Type:* java.lang.String
+
+Repository where the container image is stored (e.g. 'your-registry.example.com'). This is only the base registry host, not the full image path.
 
 ---
 
@@ -409,20 +421,6 @@ public java.lang.Number getAssignedTempDirMb();
 Optional: Size of the temporary directory in MB.
 
 Defaults to 2048 MB if not specified.
-
----
-
-##### `containerRepository`<sup>Optional</sup> <a name="containerRepository" id="wdk-lib.ServiceProps.property.containerRepository"></a>
-
-```java
-public java.lang.String getContainerRepository();
-```
-
-- *Type:* java.lang.String
-
-Optional: Repository where the container image is stored.
-
-This is only the base repository, not the full image path.
 
 ---
 
@@ -1410,13 +1408,13 @@ Output.file(this.service, 'trimmedFasta').withGlob('*.trimmed.fasta');
 import com.biobam.wdk.lib.CloudService;
 
 CloudService.Builder.create(Workflow scope, java.lang.String id)
+    .containerRepository(java.lang.String)
     .label(java.lang.String)
     .serviceId(java.lang.String)
     .serviceVersion(java.lang.String)
 //  .assignedCores(java.lang.Number)
 //  .assignedMemoryMb(java.lang.Number)
 //  .assignedTempDirMb(java.lang.Number)
-//  .containerRepository(java.lang.String)
 //  .mountPoint(java.lang.String)
 //  .parameterValuesAsStrings(java.lang.Boolean)
 //  .resourceFunction(java.lang.String)
@@ -1428,13 +1426,13 @@ CloudService.Builder.create(Workflow scope, java.lang.String id)
 | --- | --- | --- |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.scope">scope</a></code> | <code><a href="#wdk-lib.Workflow">Workflow</a></code> | - The workflow this service belongs to. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.id">id</a></code> | <code>java.lang.String</code> | - A unique identifier for the service within its workflow. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Repository where the container image is stored (e.g. 'your-registry.example.com'). This is only the base registry host, not the full image path. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.label">label</a></code> | <code>java.lang.String</code> | A descriptive label for the service. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.serviceId">serviceId</a></code> | <code>java.lang.String</code> | Unique identifier for the service. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.serviceVersion">serviceVersion</a></code> | <code>java.lang.String</code> | Version number of the service. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedCores">assignedCores</a></code> | <code>java.lang.Number</code> | Optional: Number of CPU cores assigned to the service. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedMemoryMb">assignedMemoryMb</a></code> | <code>java.lang.Number</code> | Optional: Amount of memory in MB assigned to the service. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedTempDirMb">assignedTempDirMb</a></code> | <code>java.lang.Number</code> | Optional: Size of the temporary directory in MB. |
-| <code><a href="#wdk-lib.CloudService.Initializer.parameter.containerRepository">containerRepository</a></code> | <code>java.lang.String</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.resourceFunction">resourceFunction</a></code> | <code>java.lang.String</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
@@ -1455,6 +1453,14 @@ The workflow this service belongs to.
 - *Type:* java.lang.String
 
 A unique identifier for the service within its workflow.
+
+---
+
+##### `containerRepository`<sup>Required</sup> <a name="containerRepository" id="wdk-lib.CloudService.Initializer.parameter.containerRepository"></a>
+
+- *Type:* java.lang.String
+
+Repository where the container image is stored (e.g. 'your-registry.example.com'). This is only the base registry host, not the full image path.
 
 ---
 
@@ -1509,16 +1515,6 @@ Defaults to 2048 MB if not specified.
 Optional: Size of the temporary directory in MB.
 
 Defaults to 2048 MB if not specified.
-
----
-
-##### `containerRepository`<sup>Optional</sup> <a name="containerRepository" id="wdk-lib.CloudService.Initializer.parameter.containerRepository"></a>
-
-- *Type:* java.lang.String
-
-Optional: Repository where the container image is stored.
-
-This is only the base repository, not the full image path.
 
 ---
 

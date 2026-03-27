@@ -24,7 +24,7 @@ export class PathwayLoadExpressionTool extends Tool {
       .addListing('expression_file.box', '$(inputs.input_expression)');
 
     Requirement.networkAccess(this);
-    Requirement.docker(this, '188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos');
+    Requirement.docker(this, 'your-registry.example.com/omicsbox-pathways:latest');
 
     this.inputProject = Input.file(this, 'input_project')
       .withPrefix('-inputPathwayProject');

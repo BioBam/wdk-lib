@@ -10,12 +10,12 @@ export class PathwayLoadSequencesTool extends Tool {
     super(scope, id);
     ToolConfig.basic(this)
       .withLabel('OmicsBox Pathway Load Sequences Tool')
-      .withBaseCommand(['java', '-Dapp.custom.vmoptions=/opt/app/custom.vmoptions', '-Dlucene_pathways_folder=/home/cmartinez/OmicsBoxFilesDev2/res/pathways_lucene', '-jar', '/opt/app/omicsbox.jar'])
+      .withBaseCommand(['java', '-Dapp.custom.vmoptions=/opt/app/custom.vmoptions', '-Dlucene_pathways_folder=/data/pathways_lucene', '-jar', '/opt/app/omicsbox.jar'])
       .withArguments(['pathway-load-sequences']);
 
     // Requirements
     Requirement.networkAccess(this);
-    Requirement.docker(this, '188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos');
+    Requirement.docker(this, 'your-registry.example.com/omicsbox-pathways:latest');
 
     // Inputs
     this.inputFile = Input.file(this, 'input_file')
@@ -24,7 +24,7 @@ export class PathwayLoadSequencesTool extends Tool {
 
     this.outputProject = Input.string(this, 'output_project')
       .withPrefix('-outputProject')
-      .withDefaultValue('roberto.box')
+      .withDefaultValue('output.box')
       .withPosition(2);
 
     // Outputs

@@ -59,9 +59,10 @@ export interface ServiceProps {
   readonly parameterValuesAsStrings?: boolean;
 
   /**
-   * Optional: Repository where the container image is stored. This is only the base repository, not the full image path.
+   * Repository where the container image is stored (e.g. 'your-registry.example.com').
+   * This is only the base registry host, not the full image path.
    */
-  readonly containerRepository?: string;
+  readonly containerRepository: string;
 
   /**
    * Optional: JavaScript function body that computes resource requirements at
@@ -148,7 +149,7 @@ export class CloudService extends Workflow {
     Requirement.inlineJavascript(this.service);
     Requirement.networkAccess(this.service);
 
-    const containerRepository = props.containerRepository || '188164850845.dkr.ecr.us-east-1.amazonaws.com';
+    const containerRepository = props.containerRepository;
     const separator = props.serviceVersion.startsWith('sha256:') ? '@' : ':';
     Requirement.docker(this.service, `${containerRepository}/${props.serviceId}${separator}${props.serviceVersion}`);
 

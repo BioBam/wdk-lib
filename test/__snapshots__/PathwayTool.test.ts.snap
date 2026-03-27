@@ -165,7 +165,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
         "baseCommand": [
           "java",
           "-Dapp.custom.vmoptions=/opt/app/custom.vmoptions",
-          "-Dlucene_pathways_folder=/home/cmartinez/OmicsBoxFilesDev2/res/pathways_lucene",
+          "-Dlucene_pathways_folder=/data/pathways_lucene",
           "-jar",
           "/opt/app/omicsbox.jar",
         ],
@@ -182,7 +182,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
             "type": "File",
           },
           {
-            "default": "roberto.box",
+            "default": "output.box",
             "id": "output_project",
             "inputBinding": {
               "position": 2,
@@ -208,7 +208,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
           },
           {
             "class": "DockerRequirement",
-            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
+            "dockerPull": "your-registry.example.com/omicsbox-pathways:latest",
           },
         ],
       },
@@ -511,7 +511,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
           },
           {
             "class": "DockerRequirement",
-            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
+            "dockerPull": "your-registry.example.com/omicsbox-pathways:latest",
           },
         ],
       },
@@ -614,7 +614,7 @@ exports[`PathwayLoadExpressionTool YAML output should generate correct YAML and 
           },
           {
             "class": "DockerRequirement",
-            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox-pathways:carlos",
+            "dockerPull": "your-registry.example.com/omicsbox-pathways:latest",
           },
         ],
       },

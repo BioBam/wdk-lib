@@ -279,17 +279,29 @@ const serviceProps: ServiceProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>string</code> | Repository where the container image is stored (e.g. 'your-registry.example.com'). This is only the base registry host, not the full image path. |
 | <code><a href="#wdk-lib.ServiceProps.property.label">label</a></code> | <code>string</code> | A descriptive label for the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceId">serviceId</a></code> | <code>string</code> | Unique identifier for the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceVersion">serviceVersion</a></code> | <code>string</code> | Version number of the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedCores">assignedCores</a></code> | <code>number</code> | Optional: Number of CPU cores assigned to the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedMemoryMb">assignedMemoryMb</a></code> | <code>number</code> | Optional: Amount of memory in MB assigned to the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedTempDirMb">assignedTempDirMb</a></code> | <code>number</code> | Optional: Size of the temporary directory in MB. |
-| <code><a href="#wdk-lib.ServiceProps.property.containerRepository">containerRepository</a></code> | <code>string</code> | Optional: Repository where the container image is stored. |
 | <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>string</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>boolean</code> | Optional: Whether to create all parameter values as strings. |
 | <code><a href="#wdk-lib.ServiceProps.property.resourceFunction">resourceFunction</a></code> | <code>string</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
 | <code><a href="#wdk-lib.ServiceProps.property.serviceDatabasePath">serviceDatabasePath</a></code> | <code>string</code> | Optional: Path to the service's database. |
+
+---
+
+##### `containerRepository`<sup>Required</sup> <a name="containerRepository" id="wdk-lib.ServiceProps.property.containerRepository"></a>
+
+```typescript
+public readonly containerRepository: string;
+```
+
+- *Type:* string
+
+Repository where the container image is stored (e.g. 'your-registry.example.com'). This is only the base registry host, not the full image path.
 
 ---
 
@@ -368,20 +380,6 @@ public readonly assignedTempDirMb: number;
 Optional: Size of the temporary directory in MB.
 
 Defaults to 2048 MB if not specified.
-
----
-
-##### `containerRepository`<sup>Optional</sup> <a name="containerRepository" id="wdk-lib.ServiceProps.property.containerRepository"></a>
-
-```typescript
-public readonly containerRepository: string;
-```
-
-- *Type:* string
-
-Optional: Repository where the container image is stored.
-
-This is only the base repository, not the full image path.
 
 ---
 

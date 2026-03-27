@@ -337,7 +337,7 @@ exports[`CdHitWorkflow YAML output should generate correct YAML and have no git 
           },
           {
             "class": "DockerRequirement",
-            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/cdhit:latest",
+            "dockerPull": "your-registry.example.com/cdhit:latest",
           },
           {
             "class": "EnvVarRequirement",
@@ -469,7 +469,7 @@ exports[`CdHitWorkflow YAML output should generate correct YAML and have no git 
         "requirements": [
           {
             "class": "DockerRequirement",
-            "dockerPull": "188164850845.dkr.ecr.us-east-1.amazonaws.com/omicsbox",
+            "dockerPull": "your-registry.example.com/omicsbox",
           },
         ],
       },

@@ -50,4 +50,5 @@ junit.xml
 tsconfig.json
 !/API.md
 !/API_JAVA.md
+.DS_Store
 !/.projenrc.ts

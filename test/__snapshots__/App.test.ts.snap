@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`App should synth the CWL content matching snapshot 1`] = `
+"id: echo
+class: CommandLineTool
+inputs:
+  - id: message
+    type: string
+    inputBinding:
+      position: 1
+outputs: []
+cwlVersion: v1.2
+baseCommand:
+  - echo
+"
+`;

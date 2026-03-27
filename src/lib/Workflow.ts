@@ -9,12 +9,22 @@ import { IStep } from './IStep';
 import { IWorkflowProps } from './IWorkflowProps';
 import { Output } from './Output';
 import { Requirement } from './Requirement';
+import { Construct } from './Construct';
 import { StepConstruct } from './StepConstruct';
 import { SynthFiles } from './SynthFiles';
 import { StepClass } from './ToolClass';
 import { WdkUtils } from './WdkUtils';
 
 export class Workflow extends StepConstruct implements IMappable, IWorkflow {
+
+  /**
+   * Create a standalone workflow without an explicit App or parent scope.
+   * Useful for quick scripts and single-workflow programs.
+   */
+  public static create(id: string): Workflow {
+    const root = new Construct(null as any, 'root');
+    return new Workflow(root, id);
+  }
 
   public static basicProps(): IWorkflowProps {
     return {

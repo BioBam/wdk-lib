@@ -5,14 +5,13 @@ An open-source framework for defining [Common Workflow Language](https://www.com
 ## Quick Example
 
 ```typescript
-import { App, Workflow, Tool, ToolConfig, Input, Output } from 'wdk-lib';
+import { App, Workflow, Tool, ToolConfig, Input } from 'wdk-lib';
 
 class Echo extends Tool {
   constructor(scope: Workflow) {
     super(scope, 'echo');
-    ToolConfig.basic(this).withBaseCommand(['echo']).withArguments(['-n']);
-    Input.string(this, 'message').withDoc('The message to echo');
-    Output.string(this, 'echoed');
+    ToolConfig.basic(this).withBaseCommand(['echo']);
+    Input.string(this, 'message').withPosition(1);
   }
 }
 
@@ -22,7 +21,7 @@ new Echo(workflow);
 app.synth();
 ```
 
-Running this produces a CWL CommandLineTool file in the `dist/` directory, ready to execute with any CWL runner:
+This produces a CWL CommandLineTool file in `dist/hello-wdk/`, ready to run with any CWL engine:
 
 ```bash
 cwltool dist/hello-wdk/echo.clt.cwl --message "Hello, WDK!"
@@ -72,30 +71,16 @@ Additional guides in `docs/`:
 
 ## Examples
 
-The [`src/examples/`](./src/examples/) directory contains working examples including:
+The [`src/examples/`](./src/examples/) directory contains working examples:
 
-- **CdHit workflow** -- a multi-step bioinformatics pipeline with parameter generation, service execution, and post-processing
-- **Pathway analysis tools** -- tools for loading sequences and running pathway analysis
-- **EggNOG Mapper workflow** -- a cloud service workflow with database mounting
+- **CdHit workflow** -- a multi-step pipeline with parameter generation, tool execution, and post-processing
+- **Pathway analysis** -- tools for loading sequences and running pathway analysis
+- **EggNOG Mapper** -- a workflow with Docker image configuration and database mounting
 - **PickFirst pattern** -- merging optional outputs using `FirstOrNullExpressionTool`
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to report issues, set up a development environment, and submit pull requests.
-
-## Community
-
-- Search [open issues](https://github.com/biobam/wdk-lib/issues)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/wdk-lib): tag `wdk-lib`
-- File a [new issue](https://github.com/biobam/wdk-lib/issues/new/choose)
-
-## Tests
-
-```bash
-npx projen test
-```
-
-The test suite covers CWL generation, construct linking, snapshot validation, and user-guide examples. See the [`test/`](./test/) directory.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup, issues, and pull requests.
 
 ## License
 

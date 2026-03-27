@@ -28,28 +28,19 @@ For Java, add the Maven dependency (published to GitHub Packages):
 Create a file called `my-app.ts`:
 
 ```typescript
-import { App, Workflow, Tool, ToolConfig, Input, Output } from 'wdk-lib';
+import { App, Workflow, Tool, ToolConfig, Input } from 'wdk-lib';
 
-// Define a tool that wraps the `echo` command
 class EchoTool extends Tool {
   constructor(scope: Workflow) {
     super(scope, 'echo');
     ToolConfig.basic(this).withBaseCommand(['echo']);
-
-    Input.string(this, 'message')
-      .withDoc('The message to print')
-      .withPosition(1);
-
-    Output.stdout(this, 'output');
+    Input.string(this, 'message').withPosition(1);
   }
 }
 
-// Create the app and a workflow containing the tool
 const app = new App();
 const workflow = new Workflow(app, 'my-first-workflow');
 new EchoTool(workflow);
-
-// Synthesize CWL files to the dist/ directory
 app.synth();
 ```
 
@@ -71,12 +62,9 @@ baseCommand:
 inputs:
   - id: message
     type: string
-    doc: The message to print
     inputBinding:
       position: 1
-outputs:
-  - id: output
-    type: stdout
+outputs: []
 ```
 
 ## Run with cwltool

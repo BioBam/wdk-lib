@@ -301,7 +301,6 @@ Your tool execution script would use `ToolOutputs` to generate the `cwl.output.j
 
 ## See Also
 
-- [WorkflowValues](./WorkflowValues.md) - For handling workflow inputs
-- [Output](./Output.md) - For defining output parameters
-- [Tool](./Tool.md) - For defining CommandLineTools
-- [CWL Output Binding Specification](https://www.commonwl.org/v1.0/CommandLineTool.html#Output_binding)
+- [Concepts](./concepts.md) - Core constructs: Tool, Output, Workflow, and more
+- [TypeScript API Reference](../API.md) - Full API documentation
+- [CWL Output Binding Specification](https://www.commonwl.org/v1.2/CommandLineTool.html#Output_binding)

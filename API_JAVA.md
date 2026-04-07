@@ -3,6 +3,62 @@
 
 ## Structs <a name="Structs" id="Structs"></a>
 
+### AppProps <a name="AppProps" id="wdk-lib.AppProps"></a>
+
+Configuration for the App.
+
+#### Initializer <a name="Initializer" id="wdk-lib.AppProps.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.AppProps;
+
+AppProps.builder()
+//  .defaultRegistry(java.lang.String)
+//  .defaultResources(RequirementProps)
+//  .outdir(java.lang.String)
+    .build();
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.AppProps.property.defaultRegistry">defaultRegistry</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.AppProps.property.defaultResources">defaultResources</a></code> | <code><a href="#wdk-lib.RequirementProps">RequirementProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.AppProps.property.outdir">outdir</a></code> | <code>java.lang.String</code> | *No description.* |
+
+---
+
+##### `defaultRegistry`<sup>Optional</sup> <a name="defaultRegistry" id="wdk-lib.AppProps.property.defaultRegistry"></a>
+
+```java
+public java.lang.String getDefaultRegistry();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `defaultResources`<sup>Optional</sup> <a name="defaultResources" id="wdk-lib.AppProps.property.defaultResources"></a>
+
+```java
+public RequirementProps getDefaultResources();
+```
+
+- *Type:* <a href="#wdk-lib.RequirementProps">RequirementProps</a>
+
+---
+
+##### `outdir`<sup>Optional</sup> <a name="outdir" id="wdk-lib.AppProps.property.outdir"></a>
+
+```java
+public java.lang.String getOutdir();
+```
+
+- *Type:* java.lang.String
+
+---
+
 ### InputBinding <a name="InputBinding" id="wdk-lib.InputBinding"></a>
 
 #### Initializer <a name="Initializer" id="wdk-lib.InputBinding.Initializer"></a>
@@ -309,6 +365,7 @@ ServiceProps.builder()
 //  .assignedCores(java.lang.Number)
 //  .assignedMemoryMb(java.lang.Number)
 //  .assignedTempDirMb(java.lang.Number)
+//  .envVars(java.util.Map<java.lang.String, java.lang.String>)
 //  .mountPoint(java.lang.String)
 //  .parameterValuesAsStrings(java.lang.Boolean)
 //  .resourceFunction(java.lang.String)
@@ -327,6 +384,7 @@ ServiceProps.builder()
 | <code><a href="#wdk-lib.ServiceProps.property.assignedCores">assignedCores</a></code> | <code>java.lang.Number</code> | Optional: Number of CPU cores assigned to the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedMemoryMb">assignedMemoryMb</a></code> | <code>java.lang.Number</code> | Optional: Amount of memory in MB assigned to the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedTempDirMb">assignedTempDirMb</a></code> | <code>java.lang.Number</code> | Optional: Size of the temporary directory in MB. |
+| <code><a href="#wdk-lib.ServiceProps.property.envVars">envVars</a></code> | <code>java.util.Map<java.lang.String, java.lang.String></code> | Optional: Environment variable overrides for the service step. |
 | <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
 | <code><a href="#wdk-lib.ServiceProps.property.resourceFunction">resourceFunction</a></code> | <code>java.lang.String</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
@@ -424,6 +482,23 @@ Defaults to 2048 MB if not specified.
 
 ---
 
+##### `envVars`<sup>Optional</sup> <a name="envVars" id="wdk-lib.ServiceProps.property.envVars"></a>
+
+```java
+public java.util.Map<java.lang.String, java.lang.String> getEnvVars();
+```
+
+- *Type:* java.util.Map<java.lang.String, java.lang.String>
+
+Optional: Environment variable overrides for the service step.
+
+CloudService provides sensible defaults for the standard env vars
+(AWS_BATCH_JOB_ID, BUCKET_NAME, DEV_* paths, BATCH_MEMORY, BATCH_CPU, etc.).
+Any key provided here will override the corresponding default value.
+Additional keys not in the default set will be added as extra env vars.
+
+---
+
 ##### `mountPoint`<sup>Optional</sup> <a name="mountPoint" id="wdk-lib.ServiceProps.property.mountPoint"></a>
 
 ```java
@@ -493,6 +568,102 @@ Optional: Path to the service's database.
 
 ---
 
+### SynthManifest <a name="SynthManifest" id="wdk-lib.SynthManifest"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.SynthManifest.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.SynthManifest;
+
+SynthManifest.builder()
+    .outdir(java.lang.String)
+    .version(java.lang.String)
+    .workflows(java.util.List<WorkflowManifestEntry>)
+    .build();
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.SynthManifest.property.outdir">outdir</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.SynthManifest.property.version">version</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.SynthManifest.property.workflows">workflows</a></code> | <code>java.util.List<<a href="#wdk-lib.WorkflowManifestEntry">WorkflowManifestEntry</a>></code> | *No description.* |
+
+---
+
+##### `outdir`<sup>Required</sup> <a name="outdir" id="wdk-lib.SynthManifest.property.outdir"></a>
+
+```java
+public java.lang.String getOutdir();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `version`<sup>Required</sup> <a name="version" id="wdk-lib.SynthManifest.property.version"></a>
+
+```java
+public java.lang.String getVersion();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `workflows`<sup>Required</sup> <a name="workflows" id="wdk-lib.SynthManifest.property.workflows"></a>
+
+```java
+public java.util.List<WorkflowManifestEntry> getWorkflows();
+```
+
+- *Type:* java.util.List<<a href="#wdk-lib.WorkflowManifestEntry">WorkflowManifestEntry</a>>
+
+---
+
+### WorkflowManifestEntry <a name="WorkflowManifestEntry" id="wdk-lib.WorkflowManifestEntry"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.WorkflowManifestEntry.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.WorkflowManifestEntry;
+
+WorkflowManifestEntry.builder()
+    .files(java.util.List<java.lang.String>)
+    .id(java.lang.String)
+    .build();
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.WorkflowManifestEntry.property.files">files</a></code> | <code>java.util.List<java.lang.String></code> | *No description.* |
+| <code><a href="#wdk-lib.WorkflowManifestEntry.property.id">id</a></code> | <code>java.lang.String</code> | *No description.* |
+
+---
+
+##### `files`<sup>Required</sup> <a name="files" id="wdk-lib.WorkflowManifestEntry.property.files"></a>
+
+```java
+public java.util.List<java.lang.String> getFiles();
+```
+
+- *Type:* java.util.List<java.lang.String>
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.WorkflowManifestEntry.property.id"></a>
+
+```java
+public java.lang.String getId();
+```
+
+- *Type:* java.lang.String
+
+---
+
 ## Classes <a name="Classes" id="Classes"></a>
 
 ### App <a name="App" id="wdk-lib.App"></a>
@@ -502,11 +673,18 @@ Optional: Path to the service's database.
 ```java
 import com.biobam.wdk.lib.App;
 
-new App();
+new App();,new App(java.lang.String OR AppProps props);
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.App.Initializer.parameter.props">props</a></code> | <code>java.lang.String OR <a href="#wdk-lib.AppProps">AppProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.App.Initializer.parameter.props"></a>
+
+- *Type:* java.lang.String OR <a href="#wdk-lib.AppProps">AppProps</a>
 
 ---
 
@@ -516,7 +694,7 @@ new App();
 | --- | --- |
 | <code><a href="#wdk-lib.App.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.App.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
-| <code><a href="#wdk-lib.App.synth">synth</a></code> | *No description.* |
+| <code><a href="#wdk-lib.App.synth">synth</a></code> | Validate the construct tree and synthesize all workflows to CWL files. |
 
 ---
 
@@ -574,8 +752,13 @@ The metadata value to match (optional).
 ##### `synth` <a name="synth" id="wdk-lib.App.synth"></a>
 
 ```java
-public void synth()
+public SynthManifest synth()
 ```
+
+Validate the construct tree and synthesize all workflows to CWL files.
+
+Each workflow gets its own subdirectory under the output directory.
+Returns a manifest describing all files written.
 
 
 #### Properties <a name="Properties" id="Properties"></a>
@@ -585,6 +768,9 @@ public void synth()
 | <code><a href="#wdk-lib.App.property.metadata">metadata</a></code> | <code>java.util.Map<java.lang.String, java.lang.Object></code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.App.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.App.property.id">id</a></code> | <code>java.lang.String</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.App.property.outdir">outdir</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.App.property.defaultRegistry">defaultRegistry</a></code> | <code>java.lang.String</code> | *No description.* |
+| <code><a href="#wdk-lib.App.property.defaultResources">defaultResources</a></code> | <code><a href="#wdk-lib.RequirementProps">RequirementProps</a></code> | *No description.* |
 
 ---
 
@@ -623,6 +809,36 @@ public java.lang.String getId();
 Unique identifier for the construct in it's scope.
 
 set or update the id of this construct
+
+---
+
+##### `outdir`<sup>Required</sup> <a name="outdir" id="wdk-lib.App.property.outdir"></a>
+
+```java
+public java.lang.String getOutdir();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `defaultRegistry`<sup>Optional</sup> <a name="defaultRegistry" id="wdk-lib.App.property.defaultRegistry"></a>
+
+```java
+public java.lang.String getDefaultRegistry();
+```
+
+- *Type:* java.lang.String
+
+---
+
+##### `defaultResources`<sup>Optional</sup> <a name="defaultResources" id="wdk-lib.App.property.defaultResources"></a>
+
+```java
+public RequirementProps getDefaultResources();
+```
+
+- *Type:* <a href="#wdk-lib.RequirementProps">RequirementProps</a>
 
 ---
 
@@ -1415,6 +1631,7 @@ CloudService.Builder.create(Workflow scope, java.lang.String id)
 //  .assignedCores(java.lang.Number)
 //  .assignedMemoryMb(java.lang.Number)
 //  .assignedTempDirMb(java.lang.Number)
+//  .envVars(java.util.Map<java.lang.String, java.lang.String>)
 //  .mountPoint(java.lang.String)
 //  .parameterValuesAsStrings(java.lang.Boolean)
 //  .resourceFunction(java.lang.String)
@@ -1433,6 +1650,7 @@ CloudService.Builder.create(Workflow scope, java.lang.String id)
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedCores">assignedCores</a></code> | <code>java.lang.Number</code> | Optional: Number of CPU cores assigned to the service. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedMemoryMb">assignedMemoryMb</a></code> | <code>java.lang.Number</code> | Optional: Amount of memory in MB assigned to the service. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.assignedTempDirMb">assignedTempDirMb</a></code> | <code>java.lang.Number</code> | Optional: Size of the temporary directory in MB. |
+| <code><a href="#wdk-lib.CloudService.Initializer.parameter.envVars">envVars</a></code> | <code>java.util.Map<java.lang.String, java.lang.String></code> | Optional: Environment variable overrides for the service step. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.mountPoint">mountPoint</a></code> | <code>java.lang.String</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>java.lang.Boolean</code> | Optional: Whether to create all parameter values as strings. |
 | <code><a href="#wdk-lib.CloudService.Initializer.parameter.resourceFunction">resourceFunction</a></code> | <code>java.lang.String</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
@@ -1515,6 +1733,19 @@ Defaults to 2048 MB if not specified.
 Optional: Size of the temporary directory in MB.
 
 Defaults to 2048 MB if not specified.
+
+---
+
+##### `envVars`<sup>Optional</sup> <a name="envVars" id="wdk-lib.CloudService.Initializer.parameter.envVars"></a>
+
+- *Type:* java.util.Map<java.lang.String, java.lang.String>
+
+Optional: Environment variable overrides for the service step.
+
+CloudService provides sensible defaults for the standard env vars
+(AWS_BATCH_JOB_ID, BUCKET_NAME, DEV_* paths, BATCH_MEMORY, BATCH_CPU, etc.).
+Any key provided here will override the corresponding default value.
+Additional keys not in the default set will be added as extra env vars.
 
 ---
 
@@ -1684,6 +1915,7 @@ Convert the object to a map representation following the CWL specification.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.CloudService.basicProps">basicProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.create">create</a></code> | Create a standalone workflow without an explicit App or parent scope. |
 
 ---
 
@@ -1694,6 +1926,24 @@ import com.biobam.wdk.lib.CloudService;
 
 CloudService.basicProps()
 ```
+
+##### `create` <a name="create" id="wdk-lib.CloudService.create"></a>
+
+```java
+import com.biobam.wdk.lib.CloudService;
+
+CloudService.create(java.lang.String id)
+```
+
+Create a standalone workflow without an explicit App or parent scope.
+
+Useful for quick scripts and single-workflow programs.
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CloudService.create.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+---
 
 #### Properties <a name="Properties" id="Properties"></a>
 
@@ -9341,6 +9591,7 @@ Convert the object to a map representation following the CWL specification.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Workflow.basicProps">basicProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Workflow.create">create</a></code> | Create a standalone workflow without an explicit App or parent scope. |
 
 ---
 
@@ -9351,6 +9602,24 @@ import com.biobam.wdk.lib.Workflow;
 
 Workflow.basicProps()
 ```
+
+##### `create` <a name="create" id="wdk-lib.Workflow.create"></a>
+
+```java
+import com.biobam.wdk.lib.Workflow;
+
+Workflow.create(java.lang.String id)
+```
+
+Create a standalone workflow without an explicit App or parent scope.
+
+Useful for quick scripts and single-workflow programs.
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Workflow.create.parameter.id"></a>
+
+- *Type:* java.lang.String
+
+---
 
 #### Properties <a name="Properties" id="Properties"></a>
 

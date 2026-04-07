@@ -85,6 +85,15 @@ export interface ServiceProps {
    * ```
    */
   readonly resourceFunction?: string;
+
+  /**
+   * Optional: Environment variable overrides for the service step.
+   * CloudService provides sensible defaults for the standard env vars
+   * (AWS_BATCH_JOB_ID, BUCKET_NAME, DEV_* paths, BATCH_MEMORY, BATCH_CPU, etc.).
+   * Any key provided here will override the corresponding default value.
+   * Additional keys not in the default set will be added as extra env vars.
+   */
+  readonly envVars?: { [key: string]: string };
 }
 
 /**
@@ -175,25 +184,15 @@ export class CloudService extends Workflow {
       });
     }
 
-    // Set up environment variables necessary for batch job execution.
-    // When dynamic, BATCH_MEMORY/BATCH_CPU use CWL expressions to match the
-    // computed resource values at runtime.
-    Requirement.envVar(this.service, {
-      AWS_BATCH_JOB_ID: 'carlos',
-      BUCKET_NAME: 'toil-workspace-20240920',
-      BUCKET_JOB_FOLDER: 'roberto/carlos',
-      BUCKET_SESSION_SHARED_FOLDER: 'roberto/shared',
-      DEV_DATA_DIR: '/data',
-      DEV_INPUT_DIR: '/data/input',
-      DEV_OUTPUT_DIR: '/data/output',
+    const defaultEnvVars: { [key: string]: string } = {
       DEV_PARAMETERS_FILE: '$(inputs.parametersFile.path)',
       BLASTDB: '$(runtime.tmpdir)/',
-      DEV_SHARED_DIR: '/data/shared',
-      DEV_COMPRESSED_SHARED_DIR: '/data/compressedShared',
-      DEV_COMPRESSED_SHARED_TAR_ZST: '/data/compressedShared.tar.zst',
       BATCH_MEMORY: hasDynamicResources ? '$("" + inputs.computed_memory)' : '' + propsMemory,
       BATCH_CPU: hasDynamicResources ? '$("" + inputs.computed_cores)' : '' + propsCores,
-    });
+    };
+
+    const envVars = { ...defaultEnvVars, ...props.envVars };
+    Requirement.envVar(this.service, envVars);
 
     // Link the output parameters file to the service input parameters.
     let outputParametersFile = Output.file(this.parameters, 'parameters_file');

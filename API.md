@@ -3,6 +3,58 @@
 
 ## Structs <a name="Structs" id="Structs"></a>
 
+### AppProps <a name="AppProps" id="wdk-lib.AppProps"></a>
+
+Configuration for the App.
+
+#### Initializer <a name="Initializer" id="wdk-lib.AppProps.Initializer"></a>
+
+```typescript
+import { AppProps } from 'wdk-lib'
+
+const appProps: AppProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.AppProps.property.defaultRegistry">defaultRegistry</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.AppProps.property.defaultResources">defaultResources</a></code> | <code><a href="#wdk-lib.RequirementProps">RequirementProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.AppProps.property.outdir">outdir</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `defaultRegistry`<sup>Optional</sup> <a name="defaultRegistry" id="wdk-lib.AppProps.property.defaultRegistry"></a>
+
+```typescript
+public readonly defaultRegistry: string;
+```
+
+- *Type:* string
+
+---
+
+##### `defaultResources`<sup>Optional</sup> <a name="defaultResources" id="wdk-lib.AppProps.property.defaultResources"></a>
+
+```typescript
+public readonly defaultResources: RequirementProps;
+```
+
+- *Type:* <a href="#wdk-lib.RequirementProps">RequirementProps</a>
+
+---
+
+##### `outdir`<sup>Optional</sup> <a name="outdir" id="wdk-lib.AppProps.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+
+---
+
 ### InputBinding <a name="InputBinding" id="wdk-lib.InputBinding"></a>
 
 #### Initializer <a name="Initializer" id="wdk-lib.InputBinding.Initializer"></a>
@@ -286,6 +338,7 @@ const serviceProps: ServiceProps = { ... }
 | <code><a href="#wdk-lib.ServiceProps.property.assignedCores">assignedCores</a></code> | <code>number</code> | Optional: Number of CPU cores assigned to the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedMemoryMb">assignedMemoryMb</a></code> | <code>number</code> | Optional: Amount of memory in MB assigned to the service. |
 | <code><a href="#wdk-lib.ServiceProps.property.assignedTempDirMb">assignedTempDirMb</a></code> | <code>number</code> | Optional: Size of the temporary directory in MB. |
+| <code><a href="#wdk-lib.ServiceProps.property.envVars">envVars</a></code> | <code>{[ key: string ]: string}</code> | Optional: Environment variable overrides for the service step. |
 | <code><a href="#wdk-lib.ServiceProps.property.mountPoint">mountPoint</a></code> | <code>string</code> | Optional: Mount point for the database. |
 | <code><a href="#wdk-lib.ServiceProps.property.parameterValuesAsStrings">parameterValuesAsStrings</a></code> | <code>boolean</code> | Optional: Whether to create all parameter values as strings. |
 | <code><a href="#wdk-lib.ServiceProps.property.resourceFunction">resourceFunction</a></code> | <code>string</code> | Optional: JavaScript function body that computes resource requirements at runtime based on the service parameter values. |
@@ -383,6 +436,23 @@ Defaults to 2048 MB if not specified.
 
 ---
 
+##### `envVars`<sup>Optional</sup> <a name="envVars" id="wdk-lib.ServiceProps.property.envVars"></a>
+
+```typescript
+public readonly envVars: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Optional: Environment variable overrides for the service step.
+
+CloudService provides sensible defaults for the standard env vars
+(AWS_BATCH_JOB_ID, BUCKET_NAME, DEV_* paths, BATCH_MEMORY, BATCH_CPU, etc.).
+Any key provided here will override the corresponding default value.
+Additional keys not in the default set will be added as extra env vars.
+
+---
+
 ##### `mountPoint`<sup>Optional</sup> <a name="mountPoint" id="wdk-lib.ServiceProps.property.mountPoint"></a>
 
 ```typescript
@@ -451,6 +521,95 @@ Optional: Path to the service's database.
 
 ---
 
+### SynthManifest <a name="SynthManifest" id="wdk-lib.SynthManifest"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.SynthManifest.Initializer"></a>
+
+```typescript
+import { SynthManifest } from 'wdk-lib'
+
+const synthManifest: SynthManifest = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.SynthManifest.property.outdir">outdir</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.SynthManifest.property.version">version</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.SynthManifest.property.workflows">workflows</a></code> | <code><a href="#wdk-lib.WorkflowManifestEntry">WorkflowManifestEntry</a>[]</code> | *No description.* |
+
+---
+
+##### `outdir`<sup>Required</sup> <a name="outdir" id="wdk-lib.SynthManifest.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+
+---
+
+##### `version`<sup>Required</sup> <a name="version" id="wdk-lib.SynthManifest.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
+##### `workflows`<sup>Required</sup> <a name="workflows" id="wdk-lib.SynthManifest.property.workflows"></a>
+
+```typescript
+public readonly workflows: WorkflowManifestEntry[];
+```
+
+- *Type:* <a href="#wdk-lib.WorkflowManifestEntry">WorkflowManifestEntry</a>[]
+
+---
+
+### WorkflowManifestEntry <a name="WorkflowManifestEntry" id="wdk-lib.WorkflowManifestEntry"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.WorkflowManifestEntry.Initializer"></a>
+
+```typescript
+import { WorkflowManifestEntry } from 'wdk-lib'
+
+const workflowManifestEntry: WorkflowManifestEntry = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.WorkflowManifestEntry.property.files">files</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#wdk-lib.WorkflowManifestEntry.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `files`<sup>Required</sup> <a name="files" id="wdk-lib.WorkflowManifestEntry.property.files"></a>
+
+```typescript
+public readonly files: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="wdk-lib.WorkflowManifestEntry.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
 ## Classes <a name="Classes" id="Classes"></a>
 
 ### App <a name="App" id="wdk-lib.App"></a>
@@ -460,11 +619,18 @@ Optional: Path to the service's database.
 ```typescript
 import { App } from 'wdk-lib'
 
-new App()
+new App(props?: string | AppProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#wdk-lib.App.Initializer.parameter.props">props</a></code> | <code>string \| <a href="#wdk-lib.AppProps">AppProps</a></code> | *No description.* |
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.App.Initializer.parameter.props"></a>
+
+- *Type:* string | <a href="#wdk-lib.AppProps">AppProps</a>
 
 ---
 
@@ -474,7 +640,7 @@ new App()
 | --- | --- |
 | <code><a href="#wdk-lib.App.addMetadata">addMetadata</a></code> | Add metadata to this construct. |
 | <code><a href="#wdk-lib.App.findNodesWithMetadata">findNodesWithMetadata</a></code> | Traverses the construct tree and returns an array of nodes that have the given metadata key-value pair. |
-| <code><a href="#wdk-lib.App.synth">synth</a></code> | *No description.* |
+| <code><a href="#wdk-lib.App.synth">synth</a></code> | Validate the construct tree and synthesize all workflows to CWL files. |
 
 ---
 
@@ -531,8 +697,13 @@ The metadata value to match (optional).
 ##### `synth` <a name="synth" id="wdk-lib.App.synth"></a>
 
 ```typescript
-public synth(): void
+public synth(): SynthManifest
 ```
+
+Validate the construct tree and synthesize all workflows to CWL files.
+
+Each workflow gets its own subdirectory under the output directory.
+Returns a manifest describing all files written.
 
 
 #### Properties <a name="Properties" id="Properties"></a>
@@ -542,6 +713,9 @@ public synth(): void
 | <code><a href="#wdk-lib.App.property.metadata">metadata</a></code> | <code>{[ key: string ]: any}</code> | Get metadata for this construct. |
 | <code><a href="#wdk-lib.App.property.scope">scope</a></code> | <code><a href="#wdk-lib.Construct">Construct</a></code> | The scope in which this construct is defined. |
 | <code><a href="#wdk-lib.App.property.id">id</a></code> | <code>string</code> | Unique identifier for the construct in it's scope. |
+| <code><a href="#wdk-lib.App.property.outdir">outdir</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.App.property.defaultRegistry">defaultRegistry</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#wdk-lib.App.property.defaultResources">defaultResources</a></code> | <code><a href="#wdk-lib.RequirementProps">RequirementProps</a></code> | *No description.* |
 
 ---
 
@@ -580,6 +754,36 @@ public readonly id: string;
 Unique identifier for the construct in it's scope.
 
 set or update the id of this construct
+
+---
+
+##### `outdir`<sup>Required</sup> <a name="outdir" id="wdk-lib.App.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+
+---
+
+##### `defaultRegistry`<sup>Optional</sup> <a name="defaultRegistry" id="wdk-lib.App.property.defaultRegistry"></a>
+
+```typescript
+public readonly defaultRegistry: string;
+```
+
+- *Type:* string
+
+---
+
+##### `defaultResources`<sup>Optional</sup> <a name="defaultResources" id="wdk-lib.App.property.defaultResources"></a>
+
+```typescript
+public readonly defaultResources: RequirementProps;
+```
+
+- *Type:* <a href="#wdk-lib.RequirementProps">RequirementProps</a>
 
 ---
 
@@ -1508,6 +1712,7 @@ Convert the object to a map representation following the CWL specification.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.CloudService.basicProps">basicProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.CloudService.create">create</a></code> | Create a standalone workflow without an explicit App or parent scope. |
 
 ---
 
@@ -1518,6 +1723,24 @@ import { CloudService } from 'wdk-lib'
 
 CloudService.basicProps()
 ```
+
+##### `create` <a name="create" id="wdk-lib.CloudService.create"></a>
+
+```typescript
+import { CloudService } from 'wdk-lib'
+
+CloudService.create(id: string)
+```
+
+Create a standalone workflow without an explicit App or parent scope.
+
+Useful for quick scripts and single-workflow programs.
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.CloudService.create.parameter.id"></a>
+
+- *Type:* string
+
+---
 
 #### Properties <a name="Properties" id="Properties"></a>
 
@@ -9144,6 +9367,7 @@ Convert the object to a map representation following the CWL specification.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#wdk-lib.Workflow.basicProps">basicProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Workflow.create">create</a></code> | Create a standalone workflow without an explicit App or parent scope. |
 
 ---
 
@@ -9154,6 +9378,24 @@ import { Workflow } from 'wdk-lib'
 
 Workflow.basicProps()
 ```
+
+##### `create` <a name="create" id="wdk-lib.Workflow.create"></a>
+
+```typescript
+import { Workflow } from 'wdk-lib'
+
+Workflow.create(id: string)
+```
+
+Create a standalone workflow without an explicit App or parent scope.
+
+Useful for quick scripts and single-workflow programs.
+
+###### `id`<sup>Required</sup> <a name="id" id="wdk-lib.Workflow.create.parameter.id"></a>
+
+- *Type:* string
+
+---
 
 #### Properties <a name="Properties" id="Properties"></a>
 

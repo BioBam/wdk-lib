@@ -175,10 +175,32 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
           } else {
             cwlStepInput.source = stepInput.links[0].idAsReference;
             if (stepInput.pickValueMethod) {
-              // set the pickValueMethod to the parameter in the parent step.
-              let upperInput;
-              while (stepInput.scope?.scope) {
-                upperInput = stepInput._findInUpperScope(stepInput.scope?.scope!);
+              // Propagate pickValue to the nearest multi-linked ancestor.
+              //
+              // When an input is auto-bubbled up the scope chain (Input.linkTo
+              // creating upper parameters via Input.fromStepInput), pickValue
+              // must be re-applied to whichever ancestor ended up multi-linked,
+              // because in CWL pickValue is only meaningful on an input whose
+              // `source` is an array. We therefore walk upward from this
+              // stepInput looking for a multi-linked upper input and set its
+              // pickValueMethod.
+              //
+              // ! Do NOT remove the cursor advancement below. The previous
+              // ! implementation used `while (stepInput.scope?.scope)` with no
+              // ! reassignment, which made the condition loop-invariant:
+              // ! if `_findInUpperScope` returned a non-null upper input that
+              // ! was not multi-linked, neither break fired and the loop spun
+              // ! forever, freezing `workflow.serialize(...)` indefinitely.
+              // !
+              // ! This was reproducible with a single `.linkTo(x).pickValue(m)`
+              // ! on a parameters-scope input of a CloudService (e.g. Flye's
+              // ! `contiggerService.inputShared.linkTo(repeatService.outputShared)
+              // !  .pickValue(FIRST_NON_NULL)` after PLASMID was commented out,
+              // ! leaving a single source but still carrying a pickValue).
+              // ! See: https://<tracker>/... (wdk-lib pickValue infinite loop).
+              let cursor: typeof stepInput = stepInput;
+              while (cursor.scope?.scope) {
+                const upperInput = cursor._findInUpperScope(cursor.scope.scope);
                 if (!upperInput) {
                   break;
                 }
@@ -186,6 +208,13 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
                   upperInput.pickValue(stepInput.pickValueMethod);
                   break;
                 }
+                if (upperInput === cursor) {
+                  // Defensive: if the lookup ever returns `cursor` itself we
+                  // would loop forever. Should not happen by construction but
+                  // the previous bug proved the branch deserves a guard.
+                  break;
+                }
+                cursor = upperInput;
               }
             }
           }

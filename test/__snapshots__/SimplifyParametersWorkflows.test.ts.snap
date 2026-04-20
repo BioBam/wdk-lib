@@ -462,3 +462,80 @@ exports[`Reference Deep Parameters Link workflow output from deep tool output 1`
   ],
 }
 `;
+
+exports[`Reference Deep Parameters Single linkTo + pickValue inside a nested subworkflow must not hang (regression) 1`] = `
+{
+  "class": "Workflow",
+  "cwlVersion": "v1.2",
+  "id": "top-workflow",
+  "inputs": [],
+  "outputs": [],
+  "steps": [
+    {
+      "id": "tool-a-top",
+      "in": [],
+      "out": [
+        "fileOut",
+      ],
+      "run": {
+        "class": "CommandLineTool",
+        "cwlVersion": "v1.2",
+        "id": "tool-a-top",
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "fileOut",
+            "type": "File",
+          },
+        ],
+      },
+    },
+    {
+      "id": "swb",
+      "in": [
+        {
+          "id": "tool-b-deep.fileIn",
+          "source": "tool-a-top/fileOut",
+        },
+      ],
+      "out": [],
+      "run": {
+        "class": "Workflow",
+        "cwlVersion": "v1.2",
+        "id": "swb",
+        "inputs": [
+          {
+            "id": "tool-b-deep.fileIn",
+            "type": "File",
+          },
+        ],
+        "outputs": [],
+        "steps": [
+          {
+            "id": "tool-b-deep",
+            "in": [
+              {
+                "id": "fileIn",
+                "source": "tool-b-deep.fileIn",
+              },
+            ],
+            "out": [],
+            "run": {
+              "class": "CommandLineTool",
+              "cwlVersion": "v1.2",
+              "id": "tool-b-deep",
+              "inputs": [
+                {
+                  "id": "fileIn",
+                  "type": "File",
+                },
+              ],
+              "outputs": [],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

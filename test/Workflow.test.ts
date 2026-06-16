@@ -1,6 +1,8 @@
 import { Constructs } from '../src/lib/Constructs';
 import { Input } from '../src/lib/Input';
 import { Output } from '../src/lib/Output';
+import { Requirement } from '../src/lib/Requirement';
+import { Tool } from '../src/lib/Tool';
 import { StepClass } from '../src/lib/ToolClass';
 import { ToolConfig } from '../src/lib/ToolConfig';
 import { Workflow } from '../src/lib/Workflow';
@@ -102,6 +104,36 @@ describe('Workflow', () => {
       // expect(map.requirements).toBeDefined();
       expect(map.steps).toBeDefined();
       expect(map.label).toBe('Test Workflow');
+    });
+
+    it('should embed CUDA requirement and cwltool namespace in step run documents', () => {
+      class GpuTool extends Tool {
+        constructor(scope: Workflow, id: string) {
+          super(scope, id);
+          ToolConfig.basic(this).withBaseCommand(['nvidia-smi']);
+          Requirement.cuda(this, {
+            cudaVersionMin: '12.2',
+            cudaComputeCapability: '7.5',
+            cudaDeviceCountMin: 1,
+          });
+        }
+      }
+
+      new GpuTool(workflow, 'gpu-step');
+
+      const map = workflow.toMap();
+      const step = map.steps.find((s: { id: string }) => s.id === 'gpu-step');
+
+      expect(step).toBeDefined();
+      expect(step.run.$namespaces).toEqual({
+        cwltool: 'http://commonwl.org/cwltool#',
+      });
+      expect(step.run.requirements).toContainEqual({
+        class: 'cwltool:CUDARequirement',
+        cudaVersionMin: '12.2',
+        cudaComputeCapability: '7.5',
+        cudaDeviceCountMin: 1,
+      });
     });
   });
 });

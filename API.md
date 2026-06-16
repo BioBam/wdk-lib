@@ -55,6 +55,77 @@ public readonly outdir: string;
 
 ---
 
+### CudaRequirementProps <a name="CudaRequirementProps" id="wdk-lib.CudaRequirementProps"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.CudaRequirementProps.Initializer"></a>
+
+```typescript
+import { CudaRequirementProps } from 'wdk-lib'
+
+const cudaRequirementProps: CudaRequirementProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaVersionMin">cudaVersionMin</a></code> | <code>string</code> | Minimum CUDA version required, in X.Y format (e.g. "12.2"). |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaComputeCapability">cudaComputeCapability</a></code> | <code>string \| string[]</code> | Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values. |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaDeviceCountMax">cudaDeviceCountMax</a></code> | <code>string \| number</code> | Maximum number of GPU devices to request. |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaDeviceCountMin">cudaDeviceCountMin</a></code> | <code>string \| number</code> | Minimum number of GPU devices to request. |
+
+---
+
+##### `cudaVersionMin`<sup>Required</sup> <a name="cudaVersionMin" id="wdk-lib.CudaRequirementProps.property.cudaVersionMin"></a>
+
+```typescript
+public readonly cudaVersionMin: string;
+```
+
+- *Type:* string
+
+Minimum CUDA version required, in X.Y format (e.g. "12.2").
+
+---
+
+##### `cudaComputeCapability`<sup>Optional</sup> <a name="cudaComputeCapability" id="wdk-lib.CudaRequirementProps.property.cudaComputeCapability"></a>
+
+```typescript
+public readonly cudaComputeCapability: string | string[];
+```
+
+- *Type:* string | string[]
+
+Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values.
+
+---
+
+##### `cudaDeviceCountMax`<sup>Optional</sup> <a name="cudaDeviceCountMax" id="wdk-lib.CudaRequirementProps.property.cudaDeviceCountMax"></a>
+
+```typescript
+public readonly cudaDeviceCountMax: string | number;
+```
+
+- *Type:* string | number
+
+Maximum number of GPU devices to request.
+
+---
+
+##### `cudaDeviceCountMin`<sup>Optional</sup> <a name="cudaDeviceCountMin" id="wdk-lib.CudaRequirementProps.property.cudaDeviceCountMin"></a>
+
+```typescript
+public readonly cudaDeviceCountMin: string | number;
+```
+
+- *Type:* string | number
+
+Minimum number of GPU devices to request.
+
+Defaults to 1 when omitted.
+
+---
+
 ### InputBinding <a name="InputBinding" id="wdk-lib.InputBinding"></a>
 
 #### Initializer <a name="Initializer" id="wdk-lib.InputBinding.Initializer"></a>
@@ -6536,7 +6607,9 @@ public toMap(): {[ key: string ]: any}
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Requirement.cuda">cuda</a></code> | Require NVIDIA CUDA GPU acceleration for this process. |
 | <code><a href="#wdk-lib.Requirement.docker">docker</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Requirement.enrichCwlDocument">enrichCwlDocument</a></code> | Inject `$namespaces` into a serialized CWL document when cwltool extensions are present. |
 | <code><a href="#wdk-lib.Requirement.envVar">envVar</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.initialWorkDir">initialWorkDir</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.inlineJavascript">inlineJavascript</a></code> | *No description.* |
@@ -6546,6 +6619,31 @@ public toMap(): {[ key: string ]: any}
 | <code><a href="#wdk-lib.Requirement.scatterFeature">scatterFeature</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.stepInputExpression">stepInputExpression</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.subworkflowFeature">subworkflowFeature</a></code> | *No description.* |
+
+---
+
+##### `cuda` <a name="cuda" id="wdk-lib.Requirement.cuda"></a>
+
+```typescript
+import { Requirement } from 'wdk-lib'
+
+Requirement.cuda(scope: Construct, props: CudaRequirementProps)
+```
+
+Require NVIDIA CUDA GPU acceleration for this process.
+
+Emits a `cwltool:CUDARequirement` extension understood by Toil/cwltool.
+Pair with a CUDA-capable `DockerRequirement` image on the same tool.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Requirement.cuda.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="wdk-lib.Requirement.cuda.parameter.props"></a>
+
+- *Type:* <a href="#wdk-lib.CudaRequirementProps">CudaRequirementProps</a>
 
 ---
 
@@ -6566,6 +6664,24 @@ Requirement.docker(scope: Construct, dockerImage: string)
 ###### `dockerImage`<sup>Required</sup> <a name="dockerImage" id="wdk-lib.Requirement.docker.parameter.dockerImage"></a>
 
 - *Type:* string
+
+---
+
+##### `enrichCwlDocument` <a name="enrichCwlDocument" id="wdk-lib.Requirement.enrichCwlDocument"></a>
+
+```typescript
+import { Requirement } from 'wdk-lib'
+
+Requirement.enrichCwlDocument(doc: {[ key: string ]: any})
+```
+
+Inject `$namespaces` into a serialized CWL document when cwltool extensions are present.
+
+Recurses into embedded workflow step `run` documents.
+
+###### `doc`<sup>Required</sup> <a name="doc" id="wdk-lib.Requirement.enrichCwlDocument.parameter.doc"></a>
+
+- *Type:* {[ key: string ]: any}
 
 ---
 
@@ -10482,6 +10598,7 @@ Intended use case: It is valid to have more than one source, but sources are con
 | <code><a href="#wdk-lib.ToolRequirementType.RESOURCE_REQUIREMENT">RESOURCE_REQUIREMENT</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.SCATTER_FEATURE">SCATTER_FEATURE</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.MULTIPLE_INPUT_FEATURE">MULTIPLE_INPUT_FEATURE</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ToolRequirementType.CUDA_REQUIREMENT">CUDA_REQUIREMENT</a></code> | *No description.* |
 
 ---
 
@@ -10531,6 +10648,11 @@ Intended use case: It is valid to have more than one source, but sources are con
 
 
 ##### `MULTIPLE_INPUT_FEATURE` <a name="MULTIPLE_INPUT_FEATURE" id="wdk-lib.ToolRequirementType.MULTIPLE_INPUT_FEATURE"></a>
+
+---
+
+
+##### `CUDA_REQUIREMENT` <a name="CUDA_REQUIREMENT" id="wdk-lib.ToolRequirementType.CUDA_REQUIREMENT"></a>
 
 ---
 

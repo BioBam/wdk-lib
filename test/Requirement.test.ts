@@ -105,4 +105,65 @@ describe('Requirement Class', () => {
 
     expect(envVarRequirement.toMap().envDef[key]).toBe(value);
   });
+
+  it('should create a CUDA requirement with cwltool extension class', () => {
+    const req = Requirement.cuda(scope, {
+      cudaVersionMin: '12.2',
+      cudaComputeCapability: '7.5',
+      cudaDeviceCountMin: 1,
+    });
+
+    expect(req.requirementType).toEqual(ToolRequirementType.CUDA_REQUIREMENT);
+    expect(req.toMap()).toEqual({
+      class: 'cwltool:CUDARequirement',
+      cudaVersionMin: '12.2',
+      cudaComputeCapability: '7.5',
+      cudaDeviceCountMin: 1,
+    });
+  });
+
+  it('should inject cwltool namespace when enriching a CWL document', () => {
+    const doc: { [key: string]: any } = {
+      class: 'CommandLineTool',
+      requirements: [
+        {
+          class: 'cwltool:CUDARequirement',
+          cudaVersionMin: '12.2',
+          cudaDeviceCountMin: 1,
+        },
+      ],
+    };
+
+    Requirement.enrichCwlDocument(doc);
+
+    expect(doc.$namespaces).toEqual({
+      cwltool: 'http://commonwl.org/cwltool#',
+    });
+  });
+
+  it('should inject cwltool namespace into embedded workflow step runs', () => {
+    const doc: { [key: string]: any } = {
+      class: 'Workflow',
+      steps: [
+        {
+          run: {
+            class: 'CommandLineTool',
+            requirements: [
+              {
+                class: 'cwltool:CUDARequirement',
+                cudaVersionMin: '11.4',
+                cudaDeviceCountMin: 1,
+              },
+            ],
+          },
+        },
+      ],
+    };
+
+    Requirement.enrichCwlDocument(doc);
+
+    expect(doc.steps[0].run.$namespaces).toEqual({
+      cwltool: 'http://commonwl.org/cwltool#',
+    });
+  });
 });

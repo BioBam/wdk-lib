@@ -11,5 +11,6 @@ export enum ToolRequirementType {
   RESOURCE_REQUIREMENT = 'ResourceRequirement',
   SCATTER_FEATURE = 'ScatterFeatureRequirement',
   MULTIPLE_INPUT_FEATURE = 'MultipleInputFeatureRequirement',
+  CUDA_REQUIREMENT = 'cwltool:CUDARequirement',
 }
 

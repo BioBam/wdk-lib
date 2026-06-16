@@ -1,6 +1,7 @@
 import { CommandLineTool_class, CWLVersion } from 'cwl-ts-auto';
 import { Constructs, Output } from '../src/lib';
 import { Input } from '../src/lib/Input';
+import { Requirement } from '../src/lib/Requirement';
 import { Tool } from '../src/lib/Tool';
 import { ToolConfig } from '../src/lib/ToolConfig';
 
@@ -69,5 +70,28 @@ describe('Tool Class', () => {
 
     });
 
+  });
+
+  describe('CUDA requirement serialization', () => {
+    it('should include CUDA requirement and cwltool namespace in toMap()', () => {
+      ToolConfig.basic(tool).withBaseCommand(['nvidia-smi']);
+      Requirement.cuda(tool, {
+        cudaVersionMin: '12.2',
+        cudaComputeCapability: '7.5',
+        cudaDeviceCountMin: 1,
+      });
+
+      const map = tool.toMap();
+
+      expect(map.$namespaces).toEqual({
+        cwltool: 'http://commonwl.org/cwltool#',
+      });
+      expect(map.requirements).toContainEqual({
+        class: 'cwltool:CUDARequirement',
+        cudaVersionMin: '12.2',
+        cudaComputeCapability: '7.5',
+        cudaDeviceCountMin: 1,
+      });
+    });
   });
 });

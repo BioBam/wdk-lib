@@ -95,13 +95,17 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
 
   toMap(): { [key: string]: any } {
     // ! Pass relativeUris=false to bypass cwl-ts-auto bug with path.relative() on Windows
-    return this._toCwlObject().save(false, '', false);
+    const data = this._toCwlObject().save(false, '', false);
+    Requirement.enrichCwlDocument(data);
+    return data;
   }
 
   serialize(dirPath: string): SynthFiles {
     const synthInfo = WdkUtils.createSynthInfo(this, dirPath);
     // ! Pass relativeUris=false to bypass cwl-ts-auto bug with path.relative() on Windows
-    const yamlString = yaml.dump(this._toCwlObject().save(false, '', false), { quotingType: '\"' });
+    const data = this._toCwlObject().save(false, '', false);
+    Requirement.enrichCwlDocument(data);
+    const yamlString = yaml.dump(data, { quotingType: '\"' });
     WdkUtils.writeToFile(yamlString, synthInfo.main);
     return synthInfo;
   }
@@ -231,7 +235,7 @@ export class Workflow extends StepConstruct implements IMappable, IWorkflow {
     if (requirements.length > 0) {
       w.requirements = [];
       for (const requirement of requirements) {
-        w.requirements.push(requirement._toCwlObject());
+        w.requirements.push(requirement._toCwlObject() as any);
       }
     }
 

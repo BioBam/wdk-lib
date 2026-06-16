@@ -3,6 +3,28 @@ import { Construct } from './Construct';
 import { ToolRequirementType } from './ToolRequirementType';
 
 
+/** Namespace URI for cwltool CWL extensions (e.g. CUDARequirement). */
+export const CWLTOOL_NAMESPACE_URI = 'http://commonwl.org/cwltool#';
+
+export interface CudaRequirementProps {
+  /**
+   * Minimum CUDA version required, in X.Y format (e.g. "12.2").
+   */
+  readonly cudaVersionMin: string;
+  /**
+   * Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values.
+   */
+  readonly cudaComputeCapability?: string | string[];
+  /**
+   * Minimum number of GPU devices to request. Defaults to 1 when omitted.
+   */
+  readonly cudaDeviceCountMin?: number | string;
+  /**
+   * Maximum number of GPU devices to request.
+   */
+  readonly cudaDeviceCountMax?: number | string;
+}
+
 export interface RequirementProps {
   /**
    * Minimum reserved RAM in mebibytes (2**20).
@@ -96,6 +118,90 @@ export class Requirement extends Construct {
     return toolRequirement;
   }
 
+  /**
+   * Require NVIDIA CUDA GPU acceleration for this process.
+   *
+   * Emits a `cwltool:CUDARequirement` extension understood by Toil/cwltool.
+   * Pair with a CUDA-capable `DockerRequirement` image on the same tool.
+   */
+  public static cuda(scope: Construct, props: CudaRequirementProps): Requirement {
+    const toolRequirement = new Requirement(scope, ToolRequirementType.CUDA_REQUIREMENT);
+    toolRequirement._data = { ...props };
+    return toolRequirement;
+  }
+
+  /**
+   * Inject `$namespaces` into a serialized CWL document when cwltool extensions
+   * are present. Recurses into embedded workflow step `run` documents.
+   */
+  public static enrichCwlDocument(doc: { [key: string]: any }): void {
+    if (!doc || typeof doc !== 'object') {
+      return;
+    }
+
+    if (Requirement.documentDeclaresCwltoolExtension(doc)) {
+      doc.$namespaces = {
+        ...(doc.$namespaces ?? {}),
+        cwltool: CWLTOOL_NAMESPACE_URI,
+      };
+    }
+
+    const steps = doc.steps;
+    if (!Array.isArray(steps)) {
+      return;
+    }
+
+    for (const step of steps) {
+      const run = step?.run;
+      if (run && typeof run === 'object') {
+        Requirement.enrichCwlDocument(run);
+      }
+    }
+  }
+
+  private static documentDeclaresCwltoolExtension(doc: { [key: string]: any }): boolean {
+    const requirements = Requirement.collectProcessRequirements(doc);
+    return requirements.some(
+      requirement => requirement?.class === ToolRequirementType.CUDA_REQUIREMENT,
+    );
+  }
+
+  private static collectProcessRequirements(doc: { [key: string]: any }): { class?: string }[] {
+    const requirements = doc.requirements;
+    const hints = doc.hints;
+    const collected: { class?: string }[] = [];
+
+    if (Array.isArray(requirements)) {
+      collected.push(...requirements);
+    }
+    if (Array.isArray(hints)) {
+      collected.push(...hints);
+    }
+
+    return collected;
+  }
+
+  private static buildCudaRequirementRecord(
+    props: CudaRequirementProps,
+  ): { [key: string]: string | number | string[] } {
+    const record: { [key: string]: string | number | string[] } = {
+      class: ToolRequirementType.CUDA_REQUIREMENT,
+      cudaVersionMin: props.cudaVersionMin,
+    };
+
+    if (props.cudaComputeCapability !== undefined) {
+      record.cudaComputeCapability = props.cudaComputeCapability;
+    }
+    if (props.cudaDeviceCountMin !== undefined) {
+      record.cudaDeviceCountMin = props.cudaDeviceCountMin;
+    }
+    if (props.cudaDeviceCountMax !== undefined) {
+      record.cudaDeviceCountMax = props.cudaDeviceCountMax;
+    }
+
+    return record;
+  }
+
   private _requirementType: string;
   private _data: { [key: string]: any } = {};
 
@@ -177,7 +283,11 @@ export class Requirement extends Construct {
 
 
   public toMap(): { [key: string]: any } {
-    return this._toCwlObject().save();
+    const cwlObject = this._toCwlObject();
+    if (typeof (cwlObject as { save?: () => { [key: string]: any } }).save === 'function') {
+      return (cwlObject as { save: () => { [key: string]: any } }).save();
+    }
+    return cwlObject as { [key: string]: any };
   }
 
   /**
@@ -193,7 +303,8 @@ export class Requirement extends Construct {
     | cwl.StepInputExpressionRequirement
     | cwl.InitialWorkDirRequirement
     | cwl.NetworkAccess
-    | cwl.DockerRequirement {
+    | cwl.DockerRequirement
+    | { [key: string]: string | number | string[] } {
 
     switch (this._requirementType) {
       case ToolRequirementType.SUBWORKFLOW_FEATURE:
@@ -224,6 +335,8 @@ export class Requirement extends Construct {
         return new cwl.DockerRequirement({
           dockerPull: this._data.dockerPull,
         });
+      case ToolRequirementType.CUDA_REQUIREMENT:
+        return Requirement.buildCudaRequirementRecord(this._data as CudaRequirementProps);
       default:
         throw new Error(`Unknown requirement type ${this._requirementType}`);
     }

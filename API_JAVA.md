@@ -59,6 +59,85 @@ public java.lang.String getOutdir();
 
 ---
 
+### CudaRequirementProps <a name="CudaRequirementProps" id="wdk-lib.CudaRequirementProps"></a>
+
+#### Initializer <a name="Initializer" id="wdk-lib.CudaRequirementProps.Initializer"></a>
+
+```java
+import com.biobam.wdk.lib.CudaRequirementProps;
+
+CudaRequirementProps.builder()
+    .cudaVersionMin(java.lang.String)
+//  .cudaComputeCapability(java.lang.String)
+//  .cudaComputeCapability(java.util.List<java.lang.String>)
+//  .cudaDeviceCountMax(java.lang.String)
+//  .cudaDeviceCountMax(java.lang.Number)
+//  .cudaDeviceCountMin(java.lang.String)
+//  .cudaDeviceCountMin(java.lang.Number)
+    .build();
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaVersionMin">cudaVersionMin</a></code> | <code>java.lang.String</code> | Minimum CUDA version required, in X.Y format (e.g. "12.2"). |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaComputeCapability">cudaComputeCapability</a></code> | <code>java.lang.String OR java.util.List<java.lang.String></code> | Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values. |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaDeviceCountMax">cudaDeviceCountMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum number of GPU devices to request. |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaDeviceCountMin">cudaDeviceCountMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum number of GPU devices to request. |
+
+---
+
+##### `cudaVersionMin`<sup>Required</sup> <a name="cudaVersionMin" id="wdk-lib.CudaRequirementProps.property.cudaVersionMin"></a>
+
+```java
+public java.lang.String getCudaVersionMin();
+```
+
+- *Type:* java.lang.String
+
+Minimum CUDA version required, in X.Y format (e.g. "12.2").
+
+---
+
+##### `cudaComputeCapability`<sup>Optional</sup> <a name="cudaComputeCapability" id="wdk-lib.CudaRequirementProps.property.cudaComputeCapability"></a>
+
+```java
+public java.lang.Object getCudaComputeCapability();
+```
+
+- *Type:* java.lang.String OR java.util.List<java.lang.String>
+
+Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values.
+
+---
+
+##### `cudaDeviceCountMax`<sup>Optional</sup> <a name="cudaDeviceCountMax" id="wdk-lib.CudaRequirementProps.property.cudaDeviceCountMax"></a>
+
+```java
+public java.lang.Object getCudaDeviceCountMax();
+```
+
+- *Type:* java.lang.String OR java.lang.Number
+
+Maximum number of GPU devices to request.
+
+---
+
+##### `cudaDeviceCountMin`<sup>Optional</sup> <a name="cudaDeviceCountMin" id="wdk-lib.CudaRequirementProps.property.cudaDeviceCountMin"></a>
+
+```java
+public java.lang.Object getCudaDeviceCountMin();
+```
+
+- *Type:* java.lang.String OR java.lang.Number
+
+Minimum number of GPU devices to request.
+
+Defaults to 1 when omitted.
+
+---
+
 ### InputBinding <a name="InputBinding" id="wdk-lib.InputBinding"></a>
 
 #### Initializer <a name="Initializer" id="wdk-lib.InputBinding.Initializer"></a>
@@ -6743,7 +6822,9 @@ public java.util.Map<java.lang.String, java.lang.Object> toMap()
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#wdk-lib.Requirement.cuda">cuda</a></code> | Require NVIDIA CUDA GPU acceleration for this process. |
 | <code><a href="#wdk-lib.Requirement.docker">docker</a></code> | *No description.* |
+| <code><a href="#wdk-lib.Requirement.enrichCwlDocument">enrichCwlDocument</a></code> | Inject `$namespaces` into a serialized CWL document when cwltool extensions are present. |
 | <code><a href="#wdk-lib.Requirement.envVar">envVar</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.initialWorkDir">initialWorkDir</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.inlineJavascript">inlineJavascript</a></code> | *No description.* |
@@ -6753,6 +6834,31 @@ public java.util.Map<java.lang.String, java.lang.Object> toMap()
 | <code><a href="#wdk-lib.Requirement.scatterFeature">scatterFeature</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.stepInputExpression">stepInputExpression</a></code> | *No description.* |
 | <code><a href="#wdk-lib.Requirement.subworkflowFeature">subworkflowFeature</a></code> | *No description.* |
+
+---
+
+##### `cuda` <a name="cuda" id="wdk-lib.Requirement.cuda"></a>
+
+```java
+import com.biobam.wdk.lib.Requirement;
+
+Requirement.cuda(Construct scope, CudaRequirementProps props)
+```
+
+Require NVIDIA CUDA GPU acceleration for this process.
+
+Emits a `cwltool:CUDARequirement` extension understood by Toil/cwltool.
+Pair with a CUDA-capable `DockerRequirement` image on the same tool.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="wdk-lib.Requirement.cuda.parameter.scope"></a>
+
+- *Type:* <a href="#wdk-lib.Construct">Construct</a>
+
+---
+
+###### `props`<sup>Required</sup> <a name="props" id="wdk-lib.Requirement.cuda.parameter.props"></a>
+
+- *Type:* <a href="#wdk-lib.CudaRequirementProps">CudaRequirementProps</a>
 
 ---
 
@@ -6773,6 +6879,24 @@ Requirement.docker(Construct scope, java.lang.String dockerImage)
 ###### `dockerImage`<sup>Required</sup> <a name="dockerImage" id="wdk-lib.Requirement.docker.parameter.dockerImage"></a>
 
 - *Type:* java.lang.String
+
+---
+
+##### `enrichCwlDocument` <a name="enrichCwlDocument" id="wdk-lib.Requirement.enrichCwlDocument"></a>
+
+```java
+import com.biobam.wdk.lib.Requirement;
+
+Requirement.enrichCwlDocument(java.util.Map<java.lang.String, java.lang.Object> doc)
+```
+
+Inject `$namespaces` into a serialized CWL document when cwltool extensions are present.
+
+Recurses into embedded workflow step `run` documents.
+
+###### `doc`<sup>Required</sup> <a name="doc" id="wdk-lib.Requirement.enrichCwlDocument.parameter.doc"></a>
+
+- *Type:* java.util.Map<java.lang.String, java.lang.Object>
 
 ---
 
@@ -10708,6 +10832,7 @@ Intended use case: It is valid to have more than one source, but sources are con
 | <code><a href="#wdk-lib.ToolRequirementType.RESOURCE_REQUIREMENT">RESOURCE_REQUIREMENT</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.SCATTER_FEATURE">SCATTER_FEATURE</a></code> | *No description.* |
 | <code><a href="#wdk-lib.ToolRequirementType.MULTIPLE_INPUT_FEATURE">MULTIPLE_INPUT_FEATURE</a></code> | *No description.* |
+| <code><a href="#wdk-lib.ToolRequirementType.CUDA_REQUIREMENT">CUDA_REQUIREMENT</a></code> | *No description.* |
 
 ---
 
@@ -10757,6 +10882,11 @@ Intended use case: It is valid to have more than one source, but sources are con
 
 
 ##### `MULTIPLE_INPUT_FEATURE` <a name="MULTIPLE_INPUT_FEATURE" id="wdk-lib.ToolRequirementType.MULTIPLE_INPUT_FEATURE"></a>
+
+---
+
+
+##### `CUDA_REQUIREMENT` <a name="CUDA_REQUIREMENT" id="wdk-lib.ToolRequirementType.CUDA_REQUIREMENT"></a>
 
 ---
 

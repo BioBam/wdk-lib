@@ -170,6 +170,7 @@ export class ExpressionTool extends StepConstruct implements IMappable {
     const synthInfo = SynthFiles.createWithMain(cwlFile);
     // ! Pass relativeUris=false to bypass cwl-ts-auto bug with path.relative() on Windows
     const data = this._toCwlObject().save(false, '', false);
+    Requirement.enrichCwlDocument(data);
     const yamlString = yaml.dump(data, { noRefs: true });
     WdkUtils.writeToFile(yamlString, cwlFile);
     return synthInfo;
@@ -187,7 +188,9 @@ export class ExpressionTool extends StepConstruct implements IMappable {
    */
   public toMap(): { [key: string]: any } {
     // ! Pass relativeUris=false to bypass cwl-ts-auto bug with path.relative() on Windows
-    return this._toCwlObject().save(false, '', false);
+    const data = this._toCwlObject().save(false, '', false);
+    Requirement.enrichCwlDocument(data);
+    return data;
   }
 
   /**
@@ -238,7 +241,7 @@ export class ExpressionTool extends StepConstruct implements IMappable {
     if (requirements.length > 0) {
       cwlETool.requirements = [];
       for (const requirement of requirements) {
-        cwlETool.requirements.push(requirement._toCwlObject());
+        cwlETool.requirements.push(requirement._toCwlObject() as any);
       }
     }
 

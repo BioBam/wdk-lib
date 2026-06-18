@@ -6,6 +6,20 @@ import { ToolRequirementType } from './ToolRequirementType';
 /** Namespace URI for cwltool CWL extensions (e.g. CUDARequirement). */
 export const CWLTOOL_NAMESPACE_URI = 'http://commonwl.org/cwltool#';
 
+/**
+ * Default minimum CUDA compute capability emitted when callers omit
+ * `cudaComputeCapability`.
+ *
+ * cwltool requires this field for strict validation. A single value is treated
+ * as a minimum; GPUs with higher capability are also accepted. The cwltool
+ * reference example uses a similarly permissive floor (3.0); 3.5 keeps
+ * validation happy without excluding modern cloud GPUs.
+ */
+export const DEFAULT_CUDA_COMPUTE_CAPABILITY = '3.5';
+
+/** Default minimum GPU count, matching cwltool's CUDARequirement schema default. */
+export const DEFAULT_CUDA_DEVICE_COUNT_MIN = 1;
+
 export interface CudaRequirementProps {
   /**
    * Minimum CUDA version required, in X.Y format (e.g. "12.2").
@@ -13,10 +27,15 @@ export interface CudaRequirementProps {
   readonly cudaVersionMin: string;
   /**
    * Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values.
+   *
+   * Defaults to {@link DEFAULT_CUDA_COMPUTE_CAPABILITY} when omitted so emitted
+   * CWL passes cwltool/Toil validation.
    */
   readonly cudaComputeCapability?: string | string[];
   /**
-   * Minimum number of GPU devices to request. Defaults to 1 when omitted.
+   * Minimum number of GPU devices to request.
+   *
+   * Defaults to {@link DEFAULT_CUDA_DEVICE_COUNT_MIN} when omitted.
    */
   readonly cudaDeviceCountMin?: number | string;
   /**
@@ -187,14 +206,10 @@ export class Requirement extends Construct {
     const record: { [key: string]: string | number | string[] } = {
       class: ToolRequirementType.CUDA_REQUIREMENT,
       cudaVersionMin: props.cudaVersionMin,
+      cudaComputeCapability: props.cudaComputeCapability ?? DEFAULT_CUDA_COMPUTE_CAPABILITY,
+      cudaDeviceCountMin: props.cudaDeviceCountMin ?? DEFAULT_CUDA_DEVICE_COUNT_MIN,
     };
 
-    if (props.cudaComputeCapability !== undefined) {
-      record.cudaComputeCapability = props.cudaComputeCapability;
-    }
-    if (props.cudaDeviceCountMin !== undefined) {
-      record.cudaDeviceCountMin = props.cudaDeviceCountMin;
-    }
     if (props.cudaDeviceCountMax !== undefined) {
       record.cudaDeviceCountMax = props.cudaDeviceCountMax;
     }

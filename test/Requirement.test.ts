@@ -1,6 +1,10 @@
 import { Construct } from '../src/lib/Construct';
 import { Constructs } from '../src/lib/Constructs';
-import { Requirement } from '../src/lib/Requirement';
+import {
+  DEFAULT_CUDA_COMPUTE_CAPABILITY,
+  DEFAULT_CUDA_DEVICE_COUNT_MIN,
+  Requirement,
+} from '../src/lib/Requirement';
 import { ToolRequirementType } from '../src/lib/ToolRequirementType';
 
 describe('Requirement Class', () => {
@@ -119,6 +123,19 @@ describe('Requirement Class', () => {
       cudaVersionMin: '12.2',
       cudaComputeCapability: '7.5',
       cudaDeviceCountMin: 1,
+    });
+  });
+
+  it('should apply cwltool-compatible defaults when CUDA fields are omitted', () => {
+    const req = Requirement.cuda(scope, {
+      cudaVersionMin: '12.1',
+    });
+
+    expect(req.toMap()).toEqual({
+      class: 'cwltool:CUDARequirement',
+      cudaVersionMin: '12.1',
+      cudaComputeCapability: DEFAULT_CUDA_COMPUTE_CAPABILITY,
+      cudaDeviceCountMin: DEFAULT_CUDA_DEVICE_COUNT_MIN,
     });
   });
 

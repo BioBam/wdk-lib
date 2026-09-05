@@ -98,6 +98,9 @@ public readonly cudaComputeCapability: string | string[];
 
 Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values.
 
+Defaults to {@link DEFAULT_CUDA_COMPUTE_CAPABILITY} when omitted so emitted
+CWL passes cwltool/Toil validation.
+
 ---
 
 ##### `cudaDeviceCountMax`<sup>Optional</sup> <a name="cudaDeviceCountMax" id="wdk-lib.CudaRequirementProps.property.cudaDeviceCountMax"></a>
@@ -122,7 +125,7 @@ public readonly cudaDeviceCountMin: string | number;
 
 Minimum number of GPU devices to request.
 
-Defaults to 1 when omitted.
+Defaults to {@link DEFAULT_CUDA_DEVICE_COUNT_MIN} when omitted.
 
 ---
 

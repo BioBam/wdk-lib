@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Command-line Tool CWL output should generate correct CWL for the echo tool and have no git differences 1`] = `
 {

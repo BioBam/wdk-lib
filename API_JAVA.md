@@ -68,12 +68,9 @@ import com.biobam.wdk.lib.CudaRequirementProps;
 
 CudaRequirementProps.builder()
     .cudaVersionMin(java.lang.String)
-//  .cudaComputeCapability(java.lang.String)
-//  .cudaComputeCapability(java.util.List<java.lang.String>)
-//  .cudaDeviceCountMax(java.lang.String)
-//  .cudaDeviceCountMax(java.lang.Number)
-//  .cudaDeviceCountMin(java.lang.String)
-//  .cudaDeviceCountMin(java.lang.Number)
+//  .cudaComputeCapability(java.lang.String|java.util.List<java.lang.String>)
+//  .cudaDeviceCountMax(java.lang.String|java.lang.Number)
+//  .cudaDeviceCountMin(java.lang.String|java.lang.Number)
     .build();
 ```
 
@@ -82,9 +79,9 @@ CudaRequirementProps.builder()
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#wdk-lib.CudaRequirementProps.property.cudaVersionMin">cudaVersionMin</a></code> | <code>java.lang.String</code> | Minimum CUDA version required, in X.Y format (e.g. "12.2"). |
-| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaComputeCapability">cudaComputeCapability</a></code> | <code>java.lang.String OR java.util.List<java.lang.String></code> | Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values. |
-| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaDeviceCountMax">cudaDeviceCountMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum number of GPU devices to request. |
-| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaDeviceCountMin">cudaDeviceCountMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum number of GPU devices to request. |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaComputeCapability">cudaComputeCapability</a></code> | <code>java.lang.String\|java.util.List<java.lang.String></code> | Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values. |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaDeviceCountMax">cudaDeviceCountMax</a></code> | <code>java.lang.String\|java.lang.Number</code> | Maximum number of GPU devices to request. |
+| <code><a href="#wdk-lib.CudaRequirementProps.property.cudaDeviceCountMin">cudaDeviceCountMin</a></code> | <code>java.lang.String\|java.lang.Number</code> | Minimum number of GPU devices to request. |
 
 ---
 
@@ -103,22 +100,25 @@ Minimum CUDA version required, in X.Y format (e.g. "12.2").
 ##### `cudaComputeCapability`<sup>Optional</sup> <a name="cudaComputeCapability" id="wdk-lib.CudaRequirementProps.property.cudaComputeCapability"></a>
 
 ```java
-public java.lang.Object getCudaComputeCapability();
+public java.lang.String|java.util.List<java.lang.String> getCudaComputeCapability();
 ```
 
-- *Type:* java.lang.String OR java.util.List<java.lang.String>
+- *Type:* java.lang.String|java.util.List<java.lang.String>
 
 Minimum CUDA compute capability (e.g. "7.5"), or a list of accepted values.
+
+Defaults to {@link DEFAULT_CUDA_COMPUTE_CAPABILITY} when omitted so emitted
+CWL passes cwltool/Toil validation.
 
 ---
 
 ##### `cudaDeviceCountMax`<sup>Optional</sup> <a name="cudaDeviceCountMax" id="wdk-lib.CudaRequirementProps.property.cudaDeviceCountMax"></a>
 
 ```java
-public java.lang.Object getCudaDeviceCountMax();
+public java.lang.String|java.lang.Number getCudaDeviceCountMax();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Maximum number of GPU devices to request.
 
@@ -127,14 +127,14 @@ Maximum number of GPU devices to request.
 ##### `cudaDeviceCountMin`<sup>Optional</sup> <a name="cudaDeviceCountMin" id="wdk-lib.CudaRequirementProps.property.cudaDeviceCountMin"></a>
 
 ```java
-public java.lang.Object getCudaDeviceCountMin();
+public java.lang.String|java.lang.Number getCudaDeviceCountMin();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Minimum number of GPU devices to request.
 
-Defaults to 1 when omitted.
+Defaults to {@link DEFAULT_CUDA_DEVICE_COUNT_MIN} when omitted.
 
 ---
 
@@ -147,8 +147,7 @@ import com.biobam.wdk.lib.InputBinding;
 
 InputBinding.builder()
 //  .itemSeparator(java.lang.String)
-//  .position(java.lang.String)
-//  .position(java.lang.Number)
+//  .position(java.lang.String|java.lang.Number)
 //  .prefix(java.lang.String)
 //  .separate(java.lang.Boolean)
 //  .shellQuote(java.lang.Boolean)
@@ -160,7 +159,7 @@ InputBinding.builder()
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#wdk-lib.InputBinding.property.itemSeparator">itemSeparator</a></code> | <code>java.lang.String</code> | *No description.* |
-| <code><a href="#wdk-lib.InputBinding.property.position">position</a></code> | <code>java.lang.String OR java.lang.Number</code> | *No description.* |
+| <code><a href="#wdk-lib.InputBinding.property.position">position</a></code> | <code>java.lang.String\|java.lang.Number</code> | *No description.* |
 | <code><a href="#wdk-lib.InputBinding.property.prefix">prefix</a></code> | <code>java.lang.String</code> | *No description.* |
 | <code><a href="#wdk-lib.InputBinding.property.separate">separate</a></code> | <code>java.lang.Boolean</code> | *No description.* |
 | <code><a href="#wdk-lib.InputBinding.property.shellQuote">shellQuote</a></code> | <code>java.lang.Boolean</code> | *No description.* |
@@ -180,10 +179,10 @@ public java.lang.String getItemSeparator();
 ##### `position`<sup>Optional</sup> <a name="position" id="wdk-lib.InputBinding.property.position"></a>
 
 ```java
-public java.lang.Object getPosition();
+public java.lang.String|java.lang.Number getPosition();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 ---
 
@@ -291,22 +290,14 @@ public java.lang.String getName();
 import com.biobam.wdk.lib.RequirementProps;
 
 RequirementProps.builder()
-//  .coresMax(java.lang.String)
-//  .coresMax(java.lang.Number)
-//  .coresMin(java.lang.String)
-//  .coresMin(java.lang.Number)
-//  .outdirMax(java.lang.String)
-//  .outdirMax(java.lang.Number)
-//  .outdirMin(java.lang.String)
-//  .outdirMin(java.lang.Number)
-//  .ramMax(java.lang.String)
-//  .ramMax(java.lang.Number)
-//  .ramMin(java.lang.String)
-//  .ramMin(java.lang.Number)
-//  .tmpdirMax(java.lang.String)
-//  .tmpdirMax(java.lang.Number)
-//  .tmpdirMin(java.lang.String)
-//  .tmpdirMin(java.lang.Number)
+//  .coresMax(java.lang.String|java.lang.Number)
+//  .coresMin(java.lang.String|java.lang.Number)
+//  .outdirMax(java.lang.String|java.lang.Number)
+//  .outdirMin(java.lang.String|java.lang.Number)
+//  .ramMax(java.lang.String|java.lang.Number)
+//  .ramMin(java.lang.String|java.lang.Number)
+//  .tmpdirMax(java.lang.String|java.lang.Number)
+//  .tmpdirMin(java.lang.String|java.lang.Number)
     .build();
 ```
 
@@ -314,24 +305,24 @@ RequirementProps.builder()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.RequirementProps.property.coresMax">coresMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum reserved number of CPU cores. |
-| <code><a href="#wdk-lib.RequirementProps.property.coresMin">coresMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum reserved number of CPU cores. |
-| <code><a href="#wdk-lib.RequirementProps.property.outdirMax">outdirMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.outdirMin">outdirMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.ramMax">ramMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum reserved RAM in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.ramMin">ramMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum reserved RAM in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMax">tmpdirMax</a></code> | <code>java.lang.String OR java.lang.Number</code> | Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
-| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMin">tmpdirMin</a></code> | <code>java.lang.String OR java.lang.Number</code> | Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.coresMax">coresMax</a></code> | <code>java.lang.String\|java.lang.Number</code> | Maximum reserved number of CPU cores. |
+| <code><a href="#wdk-lib.RequirementProps.property.coresMin">coresMin</a></code> | <code>java.lang.String\|java.lang.Number</code> | Minimum reserved number of CPU cores. |
+| <code><a href="#wdk-lib.RequirementProps.property.outdirMax">outdirMax</a></code> | <code>java.lang.String\|java.lang.Number</code> | Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.outdirMin">outdirMin</a></code> | <code>java.lang.String\|java.lang.Number</code> | Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.ramMax">ramMax</a></code> | <code>java.lang.String\|java.lang.Number</code> | Maximum reserved RAM in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.ramMin">ramMin</a></code> | <code>java.lang.String\|java.lang.Number</code> | Minimum reserved RAM in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMax">tmpdirMax</a></code> | <code>java.lang.String\|java.lang.Number</code> | Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
+| <code><a href="#wdk-lib.RequirementProps.property.tmpdirMin">tmpdirMin</a></code> | <code>java.lang.String\|java.lang.Number</code> | Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20). |
 
 ---
 
 ##### `coresMax`<sup>Optional</sup> <a name="coresMax" id="wdk-lib.RequirementProps.property.coresMax"></a>
 
 ```java
-public java.lang.Object getCoresMax();
+public java.lang.String|java.lang.Number getCoresMax();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Maximum reserved number of CPU cores.
 
@@ -340,10 +331,10 @@ Maximum reserved number of CPU cores.
 ##### `coresMin`<sup>Optional</sup> <a name="coresMin" id="wdk-lib.RequirementProps.property.coresMin"></a>
 
 ```java
-public java.lang.Object getCoresMin();
+public java.lang.String|java.lang.Number getCoresMin();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Minimum reserved number of CPU cores.
 
@@ -355,10 +346,10 @@ dynamic resource allocation.
 ##### `outdirMax`<sup>Optional</sup> <a name="outdirMax" id="wdk-lib.RequirementProps.property.outdirMax"></a>
 
 ```java
-public java.lang.Object getOutdirMax();
+public java.lang.String|java.lang.Number getOutdirMax();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20).
 
@@ -367,10 +358,10 @@ Maximum reserved filesystem based storage for the designated output directory, i
 ##### `outdirMin`<sup>Optional</sup> <a name="outdirMin" id="wdk-lib.RequirementProps.property.outdirMin"></a>
 
 ```java
-public java.lang.Object getOutdirMin();
+public java.lang.String|java.lang.Number getOutdirMin();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20).
 
@@ -379,10 +370,10 @@ Minimum reserved filesystem based storage for the designated output directory, i
 ##### `ramMax`<sup>Optional</sup> <a name="ramMax" id="wdk-lib.RequirementProps.property.ramMax"></a>
 
 ```java
-public java.lang.Object getRamMax();
+public java.lang.String|java.lang.Number getRamMax();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Maximum reserved RAM in mebibytes (2**20).
 
@@ -391,10 +382,10 @@ Maximum reserved RAM in mebibytes (2**20).
 ##### `ramMin`<sup>Optional</sup> <a name="ramMin" id="wdk-lib.RequirementProps.property.ramMin"></a>
 
 ```java
-public java.lang.Object getRamMin();
+public java.lang.String|java.lang.Number getRamMin();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Minimum reserved RAM in mebibytes (2**20).
 
@@ -406,10 +397,10 @@ dynamic resource allocation.
 ##### `tmpdirMax`<sup>Optional</sup> <a name="tmpdirMax" id="wdk-lib.RequirementProps.property.tmpdirMax"></a>
 
 ```java
-public java.lang.Object getTmpdirMax();
+public java.lang.String|java.lang.Number getTmpdirMax();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20).
 
@@ -418,10 +409,10 @@ Maximum reserved filesystem based storage for the designated temporary directory
 ##### `tmpdirMin`<sup>Optional</sup> <a name="tmpdirMin" id="wdk-lib.RequirementProps.property.tmpdirMin"></a>
 
 ```java
-public java.lang.Object getTmpdirMin();
+public java.lang.String|java.lang.Number getTmpdirMin();
 ```
 
-- *Type:* java.lang.String OR java.lang.Number
+- *Type:* java.lang.String|java.lang.Number
 
 Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20).
 
@@ -752,18 +743,18 @@ public java.lang.String getId();
 ```java
 import com.biobam.wdk.lib.App;
 
-new App();,new App(java.lang.String OR AppProps props);
+new App();,new App(java.lang.String|AppProps props);
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#wdk-lib.App.Initializer.parameter.props">props</a></code> | <code>java.lang.String OR <a href="#wdk-lib.AppProps">AppProps</a></code> | *No description.* |
+| <code><a href="#wdk-lib.App.Initializer.parameter.props">props</a></code> | <code>java.lang.String\|<a href="#wdk-lib.AppProps">AppProps</a></code> | *No description.* |
 
 ---
 
 ##### `props`<sup>Optional</sup> <a name="props" id="wdk-lib.App.Initializer.parameter.props"></a>
 
-- *Type:* java.lang.String OR <a href="#wdk-lib.AppProps">AppProps</a>
+- *Type:* java.lang.String|<a href="#wdk-lib.AppProps">AppProps</a>
 
 ---
 
@@ -5122,8 +5113,8 @@ Represents an output parameter of a workflow, tool, or step.
 
 ```java
 // Example automatically generated from non-compiling source. May contain errors.
-import com.biobam.wdk.lib.Output;
-import com.biobam.wdk.lib.Constructs;
+import wdk.lib.Output;
+import wdk.lib.Constructs;
 Construct root = Constructs.createRoot("root");
 Output output = Output.file(root, "myOutput").withGlob("*.txt").loadContents().outputEval("$(self[0].contents)");
 
@@ -5336,14 +5327,14 @@ Converts the output's properties into a map format.
 ##### `withGlob` <a name="withGlob" id="wdk-lib.Output.withGlob"></a>
 
 ```java
-public Output withGlob(java.lang.String OR java.util.List<java.lang.String> glob)
+public Output withGlob(java.lang.String|java.util.List<java.lang.String> glob)
 ```
 
 Specifies a glob pattern to locate output files.
 
 ###### `glob`<sup>Required</sup> <a name="glob" id="wdk-lib.Output.withGlob.parameter.glob"></a>
 
-- *Type:* java.lang.String OR java.util.List<java.lang.String>
+- *Type:* java.lang.String|java.util.List<java.lang.String>
 
 The glob pattern(s).
 
@@ -8684,9 +8675,9 @@ outputs to serializable formats for cwl.output.json generation.
 
 ```java
 // Example automatically generated from non-compiling source. May contain errors.
-import com.biobam.wdk.lib.ToolOutputs;
-import com.biobam.wdk.lib.Output;
-import com.biobam.wdk.lib.Constructs;
+import wdk.lib.ToolOutputs;
+import wdk.lib.Output;
+import wdk.lib.Constructs;
 Construct root = Constructs.createRoot("root");
 Output output1 = Output.string(root, "firstOutput");
 Output output2 = Output.file(root, "fileOutput");
@@ -9982,9 +9973,9 @@ inputs to serializable formats.
 
 ```java
 // Example automatically generated from non-compiling source. May contain errors.
-import com.biobam.wdk.lib.WorkflowValues;
-import com.biobam.wdk.lib.Input;
-import com.biobam.wdk.lib.Constructs;
+import wdk.lib.WorkflowValues;
+import wdk.lib.Input;
+import wdk.lib.Constructs;
 Construct root = Constructs.createRoot("root");
 Input input1 = Input.string(root, "firstInput").withDefaultValue("defaultValue");
 Input input2 = Input.file(root, "fileInput");
@@ -10069,7 +10060,7 @@ This can be a workflow or a Tool.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#wdk-lib.WorkflowValues.property.filePaths">filePaths</a></code> | <code>java.util.List<java.lang.String></code> | Retrieves the file paths for all inputs that are files. |
-| <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>></code> | Returns a map of input IDs to their associated values. |
+| <code><a href="#wdk-lib.WorkflowValues.property.inputs">inputs</a></code> | <code>java.util.Map<java.lang.String, java.lang.String\|java.lang.Number\|java.lang.Boolean\|java.util.List<java.lang.String>\|<a href="#wdk-lib.InputReference">InputReference</a>\|java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>></code> | Returns a map of input IDs to their associated values. |
 | <code><a href="#wdk-lib.WorkflowValues.property.localInputReferences">localInputReferences</a></code> | <code>java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>></code> | Retrieves all local InputReferences that have a path defined. |
 | <code><a href="#wdk-lib.WorkflowValues.property.taskName">taskName</a></code> | <code>java.lang.String</code> | Retrieves the task name associated with these workflow values. |
 
@@ -10090,10 +10081,10 @@ Retrieves the file paths for all inputs that are files.
 ##### `inputs`<sup>Required</sup> <a name="inputs" id="wdk-lib.WorkflowValues.property.inputs"></a>
 
 ```java
-public java.lang.Object getInputs();
+public java.util.Map<java.lang.String, java.lang.String|java.lang.Number|java.lang.Boolean|java.util.List<java.lang.String>|InputReference|java.util.List<InputReference>> getInputs();
 ```
 
-- *Type:* java.util.Map<java.lang.String, java.lang.String OR java.lang.Number OR java.lang.Boolean OR java.util.List<java.lang.String> OR <a href="#wdk-lib.InputReference">InputReference</a> OR java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>>
+- *Type:* java.util.Map<java.lang.String, java.lang.String|java.lang.Number|java.lang.Boolean|java.util.List<java.lang.String>|<a href="#wdk-lib.InputReference">InputReference</a>|java.util.List<<a href="#wdk-lib.InputReference">InputReference</a>>>
 
 Returns a map of input IDs to their associated values.
 

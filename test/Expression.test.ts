@@ -104,3 +104,43 @@ describe('ExpressionTool', () => {
     expect(evaluatedScript).toEqual(expectedOutput);
   });
 });
+// An empty array input used to crash every parameters.txt expression with
+// "TypeError: Cannot read property 'class' of undefined" (inputs[key][0].class),
+// e.g. a scatter that produced no files. It must pass through instead.
+describe('ExpressionTool parameters.txt with empty arrays', () => {
+  const run = (expressionScript: string, inputs: any) => {
+    const body = expressionScript.replace(/^\$\{/, '').replace(/\}$/, '');
+    return new Function('inputs', body)(inputs);
+  };
+  const inputs = {
+    emptyArray: [],
+    files: [{ class: 'File', basename: 'a.vcf' }, { class: 'File', basename: 'b.vcf' }],
+    nullFirst: [null, { class: 'File', basename: 'c.vcf' }],
+    names: ['chr1', 'chr2'],
+    step: 'concat',
+  };
+
+  it('makeParametersJsonExpression keeps an empty array as []', () => {
+    const out = run(ExpressionTool.makeParametersJsonExpression(), inputs);
+    expect(JSON.parse(out.parameters_file.contents)).toEqual({
+      emptyArray: [],
+      files: ['a.vcf', 'b.vcf'],
+      nullFirst: [null, { class: 'File', basename: 'c.vcf' }],
+      names: ['chr1', 'chr2'],
+      step: 'concat',
+    });
+  });
+
+  it('makeParametersJsonExpressionAllStrings turns an empty array into ""', () => {
+    const out = run(ExpressionTool.makeParametersJsonExpressionAllStrings(), inputs);
+    const params = JSON.parse(out.parameters_file.contents);
+    expect(params.emptyArray).toEqual('');
+    expect(params.files).toEqual(['a.vcf', 'b.vcf']);
+    expect(params.names).toEqual('chr1,chr2');
+  });
+
+  it('makeParametersAndResourcesExpression does not fail on an empty array', () => {
+    const out = run(ExpressionTool.makeParametersAndResourcesExpression('return { cores: 3, memory: 100 };', 1, 10), inputs);
+    expect(JSON.parse(out.parameters_file.contents).emptyArray).toEqual([]);
+  });
+});
